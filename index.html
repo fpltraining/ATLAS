@@ -188,6 +188,63 @@ svg.chart{width:100%;height:110px}
 .pager{justify-content:center;align-items:center;margin:14px 0}
 details.tip summary{cursor:pointer}
 details.tip ol{margin:10px 0 0 18px;line-height:1.7}
+/* Ôn ngắt quãng · Nhật ký học · Số & giá tiền */
+.navlink{align-items:center}
+.nav-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;margin-left:auto;border-radius:99px;background:var(--danger);color:#fff;font-size:11px;font-weight:800;font-variant-numeric:tabular-nums}
+.interval-track{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0 12px}
+.interval-step{display:inline-flex;flex-direction:column;align-items:center;min-width:44px;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);font-variant-numeric:tabular-nums}
+.interval-step b{color:var(--lime);font-size:16px}
+.interval-step small{color:var(--muted);font-size:10px}
+.interval-arrow{color:var(--muted)}
+.chart-wrap{overflow-x:auto}
+.chart-wrap svg{width:100%;min-width:520px;height:auto;display:block}
+.chart-axis{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.chart-tip{position:absolute;z-index:120;transform:translate(-50%,-100%);background:var(--panel2);border:1px solid var(--lime-dark);color:var(--text);font-size:12px;padding:6px 9px;border-radius:8px;pointer-events:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.chart-tip[hidden]{display:none}
+.journal-row{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.journal-row.today .journal-date b{color:var(--lime)}
+.journal-date{display:flex;flex-direction:column;gap:2px}
+.journal-date b::first-letter{text-transform:uppercase}
+.journal-date small{color:var(--muted)}
+.journal-line{margin:0 0 10px;line-height:1.6}
+.journal-controls{display:grid;grid-template-columns:minmax(190px,250px) 1fr;gap:12px;align-items:start}
+.journal-rate{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px;margin:0}
+.journal-rate .field-help{grid-column:1/-1;margin:0}
+.journal-rate input{padding:0;accent-color:var(--lime)}
+.journal-rate output{font-variant-numeric:tabular-nums;color:var(--lime);font-weight:700;min-width:42px;text-align:right}
+.journal-controls textarea{min-height:48px}
+@media (max-width:640px){.journal-row{grid-template-columns:1fr;gap:6px}.journal-controls{grid-template-columns:1fr}}
+.num-input{font-size:26px;padding:14px 16px;font-variant-numeric:tabular-nums}
+.num-meaning{font-size:19px;line-height:1.5;margin:0}
+.num-reading{font-size:28px;line-height:1.3;color:var(--lime);font-weight:700;margin:4px 0}
+.word-chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.written-chip{font-size:15px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-variant-numeric:tabular-nums}
+.num-rules{margin:6px 0 0 18px;padding:0}
+.num-rules li{margin-bottom:8px;line-height:1.55}
+/* Trang Hôm nay: làm theo thứ tự · menu gọn */
+.nav-text{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.nav-text small{font-size:11px;color:var(--muted);font-weight:400}
+.navlink.active .nav-text small{color:var(--lime-dark)}
+.nav-more-toggle{margin-top:12px;color:var(--muted);font-size:13px}
+.nav-more-note{font-size:11px;color:var(--muted);font-weight:400}
+.nav-more{display:flex;flex-direction:column;gap:4px;margin-left:14px;padding-left:8px;border-left:1px solid var(--line)}
+@media (max-width:820px){.nav-text small,.nav-more-note{display:none}.nav-more{flex-direction:row;margin-left:0;padding-left:0;border-left:0}.nav-more-toggle{margin-top:0;white-space:nowrap}.navlink{white-space:nowrap}}
+.plan-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.plan-step{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.plan-step.current{border-color:var(--lime);background:#1f2a18;padding-block:16px}
+.plan-step.done,.plan-step.skip{opacity:.62}
+.plan-num{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;background:#26311d;color:var(--lime-dark);font-variant-numeric:tabular-nums}
+.plan-step.current .plan-num{background:var(--lime);color:#0e130d}
+.plan-step.done .plan-num{color:var(--lime)}
+.plan-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.plan-body b{font-size:16px}
+.plan-step.current .plan-body b{font-size:19px}
+.plan-body small{color:var(--muted);font-size:13px;line-height:1.5}
+.plan-step.done .plan-body b{text-decoration:line-through;text-decoration-color:var(--lime-dark)}
+@media (max-width:560px){.plan-step{flex-wrap:wrap}.plan-step .btn{width:100%;justify-content:center}}
+details.today-more>summary{cursor:pointer;font-weight:700;color:var(--muted)}
+details.today-more[open]>summary{margin-bottom:16px}
+#journalTodayPanel.flash{border-color:var(--lime);transition:border-color .3s}
 .session-item{display:flex;align-items:center;gap:10px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
 .session-item.done{opacity:.55;text-decoration:line-through}
 </style>
@@ -386,6 +443,129 @@ const WORD_BANK_RAW=[
 ["for-example","for example","/fɔːr ɪɡˈzæmpəl/","phr","ví dụ","For example, rice prices doubled.","Ví dụ, giá gạo đã tăng gấp đôi.","core",1],
 ["in-fact","in fact","/ɪn fækt/","phr","thực tế là","In fact, the number is much higher.","Thực tế là con số cao hơn nhiều.","core",2],
 ["because-of","because of","/bɪˈkɔːz ʌv/","phr","vì, do","Flights stopped because of the storm.","Các chuyến bay dừng lại vì cơn bão.","core",1],
+["zero","zero","/ˈzɪroʊ/","num","số 0","The score is zero.","Tỷ số là không.","numbers",1],
+["one","one","/wʌn/","num","số 1","I have one brother.","Tôi có một anh trai.","numbers",1],
+["two","two","/tuː/","num","số 2","Two coffees, please.","Cho hai ly cà phê.","numbers",1],
+["three","three","/θriː/","num","số 3","The meeting lasts three hours.","Cuộc họp kéo dài ba giờ.","numbers",1],
+["four","four","/fɔːr/","num","số 4","There are four people in my family.","Gia đình tôi có bốn người.","numbers",1],
+["five","five","/faɪv/","num","số 5","The ticket costs five dollars.","Vé giá năm đô la.","numbers",1],
+["six","six","/sɪks/","num","số 6","I wake up at six.","Tôi thức dậy lúc sáu giờ.","numbers",1],
+["seven","seven","/ˈsevən/","num","số 7","There are seven days in a week.","Một tuần có bảy ngày.","numbers",1],
+["eight","eight","/eɪt/","num","số 8","I work eight hours a day.","Tôi làm việc tám giờ một ngày.","numbers",1],
+["nine","nine","/naɪn/","num","số 9","The shop opens at nine.","Cửa hàng mở cửa lúc chín giờ.","numbers",1],
+["ten","ten","/ten/","num","số 10","Ten percent of the money is tax.","Mười phần trăm số tiền là thuế.","numbers",1],
+["eleven","eleven","/ɪˈlevən/","num","số 11","The bus leaves at eleven.","Xe buýt khởi hành lúc mười một giờ.","numbers",1],
+["twelve","twelve","/twelv/","num","số 12","There are twelve months in a year.","Một năm có mười hai tháng.","numbers",1],
+["thirteen","thirteen","/ˌθɜːrˈtiːn/","num","số 13","She is thirteen years old.","Cô bé mười ba tuổi.","numbers",1],
+["fourteen","fourteen","/ˌfɔːrˈtiːn/","num","số 14","The free trial lasts fourteen days.","Dùng thử miễn phí kéo dài mười bốn ngày.","numbers",1],
+["fifteen","fifteen","/ˌfɪfˈtiːn/","num","số 15 (nhấn âm cuối: fif-TEEN)","The class is fifteen minutes long.","Lớp học dài mười lăm phút.","numbers",1],
+["sixteen","sixteen","/ˌsɪksˈtiːn/","num","số 16","We have sixteen employees.","Chúng tôi có mười sáu nhân viên.","numbers",1],
+["seventeen","seventeen","/ˌsevənˈtiːn/","num","số 17","The hotel has seventeen rooms.","Khách sạn có mười bảy phòng.","numbers",1],
+["eighteen","eighteen","/ˌeɪˈtiːn/","num","số 18","You can vote at eighteen.","Bạn được bầu cử khi mười tám tuổi.","numbers",1],
+["nineteen","nineteen","/ˌnaɪnˈtiːn/","num","số 19","The shirt costs nineteen dollars.","Chiếc áo giá mười chín đô la.","numbers",1],
+["twenty","twenty","/ˈtwenti/","num","số 20","I need twenty minutes.","Tôi cần hai mươi phút.","numbers",1],
+["thirty","thirty","/ˈθɜːrti/","num","số 30 (nhấn âm đầu: THIR-ty)","The book costs thirty dollars.","Cuốn sách giá ba mươi đô la.","numbers",1],
+["forty","forty","/ˈfɔːrti/","num","số 40 (viết không có chữ u)","He is forty years old.","Anh ấy bốn mươi tuổi.","numbers",1],
+["fifty","fifty","/ˈfɪfti/","num","số 50","Fifty people came to the meeting.","Năm mươi người đã đến cuộc họp.","numbers",1],
+["sixty","sixty","/ˈsɪksti/","num","số 60","There are sixty minutes in an hour.","Một giờ có sáu mươi phút.","numbers",1],
+["seventy","seventy","/ˈsevənti/","num","số 70","Prices rose by seventy percent.","Giá tăng bảy mươi phần trăm.","numbers",1],
+["eighty","eighty","/ˈeɪti/","num","số 80","My grandmother is eighty.","Bà tôi tám mươi tuổi.","numbers",1],
+["ninety","ninety","/ˈnaɪnti/","num","số 90","The test score is ninety.","Điểm bài kiểm tra là chín mươi.","numbers",1],
+["hundred","hundred","/ˈhʌndrəd/","num","trăm (không thêm s sau số: two hundred)","The phone costs two hundred dollars.","Chiếc điện thoại giá hai trăm đô la.","numbers",1],
+["trillion","trillion","/ˈtrɪljən/","num","nghìn tỷ","The US economy is worth trillions of dollars.","Nền kinh tế Mỹ trị giá hàng nghìn tỷ đô la.","numbers",2],
+["first","first","/fɜːrst/","num","thứ nhất, đầu tiên (1st)","This is my first job.","Đây là công việc đầu tiên của tôi.","numbers",1],
+["second","second","/ˈsekənd/","num","thứ hai (2nd)","The office is on the second floor.","Văn phòng ở tầng hai.","numbers",1],
+["third","third","/θɜːrd/","num","thứ ba (3rd)","Vietnam is the third country on the list.","Việt Nam là quốc gia thứ ba trong danh sách.","numbers",1],
+["fourth","fourth","/fɔːrθ/","num","thứ tư (4th)","Sales fell in the fourth quarter.","Doanh số giảm trong quý bốn.","numbers",1],
+["fifth","fifth","/fɪfθ/","num","thứ năm (5th)","Today is my fifth day at work.","Hôm nay là ngày làm việc thứ năm của tôi.","numbers",1],
+["sixth","sixth","/sɪksθ/","num","thứ sáu (6th)","He finished sixth in the race.","Anh ấy về thứ sáu trong cuộc đua.","numbers",1],
+["seventh","seventh","/ˈsevənθ/","num","thứ bảy (7th)","It is the seventh month of the year.","Đó là tháng thứ bảy trong năm.","numbers",1],
+["eighth","eighth","/eɪtθ/","num","thứ tám (8th)","My son is in eighth grade.","Con trai tôi học lớp tám.","numbers",1],
+["ninth","ninth","/naɪnθ/","num","thứ chín (9th, không có chữ e)","The ninth floor has a restaurant.","Tầng chín có một nhà hàng.","numbers",1],
+["tenth","tenth","/tenθ/","num","thứ mười (10th)","This is the tenth year of the company.","Đây là năm thứ mười của công ty.","numbers",1],
+["twelfth","twelfth","/twelfθ/","num","thứ mười hai (12th)","December is the twelfth month.","Tháng Mười Hai là tháng thứ mười hai.","numbers",2],
+["twentieth","twentieth","/ˈtwentiəθ/","num","thứ hai mươi (20th)","The shop opens on the twentieth.","Cửa hàng khai trương vào ngày hai mươi.","numbers",2],
+["last","last","/læst/","adj","cuối cùng","This is the last question.","Đây là câu hỏi cuối cùng.","numbers",1],
+["plus","plus","/plʌs/","prep","cộng","Two plus three equals five.","Hai cộng ba bằng năm.","numbers",1],
+["minus","minus","/ˈmaɪnəs/","prep","trừ","Ten minus four equals six.","Mười trừ bốn bằng sáu.","numbers",1],
+["times","times","/taɪmz/","prep","nhân (×)","Three times four equals twelve.","Ba nhân bốn bằng mười hai.","numbers",1],
+["divided-by","divided by","/dɪˈvaɪdɪd baɪ/","phr","chia cho","Twenty divided by five equals four.","Hai mươi chia năm bằng bốn.","numbers",2],
+["equals","equals","/ˈiːkwəlz/","v","bằng (=)","One hundred minus ten equals ninety.","Một trăm trừ mười bằng chín mươi.","numbers",1],
+["point","point","/pɔɪnt/","n","dấu thập phân (đọc là point)","GDP grew by six point five percent.","GDP tăng sáu phẩy năm phần trăm.","numbers",2],
+["dozen","dozen","/ˈdʌzən/","n","một tá (12 cái)","I bought a dozen eggs.","Tôi đã mua một tá trứng.","numbers",2],
+["pair","pair","/per/","n","một đôi, một cặp","I need a new pair of shoes.","Tôi cần một đôi giày mới.","numbers",1],
+["a-quarter","a quarter","/ə ˈkwɔːrtər/","phr","một phần tư","A quarter of the workers are women.","Một phần tư số công nhân là phụ nữ.","numbers",2],
+["decimal","decimal","/ˈdesɪməl/","n","số thập phân","In English, a dot is used for decimals: 2.5.","Trong tiếng Anh, dấu chấm dùng cho số thập phân: 2.5.","numbers",3],
+["fraction","fraction","/ˈfrækʃən/","n","phân số","One half is a fraction.","Một nửa là một phân số.","numbers",3],
+["count","count","/kaʊnt/","v","đếm","Can you count from one to ten in English?","Bạn đếm từ một đến mười bằng tiếng Anh được không?","numbers",1],
+["calculate","calculate","/ˈkælkjuleɪt/","v","tính toán","Calculate the total cost.","Hãy tính tổng chi phí.","numbers",2],
+["approximately","approximately","/əˈprɑːksɪmətli/","adv","khoảng, xấp xỉ","The trip takes approximately two hours.","Chuyến đi mất khoảng hai giờ.","numbers",3],
+["odd-number","odd number","/ɑːd ˈnʌmbər/","n","số lẻ","Seven is an odd number.","Bảy là số lẻ.","numbers",2],
+["even-number","even number","/ˈiːvən ˈnʌmbər/","n","số chẵn","Eight is an even number.","Tám là số chẵn.","numbers",2],
+["once","once","/wʌns/","adv","một lần","I go to the gym once a week.","Tôi đi tập gym một lần một tuần.","numbers",1],
+["twice","twice","/twaɪs/","adv","hai lần","The bus comes twice an hour.","Xe buýt đến hai chuyến mỗi giờ.","numbers",1],
+["number-one","number one","/ˈnʌmbər wʌn/","phr","số một, hàng đầu","Vietnam is the number one exporter of pepper.","Việt Nam là nước xuất khẩu hạt tiêu số một.","numbers",2],
+["hundreds-of","hundreds of","/ˈhʌndrədz ʌv/","phr","hàng trăm","Hundreds of people lost their jobs.","Hàng trăm người đã mất việc.","numbers",2],
+["thousands-of","thousands of","/ˈθaʊzəndz ʌv/","phr","hàng nghìn","Thousands of tourists visit Hoi An.","Hàng nghìn khách du lịch đến Hội An.","numbers",2],
+["monday","Monday","/ˈmʌndeɪ/","n","thứ Hai","The meeting is on Monday.","Cuộc họp vào thứ Hai.","time",1],
+["tuesday","Tuesday","/ˈtuːzdeɪ/","n","thứ Ba","I go to class on Tuesday.","Tôi đi học vào thứ Ba.","time",1],
+["wednesday","Wednesday","/ˈwenzdeɪ/","n","thứ Tư (chữ d đầu không đọc)","The shop is closed on Wednesday.","Cửa hàng đóng cửa vào thứ Tư.","time",1],
+["thursday","Thursday","/ˈθɜːrzdeɪ/","n","thứ Năm","We get paid on Thursday.","Chúng tôi nhận lương vào thứ Năm.","time",1],
+["friday","Friday","/ˈfraɪdeɪ/","n","thứ Sáu","The deadline is Friday.","Hạn chót là thứ Sáu.","time",1],
+["saturday","Saturday","/ˈsætərdeɪ/","n","thứ Bảy","I study English on Saturday.","Tôi học tiếng Anh vào thứ Bảy.","time",1],
+["sunday","Sunday","/ˈsʌndeɪ/","n","Chủ nhật","My family eats together on Sunday.","Gia đình tôi ăn cùng nhau vào Chủ nhật.","time",1],
+["january","January","/ˈdʒænjueri/","n","tháng Một","The new year starts in January.","Năm mới bắt đầu vào tháng Một.","time",1],
+["february","February","/ˈfebrueri/","n","tháng Hai","Tet is often in February.","Tết thường rơi vào tháng Hai.","time",1],
+["march","March","/mɑːrtʃ/","n","tháng Ba","Sales went down in March.","Doanh số giảm vào tháng Ba.","time",1],
+["april","April","/ˈeɪprəl/","n","tháng Tư","The school year ends in April in Japan.","Ở Nhật, năm học kết thúc vào tháng Tư.","time",1],
+["may","May","/meɪ/","n","tháng Năm","The project starts in May.","Dự án bắt đầu vào tháng Năm.","time",1],
+["june","June","/dʒuːn/","n","tháng Sáu","It is very hot in June.","Tháng Sáu trời rất nóng.","time",1],
+["july","July","/dʒʊˈlaɪ/","n","tháng Bảy (nhấn âm sau: ju-LY)","The minimum wage will rise in July.","Lương tối thiểu sẽ tăng vào tháng Bảy.","time",1],
+["august","August","/ˈɔːɡəst/","n","tháng Tám","We go on holiday in August.","Chúng tôi đi nghỉ vào tháng Tám.","time",1],
+["september","September","/sepˈtembər/","n","tháng Chín","National Day is on September 2nd.","Quốc khánh là ngày 2 tháng Chín.","time",1],
+["october","October","/ɑːkˈtoʊbər/","n","tháng Mười","The report is due in October.","Báo cáo đến hạn vào tháng Mười.","time",1],
+["november","November","/noʊˈvembər/","n","tháng Mười Một","Prices usually rise in November.","Giá cả thường tăng vào tháng Mười Một.","time",1],
+["december","December","/dɪˈsembər/","n","tháng Mười Hai","The shop is busy in December.","Cửa hàng đông khách vào tháng Mười Hai.","time",1],
+["spring","spring","/sprɪŋ/","n","mùa xuân","Flowers bloom in spring.","Hoa nở vào mùa xuân.","time",1],
+["summer","summer","/ˈsʌmər/","n","mùa hè","Summer in Hanoi is hot.","Mùa hè ở Hà Nội nóng.","time",1],
+["autumn","autumn","/ˈɔːtəm/","n","mùa thu (Mỹ hay nói fall; chữ n cuối không đọc)","Autumn is my favorite season.","Mùa thu là mùa tôi thích nhất.","time",1],
+["winter","winter","/ˈwɪntər/","n","mùa đông","It is cold in winter.","Mùa đông trời lạnh.","time",1],
+["date","date","/deɪt/","n","ngày tháng","What is the date today?","Hôm nay là ngày bao nhiêu?","time",1],
+["calendar","calendar","/ˈkæləndər/","n","lịch","Write the deadline on your calendar.","Hãy ghi hạn chót vào lịch của bạn.","time",1],
+["yesterday","yesterday","/ˈjestərdeɪ/","adv","hôm qua","I finished the report yesterday.","Tôi đã hoàn thành báo cáo hôm qua.","time",1],
+["tomorrow","tomorrow","/təˈmɑːroʊ/","adv","ngày mai","See you tomorrow.","Hẹn gặp bạn ngày mai.","time",1],
+["weekend","weekend","/ˈwiːkend/","n","cuối tuần","What do you do on the weekend?","Bạn làm gì vào cuối tuần?","time",1],
+["weekday","weekday","/ˈwiːkdeɪ/","n","ngày trong tuần (thứ Hai – thứ Sáu)","The office is open on weekdays.","Văn phòng mở cửa các ngày trong tuần.","time",1],
+["morning","morning","/ˈmɔːrnɪŋ/","n","buổi sáng","I read the news in the morning.","Tôi đọc tin tức vào buổi sáng.","time",1],
+["afternoon","afternoon","/ˌæftərˈnuːn/","n","buổi chiều","The meeting is in the afternoon.","Cuộc họp vào buổi chiều.","time",1],
+["evening","evening","/ˈiːvnɪŋ/","n","buổi tối","We study English in the evening.","Chúng tôi học tiếng Anh vào buổi tối.","time",1],
+["night","night","/naɪt/","n","ban đêm","The market is open at night.","Chợ mở cửa vào ban đêm.","time",1],
+["hour","hour","/aʊər/","n","giờ, tiếng đồng hồ (chữ h không đọc)","The trip takes one hour.","Chuyến đi mất một tiếng.","time",1],
+["minute","minute","/ˈmɪnɪt/","n","phút","Wait five minutes, please.","Vui lòng đợi năm phút.","time",1],
+["oclock","o'clock","/əˈklɑːk/","adv","giờ đúng","The shop opens at nine o'clock.","Cửa hàng mở cửa lúc chín giờ đúng.","time",1],
+["half-past","half past","/hæf pæst/","phr","… giờ rưỡi","The bus comes at half past seven.","Xe buýt đến lúc bảy giờ rưỡi.","time",2],
+["a-quarter-to","a quarter to","/ə ˈkwɔːrtər tuː/","phr","kém mười lăm","It is a quarter to eight.","Bây giờ là tám giờ kém mười lăm.","time",2],
+["noon","noon","/nuːn/","n","buổi trưa (12 giờ trưa)","We have lunch at noon.","Chúng tôi ăn trưa lúc 12 giờ.","time",1],
+["midnight","midnight","/ˈmɪdnaɪt/","n","nửa đêm (12 giờ đêm)","The sale ends at midnight.","Đợt giảm giá kết thúc lúc nửa đêm.","time",1],
+["decade","decade","/ˈdekeɪd/","n","thập kỷ (10 năm)","The economy grew fast in the last decade.","Nền kinh tế tăng trưởng nhanh trong thập kỷ qua.","time",2],
+["century","century","/ˈsentʃəri/","n","thế kỷ (100 năm)","We live in the twenty-first century.","Chúng ta sống ở thế kỷ hai mươi mốt.","time",2],
+["daily","daily","/ˈdeɪli/","adj","hằng ngày","Exercise is part of my daily routine.","Tập thể dục là một phần thói quen hằng ngày của tôi.","time",1],
+["weekly","weekly","/ˈwiːkli/","adj","hằng tuần","We have a weekly meeting.","Chúng tôi có cuộc họp hằng tuần.","time",1],
+["monthly","monthly","/ˈmʌnθli/","adj","hằng tháng","The monthly rent is five million dong.","Tiền thuê hằng tháng là năm triệu đồng.","time",1],
+["last-year","last year","/læst jɪr/","phr","năm ngoái","Last year, prices rose a lot.","Năm ngoái giá cả tăng nhiều.","time",1],
+["next-month","next month","/nekst mʌnθ/","phr","tháng sau","The new law starts next month.","Luật mới có hiệu lực từ tháng sau.","time",1],
+["ago","ago","/əˈɡoʊ/","adv","cách đây","I started this job two years ago.","Tôi bắt đầu công việc này cách đây hai năm.","time",1],
+["since","since","/sɪns/","prep","kể từ","I have lived here since 2020.","Tôi sống ở đây từ năm 2020.","time",2],
+["until","until","/ənˈtɪl/","prep","cho đến khi","The shop is open until ten.","Cửa hàng mở đến mười giờ.","time",1],
+["birthday","birthday","/ˈbɜːrθdeɪ/","n","sinh nhật","My birthday is on May 5th.","Sinh nhật tôi vào ngày 5 tháng Năm.","time",1],
+["holiday","holiday","/ˈhɑːlədeɪ/","n","ngày lễ, kỳ nghỉ","Monday is a public holiday.","Thứ Hai là ngày nghỉ lễ.","time",1],
+["lunar-new-year","Lunar New Year","/ˈluːnər nuː jɪr/","n","Tết Nguyên đán","Shops close during Lunar New Year.","Các cửa hàng đóng cửa dịp Tết Nguyên đán.","time",1],
+["early","early","/ˈɜːrli/","adj","sớm","I wake up early on weekdays.","Tôi dậy sớm vào các ngày trong tuần.","time",1],
+["on-monday","on Monday","/ɑːn ˈmʌndeɪ/","phr","vào thứ Hai (dùng on với thứ và ngày)","The shop is closed on Monday.","Cửa hàng đóng cửa vào thứ Hai.","time",1],
+["in-may","in May","/ɪn meɪ/","phr","vào tháng Năm (dùng in với tháng, năm, mùa)","The price will rise in May.","Giá sẽ tăng vào tháng Năm.","time",1],
+["at-seven-oclock","at seven o'clock","/æt ˈsevən əˈklɑːk/","phr","lúc bảy giờ (dùng at với giờ)","The meeting starts at seven o'clock.","Cuộc họp bắt đầu lúc bảy giờ.","time",1],
+["leap-year","leap year","/liːp jɪr/","n","năm nhuận","2028 is a leap year.","Năm 2028 là năm nhuận.","time",2],
+["fiscal-year","fiscal year","/ˈfɪskəl jɪr/","n","năm tài chính","Our fiscal year ends in June.","Năm tài chính của chúng tôi kết thúc vào tháng Sáu.","time",3],
 ["price","price","/praɪs/","n","giá cả","The price of rice is going up.","Giá gạo đang tăng.","money",1],
 ["cost","cost","/kɔːst/","n","chi phí","The cost of living is high.","Chi phí sinh hoạt cao.","money",1],
 ["salary","salary","/ˈsæləri/","n","tiền lương (tháng)","Her salary is ten million dong.","Lương của cô ấy là mười triệu đồng.","money",1],
@@ -561,6 +741,219 @@ const WORD_BANK_RAW=[
 ["take-over","take over","/teɪk ˈoʊvər/","phr","tiếp quản, thâu tóm","A foreign group took over the bank.","Một tập đoàn nước ngoài đã thâu tóm ngân hàng.","business",3],
 ["lay-off","lay off","/leɪ ɔːf/","phr","cho nghỉ việc (hàng loạt)","The factory laid off 300 workers.","Nhà máy đã cho 300 công nhân nghỉ việc.","business",3],
 ["go-out-of-business","go out of business","/ɡoʊ aʊt ʌv ˈbɪznəs/","phr","đóng cửa, ngừng kinh doanh","The old bookstore went out of business.","Hiệu sách cũ đã đóng cửa.","business",3],
+["seller","seller","/ˈselər/","n","người bán","The seller gave me a discount.","Người bán đã giảm giá cho tôi.","sales",1],
+["buyer","buyer","/ˈbaɪər/","n","người mua","The buyer paid in cash.","Người mua đã trả tiền mặt.","sales",1],
+["cashier","cashier","/kæˈʃɪr/","n","thu ngân","Please pay the cashier.","Vui lòng thanh toán với thu ngân.","sales",1],
+["price-tag","price tag","/praɪs tæɡ/","n","nhãn giá","The price tag says five dollars.","Nhãn giá ghi năm đô la.","sales",1],
+["on-sale","on sale","/ɑːn seɪl/","phr","đang giảm giá","These shoes are on sale.","Đôi giày này đang giảm giá.","sales",1],
+["sold-out","sold out","/soʊld aʊt/","phr","bán hết","The new phone is sold out.","Chiếc điện thoại mới đã bán hết.","sales",1],
+["in-stock","in stock","/ɪn stɑːk/","phr","còn hàng","Is this size in stock?","Cỡ này còn hàng không?","sales",1],
+["out-of-stock","out of stock","/aʊt ʌv stɑːk/","phr","hết hàng","Sorry, this item is out of stock.","Xin lỗi, mặt hàng này đã hết.","sales",1],
+["total","total","/ˈtoʊtəl/","n","tổng cộng","The total is twenty dollars.","Tổng cộng là hai mươi đô la.","sales",1],
+["change-sales","change","/tʃeɪndʒ/","n","tiền thối lại","Here is your change.","Đây là tiền thối của bạn.","sales",1],
+["refund","refund","/ˈriːfʌnd/","n","tiền hoàn lại","I asked for a refund.","Tôi đã yêu cầu hoàn tiền.","sales",2],
+["exchange","exchange","/ɪksˈtʃeɪndʒ/","v","đổi (hàng)","Can I exchange this shirt?","Tôi có thể đổi chiếc áo này không?","sales",2],
+["warranty","warranty","/ˈwɔːrənti/","n","bảo hành","The laptop has a two-year warranty.","Máy tính xách tay được bảo hành hai năm.","sales",2],
+["guarantee","guarantee","/ˌɡærənˈtiː/","n","sự bảo đảm","We offer a money-back guarantee.","Chúng tôi bảo đảm hoàn tiền.","sales",2],
+["complaint","complaint","/kəmˈpleɪnt/","n","lời phàn nàn, khiếu nại","We received a complaint from a customer.","Chúng tôi nhận được một khiếu nại từ khách hàng.","sales",2],
+["complain","complain","/kəmˈpleɪn/","v","phàn nàn","Customers complain about slow delivery.","Khách hàng phàn nàn về việc giao hàng chậm.","sales",1],
+["customer-service","customer service","/ˈkʌstəmər ˈsɜːrvɪs/","n","dịch vụ chăm sóc khách hàng","Good customer service brings people back.","Dịch vụ khách hàng tốt khiến mọi người quay lại.","sales",2],
+["satisfied","satisfied","/ˈsætɪsfaɪd/","adj","hài lòng","Most customers are satisfied.","Hầu hết khách hàng đều hài lòng.","sales",2],
+["loyal","loyal","/ˈlɔɪəl/","adj","trung thành","She is a loyal customer.","Cô ấy là một khách hàng trung thành.","sales",2],
+["loyalty","loyalty","/ˈlɔɪəlti/","n","lòng trung thành","The shop has a loyalty card.","Cửa hàng có thẻ khách hàng thân thiết.","sales",3],
+["recommend","recommend","/ˌrekəˈmend/","v","giới thiệu, khuyên dùng","I recommend this restaurant.","Tôi giới thiệu nhà hàng này.","sales",2],
+["review","review","/rɪˈvjuː/","n","bài đánh giá","I read the reviews before I buy.","Tôi đọc các bài đánh giá trước khi mua.","sales",1],
+["rating","rating","/ˈreɪtɪŋ/","n","điểm đánh giá","The app has a rating of 4.5 stars.","Ứng dụng được đánh giá 4,5 sao.","sales",2],
+["promotion","promotion","/prəˈmoʊʃən/","n","khuyến mãi; sự thăng chức","There is a promotion this weekend.","Cuối tuần này có khuyến mãi.","sales",2],
+["coupon","coupon","/ˈkuːpɑːn/","n","phiếu giảm giá","Use this coupon to save ten percent.","Dùng phiếu này để tiết kiệm mười phần trăm.","sales",2],
+["voucher","voucher","/ˈvaʊtʃər/","n","phiếu mua hàng","He gave me a gift voucher.","Anh ấy tặng tôi một phiếu quà tặng.","sales",2],
+["free-shipping","free shipping","/friː ˈʃɪpɪŋ/","phr","miễn phí vận chuyển","Orders over fifty dollars get free shipping.","Đơn hàng trên năm mươi đô la được miễn phí vận chuyển.","sales",1],
+["bargain","bargain","/ˈbɑːrɡən/","n","món hời","This jacket was a real bargain.","Chiếc áo khoác này đúng là món hời.","sales",2],
+["haggle","haggle","/ˈhæɡəl/","v","mặc cả","People often haggle at the market.","Người ta thường mặc cả ở chợ.","sales",3],
+["affordable","affordable","/əˈfɔːrdəbəl/","adj","giá phải chăng","We sell affordable phones.","Chúng tôi bán điện thoại giá phải chăng.","sales",2],
+["overpriced","overpriced","/ˌoʊvərˈpraɪst/","adj","đắt quá mức","The coffee here is overpriced.","Cà phê ở đây đắt quá mức.","sales",3],
+["quote","quote","/kwoʊt/","n","bảng báo giá","Can you send me a quote?","Bạn gửi cho tôi bảng báo giá được không?","sales",2],
+["invoice","invoice","/ˈɪnvɔɪs/","n","hóa đơn bán hàng","Please pay the invoice within 30 days.","Vui lòng thanh toán hóa đơn trong vòng 30 ngày.","sales",2],
+["payment","payment","/ˈpeɪmənt/","n","sự thanh toán, khoản thanh toán","We accept payment by card.","Chúng tôi nhận thanh toán bằng thẻ.","sales",1],
+["pay-in-cash","pay in cash","/peɪ ɪn kæʃ/","phr","trả bằng tiền mặt","Can I pay in cash?","Tôi trả tiền mặt được không?","sales",1],
+["installment","installment","/ɪnˈstɔːlmənt/","n","khoản trả góp","She pays for the car in monthly installments.","Cô ấy trả góp chiếc xe hằng tháng.","sales",3],
+["checkout","checkout","/ˈtʃekaʊt/","n","quầy thanh toán, bước thanh toán","Go to the checkout to pay.","Hãy ra quầy thanh toán để trả tiền.","sales",2],
+["shopping-cart","shopping cart","/ˈʃɑːpɪŋ kɑːrt/","n","giỏ hàng","I put two items in my shopping cart.","Tôi bỏ hai món vào giỏ hàng.","sales",1],
+["package","package","/ˈpækɪdʒ/","n","gói hàng","Your package will arrive tomorrow.","Gói hàng của bạn sẽ đến vào ngày mai.","sales",1],
+["packaging","packaging","/ˈpækɪdʒɪŋ/","n","bao bì","The packaging is made of paper.","Bao bì được làm bằng giấy.","sales",2],
+["track","track","/træk/","v","theo dõi (đơn hàng)","You can track your order online.","Bạn có thể theo dõi đơn hàng trên mạng.","sales",2],
+["return-policy","return policy","/rɪˈtɜːrn ˈpɑːləsi/","n","chính sách đổi trả","The shop has a 7-day return policy.","Cửa hàng có chính sách đổi trả trong 7 ngày.","sales",2],
+["target-customer","target customer","/ˈtɑːrɡɪt ˈkʌstəmər/","n","khách hàng mục tiêu","Our target customers are students.","Khách hàng mục tiêu của chúng tôi là sinh viên.","sales",2],
+["niche","niche","/niːʃ/","n","thị trường ngách","They found a small but profitable niche.","Họ tìm được một thị trường ngách nhỏ nhưng có lãi.","sales",3],
+["segment","segment","/ˈseɡmənt/","n","phân khúc","This car is for the luxury segment.","Chiếc xe này dành cho phân khúc cao cấp.","sales",3],
+["ad-campaign","ad campaign","/æd kæmˈpeɪn/","n","chiến dịch quảng cáo","The ad campaign doubled our sales.","Chiến dịch quảng cáo đã làm doanh số tăng gấp đôi.","sales",2],
+["slogan","slogan","/ˈsloʊɡən/","n","khẩu hiệu","Nike's slogan is 'Just Do It'.","Khẩu hiệu của Nike là 'Just Do It'.","sales",2],
+["logo","logo","/ˈloʊɡoʊ/","n","biểu trưng, logo","The logo is simple and clear.","Logo đơn giản và rõ ràng.","sales",1],
+["reputation","reputation","/ˌrepjəˈteɪʃən/","n","danh tiếng","The company has a good reputation.","Công ty có danh tiếng tốt.","sales",2],
+["word-of-mouth","word of mouth","/wɜːrd ʌv maʊθ/","phr","truyền miệng","Most of our customers come from word of mouth.","Phần lớn khách hàng của chúng tôi đến nhờ truyền miệng.","sales",3],
+["influencer","influencer","/ˈɪnfluənsər/","n","người có sức ảnh hưởng","The brand paid an influencer to post a video.","Thương hiệu trả tiền cho một người có sức ảnh hưởng để đăng video.","sales",2],
+["content","content","/ˈkɑːntent/","n","nội dung","Good content attracts customers.","Nội dung hay thu hút khách hàng.","sales",2],
+["post","post","/poʊst/","v","đăng (bài)","We post new products on Facebook.","Chúng tôi đăng sản phẩm mới lên Facebook.","sales",1],
+["followers","followers","/ˈfɑːloʊərz/","n","người theo dõi","Her shop has ten thousand followers.","Cửa hàng của cô ấy có mười nghìn người theo dõi.","sales",1],
+["conversion-rate","conversion rate","/kənˈvɜːrʒən reɪt/","n","tỷ lệ chuyển đổi (người xem thành người mua)","Our conversion rate is three percent.","Tỷ lệ chuyển đổi của chúng tôi là ba phần trăm.","sales",3],
+["prospect","prospect","/ˈprɑːspekt/","n","khách hàng tiềm năng","We called ten prospects today.","Hôm nay chúng tôi đã gọi cho mười khách hàng tiềm năng.","sales",3],
+["pitch","pitch","/pɪtʃ/","n","bài chào hàng, bài thuyết phục","Her sales pitch was very short.","Bài chào hàng của cô ấy rất ngắn.","sales",3],
+["persuade","persuade","/pərˈsweɪd/","v","thuyết phục","He persuaded the client to sign.","Anh ấy đã thuyết phục khách hàng ký.","sales",2],
+["offer","offer","/ˈɔːfər/","n","lời đề nghị, ưu đãi","This offer ends on Sunday.","Ưu đãi này kết thúc vào Chủ nhật.","sales",1],
+["demo","demo","/ˈdemoʊ/","n","buổi trình diễn, bản dùng thử","Can we see a demo of the software?","Chúng tôi có thể xem bản trình diễn phần mềm không?","sales",2],
+["free-trial","free trial","/friː ˈtraɪəl/","n","dùng thử miễn phí","The app has a 14-day free trial.","Ứng dụng có 14 ngày dùng thử miễn phí.","sales",2],
+["subscription","subscription","/səbˈskrɪpʃən/","n","gói đăng ký (trả định kỳ)","A monthly subscription costs ten dollars.","Gói đăng ký hằng tháng giá mười đô la.","sales",2],
+["subscribe","subscribe","/səbˈskraɪb/","v","đăng ký (theo dõi, dịch vụ)","Subscribe to our newsletter.","Hãy đăng ký nhận bản tin của chúng tôi.","sales",2],
+["cancel","cancel","/ˈkænsəl/","v","hủy","You can cancel anytime.","Bạn có thể hủy bất cứ lúc nào.","sales",1],
+["membership","membership","/ˈmembərʃɪp/","n","tư cách thành viên","Membership gives you a discount.","Làm thành viên sẽ được giảm giá.","sales",2],
+["upsell","upsell","/ˈʌpsel/","v","bán thêm (gợi ý mua món đắt hơn)","Waiters often upsell desserts.","Nhân viên phục vụ thường mời thêm món tráng miệng.","sales",3],
+["best-seller","best-seller","/ˌbestˈselər/","n","sản phẩm bán chạy nhất","This book is a best-seller.","Cuốn sách này bán chạy nhất.","sales",2],
+["sample","sample","/ˈsæmpəl/","n","hàng mẫu","They give free samples of tea.","Họ tặng mẫu trà miễn phí.","sales",2],
+["display","display","/dɪˈspleɪ/","v","trưng bày","The shop displays new products in the window.","Cửa hàng trưng bày sản phẩm mới ở cửa kính.","sales",2],
+["showroom","showroom","/ˈʃoʊruːm/","n","phòng trưng bày","We visited the car showroom.","Chúng tôi đã đến phòng trưng bày ô tô.","sales",2],
+["franchise","franchise","/ˈfræntʃaɪz/","n","nhượng quyền kinh doanh","He bought a coffee franchise.","Anh ấy mua nhượng quyền một chuỗi cà phê.","sales",3],
+["distributor","distributor","/dɪˈstrɪbjətər/","n","nhà phân phối","We need a distributor in the south.","Chúng tôi cần một nhà phân phối ở miền Nam.","sales",3],
+["distribution","distribution","/ˌdɪstrɪˈbjuːʃən/","n","sự phân phối","Distribution costs are rising.","Chi phí phân phối đang tăng.","sales",3],
+["channel","channel","/ˈtʃænəl/","n","kênh (bán hàng)","Online is our main sales channel.","Trực tuyến là kênh bán hàng chính của chúng tôi.","sales",2],
+["middleman","middleman","/ˈmɪdəlmæn/","n","người trung gian","Selling directly cuts out the middleman.","Bán trực tiếp giúp bỏ qua người trung gian.","sales",3],
+["profit-margin","profit margin","/ˈprɑːfɪt ˈmɑːrdʒɪn/","n","biên lợi nhuận","Our profit margin is fifteen percent.","Biên lợi nhuận của chúng tôi là mười lăm phần trăm.","sales",3],
+["markup","markup","/ˈmɑːrkʌp/","n","phần lãi cộng vào giá vốn","The shop adds a 30% markup.","Cửa hàng cộng thêm 30% vào giá vốn.","sales",3],
+["pricing","pricing","/ˈpraɪsɪŋ/","n","cách định giá","Good pricing is important for sales.","Định giá tốt rất quan trọng cho doanh số.","sales",2],
+["price-war","price war","/praɪs wɔːr/","n","cuộc chiến giá cả","The two airlines started a price war.","Hai hãng hàng không bắt đầu một cuộc chiến giá.","sales",3],
+["unit-price","unit price","/ˈjuːnɪt praɪs/","n","đơn giá","The unit price is two dollars.","Đơn giá là hai đô la.","sales",2],
+["in-bulk","in bulk","/ɪn bʌlk/","phr","số lượng lớn (mua sỉ)","It is cheaper to buy in bulk.","Mua số lượng lớn thì rẻ hơn.","sales",2],
+["minimum-order","minimum order","/ˈmɪnɪməm ˈɔːrdər/","n","đơn hàng tối thiểu","The minimum order is 100 pieces.","Đơn hàng tối thiểu là 100 chiếc.","sales",2],
+["restock","restock","/riːˈstɑːk/","v","nhập thêm hàng","We restock the shelves every morning.","Chúng tôi nhập thêm hàng lên kệ mỗi sáng.","sales",2],
+["sales-figures","sales figures","/seɪlz ˈfɪɡjərz/","n","số liệu doanh số","The sales figures for May are good.","Số liệu doanh số tháng Năm khả quan.","sales",2],
+["turnover","turnover","/ˈtɜːrnoʊvər/","n","doanh thu (Anh); tỷ lệ nghỉ việc","Staff turnover is high in restaurants.","Tỷ lệ nhân viên nghỉ việc ở nhà hàng rất cao.","sales",3],
+["customer-base","customer base","/ˈkʌstəmər beɪs/","n","tập khách hàng","We want to grow our customer base.","Chúng tôi muốn mở rộng tập khách hàng.","sales",3],
+["repeat-customer","repeat customer","/rɪˈpiːt ˈkʌstəmər/","n","khách hàng quay lại","Repeat customers are very valuable.","Khách hàng quay lại rất có giá trị.","sales",2],
+["shopper","shopper","/ˈʃɑːpər/","n","người mua sắm","The mall was full of shoppers.","Trung tâm thương mại đông nghịt người mua sắm.","sales",1],
+["window-shopping","window shopping","/ˈwɪndoʊ ˈʃɑːpɪŋ/","n","đi ngắm hàng (không mua)","We went window shopping on Sunday.","Chúng tôi đi ngắm hàng vào Chủ nhật.","sales",2],
+["impulse-buying","impulse buying","/ˈɪmpʌls ˈbaɪɪŋ/","n","mua sắm theo cảm hứng","Sales often cause impulse buying.","Giảm giá thường khiến người ta mua theo cảm hứng.","sales",3],
+["brand-awareness","brand awareness","/brænd əˈwernəs/","n","mức độ nhận biết thương hiệu","The campaign raised brand awareness.","Chiến dịch đã tăng mức độ nhận biết thương hiệu.","sales",3],
+["market-research","market research","/ˈmɑːrkɪt ˈriːsɜːrtʃ/","n","nghiên cứu thị trường","Do market research before you launch.","Hãy nghiên cứu thị trường trước khi ra mắt.","sales",2],
+["selling-point","selling point","/ˈselɪŋ pɔɪnt/","n","điểm hấp dẫn để bán hàng","Low price is its main selling point.","Giá thấp là điểm hấp dẫn chính của nó.","sales",3],
+["value-for-money","value for money","/ˈvæljuː fɔːr ˈmʌni/","phr","đáng đồng tiền","This phone is good value for money.","Chiếc điện thoại này rất đáng đồng tiền.","sales",2],
+["hidden-cost","hidden cost","/ˈhɪdən kɔːst/","n","chi phí ẩn","Check the contract for hidden costs.","Hãy kiểm tra hợp đồng xem có chi phí ẩn không.","sales",2],
+["upfront","upfront","/ˌʌpˈfrʌnt/","adv","trả trước","You pay fifty percent upfront.","Bạn trả trước năm mươi phần trăm.","sales",3],
+["deliver","deliver","/dɪˈlɪvər/","v","giao hàng","We deliver within two days.","Chúng tôi giao hàng trong vòng hai ngày.","sales",1],
+["shipping-fee","shipping fee","/ˈʃɪpɪŋ fiː/","n","phí vận chuyển","The shipping fee is three dollars.","Phí vận chuyển là ba đô la.","sales",1],
+["cash-on-delivery","cash on delivery","/kæʃ ɑːn dɪˈlɪvəri/","phr","trả tiền khi nhận hàng (COD)","Most people in Vietnam choose cash on delivery.","Phần lớn người Việt chọn trả tiền khi nhận hàng.","sales",2],
+["best-price","best price","/best praɪs/","n","giá tốt nhất","What is your best price?","Giá tốt nhất của bạn là bao nhiêu?","sales",1],
+["expensive-looking","expensive-looking","/ɪkˈspensɪv ˈlʊkɪŋ/","adj","trông sang, trông đắt tiền","The bag is cheap but expensive-looking.","Chiếc túi rẻ nhưng trông sang.","sales",3],
+["flash-sale","flash sale","/flæʃ seɪl/","n","đợt giảm giá chớp nhoáng","The flash sale lasts only two hours.","Đợt giảm giá chớp nhoáng chỉ kéo dài hai giờ.","sales",2],
+["livestream","livestream","/ˈlaɪvstriːm/","n","buổi phát trực tiếp","She sells clothes on a livestream every night.","Cô ấy bán quần áo qua livestream mỗi tối.","sales",2],
+["order-number","order number","/ˈɔːrdər ˈnʌmbər/","n","mã đơn hàng","Please tell me your order number.","Vui lòng cho tôi biết mã đơn hàng của bạn.","sales",1],
+["customer-data","customer data","/ˈkʌstəmər ˈdeɪtə/","n","dữ liệu khách hàng","Protect your customer data.","Hãy bảo vệ dữ liệu khách hàng.","sales",3],
+["retain","retain","/rɪˈteɪn/","v","giữ chân (khách hàng)","It is cheaper to retain customers than to find new ones.","Giữ chân khách hàng rẻ hơn tìm khách mới.","sales",3],
+["attract","attract","/əˈtrækt/","v","thu hút","Discounts attract new customers.","Giảm giá thu hút khách hàng mới.","sales",2],
+["colleague","colleague","/ˈkɑːliːɡ/","n","đồng nghiệp","My colleague helped me with the report.","Đồng nghiệp đã giúp tôi làm báo cáo.","workplace",1],
+["staff","staff","/stæf/","n","nhân viên (toàn bộ)","The hotel has fifty staff.","Khách sạn có năm mươi nhân viên.","workplace",1],
+["director","director","/dəˈrektər/","n","giám đốc","The director signed the contract.","Giám đốc đã ký hợp đồng.","workplace",1],
+["ceo","CEO","/ˌsiː iː ˈoʊ/","n","tổng giám đốc điều hành","The CEO spoke to all employees.","Tổng giám đốc đã phát biểu với toàn bộ nhân viên.","workplace",2],
+["department","department","/dɪˈpɑːrtmənt/","n","phòng ban","She works in the sales department.","Cô ấy làm ở phòng kinh doanh.","workplace",1],
+["headquarters","headquarters","/ˈhedkwɔːrtərz/","n","trụ sở chính","The headquarters is in Ho Chi Minh City.","Trụ sở chính ở Thành phố Hồ Chí Minh.","workplace",2],
+["branch","branch","/bræntʃ/","n","chi nhánh","The bank opened a new branch.","Ngân hàng đã mở chi nhánh mới.","workplace",2],
+["position","position","/pəˈzɪʃən/","n","vị trí, chức vụ","He applied for a manager position.","Anh ấy ứng tuyển vị trí quản lý.","workplace",2],
+["role","role","/roʊl/","n","vai trò","What is your role in the team?","Vai trò của bạn trong nhóm là gì?","workplace",2],
+["responsibility","responsibility","/rɪˌspɑːnsəˈbɪləti/","n","trách nhiệm","Customer care is my responsibility.","Chăm sóc khách hàng là trách nhiệm của tôi.","workplace",2],
+["task","task","/tæsk/","n","nhiệm vụ, công việc","I have three tasks today.","Hôm nay tôi có ba việc cần làm.","workplace",1],
+["deadline","deadline","/ˈdedlaɪn/","n","hạn chót","The deadline is Friday.","Hạn chót là thứ Sáu.","workplace",1],
+["schedule","schedule","/ˈskedʒuːl/","n","lịch trình","My schedule is full this week.","Lịch của tôi kín tuần này.","workplace",1],
+["agenda","agenda","/əˈdʒendə/","n","chương trình cuộc họp","What is on the agenda today?","Hôm nay họp những nội dung gì?","workplace",2],
+["presentation","presentation","/ˌprezənˈteɪʃən/","n","bài thuyết trình","I gave a presentation to the clients.","Tôi đã thuyết trình trước khách hàng.","workplace",2],
+["present","present","/prɪˈzent/","v","trình bày","She will present the new plan.","Cô ấy sẽ trình bày kế hoạch mới.","workplace",2],
+["email","email","/ˈiːmeɪl/","n","thư điện tử","I sent you an email.","Tôi đã gửi email cho bạn.","workplace",1],
+["reply","reply","/rɪˈplaɪ/","v","trả lời, hồi đáp","Please reply by tomorrow.","Vui lòng trả lời trước ngày mai.","workplace",1],
+["attach","attach","/əˈtætʃ/","v","đính kèm","I attached the file to the email.","Tôi đã đính kèm tệp vào email.","workplace",2],
+["document","document","/ˈdɑːkjumənt/","n","tài liệu","Please read this document.","Vui lòng đọc tài liệu này.","workplace",1],
+["file","file","/faɪl/","n","tệp, hồ sơ","Save the file on your computer.","Hãy lưu tệp trên máy tính của bạn.","workplace",1],
+["sign","sign","/saɪn/","v","ký (tên)","Please sign here.","Vui lòng ký vào đây.","workplace",1],
+["signature","signature","/ˈsɪɡnətʃər/","n","chữ ký","We need your signature on the form.","Chúng tôi cần chữ ký của bạn trên mẫu đơn.","workplace",2],
+["approval","approval","/əˈpruːvəl/","n","sự phê duyệt","The plan needs the boss's approval.","Kế hoạch cần sếp phê duyệt.","workplace",2],
+["permission","permission","/pərˈmɪʃən/","n","sự cho phép","You need permission to use this room.","Bạn cần được cho phép mới dùng phòng này.","workplace",2],
+["request","request","/rɪˈkwest/","n","lời yêu cầu","I sent a request for a day off.","Tôi đã gửi yêu cầu xin nghỉ một ngày.","workplace",2],
+["collaborate","collaborate","/kəˈlæbəreɪt/","v","cộng tác","Our teams collaborate on the project.","Các nhóm của chúng tôi cộng tác trong dự án.","workplace",3],
+["teamwork","teamwork","/ˈtiːmwɜːrk/","n","tinh thần làm việc nhóm","Good teamwork makes work easier.","Làm việc nhóm tốt giúp công việc dễ hơn.","workplace",1],
+["leadership","leadership","/ˈliːdərʃɪp/","n","khả năng lãnh đạo","She showed strong leadership.","Cô ấy thể hiện khả năng lãnh đạo tốt.","workplace",2],
+["lead","lead","/liːd/","v","dẫn dắt, lãnh đạo","He leads a team of ten people.","Anh ấy dẫn dắt một nhóm mười người.","workplace",2],
+["delegate","delegate","/ˈdelɪɡeɪt/","v","giao việc, ủy quyền","A good manager knows how to delegate.","Người quản lý giỏi biết cách giao việc.","workplace",3],
+["assign","assign","/əˈsaɪn/","v","giao (nhiệm vụ)","The boss assigned me a new task.","Sếp giao cho tôi một nhiệm vụ mới.","workplace",2],
+["supervise","supervise","/ˈsuːpərvaɪz/","v","giám sát","She supervises the night shift.","Cô ấy giám sát ca đêm.","workplace",3],
+["train","train","/treɪn/","v","đào tạo","We train new staff for two weeks.","Chúng tôi đào tạo nhân viên mới trong hai tuần.","workplace",2],
+["training","training","/ˈtreɪnɪŋ/","n","khóa đào tạo","All workers get safety training.","Mọi công nhân đều được đào tạo an toàn.","workplace",2],
+["performance","performance","/pərˈfɔːrməns/","n","hiệu suất, kết quả làm việc","His performance improved this year.","Kết quả làm việc của anh ấy tốt lên trong năm nay.","workplace",2],
+["evaluate","evaluate","/ɪˈvæljueɪt/","v","đánh giá","We evaluate staff every six months.","Chúng tôi đánh giá nhân viên sáu tháng một lần.","workplace",3],
+["objective","objective","/əbˈdʒektɪv/","n","mục tiêu","Our main objective is to grow sales.","Mục tiêu chính của chúng tôi là tăng doanh số.","workplace",3],
+["kpi","KPI","/ˌkeɪ piː ˈaɪ/","n","chỉ số hiệu suất chính","Each team has its own KPIs.","Mỗi nhóm có các chỉ số KPI riêng.","workplace",3],
+["progress","progress","/ˈprɑːɡres/","n","tiến độ, sự tiến bộ","We are making good progress.","Chúng tôi đang tiến triển tốt.","workplace",2],
+["on-time","on time","/ɑːn taɪm/","phr","đúng giờ, đúng hạn","Please finish the work on time.","Vui lòng hoàn thành công việc đúng hạn.","workplace",1],
+["late","late","/leɪt/","adj","muộn, trễ","Sorry, I am late.","Xin lỗi, tôi đến muộn.","workplace",1],
+["overtime","overtime","/ˈoʊvərtaɪm/","n","giờ làm thêm","I worked overtime last night.","Tối qua tôi làm thêm giờ.","workplace",2],
+["shift","shift","/ʃɪft/","n","ca làm việc","The night shift starts at ten.","Ca đêm bắt đầu lúc mười giờ.","workplace",2],
+["full-time","full-time","/ˌfʊl ˈtaɪm/","adj","toàn thời gian","She has a full-time job.","Cô ấy có một công việc toàn thời gian.","workplace",1],
+["part-time","part-time","/ˌpɑːrt ˈtaɪm/","adj","bán thời gian","Many students work part-time.","Nhiều sinh viên làm bán thời gian.","workplace",1],
+["freelancer","freelancer","/ˈfriːlænsər/","n","người làm tự do","He is a freelancer who designs logos.","Anh ấy là người làm tự do chuyên thiết kế logo.","workplace",2],
+["intern","intern","/ˈɪntɜːrn/","n","thực tập sinh","We have two interns this summer.","Mùa hè này chúng tôi có hai thực tập sinh.","workplace",2],
+["internship","internship","/ˈɪntɜːrnʃɪp/","n","kỳ thực tập","She did an internship at a bank.","Cô ấy đã thực tập ở một ngân hàng.","workplace",2],
+["apply","apply","/əˈplaɪ/","v","nộp đơn, ứng tuyển","I want to apply for this job.","Tôi muốn ứng tuyển công việc này.","workplace",1],
+["application","application","/ˌæplɪˈkeɪʃən/","n","đơn xin (việc)","Send your application by email.","Hãy gửi đơn ứng tuyển qua email.","workplace",2],
+["cv","CV","/ˌsiː ˈviː/","n","sơ yếu lý lịch","Please attach your CV.","Vui lòng đính kèm CV của bạn.","workplace",1],
+["qualification","qualification","/ˌkwɑːlɪfɪˈkeɪʃən/","n","bằng cấp, trình độ","What qualifications do you have?","Bạn có bằng cấp gì?","workplace",3],
+["recruit","recruit","/rɪˈkruːt/","v","tuyển dụng","The company is recruiting engineers.","Công ty đang tuyển kỹ sư.","workplace",3],
+["bonus","bonus","/ˈboʊnəs/","n","tiền thưởng","Workers get a bonus at Tet.","Công nhân được thưởng dịp Tết.","workplace",1],
+["raise","raise","/reɪz/","n","sự tăng lương","I asked my boss for a raise.","Tôi đã xin sếp tăng lương.","workplace",2],
+["paycheck","paycheck","/ˈpeɪtʃek/","n","tiền lương (mỗi kỳ)","My paycheck comes at the end of the month.","Lương của tôi về vào cuối tháng.","workplace",2],
+["day-off","day off","/deɪ ɔːf/","n","ngày nghỉ","Tomorrow is my day off.","Ngày mai là ngày nghỉ của tôi.","workplace",1],
+["annual-leave","annual leave","/ˈænjuəl liːv/","n","nghỉ phép năm","We have twelve days of annual leave.","Chúng tôi có mười hai ngày phép năm.","workplace",2],
+["sick-leave","sick leave","/sɪk liːv/","n","nghỉ ốm","He is on sick leave this week.","Tuần này anh ấy nghỉ ốm.","workplace",2],
+["business-trip","business trip","/ˈbɪznəs trɪp/","n","chuyến công tác","She is on a business trip to Japan.","Cô ấy đang đi công tác Nhật Bản.","workplace",1],
+["conference","conference","/ˈkɑːnfərəns/","n","hội nghị","I attended a conference in Singapore.","Tôi đã dự một hội nghị ở Singapore.","workplace",2],
+["workshop","workshop","/ˈwɜːrkʃɑːp/","n","buổi hội thảo thực hành","We joined a marketing workshop.","Chúng tôi tham gia một buổi hội thảo về marketing.","workplace",2],
+["networking","networking","/ˈnetwɜːrkɪŋ/","n","việc xây dựng quan hệ","Networking helps you find jobs.","Xây dựng quan hệ giúp bạn tìm việc.","workplace",3],
+["business-card","business card","/ˈbɪznəs kɑːrd/","n","danh thiếp","Here is my business card.","Đây là danh thiếp của tôi.","workplace",1],
+["introduce","introduce","/ˌɪntrəˈduːs/","v","giới thiệu","Let me introduce myself.","Cho phép tôi tự giới thiệu.","workplace",1],
+["appointment","appointment","/əˈpɔɪntmənt/","n","cuộc hẹn","I have an appointment at three.","Tôi có một cuộc hẹn lúc ba giờ.","workplace",1],
+["postpone","postpone","/poʊstˈpoʊn/","v","hoãn lại","The meeting was postponed.","Cuộc họp đã bị hoãn.","workplace",2],
+["reschedule","reschedule","/riːˈskedʒuːl/","v","dời lịch","Can we reschedule to Monday?","Chúng ta dời lịch sang thứ Hai được không?","workplace",2],
+["make-a-decision","make a decision","/meɪk ə dɪˈsɪʒən/","phr","đưa ra quyết định","We need to make a decision today.","Hôm nay chúng ta cần đưa ra quyết định.","workplace",1],
+["deal-with","deal with","/diːl wɪð/","phr","xử lý, giải quyết","I will deal with this problem.","Tôi sẽ xử lý vấn đề này.","workplace",2],
+["urgent","urgent","/ˈɜːrdʒənt/","adj","khẩn cấp, gấp","This email is urgent.","Email này rất gấp.","workplace",2],
+["procedure","procedure","/prəˈsiːdʒər/","n","thủ tục, quy trình","Follow the safety procedure.","Hãy làm theo quy trình an toàn.","workplace",3],
+["process","process","/ˈprɑːses/","n","quy trình, quá trình","The hiring process takes a month.","Quy trình tuyển dụng mất một tháng.","workplace",2],
+["guideline","guideline","/ˈɡaɪdlaɪn/","n","hướng dẫn","Read the guidelines before you start.","Đọc hướng dẫn trước khi bắt đầu.","workplace",3],
+["standard","standard","/ˈstændərd/","n","tiêu chuẩn","Our products meet international standards.","Sản phẩm của chúng tôi đạt tiêu chuẩn quốc tế.","workplace",2],
+["quality-control","quality control","/ˈkwɑːləti kənˈtroʊl/","n","kiểm soát chất lượng","Quality control checks every product.","Bộ phận kiểm soát chất lượng kiểm tra từng sản phẩm.","workplace",3],
+["mistake","mistake","/mɪˈsteɪk/","n","lỗi, sai sót","I made a mistake in the report.","Tôi đã mắc lỗi trong báo cáo.","workplace",1],
+["suggestion","suggestion","/səɡˈdʒestʃən/","n","đề xuất, gợi ý","Do you have any suggestions?","Bạn có gợi ý nào không?","workplace",2],
+["brainstorm","brainstorm","/ˈbreɪnstɔːrm/","v","cùng nhau nghĩ ý tưởng","Let's brainstorm new ideas.","Hãy cùng nghĩ ý tưởng mới.","workplace",3],
+["discuss","discuss","/dɪˈskʌs/","v","thảo luận","We will discuss the budget tomorrow.","Ngày mai chúng ta sẽ thảo luận ngân sách.","workplace",1],
+["discussion","discussion","/dɪˈskʌʃən/","n","cuộc thảo luận","We had a long discussion.","Chúng tôi đã thảo luận rất lâu.","workplace",2],
+["disagree","disagree","/ˌdɪsəˈɡriː/","v","không đồng ý","I disagree with this plan.","Tôi không đồng ý với kế hoạch này.","workplace",1],
+["compromise","compromise","/ˈkɑːmprəmaɪz/","n","sự thỏa hiệp","Both sides reached a compromise.","Hai bên đã đạt được thỏa hiệp.","workplace",3],
+["motivate","motivate","/ˈmoʊtɪveɪt/","v","tạo động lực","A good boss motivates the team.","Một người sếp giỏi tạo động lực cho cả nhóm.","workplace",2],
+["motivation","motivation","/ˌmoʊtɪˈveɪʃən/","n","động lực","Money is not the only motivation.","Tiền không phải động lực duy nhất.","workplace",2],
+["burnout","burnout","/ˈbɜːrnaʊt/","n","sự kiệt sức vì công việc","Long hours can lead to burnout.","Làm việc quá nhiều giờ có thể dẫn đến kiệt sức.","workplace",3],
+["workload","workload","/ˈwɜːrkloʊd/","n","khối lượng công việc","My workload is too heavy.","Khối lượng công việc của tôi quá nặng.","workplace",2],
+["work-life-balance","work-life balance","/wɜːrk laɪf ˈbæləns/","n","cân bằng công việc và cuộc sống","Young people care about work-life balance.","Người trẻ quan tâm đến cân bằng công việc và cuộc sống.","workplace",3],
+["hybrid","hybrid","/ˈhaɪbrɪd/","adj","kết hợp (văn phòng và từ xa)","We have a hybrid work model.","Chúng tôi làm việc theo mô hình kết hợp.","workplace",3],
+["workplace","workplace","/ˈwɜːrkpleɪs/","n","nơi làm việc","Safety in the workplace is important.","An toàn nơi làm việc rất quan trọng.","workplace",2],
+["professional","professional","/prəˈfeʃənəl/","adj","chuyên nghiệp","Please be professional with clients.","Hãy chuyên nghiệp với khách hàng.","workplace",2],
+["punctual","punctual","/ˈpʌŋktʃuəl/","adj","đúng giờ","Our driver is always punctual.","Tài xế của chúng tôi luôn đúng giờ.","workplace",3],
+["hardworking","hardworking","/ˌhɑːrdˈwɜːrkɪŋ/","adj","chăm chỉ","She is a hardworking employee.","Cô ấy là một nhân viên chăm chỉ.","workplace",1],
+["quit","quit","/kwɪt/","v","nghỉ việc, bỏ","He quit his job last month.","Anh ấy đã nghỉ việc tháng trước.","workplace",2],
+["probation","probation","/proʊˈbeɪʃən/","n","thời gian thử việc","The probation period is two months.","Thời gian thử việc là hai tháng.","workplace",3],
+["notice","notice","/ˈnoʊtɪs/","n","thông báo trước (khi nghỉ việc)","You must give 30 days' notice.","Bạn phải báo trước 30 ngày.","workplace",3],
+["hr","HR","/ˌeɪtʃ ˈɑːr/","n","phòng nhân sự","Ask HR about your contract.","Hãy hỏi phòng nhân sự về hợp đồng của bạn.","workplace",2],
+["accountant","accountant","/əˈkaʊntənt/","n","kế toán viên","The accountant prepares the tax report.","Kế toán chuẩn bị báo cáo thuế.","workplace",2],
+["lawyer","lawyer","/ˈlɔːjər/","n","luật sư","We asked a lawyer to check the contract.","Chúng tôi nhờ luật sư kiểm tra hợp đồng.","workplace",1],
+["secretary","secretary","/ˈsekrəteri/","n","thư ký","The secretary booked the meeting room.","Thư ký đã đặt phòng họp.","workplace",2],
+["receptionist","receptionist","/rɪˈsepʃənɪst/","n","lễ tân","The receptionist answered the phone.","Lễ tân đã nghe điện thoại.","workplace",2],
+["warehouse","warehouse","/ˈwerhaʊs/","n","nhà kho","The goods are in the warehouse.","Hàng hóa đang ở trong kho.","workplace",2],
+["expense-report","expense report","/ɪkˈspens rɪˈpɔːrt/","n","báo cáo chi phí","Send your expense report after the trip.","Hãy gửi báo cáo chi phí sau chuyến đi.","workplace",3],
+["follow-up","follow up","/ˈfɑːloʊ ʌp/","phr","liên hệ lại, theo dõi tiếp","I will follow up with the client tomorrow.","Ngày mai tôi sẽ liên hệ lại với khách hàng.","workplace",2],
+["get-back-to","get back to","/ɡet bæk tuː/","phr","trả lời lại (sau)","I will get back to you by Friday.","Tôi sẽ phản hồi lại bạn trước thứ Sáu.","workplace",2],
 ["economy","economy","/ɪˈkɑːnəmi/","n","nền kinh tế","The economy is growing slowly.","Nền kinh tế đang tăng trưởng chậm.","macro",1],
 ["economic","economic","/ˌekəˈnɑːmɪk/","adj","thuộc về kinh tế","The country has economic problems.","Đất nước đang gặp vấn đề kinh tế.","macro",2],
 ["economist","economist","/ɪˈkɑːnəmɪst/","n","nhà kinh tế học","Economists expect a slowdown.","Các nhà kinh tế dự báo kinh tế chậm lại.","macro",2],
@@ -2119,11 +2512,12 @@ function forecastStats(items){ const scores=items.filter(c=>c.kind==='forecast'&
 function experimentPassed(plan,result){ if(result.outcome!=='measured'||result.observed===null) return null; return plan.comparator==='at-least'?result.observed>=plan.threshold:result.observed<=plan.threshold; }
 function learningStats(state,now){ now=now||vnNow(); const since=now.getTime()-30*86400000; const events=state.reviewEvents.filter(e=>{const t=new Date(e.reviewed_at).getTime();return t>=since&&t<=now.getTime();}); return {attempts:events.length,correct:events.filter(e=>e.correct===1).length,lessons:new Set(events.map(e=>e.lesson_id)).size}; }
 
-/* Simplified spaced-repetition scheduler (không dùng ts-fsrs, cùng tinh thần) */
-const INTERVALS=[1,2,4,8,16,30,60,90];
+/* Ôn tập ngắt quãng cho bài học: hoàn thành → ôn sau 1 ngày; trả lời đúng thì giãn dần 3 → 7 → 14 → 30 → 60 → 120 ngày; sai thì quay lại sau 1 ngày */
+const INTERVALS=[1,3,7,14,30,60,120];
 function initialCard(completedAt){ return {due:new Date(new Date(completedAt).getTime()+86400000).toISOString(),revision:0}; }
 function advanceCard(card,correct,now){
- const rev = correct ? Math.min(card.revision+1, INTERVALS.length-1) : Math.max(0, card.revision-1);
+ const cur=Math.min(Math.max(0,Number(card.revision)||0),INTERVALS.length-1);
+ const rev = correct ? Math.min(cur+1, INTERVALS.length-1) : 0;
  const days = INTERVALS[rev];
  return {due:new Date(now.getTime()+days*86400000).toISOString(),revision:rev};
 }
@@ -2138,7 +2532,7 @@ function projectSavings(initial,monthly,annualPercent,years){
 /* ---------------- default state ---------------- */
 function emptyState(){ return {profile:{name:'',minutes:15,goal:'Hiểu thế giới, xây năng lực tạo giá trị và phát triển tài sản.'},completions:[],records:[],reviews:[],reviewEvents:[],commitments:[],plan:JSON.parse(JSON.stringify(emptyPlan)),
  notebooks:{},writingEvents:[],dailySession:null,entryAssessment:null,
- wordCards:{},sentCards:{},vocabSettings:null,vocabDaily:null,customWords:[]}; }
+ wordCards:{},sentCards:{},vocabSettings:null,vocabDaily:null,customWords:[],journal:{}}; }
 
 /* ================= app state & persistence ================= */
 /* Không có màn đăng nhập — anh học một mình. Dữ liệu lưu ngay vào máy (localStorage),
@@ -2161,7 +2555,7 @@ function writeLocalCache(data){
 async function loadState(){
  S.loading=true; render();
  const local=readLocalCache();
- S.data = local && local.data && Object.keys(local.data).length ? Object.assign(emptyState(), local.data) : emptyState();
+ S.data = local && local.data && Object.keys(local.data).length ? normalizeState(local.data) : emptyState();
  S.loading=false; S.error='';
  if(!SUPABASE_CONFIGURED){ S.syncStatus='local-only'; render(); return; }
  render();
@@ -2175,7 +2569,7 @@ async function loadState(){
   if(data && data.data && Object.keys(data.data).length){
    const remoteTime = new Date(data.updated_at).getTime();
    const localTime = local ? new Date(local.updated_at).getTime() : 0;
-   if(!local || remoteTime > localTime){ S.data = Object.assign(emptyState(), data.data); writeLocalCache(S.data); }
+   if(!local || remoteTime > localTime){ S.data = normalizeState(data.data); writeLocalCache(S.data); }
   }
   S.syncStatus='synced'; render();
  }catch(e){ S.syncStatus='local-only'; render(); }
@@ -2200,17 +2594,17 @@ function mutate(fn){ fn(S.data); scheduleSave(); render(); }
 
 /* ================= actions ================= */
 function completeLesson(lessonId,answer,reflection,selfRating){
- const now=vnNow().toISOString();
+ const now=vnNow().toISOString(); let scheduled=false;
  mutate(d=>{
   const idx=d.completions.findIndex(c=>c.lesson_id===lessonId);
   if(idx>=0){ d.completions[idx].reflection=reflection; if(selfRating) d.completions[idx].self_explain=selfRating; }
   else d.completions.push({lesson_id:lessonId,reflection,completed_at:now,self_explain:selfRating||null});
-  if(reviewQuestions[lessonId] && !d.reviews.some(r=>r.lesson_id===lessonId)) d.reviews.push({lesson_id:lessonId,...initialCard(now)});
+  if(reviewQuestionFor(lessonId) && !d.reviews.some(r=>r.lesson_id===lessonId)){ d.reviews.push({lesson_id:lessonId,...initialCard(now)}); scheduled=true; }
  });
- toast('Đã lưu bài học và ghi chép.');
+ toast(scheduled?'Đã lưu bài học. Em sẽ nhắc anh ôn lại sau 1 ngày, rồi 3 ngày, 7 ngày…':'Đã lưu bài học và ghi chép.');
 }
 function submitReview(card,answer){
- const q=reviewQuestions[card.lesson_id]; const correct=answer===q.correct; const now=vnNow();
+ const q=reviewQuestionFor(card.lesson_id); if(!q) return false; const correct=answer===q.correct; const now=vnNow();
  mutate(d=>{
   d.reviewEvents.unshift({id:uid(),lesson_id:card.lesson_id,revision:card.revision,answer,correct:correct?1:0,reviewed_at:now.toISOString(),practice:card.practiceOnly?1:0});
   // Luyện thêm từ Sổ lỗi KHÔNG làm thay đổi lịch ôn cách quãng
@@ -2242,7 +2636,7 @@ function savePlan(update){ mutate(d=>{ d.plan=update(d.plan||structuredClone(emp
 /* ================= SAO LƯU & KHÔI PHỤC =================
  * Đây là bản sao lưu DỮ LIỆU HỌC của anh (tiến độ, ghi chép, dự án…),
  * KHÁC với tệp mã nguồn app (index.html). Khôi phục luôn hỏi xác nhận, không ghi đè âm thầm. */
-const BACKUP_FORMAT='atlas-export', BACKUP_VERSION=2;
+const BACKUP_FORMAT='atlas-export', BACKUP_VERSION=3;
 function validateBackup(obj){
  if(!obj || typeof obj!=='object') return {ok:false,error:'Tệp không phải JSON hợp lệ.'};
  if(obj.format!==BACKUP_FORMAT) return {ok:false,error:'Tệp này không phải bản sao lưu ATLAS (thiếu dấu hiệu "format": "atlas-export"). Có thể anh chọn nhầm tệp mã nguồn app.'};
@@ -2269,17 +2663,22 @@ function renderRestorePreview(){
  <div class="btn-row"><button class="btn outline" data-act="cancelrestore">Hủy, giữ dữ liệu hiện tại</button><button class="btn danger" data-act="confirmrestore">Thay bằng dữ liệu trong tệp</button></div></div>`);
 }
 function exportData(){
+ const name='atlas-du-lieu-'+localDay()+'.json';
  const blob=new Blob([JSON.stringify({format:BACKUP_FORMAT,version:BACKUP_VERSION,exported_at:new Date().toISOString(),...S.data},null,2)],{type:'application/json;charset=utf-8'});
- const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='atlas-du-lieu-'+localDay()+'.json'; document.body.appendChild(a); a.click(); a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),10000);
- toast('Đã chuẩn bị dữ liệu để tải xuống.');
+ saveFile(name,blob,()=>{
+  const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),10000);
+  toast('Đã chuẩn bị dữ liệu để tải xuống.');
+ },{saved:'Đã lưu tệp sao lưu dữ liệu về máy.'});
 }
 
 /* ================= rendering ================= */
 function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function nl2br(s){ return esc(s).replace(/\n/g,'<br>'); }
 
-const NAV=[{id:'today',name:'Hôm nay'},{id:'path',name:'Lộ trình'},{id:'study',name:'Bàn học'},{id:'academy',name:'Học viện'},{id:'projects',name:'Xưởng dự án'},{id:'assets',name:'Tài sản'},{id:'notes',name:'Sổ tư duy'}];
+/* 4 mục chính cho việc học mỗi ngày; các mục còn lại nằm trong nhóm "Mở rộng" (thu gọn mặc định) */
+const NAV=[{id:'today',name:'Hôm nay',hint:'Việc cần làm'},{id:'study',name:'Bàn học',hint:'Từ vựng & viết tay'},{id:'academy',name:'Học viện',hint:'Bài học & ôn tập'},{id:'journal',name:'Nhật ký học',hint:'Xem tiến bộ'},
+ {id:'path',name:'Lộ trình',more:true},{id:'projects',name:'Xưởng dự án',more:true},{id:'assets',name:'Tài sản',more:true},{id:'notes',name:'Sổ tư duy',more:true}];
 
 const SYNC_LABEL={'local-only':'Đã lưu trên máy','connecting':'Đang kết nối…','syncing':'Đang đồng bộ…','synced':'Đã đồng bộ','sync-error':'Lỗi đồng bộ · đã lưu trên máy'};
 function render(){
@@ -2297,7 +2696,7 @@ function render(){
  <div id="app">
   <aside class="sidebar">
    <div class="brand">🧭 ATLAS</div>
-   <nav>${NAV.map(n=>`<button class="navlink ${S.view===n.id?'active':''}" data-nav="${n.id}">${n.name}</button>`).join('')}</nav>
+   <nav>${renderNav()}</nav>
    <div class="sidebar-footer">
     <button class="profile-btn" id="openProfile"><span class="avatar">${esc((S.data.profile.name||'A')[0].toUpperCase())}</span><span>Hành trình của anh<small>${done}/24 bài</small></span></button>
     <span class="sync-badge">${esc(SYNC_LABEL[S.syncStatus]||'')}</span>
@@ -2347,6 +2746,7 @@ function renderView(){
  if(S.view==='projects') return renderProjects();
  if(S.view==='assets') return renderAssets();
  if(S.view==='notes') return renderNotes();
+ if(S.view==='journal') return renderJournal();
  return '';
 }
 
@@ -2366,7 +2766,10 @@ function renderToday(){
  else hero={eyebrow:'ĐƯA KIẾN THỨC RA THỰC TẾ',title:'Một phép thử. Một điều sáng ra.',desc:'Anh đã đi qua 24 bài nền tảng. Chọn một giả thuyết nhỏ trong dự án để tìm thêm bằng chứng.',btn:projects.length?'Tạo một phép thử':'Tạo dự án đầu tiên',act:projects.length?`data-act="commitment" data-kind="experiment"`:`data-act="create" data-kind="project"`};
 
  return `
- <div class="page-title"><div><p class="eyebrow">TẦM NHÌN LỚN. BƯỚC ĐI RÕ.</p><h1>Chào ${esc(d.profile.name||'anh')}. ${done.size?'Mình tiếp tục':'Bắt đầu thôi'}<span class="lime">.</span></h1><p class="muted">Hiểu một điều. Thử trong thực tế. Học từ kết quả.</p></div><button class="day-chip" id="openProfile2">⏱ ${d.profile.minutes} phút hôm nay</button></div>
+ <div class="page-title"><div><p class="eyebrow">HÔM NAY</p><h1>Chào ${esc(d.profile.name||'anh')}. Làm lần lượt từng bước<span class="lime">.</span></h1><p class="muted">Mỗi ngày chỉ cần trang này. Bấm nút của bước đang sáng, xong em tự chuyển sang bước tiếp theo.</p></div><button class="day-chip" id="openProfile2">⏱ ${d.profile.minutes} phút hôm nay</button></div>
+ ${renderTodayPlan()}
+ ${renderJournalTodayPanel()}
+ <details class="panel today-more" ${S.todayMoreOpen?'open':''}><summary>Xem thêm: thống kê, gợi ý dự án, đánh giá đầu vào</summary>
  <div class="today-grid">
   <section class="spotlight">
    <span class="mini-pill">${hero.eyebrow}</span>
@@ -2393,6 +2796,7 @@ function renderToday(){
  ${renderSessionPanel()}
  ${!d.entryAssessment?`<div class="panel"><p class="eyebrow">CHƯA BIẾT BẮT ĐẦU TỪ ĐÂU?</p><p>Làm 6 câu đánh giá đầu vào (khoảng 3 phút) để em gợi ý điểm bắt đầu phù hợp. Anh có thể bỏ qua hoặc làm lại bất cứ lúc nào.</p><button class="btn outline" data-act="openentry">Làm đánh giá đầu vào</button></div>`:''}
  <div class="panel"><p class="eyebrow">ĐIỀU ANH ĐANG HƯỚNG TỚI</p><p>${esc(d.profile.goal)}</p></div>
+ </details>
  `;
 }
 
@@ -2435,7 +2839,7 @@ function buildDailySession(){
  const lastDone=[...d.completions].reverse()[0];
  const items=[];
  const reviewCount = budget>=60?4:budget>=30?3:2;
- due.slice(0,reviewCount).forEach(r=>items.push({type:'review',id:r.lesson_id,label:'Ôn: '+allLessons.find(l=>l.id===r.lesson_id).title,minutes:2}));
+ due.slice(0,reviewCount).forEach(r=>items.push({type:'review',id:r.lesson_id,label:'Ôn: '+lessonTitle(r.lesson_id),minutes:2}));
  if(next) items.push({type:'lesson',id:next.id,label:'Học bài mới: '+next.title,minutes:budget>=60?15:budget>=30?10:5});
  const listenLesson = next || (lastDone?allLessons.find(l=>l.id===lastDone.lesson_id):learningOrder[0]);
  if(listenLesson) items.push({type:'listen',id:listenLesson.id,label:'Nghe tiếng Anh: '+listenLesson.title,minutes:budget>=30?5:3});
@@ -2466,6 +2870,293 @@ function renderSessionPanel(){
  </section>`;
 }
 
+/* ==GROWTH-START== */
+/* ================= NỀN DỮ LIỆU · ÔN BÀI NGẮT QUÃNG · NHẬT KÝ HỌC =================
+ * Toàn bộ dữ liệu nằm trong MỘT bảng Supabase (atlas_state: mỗi người một dòng JSON) và localStorage.
+ * normalizeState() chạy mỗi lần đọc dữ liệu (máy, Supabase, tệp sao lưu) để app không lỗi khi dữ liệu cũ thiếu trường. */
+
+/* Chuẩn hóa dữ liệu: đúng kiểu, bỏ thẻ ôn trùng hoặc trỏ tới bài không còn tồn tại, tạo thẻ ôn còn thiếu */
+function normalizeState(raw){
+ const src=(raw&&typeof raw==='object'&&!Array.isArray(raw))?raw:{};
+ const def=emptyState();
+ const out=Object.assign(emptyState(),src);
+ ['completions','records','reviews','reviewEvents','commitments','writingEvents','customWords'].forEach(k=>{ if(!Array.isArray(out[k])) out[k]=[]; });
+ ['notebooks','wordCards','sentCards','journal'].forEach(k=>{ if(!out[k]||typeof out[k]!=='object'||Array.isArray(out[k])) out[k]={}; });
+ out.profile=Object.assign(def.profile,(src.profile&&typeof src.profile==='object')?src.profile:{});
+ if(!out.plan||typeof out.plan!=='object') out.plan=def.plan;
+ if(out.vocabSettings!==null&&(typeof out.vocabSettings!=='object'||Array.isArray(out.vocabSettings))) out.vocabSettings=null;
+ out.completions=out.completions.filter(c=>c&&c.lesson_id);
+ out.reviewEvents=out.reviewEvents.filter(e=>e&&e.lesson_id&&e.reviewed_at);
+ out.writingEvents=out.writingEvents.filter(e=>e&&e.at);
+ const known=new Set(allLessons.map(l=>l.id)), seen=new Set();
+ out.reviews=out.reviews.filter(r=>{
+  if(!r||!known.has(r.lesson_id)||seen.has(r.lesson_id)||!reviewQuestionFor(r.lesson_id)) return false;
+  seen.add(r.lesson_id);
+  if(isNaN(new Date(r.due).getTime())) r.due=vnNow().toISOString();
+  r.revision=Math.min(Math.max(0,Number(r.revision)||0),INTERVALS.length-1);
+  return true;
+ });
+ // Bài đã hoàn thành nhưng chưa có lịch ôn (ví dụ bài doanh nghiệp thật) → tạo lịch ôn
+ out.completions.forEach(c=>{ if(known.has(c.lesson_id)&&!seen.has(c.lesson_id)&&reviewQuestionFor(c.lesson_id)){ out.reviews.push({lesson_id:c.lesson_id,...initialCard(c.completed_at||vnNow().toISOString())}); seen.add(c.lesson_id); } });
+ return out;
+}
+
+/* ---------------- ôn bài ngắt quãng ---------------- */
+function reviewQuestionFor(id){
+ if(reviewQuestions[id]) return reviewQuestions[id];
+ const l=allLessons.find(x=>x.id===id);
+ if(!l||!l.question||!Array.isArray(l.options)||typeof l.correct!=='number') return null;
+ return {question:l.question,options:l.options,correct:l.correct,explanation:l.explanation||''};
+}
+function lessonTitle(id){ const l=allLessons.find(x=>x.id===id); return l?l.title:'Bài học không còn trong app'; }
+function daysUntil(iso){ return Math.ceil((new Date(iso).getTime()-vnNow().getTime())/86400000); }
+function nextReviewNote(card){
+ if(card.practiceOnly) return 'Đây là luyện thêm nên lịch ôn không đổi.';
+ const r=S.data.reviews.find(x=>x.lesson_id===card.lesson_id); if(!r) return '';
+ return `Lần ôn tiếp theo: ${displayDate(r.due)} (sau ${Math.max(1,daysUntil(r.due))} ngày).`;
+}
+function navBadge(id){
+ if(id!=='academy') return '';
+ const n=dueReviews(S.data).length;
+ return n?`<span class="nav-badge" aria-label="${n} bài đến lịch ôn">${n}</span>`:'';
+}
+function renderLessonReviewTab(){
+ const d=S.data, due=dueReviews(d), stats=learningStats(d), now=vnNow().getTime();
+ const upcoming=d.reviews.filter(r=>new Date(r.due).getTime()>now).sort((a,b)=>a.due.localeCompare(b.due));
+ const step=r=>`Lần ôn thứ ${Math.min((r.revision||0)+1,INTERVALS.length)}`;
+ const when=r=>{ const n=daysUntil(r.due); return n<=1?'ngày mai':`sau ${n} ngày`; };
+ return `<div class="grid2"><section class="panel"><p class="eyebrow">NHỚ LẠI TRƯỚC KHI XEM ĐÁP ÁN</p>
+  <h2>${due.length?`${due.length} bài đến lịch ôn`:'Hôm nay chưa có bài đến lịch'}</h2>
+  ${due.map(r=>`<button class="lesson-row" data-act="review" data-id="${r.lesson_id}">🔄<span>${esc(lessonTitle(r.lesson_id))}<small>${step(r)} · đến lịch ${displayDate(r.due)}</small></span></button>`).join('')}
+  ${!due.length&&!upcoming.length?`<div class="subtle-panel">Hoàn thành một bài học, em sẽ nhắc anh ôn lại sau 1 ngày.</div>`:''}
+  ${upcoming.length?`<p class="eyebrow" style="margin-top:18px">SẮP TỚI</p>${upcoming.slice(0,12).map(r=>`<div class="session-item"><span style="flex:1">${esc(lessonTitle(r.lesson_id))}<br><small class="muted">${step(r)} · ${displayDate(r.due)} (${when(r)})</small></span></div>`).join('')}`:''}
+ </section><aside>
+  <div class="panel"><p class="eyebrow">LỊCH ÔN NGẮT QUÃNG</p>
+   <div class="interval-track">${INTERVALS.map(n=>`<span class="interval-step"><b>${n}</b><small>ngày</small></span>`).join('<span class="interval-arrow" aria-hidden="true">→</span>')}</div>
+   <p class="muted" style="font-size:13px">Hoàn thành bài → ôn sau 1 ngày. Trả lời đúng thì khoảng cách giãn dần: 3 ngày, 7 ngày, 14 ngày… Trả lời sai thì bài quay lại sau 1 ngày.</p>
+   <p class="reference-note">Nhắc lịch hiện ra khi anh mở app: số đỏ cạnh “Học viện” và thẻ đầu tiên ở trang Hôm nay. App web chưa gửi được thông báo lên iPad khi đang đóng.</p></div>
+  <div class="panel"><p class="eyebrow">30 NGÀY GẦN NHẤT</p><div class="money-number">${stats.attempts?`${stats.correct}/${stats.attempts}`:'—'}</div><p class="muted" style="font-size:13px">câu trả lời đúng khi ôn</p></div>
+ </aside></div>`;
+}
+
+/* ---------------- Nhật ký học ---------------- */
+function journalEntry(day){
+ S.data.journal=S.data.journal||{};
+ if(!S.data.journal[day]) S.data.journal[day]={minutes:0,understand:null,note:'',first_open:vnNow().toISOString()};
+ return S.data.journal[day];
+}
+let _lastActivity=Date.now(), _journalTimer=null, _journalTicks=0, _journalNoteTimer=null;
+/* Chạy sau khi tải dữ liệu: tạo dòng nhật ký của hôm nay và bắt đầu đếm thời gian học */
+function journalBoot(){
+ journalEntry(localDay()); quietSave();
+ if(_journalTimer) return;
+ ['pointerdown','keydown','input','wheel','touchstart'].forEach(ev=>window.addEventListener(ev,()=>{ _lastActivity=Date.now(); },{passive:true,capture:true}));
+ document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') writeLocalCache(S.data); });
+ _journalTimer=setInterval(journalTick,15000);
+}
+/* Mỗi 15 giây: chỉ cộng thời gian khi app đang hiện trên màn hình và anh có thao tác trong 2 phút gần nhất (hoặc đang nghe đọc) */
+function journalTick(){
+ if(document.visibilityState!=='visible') return;
+ const listening=Speech.playing||(Speech.supported&&window.speechSynthesis.speaking);
+ if(Date.now()-_lastActivity>120000&&!listening) return;
+ const e=journalEntry(localDay()); e.minutes=Math.round(((e.minutes||0)+0.25)*100)/100;
+ if(++_journalTicks%4===0) quietSave();
+}
+function dayActivity(day){
+ const d=S.data, on=iso=>!!iso&&localDay(new Date(iso))===day;
+ const newLessons=d.completions.filter(c=>on(c.completed_at)).map(c=>lessonTitle(c.lesson_id));
+ const revs=d.reviewEvents.filter(e=>on(e.reviewed_at)), reviews=revs.filter(e=>!e.practice).length;
+ const writes=(d.writingEvents||[]).filter(e=>on(e.at));
+ const newWords=Object.values(d.wordCards||{}).filter(c=>c&&c.first===day&&!c.known).length;
+ const attempts=revs.length+writes.length, correct=revs.filter(e=>e.correct===1).length+writes.filter(e=>e.ok===1).length;
+ return {newLessons,reviews,practice:revs.length-reviews,writes:writes.length,newWords,attempts,correct};
+}
+function studiedDay(day){ const e=(S.data.journal||{})[day], a=dayActivity(day); return !!((e&&e.minutes>=1)||a.newLessons.length||a.reviews||a.practice||a.writes); }
+function journalLine(day){
+ const a=dayActivity(day), e=(S.data.journal||{})[day]||{}, parts=[];
+ if(a.newLessons.length) parts.push(`${a.newLessons.length} bài mới (${a.newLessons.join(', ')})`);
+ if(a.reviews) parts.push(`ôn ${a.reviews} bài`);
+ if(a.newWords) parts.push(`${a.newWords} từ mới`);
+ if(a.writes) parts.push(`viết ${a.writes} lượt`);
+ return {learned:parts.length?parts.join(', '):'chưa có bài nào', minutes:Math.round(e.minutes||0), understand:e.understand==null?null:e.understand, accuracy:a.attempts?Math.round(a.correct/a.attempts*100):null};
+}
+function journalDays(){
+ const set=new Set(Object.keys(S.data.journal||{})), add=iso=>{ if(iso) set.add(localDay(new Date(iso))); };
+ S.data.completions.forEach(c=>add(c.completed_at)); S.data.reviewEvents.forEach(e=>add(e.reviewed_at)); (S.data.writingEvents||[]).forEach(e=>add(e.at));
+ return [...set].filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)).sort().reverse();
+}
+function journalControls(day,e){
+ return `<label class="journal-rate" for="jr-${day}"><span class="field-help">Anh hiểu được bao nhiêu?</span>
+  <input type="range" id="jr-${day}" min="0" max="100" step="10" value="${e.understand==null?50:e.understand}" data-act="journalrate" data-day="${day}">
+  <output>${e.understand==null?'—':e.understand+'%'}</output></label>
+  <textarea id="jn-${day}" data-act="journalnote" data-day="${day}" placeholder="Một điều học được, hoặc điều còn chưa hiểu…">${esc(e.note||'')}</textarea>`;
+}
+function renderJournalTodayPanel(){
+ const day=localDay(), e=journalEntry(day), L=journalLine(day);
+ return `<section class="panel" id="journalTodayPanel"><div class="card-header"><h2>📓 Nhật ký hôm nay</h2><button class="btn ghost sm" data-nav="journal">Xem cả nhật ký →</button></div>
+ <p class="journal-line">Hôm nay học ${esc(L.learned)}, mất <b>${L.minutes} phút</b>, tự đánh giá hiểu <b>${L.understand==null?'— (kéo thanh bên dưới)':L.understand+'%'}</b>.</p>
+ <div class="journal-controls">${journalControls(day,e)}</div>
+ <p class="reference-note">Em tự ghi dòng này mỗi ngày anh mở app. Thời gian chỉ tính khi app đang mở và anh có thao tác trong 2 phút gần nhất.</p></section>`;
+}
+function niceMax(v){ return [10,20,30,40,60,80,100,120,180,240,360,480].find(s=>s>=v)||Math.ceil(v/120)*120; }
+function chartDayLabel(day,i,n){ if(i===n-1) return 'Hôm nay'; if(i%7===0&&i<=n-6) return day.slice(8,10)+'/'+day.slice(5,7); return ''; }
+function minutesChart(days){
+ const W=720,H=210,L=40,R=10,T=14,B=30,pw=W-L-R,ph=H-T-B, J=S.data.journal||{};
+ const vals=days.map(day=>Math.round((J[day]||{}).minutes||0));
+ const max=niceMax(Math.max(10,...vals)), y=v=>T+ph-(v/max)*ph, bw=pw/days.length, gap=Math.min(4,bw*0.25), w=bw-gap, today=localDay();
+ let g='';
+ [0,max/2,max].forEach(v=>{ g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text class="chart-axis" x="${L-8}" y="${y(v)+4}" text-anchor="end">${Math.round(v)}</text>`; });
+ days.forEach((day,i)=>{
+  const v=vals[i], x=L+i*bw+gap/2, top=y(v), h=T+ph-top;
+  if(v>0){ const r=Math.min(4,w/2,h); g+=`<path d="M${x},${T+ph} V${top+r} Q${x},${top} ${x+r},${top} H${x+w-r} Q${x+w},${top} ${x+w},${top+r} V${T+ph} Z" fill="${day===today?'var(--lime)':'var(--lime-dark)'}"/>`; }
+  g+=`<rect x="${L+i*bw}" y="${T}" width="${bw}" height="${ph}" fill="transparent" data-tip="${esc(displayDate(day))} · ${v} phút"/>`;
+  const lab=chartDayLabel(day,i,days.length); if(lab) g+=`<text class="chart-axis" x="${x+w/2}" y="${H-9}" text-anchor="middle">${lab}</text>`;
+ });
+ return `<div class="chart-wrap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Số phút học mỗi ngày, 30 ngày gần nhất">${g}</svg></div>`;
+}
+function understandChart(days){
+ const W=720,H=170,L=40,R=10,T=14,B=30,pw=W-L-R,ph=H-T-B,bw=pw/days.length, J=S.data.journal||{};
+ const pts=days.map((day,i)=>{ const u=(J[day]||{}).understand; return u==null?null:{x:L+i*bw+bw/2,y:T+ph-(u/100)*ph,u,day}; }).filter(Boolean);
+ if(!pts.length) return `<p class="muted" style="font-size:13px">Chưa có ngày nào tự đánh giá. Kéo thanh “Anh hiểu được bao nhiêu?” ở dòng nhật ký hôm nay để bắt đầu.</p>`;
+ let g='';
+ [0,50,100].forEach(v=>{ const yy=T+ph-(v/100)*ph; g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="var(--line)" stroke-width="1"/><text class="chart-axis" x="${L-8}" y="${yy+4}" text-anchor="end">${v}%</text>`; });
+ if(pts.length>1) g+=`<polyline points="${pts.map(p=>p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ')}" fill="none" stroke="var(--lime)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+ pts.forEach(p=>{ g+=`<circle cx="${p.x}" cy="${p.y}" r="5" fill="var(--lime)" stroke="var(--panel)" stroke-width="2"/><circle cx="${p.x}" cy="${p.y}" r="14" fill="transparent" data-tip="${esc(displayDate(p.day))} · hiểu ${p.u}%"/>`; });
+ days.forEach((day,i)=>{ const lab=chartDayLabel(day,i,days.length); if(lab) g+=`<text class="chart-axis" x="${L+i*bw+bw/2}" y="${H-9}" text-anchor="middle">${lab}</text>`; });
+ return `<div class="chart-wrap"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Mức hiểu tự đánh giá theo ngày, 30 ngày gần nhất">${g}</svg></div>`;
+}
+function renderJournal(){
+ const today=localDay(); journalEntry(today);
+ const J=S.data.journal, last30=[...Array(30)].map((_,i)=>addDays(i-29));
+ const studied=last30.filter(studiedDay).length;
+ const total=Math.round(last30.reduce((s,day)=>s+((J[day]||{}).minutes||0),0));
+ const rated=last30.map(day=>(J[day]||{}).understand).filter(v=>v!=null);
+ const avg=rated.length?Math.round(rated.reduce((a,b)=>a+b,0)/rated.length):null;
+ let streak=0, i=studiedDay(today)?0:1; while(streak<3650&&studiedDay(addDays(-i))){ streak++; i++; }
+ const fmtMin=m=>m>=60?`${Math.floor(m/60)} giờ ${m%60} phút`:`${m} phút`;
+ const days=journalDays(), shown=days.slice(0,S.journalLimit||21);
+ const rows=shown.map(day=>{
+  const L=journalLine(day), e=J[day]||{}, wd=new Date(day+'T12:00:00').toLocaleDateString('vi-VN',{weekday:'long'});
+  return `<article class="journal-row ${day===today?'today':''}"><div class="journal-date"><b>${day===today?'Hôm nay':esc(wd)}</b><small>${displayDate(day)}</small></div>
+  <div><p class="journal-line">Học ${esc(L.learned)} · mất <b>${L.minutes} phút</b> · tự đánh giá hiểu <b>${L.understand==null?'—':L.understand+'%'}</b>${L.accuracy!=null?` <span class="muted">· làm đúng ${L.accuracy}% bài có đáp án</span>`:''}</p>
+  <div class="journal-controls">${journalControls(day,e)}</div></div></article>`;
+ }).join('');
+ return `<div class="page-title"><div><p class="eyebrow">NHẬT KÝ HỌC</p><h1>Kiên trì là thứ nhìn thấy được<span class="lime">.</span></h1>
+  <p class="muted">Mỗi ngày anh mở app, em tự ghi một dòng: học gì, mất bao lâu, anh tự đánh giá hiểu bao nhiêu. Ghi cả quá trình, không chỉ kết quả.</p></div>
+  <button class="btn outline" data-act="journalcopy">📋 Sao chép nhật ký</button></div>
+ <div class="asset-summary">
+  <div><span class="small-label">NGÀY CÓ HỌC · 30 NGÀY</span><div class="money-number">${studied}<small class="muted" style="font-size:13px"> / 30</small></div><small class="muted">chuỗi hiện tại: ${streak} ngày liên tiếp</small></div>
+  <div><span class="small-label">THỜI GIAN HỌC · 30 NGÀY</span><div class="money-number">${fmtMin(total)}</div><small class="muted">trung bình ${studied?Math.round(total/studied):0} phút mỗi ngày có học</small></div>
+  <div><span class="small-label">MỨC HIỂU TỰ ĐÁNH GIÁ</span><div class="money-number">${avg==null?'—':avg+'%'}</div><small class="muted">${rated.length} ngày đã tự đánh giá</small></div>
+ </div>
+ <section class="panel"><div class="card-header"><h2>Phút học mỗi ngày</h2><span class="muted">30 ngày gần nhất</span></div>${minutesChart(last30)}</section>
+ <section class="panel"><div class="card-header"><h2>Mức hiểu anh tự đánh giá</h2><span class="muted">0–100%</span></div>${understandChart(last30)}</section>
+ <section class="panel"><h2>Từng ngày</h2>${rows||'<p class="muted">Chưa có dòng nhật ký nào.</p>'}
+  ${days.length>shown.length?`<button class="btn outline" data-act="journalmore" style="margin-top:12px">Xem thêm ${Math.min(30,days.length-shown.length)} ngày</button>`:''}
+  <p class="reference-note">Thời gian học chỉ tính khi app đang mở trên màn hình và anh có chạm, gõ hoặc viết trong 2 phút gần nhất. Để app mở mà không dùng thì không tính. Mức hiểu là anh tự đánh giá, không phải điểm kiểm tra; phần “làm đúng” mới là kết quả của bài có đáp án.</p>
+ </section>`;
+}
+function handleGrowthAction(act,id,el){
+ switch(act){
+  case 'journalrate': { const day=el.dataset.day; mutate(()=>{ journalEntry(day).understand=clamp(Number(el.value)||0,0,100); }); return true; }
+  case 'journalnote': { journalEntry(el.dataset.day).note=String(el.value||'').slice(0,2000); clearTimeout(_journalNoteTimer); _journalNoteTimer=setTimeout(quietSave,800); return true; }
+  case 'navmore': S.navMoreOpen=!S.navMoreOpen; try{ localStorage.setItem('atlas_nav_more',S.navMoreOpen?'1':'0'); }catch(e){} render(); return true;
+  case 'gojournal': { const el=document.getElementById('journalTodayPanel'); if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),1600); } return true; }
+  case 'journalmore': S.journalLimit=(S.journalLimit||21)+30; render(); return true;
+  case 'journalcopy': {
+   const text=journalDays().map(day=>{ const L=journalLine(day), e=S.data.journal[day]||{}; return `${displayDate(day)}: học ${L.learned}, mất ${L.minutes} phút, tự đánh giá hiểu ${L.understand==null?'—':L.understand+'%'}${e.note?' — '+e.note:''}`; }).join('\n');
+   const ok=()=>toast('Đã sao chép nhật ký vào clipboard.');
+   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(()=>toast('Trình duyệt chặn sao chép. Anh bôi đen nội dung để copy tay nhé.'));
+   else toast('Trình duyệt chưa hỗ trợ sao chép tự động.');
+   return true; }
+ }
+ return false;
+}
+/* Tooltip cho biểu đồ: chạm hoặc rê lên cột / điểm */
+let _chartTip=null;
+document.addEventListener('pointerover',e=>{
+ const t=e.target&&e.target.closest?e.target.closest('[data-tip]'):null;
+ if(!_chartTip){ _chartTip=document.createElement('div'); _chartTip.className='chart-tip'; _chartTip.hidden=true; document.body.appendChild(_chartTip); }
+ if(!t){ _chartTip.hidden=true; return; }
+ const r=t.getBoundingClientRect();
+ _chartTip.textContent=t.getAttribute('data-tip');
+ _chartTip.style.left=(r.left+r.width/2+window.scrollX)+'px'; _chartTip.style.top=(r.top+window.scrollY-6)+'px';
+ _chartTip.hidden=false;
+});
+/* ---------------- Trang Hôm nay: làm theo thứ tự · Menu gọn ---------------- */
+function todayPlanSteps(){
+ const d=S.data, today=localDay(), due=dueReviews(d), learned=new Set(d.completions.map(c=>c.lesson_id));
+ const next=learningOrder.find(l=>!learned.has(l.id));
+ const learnedToday=d.completions.filter(c=>c.completed_at&&localDay(new Date(c.completed_at))===today);
+ const v=todayVocab(), vDone=v.started&&v.idx>=v.items.length, vEmpty=!v.items.length;
+ const newW=v.items.filter(i=>i.intro).length, revW=v.items.filter(i=>i.k==='w'&&!i.intro&&!i.isNew).length;
+ const j=(d.journal||{})[today]||{};
+ return [
+  {title:'Ôn lại bài đã học', why:'Nhớ lại trước khi học thêm để không quên.',
+   done:!due.length, skip:!due.length&&!d.completions.length,
+   detail:due.length?`${due.length} bài đến lịch ôn · khoảng ${due.length*2} phút`:d.completions.length?'Hôm nay không có bài cần ôn.':'Chưa có bài để ôn. Sau khi học bài đầu tiên, em sẽ nhắc ôn vào ngày mai.',
+   btn:due.length?`data-act="review" data-id="${due[0].lesson_id}"`:'', label:'Bắt đầu ôn'},
+  {title:'Học từ vựng & viết tay', why:'Tô chữ, rồi viết lại từ trí nhớ bằng Apple Pencil.',
+   done:vDone||vEmpty, skip:vEmpty,
+   detail:vEmpty?'Hôm nay không có từ cần học.':vDone?'Đã xong phiên từ vựng hôm nay.':`${newW} từ mới · ${revW} từ ôn${v.started?` · đang ở mục ${v.idx+1}/${v.items.length}`:''} · khoảng 10–15 phút`,
+   btn:'data-act="openvocab"', label:v.started?'Học tiếp':'Bắt đầu viết'},
+  {title:'Đọc 1 bài học mới', why:'Mỗi ngày hiểu thêm một điều về tiền, kinh doanh và thế giới.',
+   done:learnedToday.length>0||!next, skip:!learnedToday.length&&!next,
+   detail:learnedToday.length?`Đã học: ${learnedToday.map(c=>lessonTitle(c.lesson_id)).join(', ')}`:next?`“${next.title}” · khoảng 5–10 phút`:'Anh đã học hết các bài nền tảng.',
+   btn:next?`data-act="lesson" data-id="${next.id}"`:'', label:'Mở bài học'},
+  {title:'Ghi nhật ký', why:'Kéo thanh: hôm nay anh hiểu được bao nhiêu?',
+   done:j.understand!=null, skip:false,
+   detail:j.understand!=null?`Đã tự đánh giá: hiểu ${j.understand}%.`:'Chỉ mất 10 giây, ở ô Nhật ký ngay bên dưới.',
+   btn:'data-act="gojournal"', label:'Ghi nhật ký'}
+ ];
+}
+function renderTodayPlan(){
+ const steps=todayPlanSteps(), cur=steps.findIndex(s=>!s.done), doneN=steps.filter(s=>s.done).length;
+ return `<section class="panel plan"><div class="card-header"><h2>Hôm nay làm theo thứ tự</h2><span class="muted">${doneN}/${steps.length} việc</span></div>
+ <div class="progress" style="margin-bottom:14px"><div style="width:${doneN/steps.length*100}%"></div></div>
+ <ol class="plan-steps">${steps.map((s,i)=>{
+  const state=s.done?(s.skip?'skip':'done'):i===cur?'current':'';
+  return `<li class="plan-step ${state}"><span class="plan-num" aria-hidden="true">${s.done?(s.skip?'–':'✓'):i+1}</span>
+   <div class="plan-body"><b>${esc(s.title)}</b><small>${i===cur?esc(s.why)+'<br>':''}${esc(s.detail)}</small></div>
+   ${!s.done&&s.btn?`<button class="btn ${i===cur?'':'outline sm'}" ${s.btn}>${esc(s.label)}${i===cur?' →':''}</button>`:''}</li>`;
+ }).join('')}</ol>
+ ${cur<0?`<div class="feedback"><b>Xong hết việc hôm nay. 🎉</b> Kiên trì mỗi ngày như vậy là đủ. Muốn học thêm thì vào Bàn học hoặc Học viện.</div>`:''}
+ </section>`;
+}
+function renderNav(){
+ if(S.navMoreOpen==null){ try{ S.navMoreOpen=localStorage.getItem('atlas_nav_more')==='1'; }catch(e){ S.navMoreOpen=false; } }
+ const main=NAV.filter(n=>!n.more), more=NAV.filter(n=>n.more), show=S.navMoreOpen||more.some(n=>n.id===S.view);
+ const item=n=>`<button class="navlink ${S.view===n.id?'active':''}" data-nav="${n.id}"><span class="nav-text">${n.name}${n.hint?`<small>${n.hint}</small>`:''}</span>${navBadge(n.id)}</button>`;
+ return main.map(item).join('')
+  +`<button class="navlink nav-more-toggle" data-act="navmore" aria-expanded="${show}">${show?'▾':'▸'} Mở rộng <small class="nav-more-note">khi đã quen</small></button>`
+  +(show?`<div class="nav-more">${more.map(item).join('')}</div>`:'');
+}
+document.addEventListener('toggle',e=>{ if(e.target&&e.target.classList&&e.target.classList.contains('today-more')) S.todayMoreOpen=e.target.open; },true);
+
+/* Lưu tệp ra máy. Trên link claude.ai: dùng khả năng "downloads" (người xem bấm xác nhận).
+ * Mở file index.html trực tiếp: dùng cách tải thường (fallback). */
+let _downloadsApi=null;
+function hasClaudeRuntime(){ return !!(window.claude&&typeof window.claude.use==='function'); }
+function downloadsApi(){
+ if(!_downloadsApi) _downloadsApi=hasClaudeRuntime()?Promise.resolve().then(()=>window.claude.use('downloads')).catch(()=>null):Promise.resolve(null);
+ return _downloadsApi;
+}
+function saveFile(filename,data,fallback,opts){
+ opts=opts||{};
+ if(!hasClaudeRuntime()){ fallback(); return; }
+ downloadsApi().then(dl=>{
+  if(!dl){ toast('Trang này chưa cho lưu tệp. Anh mở file index.html trên máy để tải nhé.'); return; }
+  return dl.save({filename,data}).then(()=>{ if(opts.onSaved) opts.onSaved(); else toast(opts.saved||'Đã lưu tệp.'); }).catch(e=>{
+   const code=e&&e.code;
+   if(code==='declined') toast('Anh đã hủy lưu tệp.');
+   else if(code==='rate_limited') toast('Đang có một hộp thoại lưu tệp. Anh xử lý xong rồi thử lại nhé.');
+   else if(code==='too_large') toast('Tệp quá lớn để lưu ở đây.');
+   else toast('Chưa lưu được tệp ở trang này. Anh mở file index.html trên máy để tải nhé.');
+  });
+ });
+}
+if(hasClaudeRuntime()) downloadsApi(); // chuẩn bị sẵn để lúc bấm nút hộp thoại hiện ngay
+/* ==GROWTH-END== */
 /* ================= SỔ LỖI ================= */
 function mistakeList(){
  const d=S.data, byLesson={};
@@ -2521,8 +3212,7 @@ function renderAcademy(){
  let body='';
  if(academyTab==='path') body=`<div class="grid2"><section class="panel"><p class="eyebrow">BẮT ĐẦU Ở ĐÂY</p><h2>Từng bước xây nền móng</h2>${learningOrder.map(row).join('')}</section><aside><div class="panel"><h2>Mục tiêu của anh</h2><p>${esc(d.profile.goal)}</p></div></aside></div>`;
  else if(academyTab==='review'){
-  const due=dueReviews(d), stats=learningStats(d), upcoming=d.reviews.filter(r=>!due.some(x=>x.lesson_id===r.lesson_id)).sort((a,b)=>a.due.localeCompare(b.due));
-  body=`<div class="grid2"><section class="panel"><p class="eyebrow">NHỚ LẠI TRƯỚC KHI XEM ĐÁP ÁN</p><h2>${due.length?`${due.length} bài đến lịch ôn`:'Hôm nay chưa có bài đến lịch'}</h2>${due.map(r=>`<button class="lesson-row" data-act="review" data-id="${r.lesson_id}">🔄<span>${esc(lessons.find(l=>l.id===r.lesson_id).title)}<small>Đến lịch ${displayDate(r.due)}</small></span></button>`).join('')}${!due.length?`<div class="subtle-panel">${upcoming.length?`Lần ôn tiếp theo: ${displayDate(upcoming[0].due)}.`:'Hoàn thành một bài trong lộ trình. Bài ôn đầu tiên sẽ mở sau 24 giờ.'}</div>`:''}</section><aside class="panel"><p class="eyebrow">30 NGÀY GẦN NHẤT</p><div class="money-number">${stats.attempts?`${stats.correct}/${stats.attempts}`:'—'}</div><h2>Câu trả lời đúng khi ôn</h2><p class="reference-note">Kết quả trên ngân hàng 24 câu ôn đã biên soạn.</p></aside></div>`;
+  body=renderLessonReviewTab();
  } else if(academyTab==='domains'){
   body=`<div class="curriculum-grid">${domains.map(dm=>{ const items=lessons.filter(l=>l.domain===dm.id); return `<section class="domain-card"><div class="card-header"><h2>${dm.icon} ${esc(dm.name)}</h2><span class="muted">${items.filter(l=>done.has(l.id)).length}/3</span></div><p class="muted" style="font-size:13px">${esc(dm.description)}</p>${items.map(row).join('')}</section>`; }).join('')}</div>`;
  } else if(academyTab==='done'){
@@ -2539,7 +3229,7 @@ function renderAcademy(){
  const mistakes=mistakeList().length;
  return `<div class="page-title"><div><p class="eyebrow">HỌC VIỆN CÁ NHÂN</p><h1>Bắt đầu từ những điều cơ bản<span class="lime">.</span></h1><p class="muted">24 bài ngắn · 8 lĩnh vực · Đọc, tự giải thích và thực hành.</p></div><button class="btn outline" data-act="openentry">Đánh giá đầu vào</button></div>
  <div class="progress" style="margin-bottom:6px"><div style="width:${done.size/24*100}%"></div></div><p class="muted" style="font-size:12px;margin-bottom:16px">${done.size}/24 bài đã hoàn thành</p>
- <div class="tabs">${[['path','Lộ trình từ số 0'],['review','Ôn để nhớ'],['domains','8 lĩnh vực'],['cases','Doanh nghiệp thật'],['mistakes',`Sổ lỗi${mistakes?' ('+mistakes+')':''}`],['done',`Đã hoàn thành (${done.size})`]].map(([id,label])=>`<button class="tab ${academyTab===id?'active':''}" data-act="academytab" data-id="${id}">${label}</button>`).join('')}</div>
+ <div class="tabs">${[['path','Lộ trình từ số 0'],['review',`Ôn để nhớ${dueReviews(d).length?' ('+dueReviews(d).length+')':''}`],['domains','8 lĩnh vực'],['cases','Doanh nghiệp thật'],['mistakes',`Sổ lỗi${mistakes?' ('+mistakes+')':''}`],['done',`Đã hoàn thành (${done.size})`]].map(([id,label])=>`<button class="tab ${academyTab===id?'active':''}" data-act="academytab" data-id="${id}">${label}</button>`).join('')}</div>
  ${body}
  ${renderCompetencePanel()}`;
 }
@@ -2597,8 +3287,10 @@ const INK_PREFS_KEY='atlas_ink_prefs_v1';
 const GHOST_FONT='"Chalkboard SE","Comic Sans MS","Segoe Print","Bradley Hand",sans-serif';
 
 const TOPICS=[
- {id:'core',name:'Nền tảng để đọc tin',icon:'🧱'},{id:'money',name:'Tiền & tài chính cá nhân',icon:'💵'},
- {id:'business',name:'Doanh nghiệp & thị trường',icon:'🏪'},{id:'macro',name:'Kinh tế vĩ mô',icon:'📈'},
+ {id:'core',name:'Nền tảng để đọc tin',icon:'🧱'},{id:'numbers',name:'Số đếm & phép tính',icon:'🔢'},
+ {id:'time',name:'Ngày, tháng, năm & giờ',icon:'📅'},{id:'money',name:'Tiền & tài chính cá nhân',icon:'💵'},
+ {id:'business',name:'Doanh nghiệp & thị trường',icon:'🏪'},{id:'sales',name:'Bán hàng & khách hàng',icon:'🛒'},
+ {id:'workplace',name:'Công sở & quản lý',icon:'💼'},{id:'macro',name:'Kinh tế vĩ mô',icon:'📈'},
  {id:'trade',name:'Thương mại toàn cầu',icon:'🚢'},{id:'gov',name:'Nhà nước & chính trị',icon:'🏛'},
  {id:'intl',name:'Quan hệ quốc tế & an ninh',icon:'🌐'},{id:'society',name:'Xã hội & con người',icon:'👥'},
  {id:'climate',name:'Khí hậu & năng lượng',icon:'🌱'},{id:'tech',name:'Công nghệ & tương lai',icon:'💡'},
@@ -2691,7 +3383,15 @@ function topicProgress(){
 function vocabSettings(){
  const d=S.data;
  d.vocabSettings=Object.assign({newPerDay:8,newSentences:2,maxReviews:40,topics:TOPICS.filter(t=>t.id!=='mine').map(t=>t.id),pinned:[]}, d.vocabSettings||{});
- return d.vocabSettings;
+ const st=d.vocabSettings;
+ if(!Array.isArray(st.topics)||!st.topics.length) st.topics=TOPICS.filter(t=>t.id!=='mine').map(t=>t.id);
+ if(!Array.isArray(st.pinned)) st.pinned=[];
+ // Bản cũ chưa có 4 chủ đề mới → tự thêm vào để phiên học lấy được từ mới
+ if((st.topicsV||1)<2){
+  ['numbers','time','sales','workplace'].forEach(t=>{ if(!st.topics.includes(t)) st.topics.push(t); });
+  st.topics.sort((a,b)=>TOPICS.findIndex(x=>x.id===a)-TOPICS.findIndex(x=>x.id===b)); st.topicsV=2;
+ }
+ return st;
 }
 /* Thứ tự học từ mới: hết cấp 1 mới sang cấp 2; trong mỗi cấp xen kẽ các chủ đề (chủ đề nền tảng được ưu tiên ở cấp 1) */
 let _wordOrderCache=null, _sentOrderCache=null;
@@ -2703,7 +3403,7 @@ function roundRobin(items,topics,weightFn){
  });
  return out;
 }
-function wordOrder(topics){ const key=topics.join(','); if(!_wordOrderCache||_wordOrderCache.key!==key) _wordOrderCache={key,list:roundRobin(WORDS,topics,(t,lv)=>t==='core'&&lv===1?3:1)}; return _wordOrderCache.list; }
+function wordOrder(topics){ const key=topics.join(','); if(!_wordOrderCache||_wordOrderCache.key!==key) _wordOrderCache={key,list:roundRobin(WORDS,topics,(t,lv)=>lv!==1?1:t==='core'?3:(t==='numbers'||t==='time')?2:1)}; return _wordOrderCache.list; }
 function sentenceOrder(topics){ const key=topics.join(','); if(!_sentOrderCache||_sentOrderCache.key!==key) _sentOrderCache={key,list:roundRobin(SENTENCES,topics.concat(['core']).filter((t,i,a)=>a.indexOf(t)===i))}; return _sentOrderCache.list; }
 function nextNewWords(n,exclude){
  const st=vocabSettings(), cards=S.data.wordCards||{}, out=[], seen=new Set(exclude||[]);
@@ -2901,10 +3601,10 @@ function vdAdvance(skip){
 /* ---------------- giao diện ---------------- */
 function renderStudy(){
  const st=studyState();
- const tabs=[['daily','📅 Hôm nay'],['bank','📚 Kho từ'],['word','✍️ Luyện từ'],['sentence','🧾 Luyện câu'],['free','🖋 Viết tự do']];
- const body=st.tab==='daily'?renderDaily():st.tab==='bank'?renderBank():st.tab==='free'?renderFreeTab():renderListTab(st.tab);
+ const tabs=[['daily','📅 Hôm nay'],['bank','📚 Kho từ'],['word','✍️ Luyện từ'],['sentence','🧾 Luyện câu'],['numbers','🔢 Số & giá tiền'],['free','🖋 Viết tự do']];
+ const body=st.tab==='daily'?renderDaily():st.tab==='bank'?renderBank():st.tab==='free'?renderFreeTab():st.tab==='numbers'?renderNumbersTab():renderListTab(st.tab);
  return `<div class="page-title"><div><p class="eyebrow">BÀN HỌC</p><h1>Viết tay để nhớ lâu hơn<span class="lime">.</span></h1>
- <p class="muted">${WORDS.length} từ về kinh tế, chính trị và thế giới · ${SENTENCES.length} câu mẫu từ dễ đến khó. Viết bằng Apple Pencil, em chấm đến từng chữ cái.</p></div></div>
+ <p class="muted">${WORDS.length} từ về kinh tế, kinh doanh, chính trị, thế giới, số đếm và ngày tháng · ${SENTENCES.length} câu mẫu từ dễ đến khó. Viết bằng Apple Pencil, em chấm đến từng chữ cái.</p></div></div>
  <div class="tabs">${tabs.map(([id,l])=>`<button class="tab ${st.tab===id?'active':''}" data-act="studytab" data-id="${id}">${l}</button>`).join('')}</div>${body}`;
 }
 function speakBtns(){ return Speech.supported?`<button class="btn outline" data-act="speakcur">🔊 Nghe</button><button class="btn outline" data-act="speakcurslow">🐢 Nghe chậm</button>`:''; }
@@ -3188,12 +3888,14 @@ function exportInkPng(){
   const c=document.createElement('canvas'); c.width=bg.width; c.height=bg.height; const x=c.getContext('2d'); x.drawImage(bg,0,0); x.drawImage(fg,0,0);
   const name='atlas-bai-viet-'+localDay()+'.png'; const blob=dataUrlToBlob(c.toDataURL('image/png'));
   const file=typeof File!=='undefined'?new File([blob],name,{type:'image/png'}):null;
-  if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
-   navigator.share({files:[file],title:'Bài viết ATLAS'}).then(()=>{ if(S.inkDraft) S.inkDraft.copied='Đã mở bảng chia sẻ của máy (chọn “Lưu hình ảnh” để giữ trong Ảnh). App không tự gửi gì.'; render(); }).catch(()=>{});
-   return;
-  }
-  const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),10000);
-  if(S.inkDraft) S.inkDraft.copied='Đã tải ảnh PNG về máy (chưa gửi đi đâu cả).'; render();
+  saveFile(name,blob,()=>{
+   if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+    navigator.share({files:[file],title:'Bài viết ATLAS'}).then(()=>{ if(S.inkDraft) S.inkDraft.copied='Đã mở bảng chia sẻ của máy (chọn “Lưu hình ảnh” để giữ trong Ảnh). App không tự gửi gì.'; render(); }).catch(()=>{});
+    return;
+   }
+   const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),10000);
+   if(S.inkDraft) S.inkDraft.copied='Đã tải ảnh PNG về máy (chưa gửi đi đâu cả).'; render();
+  },{onSaved:()=>{ if(S.inkDraft) S.inkDraft.copied='Đã lưu ảnh bài viết tay về máy (chưa gửi đi đâu cả).'; render(); }});
  }catch(e){ toast('Chưa xuất được ảnh: '+e.message); }
 }
 function compactStrokes(strokes){ const r=v=>Math.round(v*10)/10; return strokes.map(s=>({c:s.c,w:s.w,pts:s.pts.map(p=>[r(p[0]),r(p[1]),p[2]])})); }
@@ -3326,6 +4028,7 @@ window.addEventListener('resize',()=>{ clearTimeout(_inkResizeTimer); _inkResize
 function handleStudyAction(act,id,el){
  const st=studyState(), d=S.inkDraft, list=el.dataset.list;
  const P=()=>currentPractice();
+ if(act.startsWith('num')) return handleNumAction(act,id,el);
  switch(act){
   case 'openvocab': Speech.stop(); st.tab='daily'; S.inkDraft=null; S.view='study'; render(); window.scrollTo(0,0); return true;
   case 'studytab': Speech.stop(); st.tab=id; S.inkDraft=null; S.view='study'; render(); return true;
@@ -3409,6 +4112,244 @@ function handleStudyAction(act,id,el){
   case 'freelesson': st.free.lessonId=el.value; if(el.value) st.free.promptId=''; S.inkDraft=null; render(); return true;
   case 'copytext': copyToClipboard(d?d.typed:'','Đã sao chép văn bản vào clipboard.'); return true;
   case 'copyprompt': { const lesson=allLessons.find(l=>l.id===st.free.lessonId), pr=FREE_PROMPTS.find(p=>p.id===st.free.promptId); copyToClipboard(buildFeedbackPrompt(d,lesson,pr),'Đã sao chép prompt vào clipboard.'); return true; }
+ }
+ return false;
+}
+/* ---------------- 🔢 SỐ, NGÀY THÁNG & GIÁ TIỀN: gõ vào là app hướng dẫn nghĩa, cách đọc, phát âm ---------------- */
+const EN_ONES=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const EN_TENS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+const EN_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const EN_DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const VI_WEEKDAYS=['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+const VI_DIGITS=['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
+const CURRENCIES={
+ USD:{sym:'$',one:'dollar',many:'dollars',sub1:'cent',subN:'cents',vi:'đô la Mỹ',viSub:'xu'},
+ EUR:{sym:'€',one:'euro',many:'euros',sub1:'cent',subN:'cents',vi:'euro',viSub:'xu'},
+ GBP:{sym:'£',one:'pound',many:'pounds',sub1:'penny',subN:'pence',vi:'bảng Anh',viSub:'xu (pence)'},
+ VND:{sym:'₫',one:'dong',many:'dong',vi:'đồng'}};
+function enUnder1000(n){ const out=[]; if(n>=100){ out.push(EN_ONES[Math.floor(n/100)]+' hundred'); n%=100; } if(n>=20) out.push(EN_TENS[Math.floor(n/10)]+(n%10?'-'+EN_ONES[n%10]:'')); else if(n>0) out.push(EN_ONES[n]); return out.join(' '); }
+function enInt(n){ n=Math.floor(Math.abs(n)); if(n===0) return 'zero'; const parts=[]; for(const [v,name] of [[1e12,'trillion'],[1e9,'billion'],[1e6,'million'],[1e3,'thousand']]){ if(n>=v){ parts.push(enUnder1000(Math.floor(n/v))+' '+name); n%=v; } } if(n>0) parts.push(enUnder1000(n)); return parts.join(' '); }
+function enDecimal(str){ const [i,f]=String(str).split('.'); return enInt(Number(i))+(f?' point '+[...f].map(ch=>EN_ONES[Number(ch)]).join(' '):''); }
+function enOrdinal(n){ const irregular={one:'first',two:'second',three:'third',five:'fifth',eight:'eighth',nine:'ninth',twelve:'twelfth'}; const m=enInt(n).match(/^(.*?)([a-z]+)$/); const last=m[2]; return m[1]+(irregular[last]||(last.endsWith('y')?last.slice(0,-1)+'ieth':last+'th')); }
+function ordSuffix(n){ const t=n%100; if(t>=11&&t<=13) return 'th'; return ({1:'st',2:'nd',3:'rd'})[n%10]||'th'; }
+function britishAnd(s){ return s.replace(/hundred (?!thousand|million|billion|trillion)(?=[a-z])/g,'hundred and '); }
+function viUnder1000(n,full){
+ const h=Math.floor(n/100), t=Math.floor(n/10)%10, u=n%10, out=[];
+ if(full||h>0) out.push(VI_DIGITS[h]+' trăm');
+ if(t===0){ if(u>0&&(full||h>0)) out.push('linh'); } else if(t===1) out.push('mười'); else out.push(VI_DIGITS[t]+' mươi');
+ if(u>0) out.push(u===1&&t>1?'mốt':u===5&&t>0?'lăm':VI_DIGITS[u]);
+ return out.join(' ');
+}
+function viInt(n){
+ n=Math.floor(Math.abs(n)); if(n===0) return 'không';
+ const units=['','nghìn','triệu','tỷ','nghìn tỷ'], groups=[]; while(n>0){ groups.push(n%1000); n=Math.floor(n/1000); }
+ const out=[]; for(let i=groups.length-1;i>=0;i--){ if(groups[i]===0) continue; out.push((viUnder1000(groups[i],i<groups.length-1)+' '+units[i]).trim()); }
+ return out.join(' ');
+}
+function viDecimal(str){ const [i,f]=String(str).split('.'); return viInt(Number(i))+(f?' phẩy '+viInt(Number(f)):''); }
+function enYear(y){
+ if(y<1000||y>9999) return enInt(y);
+ if(y%1000===0) return enInt(y);
+ if(y>2000&&y<2010) return 'two thousand '+EN_ONES[y-2000];
+ const hi=Math.floor(y/100), lo=y%100;
+ if(lo===0) return enInt(hi)+' hundred';
+ if(lo<10) return enInt(hi)+' oh '+EN_ONES[lo];
+ return enInt(hi)+' '+enInt(lo);
+}
+function enTime(h,m){
+ const h12=h%12===0?12:h%12, ap=h<12?'a.m.':'p.m.', next=h12%12+1;
+ const main=m===0?`${enInt(h12)} o'clock`:m<10?`${enInt(h12)} oh ${EN_ONES[m]}`:`${enInt(h12)} ${enInt(m)}`;
+ let alt=null;
+ if(m===15) alt=`a quarter past ${enInt(h12)}`; else if(m===30) alt=`half past ${enInt(h12)}`; else if(m===45) alt=`a quarter to ${enInt(next)}`;
+ else if(m>0&&m<30) alt=`${enInt(m)} past ${enInt(h12)}`; else if(m>30) alt=`${enInt(60-m)} to ${enInt(next)}`;
+ return {main,alt,ap,h12};
+}
+function parseAmount(str,cur,hasMult){
+ const s=String(str).replace(/\s/g,'');
+ if(!/^\d[\d.,]*$/.test(s)) return NaN;
+ if(cur==='VND'&&!hasMult) return Number(s.replace(/[.,]/g,''));
+ if(/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(s)) return Number(s.replace(/,/g,''));
+ if(/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) return Number(s.replace(/\./g,'').replace(',','.'));
+ if(/^\d+,\d+$/.test(s)) return Number(s.replace(',','.'));
+ if(/^\d+(\.\d+)?$/.test(s)) return Number(s);
+ return NaN;
+}
+function parseNumeric(input){
+ const raw=String(input||'').trim(); if(!raw) return null;
+ const t=raw.toLowerCase().replace(/\s+/g,' ');
+ let m;
+ if((m=t.match(/^(\d{1,2})\s*[:h]\s*(\d{2})\s*(a\.?m\.?|p\.?m\.?|sáng|chiều|tối)?$/))){
+  let h=+m[1]; const mi=+m[2], suf=m[3]||'';
+  if(h>23||mi>59) return {error:'Giờ không hợp lệ (giờ từ 0 đến 23, phút từ 0 đến 59).'};
+  if(/p|chiều|tối/.test(suf)&&h<12) h+=12; if(/a|sáng/.test(suf)&&h===12) h=0;
+  return {kind:'time',h,m:mi,raw};
+ }
+ const mkDate=(d,mo,y)=>{ d=+d; mo=+mo; y=+y; const dim=new Date(Date.UTC(y,mo,0)).getUTCDate();
+  if(mo<1||mo>12||d<1||d>dim) return {error:'Ngày này không có thật. Anh viết theo kiểu Việt Nam: ngày/tháng/năm, ví dụ 15/09/2026.'};
+  return {kind:'date',d,mo,y,raw}; };
+ if((m=t.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/))) return mkDate(m[1],m[2],m[3]);
+ if((m=t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))) return mkDate(m[3],m[2],m[1]);
+ if((m=t.match(/^(?:ngày\s*)?(\d{1,2})\s*tháng\s*(\d{1,2})(?:\s*(?:năm)?\s*(\d{4}))?$/))) return mkDate(m[1],m[2],m[3]||vnNow().getUTCFullYear());
+ const monthNo=s=>s.length>=3?EN_MONTHS.findIndex(x=>x.toLowerCase().startsWith(s.slice(0,3)))+1:0;
+ if((m=t.match(/^([a-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})$/))&&monthNo(m[1])) return mkDate(m[2],monthNo(m[1]),m[3]);
+ if((m=t.match(/^(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+)?([a-z]{3,9})\.?,?\s+(\d{4})$/))&&monthNo(m[2])) return mkDate(m[1],monthNo(m[2]),m[3]);
+ if((m=t.match(/^(\d[\d.,]*)\s*(%|phần trăm|percent)$/))){ const v=parseAmount(m[1],null,true); return isNaN(v)?{error:'Chưa đọc được con số.'}:{kind:'percent',value:v,raw}; }
+ let s=t, cur=null;
+ for(const [re,c] of [[/us\$|\$|usd|đô la|đô|dollars?/,'USD'],[/€|eur|euros?/,'EUR'],[/£|gbp|pounds?|bảng anh/,'GBP'],[/₫|vnđ|vnd|đồng|đ/,'VND']]){ if(re.test(s)){ cur=c; s=s.replace(re,' '); break; } }
+ let mult=1, multWord='';
+ for(const [re,v] of [[/nghìn tỷ|ngàn tỷ/,1e12],[/tỷ|billion|bn/,1e9],[/triệu|million|tr/,1e6],[/nghìn|ngàn|thousand|k/,1e3]]){ if(re.test(s)){ mult=v; multWord=s.match(re)[0]; s=s.replace(re,' '); break; } }
+ s=s.trim();
+ if(!cur&&mult>1&&!/thousand|million|billion|bn/.test(multWord)) cur='VND';
+ if(!/^\d[\d.,\s]*$/.test(s)) return {error:'Em chưa hiểu cách viết này. Anh thử theo mẫu: $12.50 · 150.000đ · 2,5 triệu · 15/09/2026 · 1995 · 7:30 · 25%'};
+ const base=parseAmount(s,cur,mult>1);
+ if(isNaN(base)) return {error:'Chưa đọc được con số. Anh thử viết lại, ví dụ 1,250.50 hoặc 1.250,50.'};
+ const value=Math.round(base*mult*1e6)/1e6;
+ if(value>=1e15) return {error:'Số quá lớn — em đọc được các số nhỏ hơn một triệu tỷ.'};
+ if(cur) return {kind:'price',cur,value,raw};
+ if(/^\d{4}$/.test(s)&&mult===1&&value>=1000&&value<=2100) return {kind:'year',value,raw};
+ return {kind:'number',value,raw};
+}
+function explainNumeric(p){
+ const R={title:'',written:[],reading:'',alts:[],meaning:'',notes:[]};
+ const numStr=v=>String(v);
+ if(p.kind==='price'&&p.cur==='VND'){
+  const v=Math.round(p.value);
+  R.title='Giá tiền Việt Nam'; R.written=[`${v.toLocaleString('en-US')} VND`,`₫${v.toLocaleString('en-US')}`];
+  R.reading=`${enInt(v)} dong`; R.meaning=`${v.toLocaleString('vi-VN')} ₫ — ${viInt(v)} đồng`;
+  const mil=v/1e6; if(v>=1e6&&!Number.isInteger(mil)&&Number.isInteger(mil*10)) R.alts.push({en:`${enDecimal(numStr(mil))} million dong`,note:'nói gọn'});
+  if(v>100&&britishAnd(R.reading)!==R.reading) R.alts.push({en:britishAnd(R.reading),note:'kiểu Anh thêm "and"'});
+  R.notes=['“dong” không thêm s: two hundred thousand dong.','Viết cho người nước ngoài: số trước, VND sau, dùng dấu phẩy tách hàng nghìn: 150,000 VND.','hundred / thousand / million không thêm s khi có số đứng trước.'];
+ } else if(p.kind==='price'){
+  const c=CURRENCIES[p.cur], whole=Math.floor(p.value+1e-9), cents=Math.round((p.value-whole)*100);
+  R.title=p.cur==='USD'?'Giá tiền đô la Mỹ':p.cur==='EUR'?'Giá tiền euro':'Giá tiền bảng Anh';
+  R.written=[`${c.sym}${p.value.toLocaleString('en-US',{minimumFractionDigits:cents?2:0,maximumFractionDigits:2})}`];
+  const wholePart=whole?`${enInt(whole)} ${whole===1?c.one:c.many}`:'', centPart=cents?`${enInt(cents)} ${cents===1?c.sub1:c.subN}`:'';
+  R.reading=[wholePart,centPart].filter(Boolean).join(' and ')||`zero ${c.many}`;
+  if(whole&&cents&&whole<1000) R.alts.push({en:`${enInt(whole)} ${cents<10?'oh '+EN_ONES[cents]:enInt(cents)}`,note:'nói nhanh khi mua bán'});
+  const mil=whole/1e6; if(whole>=1e6&&!cents&&!Number.isInteger(mil)&&Number.isInteger(mil*10)) R.alts.push({en:`${enDecimal(numStr(mil))} million ${c.many}`,note:'nói gọn'});
+  R.meaning=`${p.value.toLocaleString('vi-VN',{minimumFractionDigits:cents?2:0,maximumFractionDigits:2})} ${c.vi} — ${[whole?`${viInt(whole)} ${c.vi}`:'',cents?`${viInt(cents)} ${c.viSub}`:''].filter(Boolean).join(' ')||'không '+c.vi}`;
+  R.notes=[`Ký hiệu ${c.sym} viết TRƯỚC số (${c.sym}${whole||0}), nhưng “${c.many}” đọc SAU số.`,'Tiếng Anh dùng dấu phẩy tách hàng nghìn (1,250) và dấu chấm cho phần lẻ (12.50) — ngược với cách viết ở Việt Nam.',`Số ít: 1 ${c.one}; số nhiều: 2 ${c.many}${p.cur==='GBP'?' (1 penny → 2 pence)':''}.`];
+ } else if(p.kind==='number'){
+  const str=numStr(p.value), dec=str.includes('.');
+  R.title=dec?'Số thập phân':'Con số'; R.written=[p.value.toLocaleString('en-US',{maximumFractionDigits:6})];
+  R.reading=dec?enDecimal(str):enInt(p.value);
+  R.meaning=`${p.value.toLocaleString('vi-VN',{maximumFractionDigits:6})} — ${dec?viDecimal(str):viInt(p.value)}`;
+  if(!dec&&britishAnd(R.reading)!==R.reading) R.alts.push({en:britishAnd(R.reading),note:'kiểu Anh thêm "and"'});
+  R.notes=['Dấu phẩy tách hàng nghìn: 1,000 = one thousand. Dấu chấm là phần thập phân, đọc “point”: 2.5 = two point five.','Không thêm s: two hundred, three thousand. Nhưng “hundreds of people” = hàng trăm người.','Phần sau dấu chấm đọc từng chữ số: 3.14 = three point one four.'];
+ } else if(p.kind==='year'){
+  R.title='Năm'; R.written=[String(p.value)]; R.reading=enYear(p.value);
+  if(p.value>2000&&p.value<2010) R.alts.push({en:'twenty oh '+EN_ONES[p.value-2000],note:'cũng dùng được'});
+  if(p.value>=2010&&p.value<=2099) R.alts.push({en:'two thousand '+enInt(p.value-2000),note:'cũng đúng'});
+  if(enInt(p.value)!==R.reading) R.alts.push({en:enInt(p.value),note:'nếu đây là một con số (không phải năm)'});
+  R.meaning=`Năm ${p.value} — năm ${viInt(p.value)}`;
+  R.notes=['Năm thường đọc theo từng cặp hai chữ số: 1995 = nineteen ninety-five.','2001–2009: two thousand one…; từ 2010 thường nói twenty ten, twenty twenty-six.','Dùng “in”: in 2026. Thập niên: the 1990s = the nineteen nineties.'];
+ } else if(p.kind==='date'){
+  const wd=new Date(Date.UTC(p.y,p.mo-1,p.d)).getUTCDay(), mon=EN_MONTHS[p.mo-1], pad=n=>String(n).padStart(2,'0');
+  R.title='Ngày tháng';
+  R.written=[`${EN_DAYS[wd]}, ${mon} ${p.d}${ordSuffix(p.d)}, ${p.y} (kiểu Mỹ)`,`${EN_DAYS[wd]}, ${p.d} ${mon} ${p.y} (kiểu Anh)`,`${pad(p.mo)}/${pad(p.d)}/${p.y} (số kiểu Mỹ: tháng/ngày/năm)`];
+  R.reading=`${EN_DAYS[wd]}, ${mon} ${enOrdinal(p.d)}, ${enYear(p.y)}`;
+  R.alts.push({en:`${EN_DAYS[wd]}, the ${enOrdinal(p.d)} of ${mon}, ${enYear(p.y)}`,note:'kiểu Anh'});
+  R.meaning=`${VI_WEEKDAYS[wd]}, ngày ${p.d} tháng ${p.mo} năm ${p.y}`;
+  R.notes=['Ngày đọc bằng SỐ THỨ TỰ: fifteenth, không phải fifteen.','Kiểu Mỹ: tháng trước ngày (September 15). Kiểu Anh: ngày trước tháng (15 September).'];
+  if(p.d<=12&&p.d!==p.mo) R.notes.push(`Cẩn thận: người Mỹ đọc ${pad(p.d)}/${pad(p.mo)} là ngày ${p.mo} tháng ${p.d}. Khi viết cho người nước ngoài, nên ghi tên tháng.`);
+  R.notes.push('Giới từ: on September 15th · in September · in 2026.');
+ } else if(p.kind==='time'){
+  const T=enTime(p.h,p.m);
+  R.title='Giờ'; R.written=[`${T.h12}:${String(p.m).padStart(2,'0')} ${T.ap}`,`${String(p.h).padStart(2,'0')}:${String(p.m).padStart(2,'0')}`];
+  R.reading=T.main;
+  if(T.alt) R.alts.push({en:T.alt,note:'cách nói khác'});
+  if(p.m===0&&p.h===12) R.alts.push({en:'noon',note:'12 giờ trưa'});
+  if(p.m===0&&p.h===0) R.alts.push({en:'midnight',note:'12 giờ đêm'});
+  R.alts.push({en:`${T.main} ${T.ap}`,note:T.ap==='a.m.'?'a.m. = buổi sáng (0h–11h59)':'p.m. = buổi chiều/tối (12h–23h59)'});
+  R.meaning=`${p.h} giờ ${p.m?p.m+' phút':'đúng'}${p.m===30?' (… giờ rưỡi)':''} — ${p.h<12?'buổi sáng':p.h<18?'buổi chiều':'buổi tối'}`;
+  R.notes=['Cách dễ nhất: đọc giờ rồi đọc phút: 7:45 = seven forty-five.','past = hơn, to = kém: 7:50 = ten to eight (8 giờ kém 10).','Phút 01–09 đọc “oh”: 7:05 = seven oh five.','Dùng “at”: at 7:30.'];
+ } else if(p.kind==='percent'){
+  const str=numStr(p.value), dec=str.includes('.');
+  R.title='Phần trăm'; R.written=[`${p.value.toLocaleString('en-US',{maximumFractionDigits:4})}%`];
+  R.reading=(dec?enDecimal(str):enInt(p.value))+' percent';
+  R.meaning=`${p.value.toLocaleString('vi-VN',{maximumFractionDigits:4})}% — ${dec?viDecimal(str):viInt(p.value)} phần trăm`;
+  R.notes=['“percent” không thêm s: fifty percent.','rise BY 5 percent = tăng thêm 5% · rise TO 5 percent = tăng lên mức 5%.','Phần thập phân đọc “point”: 6.5% = six point five percent.'];
+ }
+ const seenAlt=new Set([R.reading]); R.alts=R.alts.filter(a=>!seenAlt.has(a.en)&&seenAlt.add(a.en));
+ return R;
+}
+let _ipaMap=null;
+const EXTRA_IPA={dollar:'ˈdɑːlər',dollars:'ˈdɑːlərz',cent:'sent',cents:'sents',dong:'dɑːŋ',euro:'ˈjʊroʊ',euros:'ˈjʊroʊz',pound:'paʊnd',pounds:'paʊndz',penny:'ˈpeni',pence:'pens',and:'ænd',oh:'oʊ',of:'ʌv',the:'ðə',past:'pæst',to:'tuː',quarter:'ˈkwɔːrtər',percent:'pərˈsent',point:'pɔɪnt','a.m.':'ˌeɪ ˈem','p.m.':'ˌpiː ˈem',a:'ə',thousand:'ˈθaʊzənd',million:'ˈmɪljən',billion:'ˈbɪljən',half:'hæf',"o'clock":'əˈklɑːk'};
+function ipaMap(){ if(_ipaMap) return _ipaMap; _ipaMap={}; WORDS.forEach(w=>{ if(!/\s/.test(w.en)&&w.ipa&&!_ipaMap[w.en.toLowerCase()]) _ipaMap[w.en.toLowerCase()]=w.ipa.replace(/^\/|\/$/g,''); }); return Object.assign(_ipaMap,EXTRA_IPA); }
+function ipaWord(w){
+ const m=ipaMap(), k=w.toLowerCase().replace(/,/g,'');
+ if(m[k]) return m[k];
+ if(k.includes('-')){ const parts=k.split('-').map(ipaWord); return parts.every(Boolean)?parts.join(' '):null; }
+ if(k.endsWith('ieth')&&m[k.slice(0,-4)+'y']) return m[k.slice(0,-4)+'y'].replace(/i$/,'')+'iəθ';
+ if(k.endsWith('th')&&m[k.slice(0,-2)]) return m[k.slice(0,-2)]+'θ';
+ return null;
+}
+function ipaLine(text){ return '/'+String(text).replace(/,/g,'').split(/\s+/).filter(Boolean).map(w=>ipaWord(w)||w).join(' ')+'/'; }
+function randomNumText(){
+ const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1)), k=ri(0,6);
+ if(k===0){ const w=Math.random()<.7?ri(1,99):ri(100,2500), c=Math.random()<.6?ri(1,99):0; return '$'+w+(c?'.'+String(c).padStart(2,'0'):''); }
+ if(k===1) return (Math.random()<.5?ri(5,500)*1000:ri(1,50)*100000).toLocaleString('vi-VN')+'đ';
+ if(k===2) return String(ri(1950,2035));
+ if(k===3) return `${ri(1,28)}/${ri(1,12)}/${ri(1990,2030)}`;
+ if(k===4) return `${ri(1,12)}:${String([0,5,15,20,30,45,50][ri(0,6)]).padStart(2,'0')}`;
+ if(k===5) return ri(2,99)+'%';
+ return String(ri(13,9999));
+}
+function numKey(p){ if(!p||p.error) return null; if(p.kind==='date') return `d:${p.y}-${p.mo}-${p.d}`; if(p.kind==='time') return `t:${p.h%12}:${p.m}`; return `v:${Math.round(p.value*100)/100}`; }
+function renderNumbersTab(){
+ const text=S.numText==null?'$12.50':S.numText, p=parseNumeric(text), R=p&&!p.error?explainNumeric(p):null;
+ const examples=['$4.99','$1,250','150.000đ','2,5 triệu','50k','€20','£3.50','1995','2026','15/09/2026','7:45','25%','3.14','1,000,000'];
+ const say=(t,label,rate,cls)=>`<button class="${cls||'btn outline sm'}" data-act="numspeak" data-text="${esc(t)}" data-rate="${rate}">${label}</button>`;
+ let result='';
+ if(!text.trim()) result=`<div class="panel"><p class="muted">Gõ hoặc viết một con số vào ô trên.</p></div>`;
+ else if(p&&p.error) result=`<div class="panel"><p class="save-error">${esc(p.error)}</p></div>`;
+ else if(R) result=`<div class="panel" id="practiceTop"><p class="eyebrow">${esc(R.title.toUpperCase())}</p>
+  <p class="num-meaning">${esc(R.meaning)}</p>
+  <p class="field-help" style="margin-top:12px">Cách viết bằng tiếng Anh</p>
+  <div class="word-chips">${R.written.map(w=>`<span class="written-chip">${esc(w)}</span>`).join('')}</div>
+  <p class="field-help" style="margin-top:12px">Cách đọc</p>
+  <p class="num-reading">${esc(R.reading)}</p>
+  <p class="ipa">${esc(ipaLine(R.reading))}</p>
+  <div class="btn-row" style="margin-top:8px">${say(R.reading,'🔊 Nghe','0.9','btn')}${say(R.reading,'🐢 Nghe chậm','0.55')}</div>
+  <p class="field-help" style="margin-top:12px">Chạm từng từ để nghe riêng</p>
+  <div class="word-chips">${R.reading.replace(/,/g,'').split(/\s+/).map(w=>say(w,esc(w),'0.75','chip')).join('')}</div>
+  ${R.alts.length?`<p class="field-help" style="margin-top:12px">Cách đọc khác</p>${R.alts.map(a=>`<div class="listen-row">${say(a.en,'🔊','0.85','speak-btn')}<span style="flex:1"><b>${esc(a.en)}</b> <small class="muted">— ${esc(a.note)}</small></span></div>`).join('')}`:''}
+ </div>
+ <div class="panel"><p class="eyebrow">📘 GHI NHỚ</p><ul class="num-rules">${R.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>`;
+ const q=S.numQuiz;
+ let quiz=`<div class="panel"><p class="eyebrow">🎧 LUYỆN NGHE SỐ & GIÁ TIỀN</p>
+  <p class="muted" style="font-size:13px">Em đọc một giá tiền, ngày tháng, năm hoặc giờ ngẫu nhiên. Anh viết lại bằng Apple Pencil rồi kiểm tra.</p>`;
+ if(!q) quiz+=`<button class="btn" data-act="numquiznew">▶ Bắt đầu luyện nghe</button></div>`;
+ else {
+  const P={k:'free',drill:'free',key:'numquiz',target:'',hidden:false}; const fresh=!S.inkDraft||S.inkDraft.key!=='numquiz'; const d=ensureDraft(P); if(fresh){ d.rows=2; d.strokes=[]; }
+  quiz+=`<div class="big-listen"><button class="btn big" data-act="numquizspeak">🔊 Nghe</button><button class="btn outline big" data-act="numquizspeak" data-id="slow">🐢 Nghe chậm</button></div></div>
+  ${renderInkPanel(P,d,false)}
+  <div class="panel"><label><span class="field-label">Viết con số anh nghe được vào ô này (ví dụ 12.50 · 150000 · 15/9/2026 · 7:30)</span>
+   <input id="numAnswer" class="num-input" data-act="numanswer" value="${esc(q.answer)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Viết vào đây…"></label>
+   <div class="btn-row" style="margin-top:10px"><button class="btn" data-act="numquizcheck">Kiểm tra</button><button class="btn outline" data-act="numquiznew">Số khác →</button></div>
+   ${q.result?`<div class="feedback ${q.result.ok?'':'incorrect'}"><b>${q.result.ok?'✓ Chính xác!':'✗ Chưa đúng'}</b><div style="margin-top:6px">Đáp án: <b class="lime">${esc(q.text)}</b> — ${esc(q.reading)}</div>${q.result.note?`<p class="field-help">${esc(q.result.note)}</p>`:''}</div>`:''}
+  </div>`;
+ }
+ return `<div class="panel"><p class="eyebrow">GÕ HOẶC VIẾT MỘT CON SỐ</p>
+  <p class="muted" style="font-size:13px">Giá tiền, ngày tháng, năm, giờ, phần trăm… Em giải thích nghĩa, cách viết, cách đọc và phát âm.</p>
+  <input id="numInput" class="num-input" data-act="numinput" value="${esc(text)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Ví dụ: $12.50 · 150.000đ · 15/09/2026">
+  <div class="seg" style="margin-top:10px">${examples.map(x=>`<button class="chip" data-act="numexample" data-id="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+ </div>${result}${quiz}`;
+}
+function handleNumAction(act,id,el){
+ switch(act){
+  case 'numinput': S.numText=el.value; render(); return true;
+  case 'numexample': { S.numText=id; render(); const p=parseNumeric(id); if(p&&!p.error) Speech.speakOne(explainNumeric(p).reading,0.85); return true; }
+  case 'numspeak': Speech.speakOne(el.dataset.text,Number(el.dataset.rate)||0.85); return true;
+  case 'numquiznew': { const text=randomNumText(), p=parseNumeric(text), R=explainNumeric(p);
+   S.numQuiz={text,reading:R.reading,key:numKey(p),answer:'',result:null}; S.inkDraft=null; render(); Speech.speakOne(R.reading,0.85); return true; }
+  case 'numquizspeak': if(S.numQuiz) Speech.speakOne(S.numQuiz.reading,id==='slow'?0.55:0.85); return true;
+  case 'numanswer': if(S.numQuiz) S.numQuiz.answer=el.value; return true;
+  case 'numquizcheck': { const q=S.numQuiz; if(!q) return true; const inp=document.getElementById('numAnswer'); if(inp) q.answer=inp.value;
+   const p=parseNumeric(q.answer);
+   if(!p||p.error) q.result={ok:false,note:p&&p.error?p.error:'Anh viết con số vào ô trước nhé.'};
+   else { const ok=numKey(p)===q.key; q.result={ok,note:ok?'':`Em đọc câu trả lời của anh là: ${explainNumeric(p).reading}`}; }
+   render(); return true; }
  }
  return false;
 }
@@ -3515,7 +4456,7 @@ function renderNotes(){
  ${str(r,'evidence')?`<p class="eyebrow">BẰNG CHỨNG & LÝ DO</p><p>${nl2br(str(r,'evidence'))}</p>`:''}${str(r,'uncertainty')?`<p class="eyebrow">ĐIỀU CHƯA CHẮC</p><p>${nl2br(str(r,'uncertainty'))}</p>`:''}${str(r,'outcome')?`<p class="eyebrow">KẾT QUẢ & BÀI HỌC</p><p>${nl2br(str(r,'outcome'))}</p>`:''}
  ${str(r,'reviewDate')?`<span class="card-meta">⏱ Xem lại: ${str(r,'reviewDate').split('-').reverse().join('/')}</span>`:''}</article>`).join('')}
  <div class="card-header" style="margin-top:24px"><h2>Ghi chép từ bài học</h2><span class="muted">${d.completions.length} bài</span></div>
- ${d.completions.length?[...d.completions].reverse().map(c=>`<article class="project-card"><span class="card-meta">BÀI HỌC · ${new Date(c.completed_at).toLocaleDateString('vi-VN')}</span><h2 style="margin-top:8px">${esc(lessons.find(l=>l.id===c.lesson_id).title)}</h2><p>${nl2br(c.reflection)}</p></article>`).join(''):`<p class="muted">Bài tập anh viết khi hoàn thành bài học sẽ xuất hiện ở đây.</p>`}`;
+ ${d.completions.length?[...d.completions].reverse().map(c=>`<article class="project-card"><span class="card-meta">BÀI HỌC · ${new Date(c.completed_at).toLocaleDateString('vi-VN')}</span><h2 style="margin-top:8px">${esc(lessonTitle(c.lesson_id))}</h2><p>${nl2br(c.reflection)}</p></article>`).join(''):`<p class="muted">Bài tập anh viết khi hoàn thành bài học sẽ xuất hiện ở đây.</p>`}`;
 }
 function str(r,k){ return String(r.data[k]==null?'':r.data[k]); }
 
@@ -3629,14 +4570,15 @@ function renderLessonModal(lesson){
 }
 
 function renderReviewModal(card){
- const q=reviewQuestions[card.lesson_id]; const lesson=lessons.find(l=>l.id===card.lesson_id);
+ const q=reviewQuestionFor(card.lesson_id); const lesson={title:lessonTitle(card.lesson_id)};
+ if(!q) return overlay('review',`<div class="dialog"><button class="dialog-close" data-act="closereview">×</button><h2>Bài này chưa có câu ôn</h2><button class="btn" data-act="closereview">Đóng</button></div>`);
  const st=S.reviewUi||{}; const answer=st.answer!==undefined?st.answer:''; const result=st.result;
  const order = reviewOptionOrder(card.revision);
  return overlay('review',`<div class="dialog"><button class="dialog-close" data-act="closereview">×</button>
  <p class="eyebrow">ÔN ĐỂ NHỚ · ${esc(lesson.title.toUpperCase())}</p><h2>Anh sẽ nghĩ thế nào?</h2><p class="muted">Thử trả lời bằng điều anh còn nhớ.</p>
  <div class="panel"><h3>${esc(q.question)}</h3>${order.map(i=>`<label class="radio-option"><input type="radio" name="reviewanswer" value="${i}" ${String(i)===answer?'checked':''} data-act="reviewanswer" ${result?'disabled':''}> <span>${esc(q.options[i])}</span></label>`).join('')}</div>
  ${result?`<div class="feedback ${result.correct?'':'incorrect'}"><b>${result.correct?'Anh đã vận dụng đúng. ':'Mình vừa tìm được một chỗ cần củng cố. '}</b>${esc(q.explanation)}</div>
- <p class="reference-note">Đã lưu câu trả lời.</p>
+ <p class="reference-note">Đã lưu câu trả lời. ${esc(nextReviewNote(card))}</p>
  <div class="btn-row" style="margin-top:10px"><button class="btn" data-act="nextreview">${dueReviews(S.data).length?'Câu tiếp theo':'Xong buổi ôn'} →</button><button class="btn outline" data-act="reviewreadlesson">Đọc lại bài</button></div>`:
  `<button class="btn" style="margin-top:12px" data-act="submitreview" ${answer===''?'disabled':''}>Gửi câu trả lời</button>`}
  </div>`);
@@ -3745,13 +4687,15 @@ function renderProfileModal(){
 }
 function renderHelpModal(){
  return overlay('help',`<div class="dialog"><button class="dialog-close" data-act="closehelp">×</button><h2>Một hành trình có cơ sở</h2><p class="muted">Bắt đầu đơn giản. Đo điều đã làm được. Mở rộng theo bằng chứng.</p>
- <p><b class="lime">1.</b> Mở “Phiên học hôm nay” ở trang Hôm nay — em đã ghép sẵn việc theo quỹ thời gian của anh.</p>
+ <p><b class="lime">1.</b> <b>Mới bắt đầu: mỗi ngày chỉ cần mở trang Hôm nay</b> và làm theo thứ tự: ôn bài → học từ vựng & viết tay → đọc 1 bài mới → ghi nhật ký. Các mục trong nhóm “Mở rộng” để dành khi anh đã quen.</p>
  <p><b class="lime">2.</b> Trong bài học, chọn <b>VI / EN / Song ngữ</b> ở góc trên. Chế độ Song ngữ có nút “Ẩn bản dịch” để anh tự nhớ rồi mở lại đối chiếu.</p>
  <p><b class="lime">3.</b> Bấm 🔊 để nghe từng câu tiếng Anh, 🐢 để nghe chậm. Giọng lấy từ máy anh, không cần API key.</p>
  <p><b class="lime">4.</b> Vào <b>Bàn học → Hôm nay</b> để làm phiên từ vựng: tô chữ từ mới, rồi viết lại từ trí nhớ, nghe viết, điền vào câu. Từ nhớ đúng quay lại sau 1, 3, 7, 14, 30… ngày. <b>Kho từ</b> có ${WORDS.length} từ về kinh tế, chính trị, thế giới; anh có thể thêm từ của mình.</p>
  <p><b class="lime">4b.</b> Chấm bài: viết vào ô chữ bằng Apple Pencil (iPad tự đổi thành chữ nhờ tính năng Viết tay/Scribble) → xem lại văn bản → xác nhận → em so từng chữ cái. Hoặc chọn “Tự chấm”.</p>
  <p><b class="lime">5.</b> Bài viết tự do: xuất ảnh PNG hoặc sao chép prompt để anh tự dán sang Astra/ChatGPT. App không tự gửi gì cả.</p>
  <p><b class="lime">6.</b> Sổ lỗi trong Học viện gom những câu anh từng sai để luyện lại, không ảnh hưởng lịch ôn.</p>
+ <p><b class="lime">7.</b> Ôn bài ngắt quãng: hoàn thành một bài → sau 1 ngày em nhắc ôn, trả lời đúng thì giãn ra 3, 7, 14, 30… ngày. Số đỏ cạnh “Học viện” là số bài đến lịch.</p>
+ <p><b class="lime">8.</b> <b>Nhật ký học</b> tự ghi mỗi ngày: học gì, mất bao nhiêu phút; anh kéo thanh để tự đánh giá mức hiểu. <b>Bàn học → Số & giá tiền</b>: gõ một giá tiền, ngày tháng hoặc giờ để xem cách đọc.</p>
  <p class="reference-note">Giới hạn: nét vẽ trên khung giấy không được máy đọc; chữ chỉ được nhận dạng khi anh viết vào ô chữ (Scribble của iPad, chạy trên máy). Scribble có thể tự sửa lỗi chính tả nên luôn có bước xem lại trước khi chấm. Chưa có phiên cố vấn AI gọi trực tiếp API.</p>
  <button class="btn" data-act="closehelp">Đã hiểu</button></div>`);
 }
@@ -3910,6 +4854,7 @@ function onAction(el,e){
   S.review=Object.assign({},card,{practiceOnly:true}); S.reviewUi=null; render(); return;
  }
  /* ---- Bàn học ---- */
+ if(handleGrowthAction(act,id,el)) return;
  if(handleStudyAction(act,id,el,e)) return;
  if(act==='academytab'){ academyTab=id; render(); }
  if(act==='projecttab'){ projectTab=id; render(); }
@@ -3944,7 +4889,7 @@ function onAction(el,e){
  if(act==='cancelrestore'){ S.restoreFile=null; render(); return; }
  if(act==='confirmrestore'){
   const o=S.restoreFile.data;
-  const clean=Object.assign(emptyState(),o); delete clean.format; delete clean.version; delete clean.exported_at;
+  const clean=normalizeState(o); delete clean.format; delete clean.version; delete clean.exported_at;
   S.data=clean; S.restoreFile=null; S.profileOpen=false; scheduleSave(); render();
   toast('Đã khôi phục dữ liệu từ tệp sao lưu.'); return;
  }
@@ -4033,7 +4978,7 @@ function doSubmitResolve(){
 /* Không có màn đăng nhập — vào thẳng app, dữ liệu đọc từ máy ngay lập tức. */
 Speech.init();
 Speech.onVoicesChanged=()=>{ if(S.selectedLesson) render(); };
-loadState();
+loadState().then(journalBoot);
 </script>
 </body>
 </html>
