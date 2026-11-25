@@ -101,7 +101,7 @@ Bài cũ đều ở mức Foundation và dài khoảng 5 phút. AI & Engineering
 | `legacy-backup` | Tải file sao lưu dữ liệu cũ | Hoạt động thật | 1 |
 | `academy-map` | Khung 7 học viện và chuẩn đầu ra | Hoạt động thật | 1 |
 | `migration` | Chuyển dữ liệu cũ sang ATLAS mới | Xem thử, chưa lưu | 3 |
-| `brand` | Logo, icon 7 học viện, design system | Chưa triển khai | 2 |
+| `brand` | Logo, icon 7 học viện, design system | Hoạt động thật (chờ duyệt) | 2 |
 | `dashboard` | Trang tổng quan và Continue Learning | Chưa triển khai | 3 |
 | `academy-pages` | Trang học viện và lộ trình theo cấp | Chưa triển khai | 3 |
 | `lesson-reader` | Trình đọc bài học | Chưa triển khai | 3 |

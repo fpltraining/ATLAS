@@ -12,10 +12,17 @@ Cập nhật 25/11/2026 (Phase 1).
 
 ```
 index.html                 ATLAS cũ (ES6), đang chạy. Thay ở Phase 3, bản cũ thành legacy.html
-next.html                  ATLAS mới đang xây (Phase 1: trang kiểm tra chỉ đọc)
+next.html                  ATLAS mới đang xây
+  <!-- BRAND-SPRITE -->       sprite SVG logo + icon (sinh bởi tools/build-brand.mjs)
+  <script id="atlas-config">  cấu hình công khai (URL Supabase, khoá anon) — không chứa khoá bí mật
   <script id="atlas-content" type="application/json">  nội dung có số phiên bản
-  <script id="atlas-core">  logic thuần ES5 (window.ATLAS), không đụng DOM
-  <script id="atlas-ui">    giao diện ES5
+  <script id="atlas-core">    logic thuần ES5 (window.ATLAS), không đụng DOM
+  <script id="atlas-ui-kit">  component, khung app, router, lưu dữ liệu (window.UI)
+  <script id="atlas-ui-illo"> minh hoạ SVG/HTML vẽ từ dữ liệu
+  <script id="atlas-ui-*">    các trang
+  <script id="atlas-ui-boot"> khởi động
+brand/                     logo, icon (SVG + PNG) — xem docs/DESIGN_SYSTEM.md
+tools/build-brand.mjs      nguồn hình học duy nhất của logo và icon
 tools/es5-check.mjs        soát cú pháp ES5 và các hàm chỉ có trên iOS mới
 tools/test/*.test.mjs      kiểm thử lõi (Node, chạy khối atlas-core trong vm)
 tools/browser-check.mjs    soát bằng Chromium thật, cỡ iPad và iPhone (cần Playwright)

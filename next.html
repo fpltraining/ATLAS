@@ -3,122 +3,421 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F7F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1220" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ATLAS">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="ATLAS: đại học cá nhân với 7 học viện về AI, kinh doanh, tài chính, khoa học, công nghệ tương lai, lãnh đạo và tư duy phản biện.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#171B2E">
-<title>ATLAS · Kiểm tra nâng cấp</title>
+<title>ATLAS</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/svg+xml" href="brand/atlas-symbol.svg">
 <style>
-/* Phase 1: trang kiểm tra kỹ thuật. Bộ màu tạm theo brief; Phase 2 sẽ chuẩn hoá design system. */
+/* ================= ATLAS design system =================
+   Token màu, chữ, khoảng cách, bo góc, bóng, chuyển động. Component dùng token, không tự đặt màu riêng.
+   Tương phản: chữ chính ≥ 7:1, chữ phụ ≥ 4.5:1 trên nền sáng và tối. Lime chỉ làm nền nhấn (chữ mực đặt lên), không làm màu chữ trên nền sáng. */
 :root{
-  --bg:#F7F7F2; --card:#FFFFFF; --text:#171B2E; --muted:#5F6676; --line:#E4E7EA;
-  --lime:#C7E85B; --lime-soft:#EEF6D6; --warn:#8A3317; --warn-bg:#FBEDE7;
-  --btn-bg:#171B2E; --btn-text:#F7F7F2; --focus:#171B2E;
-  --radius:14px;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --ink-900:#171B2E; --ink-800:#232842; --ink-700:#3A4060; --ink-600:#4C5372;
+  --slate-600:#5F6676; --slate-500:#747B8C; --slate-300:#C5C9D2; --line:#E4E7EA;
+  --ivory:#F7F7F2; --paper:#FFFFFF; --lime-400:#C7E85B; --lime-200:#DDF0A0; --lime-100:#EEF6D6; --lime-700:#4F6B00;
+  --red-700:#A4281B; --red-100:#FBE9E6; --amber-700:#8A4B08; --amber-100:#FBF0DC;
+
+  --bg:var(--ivory); --surface:var(--paper); --surface-2:#FBFBF8; --sunk:#EFEFE8;
+  --text:var(--ink-900); --text-2:var(--slate-600);
+  --border:var(--line); --border-strong:var(--slate-300);
+  --accent:var(--lime-400); --accent-soft:var(--lime-100); --accent-text:var(--lime-700); --on-accent:var(--ink-900);
+  --primary:var(--ink-900); --primary-hover:var(--ink-700); --on-primary:var(--ivory);
+  --danger:var(--red-700); --danger-soft:var(--red-100); --warn:var(--amber-700); --warn-soft:var(--amber-100);
+  --focus:var(--ink-900); --scrim:rgba(15,18,32,.45);
+  --brand-dark:var(--ink-900); --brand-light:var(--slate-500); --brand-north:var(--lime-400); --brand-ring:var(--ink-900); --brand-ring-op:1; --brand-node:var(--lime-400); --brand-node-stroke:var(--ink-900);
+
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  --fs-display:clamp(30px,3.6vw,44px); --fs-h1:clamp(26px,2.8vw,34px); --fs-h2:22px; --fs-h3:18px;
+  --fs-body:17px; --fs-small:15px; --fs-caption:13px; --fs-read:18px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:20px; --s6:24px; --s7:32px; --s8:40px; --s9:56px;
+  --r-sm:10px; --r-md:14px; --r-lg:20px; --r-pill:999px;
+  --shadow-1:0 1px 2px rgba(23,27,46,.06),0 1px 1px rgba(23,27,46,.04);
+  --shadow-2:0 2px 6px rgba(23,27,46,.05),0 14px 36px rgba(23,27,46,.09);
+  --ease:cubic-bezier(.2,.7,.2,1); --dur-1:140ms; --dur-2:220ms;
+  --tap:44px; --sidebar:252px; --tabbar:64px;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#0F1220; --surface:#171B2E; --surface-2:#1C2135; --sunk:#12152A;
+  --text:#ECEDE6; --text-2:#A9AFBE; --border:#2C3247; --border-strong:#3D4460;
+  --accent:#C7E85B; --accent-soft:#283219; --accent-text:#C7E85B; --on-accent:#171B2E;
+  --primary:#C7E85B; --primary-hover:#D6EF82; --on-primary:#171B2E;
+  --danger:#F19A8C; --danger-soft:#3A1E1A; --warn:#F2C27B; --warn-soft:#33270F;
+  --focus:#C7E85B; --scrim:rgba(0,0,0,.6);
+  --brand-dark:#F7F7F2; --brand-light:#8A90A2; --brand-ring:#F7F7F2; --brand-ring-op:.45; --brand-node-stroke:#171B2E;
+  --shadow-1:0 1px 2px rgba(0,0,0,.4); --shadow-2:0 2px 6px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.35);
+  color-scheme:dark;
 }
 @media (prefers-color-scheme: dark){
-  :root{
-    --bg:#11141F; --card:#1A1E2E; --text:#ECEDE6; --muted:#A9AFBE; --line:#2C3247;
-    --lime-soft:#2A331A; --warn:#F2A68C; --warn-bg:#3A231B;
-    --btn-bg:#C7E85B; --btn-text:#171B2E; --focus:#C7E85B;
+  :root:not([data-theme="light"]){
+    --bg:#0F1220; --surface:#171B2E; --surface-2:#1C2135; --sunk:#12152A;
+    --text:#ECEDE6; --text-2:#A9AFBE; --border:#2C3247; --border-strong:#3D4460;
+    --accent:#C7E85B; --accent-soft:#283219; --accent-text:#C7E85B; --on-accent:#171B2E;
+    --primary:#C7E85B; --primary-hover:#D6EF82; --on-primary:#171B2E;
+    --danger:#F19A8C; --danger-soft:#3A1E1A; --warn:#F2C27B; --warn-soft:#33270F;
+    --focus:#C7E85B; --scrim:rgba(0,0,0,.6);
+    --brand-dark:#F7F7F2; --brand-light:#8A90A2; --brand-ring:#F7F7F2; --brand-ring-op:.45; --brand-node-stroke:#171B2E;
+    --shadow-1:0 1px 2px rgba(0,0,0,.4); --shadow-2:0 2px 6px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.35);
+    color-scheme:dark;
   }
 }
+:root[data-text="large"]{ --fs-body:19px; --fs-small:17px; --fs-caption:15px; --fs-read:21px; --fs-h3:20px; --fs-h2:24px; }
+
+/* ---------- nền tảng ---------- */
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.55;
-  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.skip{position:absolute;left:-9999px;top:8px;background:var(--card);padding:10px 14px;border-radius:10px}
-.skip:focus{left:16px}
-.wrap{max-width:920px;margin:0 auto;padding:16px}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 4px;flex-wrap:wrap}
-.word{font-weight:800;letter-spacing:.18em;font-size:20px}
-.tag{font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:4px 12px}
-h1{font-size:28px;line-height:1.2;margin:18px 0 8px;letter-spacing:-.01em}
-h2{font-size:21px;line-height:1.3;margin:0 0 10px}
-h3{font-size:17px;margin:18px 0 6px}
-h4{font-size:15px;margin:14px 0 4px}
-p{margin:0 0 10px}
-.lead{color:var(--muted);max-width:68ch}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:16px 0}
-.muted{color:var(--muted)}
-.small{font-size:14px}
-.note{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px}
-.note.ok{background:var(--lime-soft)}
-.note.warn{background:var(--warn-bg);color:var(--warn)}
-table.kv{width:100%;border-collapse:collapse;font-size:15px}
-table.kv th,table.kv td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
-table.kv th{text-align:left;font-weight:500;color:var(--muted);padding-right:12px}
-table.kv td{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%}
-table.kv tr:first-child th,table.kv tr:first-child td{border-top:0}
-ul.plain{margin:6px 0 10px;padding-left:20px}
-ul.plain li{margin:4px 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;border:0;
-  background:var(--btn-bg);color:var(--btn-text);font:inherit;font-weight:600;cursor:pointer;margin:6px 0}
-.btn:active{transform:translateY(1px)}
-details.academy{border-top:1px solid var(--line)}
-details.academy:first-of-type{border-top:0}
-details.academy summary{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 0;cursor:pointer;list-style:none}
-details.academy summary::-webkit-details-marker{display:none}
-details.academy summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--muted);padding-left:8px}
-details.academy[open] summary::after{content:"\2212"}
-.no{flex:0 0 34px;height:34px;border-radius:10px;background:var(--lime);color:#171B2E;display:flex;align-items:center;justify-content:center;font-weight:800}
-.sum-title{display:flex;flex-direction:column}
-.sum-title b{font-size:17px}
-.sum-title small{color:var(--muted);font-size:13px}
-.acad-body{padding:0 0 16px 46px}
-.level{margin:8px 0 0}
-.ev{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 8px;margin-left:6px;color:var(--muted);white-space:nowrap}
-.pill{display:inline-block;font-size:13px;border-radius:999px;padding:2px 10px;white-space:nowrap;font-weight:600}
-.pill.live{background:var(--lime);color:#171B2E}
-.pill.preview{border:1px solid var(--text)}
-.pill.planned{border:1px dashed var(--muted);color:var(--muted);font-weight:500}
-table.feat{width:100%;border-collapse:collapse;font-size:15px}
-table.feat td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
-table.feat td.st{text-align:right;padding-left:10px}
-footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
-@media (min-width:768px){ .wrap{padding:24px 28px} h1{font-size:34px} .panel{padding:24px 26px} }
-@media (max-width:520px){ .acad-body{padding-left:0} }
-@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:var(--fs-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+h1,h2,h3,h4{line-height:1.22;margin:0 0 var(--s2);letter-spacing:-.01em}
+h1{font-size:var(--fs-h1);font-weight:800} h2{font-size:var(--fs-h2);font-weight:700} h3{font-size:var(--fs-h3);font-weight:700} h4{font-size:var(--fs-small);font-weight:700}
+p{margin:0 0 var(--s3)}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+img,svg{display:block}
+:focus{outline:none}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--surface);color:var(--text);padding:12px 16px;border-radius:var(--r-sm);box-shadow:var(--shadow-2)}
+.skip:focus{left:12px}
+.muted{color:var(--text-2)} .small{font-size:var(--fs-small)} .caption{font-size:var(--fs-caption);color:var(--text-2)}
+.eyebrow{font-size:var(--fs-caption);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);margin:0 0 var(--s2)}
+.stack>*+*{margin-top:var(--s3)} .stack-lg>*+*{margin-top:var(--s6)}
+.row{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap} .row.between{justify-content:space-between} .grow{flex:1;min-width:0}
+.hr{height:1px;background:var(--border);border:0;margin:var(--s5) 0}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- thương hiệu & icon ---------- */
+.b-dark{fill:var(--brand-dark)} .b-light{fill:var(--brand-light)} .b-north{fill:var(--brand-north)}
+.b-ring{stroke:var(--brand-ring);stroke-opacity:var(--brand-ring-op)} .b-node{fill:var(--brand-node);stroke:var(--brand-node-stroke)}
+.logo{display:inline-flex;align-items:center;gap:0;color:var(--text);text-decoration:none}
+.logo svg{flex:none}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic .acc{fill:var(--accent);stroke:currentColor} .ic.mono .acc{fill:currentColor}
+.ic.sm{width:18px;height:18px} .ic.lg{width:32px;height:32px} .ic.xl{width:64px;height:64px;stroke-width:1.6}
+.icon-tile{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--r-md);background:var(--accent-soft);color:var(--text);flex:none}
+.icon-tile.dark{background:var(--ink-900);color:#F7F7F2}
+
+/* ---------- nút ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);min-height:var(--tap);padding:10px 18px;border-radius:var(--r-sm);
+  border:1px solid transparent;background:var(--primary);color:var(--on-primary);font-weight:650;font-size:var(--fs-small);line-height:1.2;cursor:pointer;
+  text-decoration:none;transition:background var(--dur-1) var(--ease),transform var(--dur-1) var(--ease),box-shadow var(--dur-1) var(--ease);-webkit-tap-highlight-color:transparent;user-select:none}
+.btn:hover{background:var(--primary-hover)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn.secondary{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
+.btn.secondary:hover{background:var(--surface-2);border-color:var(--text-2)}
+.btn.ghost{background:transparent;color:var(--text)} .btn.ghost:hover{background:var(--sunk)}
+.btn.accent{background:var(--accent);color:var(--on-accent)} .btn.accent:hover{background:var(--lime-200)}
+.btn.danger{background:var(--danger);color:#fff} .btn.danger:hover{filter:brightness(1.08)}
+.btn.lg{min-height:52px;padding:14px 24px;font-size:var(--fs-body);border-radius:var(--r-md)}
+.btn.sm{min-height:36px;padding:6px 12px;font-size:var(--fs-caption)}
+.btn.block{width:100%}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none}
+.btn[aria-busy="true"]{position:relative;color:transparent!important;pointer-events:none}
+.btn[aria-busy="true"]::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;border:2px solid var(--on-primary);border-right-color:transparent;animation:spin .8s linear infinite}
+.btn.secondary[aria-busy="true"]::after,.btn.ghost[aria-busy="true"]::after{border-color:var(--text);border-right-color:transparent}
+@keyframes spin{to{transform:rotate(360deg)}}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:var(--tap);height:var(--tap);border-radius:var(--r-sm);border:1px solid transparent;
+  background:transparent;color:var(--text);cursor:pointer;flex:none}
+.icon-btn:hover{background:var(--sunk)} .icon-btn[aria-pressed="true"]{background:var(--accent-soft)}
+.link-btn{background:none;border:0;padding:0;color:var(--text);text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:var(--tap)}
+
+/* ---------- ô nhập ---------- */
+.field{display:block}
+.field>.label{display:block;font-weight:650;font-size:var(--fs-small);margin-bottom:6px}
+.field>.help{display:block;font-size:var(--fs-caption);color:var(--text-2);margin-top:6px}
+.field>.err{display:block;font-size:var(--fs-caption);color:var(--danger);margin-top:6px;font-weight:600}
+.input,.textarea,.select{width:100%;min-height:var(--tap);padding:10px 14px;border-radius:var(--r-sm);border:1px solid var(--border-strong);background:var(--surface);color:var(--text);
+  font-size:max(16px,var(--fs-small));transition:border-color var(--dur-1) var(--ease),box-shadow var(--dur-1) var(--ease)}
+.textarea{min-height:120px;resize:vertical;line-height:1.55}
+.input:hover,.textarea:hover,.select:hover{border-color:var(--text-2)}
+.input:focus,.textarea:focus,.select:focus{border-color:var(--text);box-shadow:0 0 0 3px var(--accent-soft)}
+.input[aria-invalid="true"],.textarea[aria-invalid="true"]{border-color:var(--danger);box-shadow:0 0 0 3px var(--danger-soft)}
+.input[disabled],.textarea[disabled],.select[disabled]{background:var(--sunk);color:var(--text-2);cursor:not-allowed}
+.check{display:flex;gap:var(--s3);align-items:flex-start;min-height:var(--tap);padding:10px 0;cursor:pointer}
+.check input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ink-700);flex:none}
+.seg{display:inline-flex;background:var(--sunk);border-radius:var(--r-sm);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{min-height:38px;padding:6px 14px;border:0;border-radius:8px;background:transparent;cursor:pointer;font-weight:600;font-size:var(--fs-small);color:var(--text-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:var(--shadow-1)}
+
+/* ---------- khối ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--s5)}
+.card.flat{box-shadow:none} .card.raised{box-shadow:var(--shadow-2);border-color:transparent}
+.card.tight{padding:var(--s4)}
+.card-link{display:block;text-decoration:none;color:inherit;transition:transform var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease),border-color var(--dur-2) var(--ease);cursor:pointer}
+.card-link:hover{border-color:var(--border-strong);box-shadow:var(--shadow-2)}
+.card-link:active{transform:scale(.995)}
+.panel{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--s4)}
+.note{border-radius:var(--r-sm);padding:var(--s3) var(--s4);font-size:var(--fs-small);display:flex;gap:var(--s3);align-items:flex-start}
+.note.info{background:var(--sunk)} .note.ok{background:var(--accent-soft)} .note.warn{background:var(--warn-soft);color:var(--warn)} .note.danger{background:var(--danger-soft);color:var(--danger)}
+.note b{font-weight:700}
+
+/* ---------- huy hiệu, tiến độ, năng lực ---------- */
+.badge{display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:2px 10px;border-radius:var(--r-pill);font-size:var(--fs-caption);font-weight:650;white-space:nowrap;
+  background:var(--sunk);color:var(--text)}
+.badge.live{background:var(--accent);color:var(--on-accent)} .badge.preview{background:transparent;border:1px solid var(--text)} .badge.planned{background:transparent;border:1px dashed var(--text-2);color:var(--text-2);font-weight:500}
+.badge.ok{background:var(--accent-soft);color:var(--accent-text)} .badge.warn{background:var(--warn-soft);color:var(--warn)} .badge.danger{background:var(--danger-soft);color:var(--danger)}
+.progress{height:8px;border-radius:var(--r-pill);background:var(--sunk);overflow:hidden}
+.progress>span{display:block;height:100%;background:var(--ink-700);border-radius:inherit;transition:width var(--dur-2) var(--ease)}
+:root[data-theme="dark"] .progress>span{background:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .progress>span{background:var(--accent)}}
+.progress.accent>span{background:var(--accent)}
+.meter{display:flex;gap:3px;align-items:center}
+.meter i{display:block;width:18px;height:8px;border-radius:3px;background:var(--sunk);border:1px solid var(--border)}
+.meter i.on{background:var(--ink-700);border-color:var(--ink-700)} .meter i.on.top{background:var(--accent);border-color:var(--ink-700)}
+:root[data-theme="dark"] .meter i.on{background:var(--brand-light);border-color:var(--brand-light)}
+:root[data-theme="dark"] .meter i.on.top{background:var(--accent);border-color:var(--accent)}
+.meter-legend{display:flex;gap:var(--s3);flex-wrap:wrap;font-size:var(--fs-caption);color:var(--text-2)}
+
+/* ---------- tab, đường dẫn, gợi ý ---------- */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tab{min-height:var(--tap);padding:10px 14px;border:0;background:none;cursor:pointer;color:var(--text-2);font-weight:650;font-size:var(--fs-small);border-bottom:3px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--text)}
+.tab:hover{color:var(--text)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:var(--fs-caption);color:var(--text-2);margin-bottom:var(--s3)}
+.crumbs a{color:var(--text-2);text-decoration:none;min-height:32px;display:inline-flex;align-items:center} .crumbs a:hover{color:var(--text);text-decoration:underline}
+.crumbs .sep{opacity:.6}
+.tip{position:relative;display:inline-flex}
+.tip-bubble{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:260px;background:var(--ink-900);color:#F7F7F2;
+  padding:8px 12px;border-radius:8px;font-size:var(--fs-caption);line-height:1.4;box-shadow:var(--shadow-2);z-index:20}
+.tip-bubble[hidden]{display:none}
+
+/* ---------- hộp thoại, ngăn kéo, thông báo ---------- */
+.scrim{position:fixed;top:0;right:0;bottom:0;left:0;background:var(--scrim);z-index:60;display:flex;align-items:center;justify-content:center;padding:var(--s4);animation:fade var(--dur-2) var(--ease)}
+.dialog{background:var(--surface);color:var(--text);border-radius:var(--r-lg);box-shadow:var(--shadow-2);width:min(560px,100%);max-height:min(86vh,760px);overflow:auto;padding:var(--s6);animation:rise var(--dur-2) var(--ease)}
+.dialog-head{display:flex;align-items:flex-start;gap:var(--s3);margin-bottom:var(--s3)} .dialog-head h2{flex:1;margin:6px 0 0}
+.dialog-actions{display:flex;gap:var(--s2);justify-content:flex-end;flex-wrap:wrap;margin-top:var(--s5)}
+.scrim.drawer{justify-content:flex-end;align-items:stretch;padding:0}
+.drawer-panel{background:var(--surface);width:min(420px,92vw);height:100%;overflow:auto;padding:var(--s5);box-shadow:var(--shadow-2);animation:slidein var(--dur-2) var(--ease);
+  padding-top:max(var(--s5),env(safe-area-inset-top));padding-bottom:max(var(--s5),env(safe-area-inset-bottom))}
+.toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabbar) + 16px + env(safe-area-inset-bottom));z-index:80;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:min(520px,92vw)}
+.toast{pointer-events:auto;background:var(--ink-900);color:#F7F7F2;padding:12px 16px;border-radius:var(--r-sm);box-shadow:var(--shadow-2);font-size:var(--fs-small);animation:rise var(--dur-2) var(--ease);display:flex;gap:12px;align-items:center}
+.toast .btn{min-height:32px;padding:4px 10px;background:var(--accent);color:var(--on-accent)}
+@keyframes fade{from{opacity:0}to{opacity:1}} @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes slidein{from{transform:translateX(24px);opacity:.6}to{transform:none;opacity:1}}
+
+/* ---------- trạng thái tải, trống, lỗi ---------- */
+.skeleton{background:linear-gradient(90deg,var(--sunk) 25%,var(--surface-2) 50%,var(--sunk) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite linear;border-radius:var(--r-sm);min-height:16px}
+@keyframes shimmer{to{background-position:-200% 0}}
+.empty{text-align:center;padding:var(--s7) var(--s5);border:1px dashed var(--border-strong);border-radius:var(--r-md);color:var(--text-2)}
+.empty h3{color:var(--text)} .empty .btn{margin-top:var(--s3)}
+.error-box{border:1px solid var(--danger);background:var(--danger-soft);color:var(--danger);border-radius:var(--r-md);padding:var(--s4)}
+
+/* ---------- khung app ---------- */
+.shell{display:flex;min-height:100vh;min-height:100dvh}
+.sidebar{width:var(--sidebar);flex:0 0 var(--sidebar);position:sticky;top:0;height:100vh;height:100dvh;overflow:auto;border-right:1px solid var(--border);background:var(--surface);
+  display:flex;flex-direction:column;padding:var(--s5) var(--s3);padding-top:max(var(--s5),env(safe-area-inset-top))}
+.sidebar .logo{padding:0 var(--s3) var(--s5)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:var(--s3);min-height:var(--tap);padding:8px 12px;border-radius:var(--r-sm);color:var(--text-2);text-decoration:none;font-weight:650;font-size:var(--fs-small)}
+.nav a:hover{background:var(--sunk);color:var(--text)}
+.nav a[aria-current="page"]{background:var(--accent-soft);color:var(--text)}
+.nav a[aria-current="page"] .ic{color:var(--text)}
+.nav .count{margin-left:auto;min-width:22px;height:22px;padding:0 6px;border-radius:var(--r-pill);background:var(--ink-900);color:#F7F7F2;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+:root[data-theme="dark"] .nav .count{background:var(--accent);color:var(--on-accent)}
+.nav-sep{height:1px;background:var(--border);margin:var(--s3) var(--s3)}
+.sidebar-foot{margin-top:auto;padding:var(--s3)}
+.collapsed .sidebar{width:84px;flex-basis:84px} .collapsed .sidebar .label,.collapsed .sidebar .nav .count,.collapsed .sidebar .sidebar-foot .label{display:none}
+.sidebar .logo .sym{display:none} .collapsed .sidebar .logo .full{display:none} .collapsed .sidebar .logo .sym{display:block}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:none;position:sticky;top:0;z-index:30;align-items:center;gap:var(--s2);padding:8px var(--s3);padding-top:max(8px,env(safe-area-inset-top));
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--border)}
+.content{width:100%;max-width:1180px;margin:0 auto;padding:var(--s6) var(--s6) var(--s9)}
+.content.narrow{max-width:860px}
+.tabbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1px solid var(--border);
+  padding:4px 6px calc(4px + env(safe-area-inset-bottom));justify-content:space-around}
+.tabbar a,.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:54px;color:var(--text-2);text-decoration:none;
+  font-size:11px;font-weight:650;border:0;background:none;border-radius:var(--r-sm);cursor:pointer;position:relative}
+.tabbar a[aria-current="page"]{color:var(--text)} .tabbar a[aria-current="page"] .ic{color:var(--text)}
+.tabbar a[aria-current="page"]::before{content:"";position:absolute;top:0;width:28px;height:3px;border-radius:0 0 3px 3px;background:var(--accent)}
+.tabbar .dot{position:absolute;top:6px;right:calc(50% - 18px);min-width:16px;height:16px;border-radius:8px;background:var(--danger);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+@media (max-width:1099px){
+  .sidebar{display:none} .topbar{display:flex} .tabbar{display:flex}
+  .content{padding:var(--s5) var(--s4) calc(var(--tabbar) + var(--s8) + env(safe-area-inset-bottom))}
+}
+@media (min-width:1100px){ .toasts{bottom:24px} }
+@media (max-width:520px){ .content{padding-left:var(--s4);padding-right:var(--s4)} .card{padding:var(--s4)} }
+
+/* ---------- trang ---------- */
+.page-head{display:flex;gap:var(--s4);align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:var(--s6)}
+.page-head h1{margin:0}
+.page-head>.grow{flex:1 1 320px}
+.page-title:focus{outline:none}
+.section{margin-top:var(--s8)}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4);flex-wrap:wrap}
+.section-head h2{margin:0}
+.grid{display:grid;gap:var(--s4)}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.grid.three{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.kv{width:100%;border-collapse:collapse;font-size:var(--fs-small)}
+.kv th,.kv td{padding:10px 0;border-top:1px solid var(--border);vertical-align:top;text-align:left}
+.kv th{font-weight:500;color:var(--text-2);padding-right:12px} .kv td{text-align:right;font-weight:650;white-space:nowrap;width:1%}
+.kv tr:first-child th,.kv tr:first-child td{border-top:0}
+
+/* Cánh cửa học viện */
+.doors{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.door{position:relative;display:flex;flex-direction:column;gap:var(--s2);min-height:210px;padding:var(--s5) var(--s4) var(--s4);border-radius:90px 90px var(--r-md) var(--r-md);
+  background:var(--surface);border:1px solid var(--border);text-decoration:none;color:inherit;transition:transform var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease),border-color var(--dur-2) var(--ease);overflow:hidden}
+.door::before{content:"";position:absolute;top:8px;left:8px;right:8px;height:calc(100% - 16px);border-radius:84px 84px 10px 10px;border:1px solid var(--border);pointer-events:none}
+.door:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--border-strong)}
+.door .no{text-align:center;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--text-2);margin-top:6px}
+.door .icon-tile{margin:var(--s2) auto var(--s2)}
+.door .name{text-align:center;font-weight:750;font-size:var(--fs-small);line-height:1.3}
+.door .sub{text-align:center;font-size:12px;color:var(--text-2)}
+.door .foot{margin-top:auto}
+
+/* Bài học */
+.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s7)}
+@media (min-width:1100px){ .lesson-layout{grid-template-columns:minmax(0,1fr) 240px} .toc-side{display:block} .toc-btn{display:none} }
+.toc-side{display:none;position:sticky;top:24px;align-self:start;max-height:calc(100vh - 48px);overflow:auto}
+.toc a{display:block;padding:6px 10px;border-left:2px solid var(--border);color:var(--text-2);text-decoration:none;font-size:var(--fs-caption);min-height:32px}
+.toc a:hover{color:var(--text);border-color:var(--text-2)} .toc a.done{color:var(--text)} .toc a.done::after{content:" ✓";color:var(--accent-text)}
+.reading{max-width:72ch;font-size:var(--fs-read);line-height:1.7}
+.reading p{margin:0 0 var(--s4)}
+.lblock{scroll-margin-top:84px;margin-top:var(--s8)}
+.lblock>.eyebrow{display:flex;gap:8px;align-items:center}
+.lblock>.eyebrow .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--accent);color:var(--on-accent);font-size:12px;letter-spacing:0}
+.steps{counter-reset:st;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:st;position:relative;padding:0 0 var(--s4) 44px}
+.steps li::before{content:counter(st);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--sunk);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.bullets{margin:0;padding-left:1.2em} .bullets li{margin:6px 0}
+.quiz-q{font-weight:650;margin-bottom:var(--s3)}
+.opt{display:flex;gap:var(--s3);align-items:flex-start;width:100%;min-height:var(--tap);padding:12px 14px;margin-top:8px;border:1px solid var(--border-strong);border-radius:var(--r-sm);background:var(--surface);cursor:pointer;text-align:left;line-height:1.45}
+.opt:hover{border-color:var(--text-2)}
+.opt .key{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.opt[aria-checked="true"]{border-color:var(--text);box-shadow:0 0 0 2px var(--text) inset}
+.opt.right{border-color:var(--accent-text);background:var(--accent-soft)} .opt.right .key{background:var(--accent);border-color:var(--accent-text);color:var(--on-accent)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-soft)} .opt.wrong .key{background:var(--danger);border-color:var(--danger);color:#fff}
+.opt[disabled]{cursor:default}
+.feedback{margin-top:var(--s3)}
+.cite{display:flex;gap:var(--s3);padding:var(--s3) 0;border-top:1px solid var(--border);font-size:var(--fs-small)}
+.cite:first-child{border-top:0}
+.cite .kind{flex:none}
+.reveal{border:1px dashed var(--border-strong);border-radius:var(--r-sm);padding:var(--s3) var(--s4);margin-top:var(--s2)}
+.flash{border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface);padding:var(--s5);min-height:180px;display:flex;flex-direction:column;justify-content:center}
+.term{display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:var(--s3);padding:10px 0;border-top:1px solid var(--border);font-size:var(--fs-small)}
+@media (max-width:520px){.term{grid-template-columns:1fr;gap:4px}}
+
+/* Minh hoạ */
+.illo{width:100%;height:auto}
+.illo .ln{stroke:var(--border-strong);stroke-width:1.5;fill:none}
+.illo .node{fill:var(--surface);stroke:var(--text);stroke-width:1.5}
+.illo .node.on{fill:var(--accent)}
+.illo .t{fill:var(--text);font:650 14px var(--font)} .illo .t2{fill:var(--text-2);font:500 13px var(--font)}
+.illo .acc{fill:var(--accent)} .illo .ink{fill:var(--text)} .illo .soft{fill:var(--sunk)}
+.hero{display:grid;gap:var(--s6);grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--s7);overflow:hidden}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding:var(--s5)}}
+
+.lpath-wrap{container-type:inline-size}
+.lpath{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:relative}
+.lpath::before{content:"";position:absolute;left:10%;right:10%;top:17px;border-top:3px dotted var(--border-strong)}
+.lpath li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:0 4px}
+.lpath .dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--text);background:var(--surface);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;color:var(--ink-900)}
+.lpath li.done .dot{background:var(--accent)} .lpath li.cur .dot{background:var(--accent);box-shadow:0 0 0 6px var(--accent-soft)}
+.lpath .lv{font-weight:700;font-size:var(--fs-small)} .lpath .en{font-size:var(--fs-caption);color:var(--text-2)}
+@media (max-width:560px){.lpath{grid-template-columns:1fr;gap:12px}.lpath::before{left:17px;right:auto;top:18px;bottom:18px;border-top:0;border-left:3px dotted var(--border-strong)}
+  .lpath li{flex-direction:row;text-align:left;gap:12px}}
+@container (max-width:560px){.lpath{grid-template-columns:1fr;gap:12px}.lpath::before{left:17px;right:auto;top:18px;bottom:18px;border-top:0;border-left:3px dotted var(--border-strong)}
+  .lpath li{flex-direction:row;text-align:left;gap:12px}}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .step{padding:10px 14px;border:1.5px solid var(--text);border-radius:12px;background:var(--surface);font-weight:650;font-size:var(--fs-small)}
+.flow .step.last{background:var(--accent);color:var(--on-accent)} .flow .arr{color:var(--text-2)}
+/* Design system page */
+.swatch{border-radius:var(--r-sm);border:1px solid var(--border);overflow:hidden;font-size:var(--fs-caption)}
+.swatch .chip{height:64px} .swatch .meta{padding:8px 10px;background:var(--surface)}
+.spec{display:grid;gap:var(--s3);grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.demo-row{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center}
+.state-label{font-size:11px;color:var(--text-2);text-align:center;margin-top:4px}
+.force-hover.btn{background:var(--primary-hover)} .force-hover.btn.secondary{background:var(--surface-2);border-color:var(--text-2)}
+.force-hover.btn.ghost{background:var(--sunk)} .force-hover.btn.accent{background:var(--lime-200)} .force-hover.btn.danger{background:var(--danger);filter:brightness(1.08)}
+.force-focus{outline:3px solid var(--focus);outline-offset:2px}
+.force-active{transform:translateY(1px) scale(.99)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+:root[data-motion="reduce"] *,:root[data-motion="reduce"] *::before,:root[data-motion="reduce"] *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+@media print{.sidebar,.topbar,.tabbar,.toasts{display:none!important}.content{padding:0}}
+
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Bỏ qua, tới nội dung chính</a>
-<div class="wrap">
-  <header class="top">
-    <span class="word" aria-label="ATLAS">ATLAS</span>
-    <span class="tag">Bản đang xây · Phase 1</span>
-  </header>
+<!-- BRAND-SPRITE-BEGIN -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="b-symbol" viewBox="0 0 64 64"><circle cx="32" cy="32" r="21" class="b-ring" fill="none" stroke-width="3"/><polygon points="32,4 27.4,27.4 32,32" class="b-dark"/><polygon points="32,4 36.6,27.4 32,32" class="b-north"/><polygon points="60,32 36.6,27.4 32,32" class="b-dark"/><polygon points="60,32 36.6,36.6 32,32" class="b-light"/><polygon points="32,60 36.6,36.6 32,32" class="b-dark"/><polygon points="32,60 27.4,36.6 32,32" class="b-light"/><polygon points="4,32 27.4,36.6 32,32" class="b-dark"/><polygon points="4,32 27.4,27.4 32,32" class="b-light"/><circle cx="46.85" cy="17.15" r="3.6" class="b-node" stroke-width="1.6"/></symbol>
+<symbol id="b-word" viewBox="0 0 166 40"><polygon points="0,40 12,0 20,0 32,40 24.5,40 16,11.67 7.5,40"/><rect x="7" y="25" width="18" height="6"/><rect x="30" y="0" width="30" height="7"/><rect x="41.5" y="7" width="7" height="33"/><rect x="69" y="0" width="7" height="40"/><rect x="76" y="33" width="17" height="7"/><polygon points="97,40 109,0 117,0 129,40 121.5,40 113,11.67 104.5,40"/><rect x="104" y="25" width="18" height="6"/><path d="M23.5 9.5C21.5 5.5 17.5 3.5 14 3.5 8 3.5 3.5 6.5 3.5 11.5 3.5 17 8.5 18.5 14 20 19.5 21.5 24.5 23 24.5 28.5 24.5 33.5 20 36.5 14 36.5 10 36.5 6 34.5 4 30.5" transform="translate(138 0)" fill="none" stroke="currentColor" stroke-width="7"/></symbol>
+<symbol id="i-ai-engineering" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"/><circle class="acc" cx="12" cy="12" r="1.9"/></symbol>
+<symbol id="i-business" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M9 7.5V5.8c0-.7.5-1.3 1.3-1.3h3.4c.8 0 1.3.6 1.3 1.3v1.7M3.5 12.5h17"/><rect class="acc" x="10.5" y="11" width="3" height="3" rx=".8"/></symbol>
+<symbol id="i-finance" viewBox="0 0 24 24"><path d="M3.5 20.5h17"/><rect x="4.5" y="13" width="3.6" height="7.5" rx=".9"/><rect x="10.2" y="9" width="3.6" height="11.5" rx=".9"/><rect class="acc" x="15.9" y="4.5" width="3.6" height="16" rx=".9"/></symbol>
+<symbol id="i-science" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/><circle class="acc" cx="12" cy="12" r="1.9"/></symbol>
+<symbol id="i-future-tech" viewBox="0 0 24 24"><path d="M4 20.5h8M8 20.5v-5.5l5-5 4.5 4.5"/><circle cx="8" cy="15" r="1.6"/><circle cx="13" cy="10" r="1.6"/><path class="acc-stroke" d="M18.5 3 16.5 7h3.5l-2 4"/></symbol>
+<symbol id="i-leadership" viewBox="0 0 24 24"><circle cx="12" cy="13" r="2.8"/><path d="M6.5 21c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><path class="acc" d="M12 2.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></symbol>
+<symbol id="i-critical-thinking" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 20.5 20.5"/><path class="acc-stroke" d="M7.6 10.7l2 2 3.6-4"/></symbol>
+<symbol id="u-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></symbol>
+<symbol id="u-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="u-review" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v4.5h-4.5"/></symbol>
+<symbol id="u-flask" viewBox="0 0 24 24"><path d="M9 3.5h6M10 3.5v5.2L5 18.2a1.6 1.6 0 0 0 1.4 2.3h11.2a1.6 1.6 0 0 0 1.4-2.3L14 8.7V3.5M7.4 14.5h9.2"/></symbol>
+<symbol id="u-vault" viewBox="0 0 24 24"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h11"/></symbol>
+<symbol id="u-mentor" viewBox="0 0 24 24"><path d="M4.5 6.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-4 3.5v-3.5h-.5a2 2 0 0 1-2-2z"/><path d="M12 7.8l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+<symbol id="u-chart" viewBox="0 0 24 24"><path d="M5 20v-6M12 20V5M19 20v-9"/></symbol>
+<symbol id="u-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+<symbol id="u-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="u-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="u-chev-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+<symbol id="u-chev-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+<symbol id="u-chev-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="u-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="u-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="u-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+<symbol id="u-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></symbol>
+<symbol id="u-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.3v.1"/></symbol>
+<symbol id="u-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></symbol>
+<symbol id="u-upload" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 20h14"/></symbol>
+<symbol id="u-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.4 1.6 3.8 3.8 0 0 1-.3 7.4z"/></symbol>
+<symbol id="u-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+<symbol id="u-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+<symbol id="u-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="u-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+<symbol id="u-book" viewBox="0 0 24 24"><path d="M12 6.5c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5zM12 6.5V20"/></symbol>
+<symbol id="u-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="u-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/></symbol>
+<symbol id="u-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+<symbol id="u-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13"/></symbol>
+<symbol id="u-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+<symbol id="u-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M18 14v5H5V6h5"/></symbol>
+<symbol id="u-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+<symbol id="u-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></symbol>
+<symbol id="u-sidebar" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9.5 4.5v15"/></symbol>
+<symbol id="u-note" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 16h6"/></symbol>
+<symbol id="u-graph" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8 7.8l8-1.3M7.2 9l3.7 7M16.9 8l-3.8 8"/></symbol>
+<symbol id="u-eye" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+<symbol id="u-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4.5h11l-2 4 2 4H5"/></symbol>
+<symbol id="u-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+<symbol id="u-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></symbol>
+<symbol id="u-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18.5" cy="12" r="1.3"/></symbol>
+</svg>
+<!-- BRAND-SPRITE-END -->
+<div id="app"><div class="content narrow"><p class="muted">Đang mở ATLAS…</p></div></div>
+<noscript><div class="content narrow"><h1>ATLAS cần JavaScript</h1><p>Hãy bật JavaScript trong cài đặt trình duyệt.</p></div></noscript>
 
-  <main id="main">
-    <h1>Kiểm tra trước khi nâng cấp</h1>
-    <p class="lead">Trang kỹ thuật của Phase 1, chưa phải giao diện ATLAS mới. Trang chỉ <b>đọc</b> dữ liệu ATLAS cũ trên máy này để thử chuyển sang cấu trúc 7 học viện. Không ghi, không xoá gì.</p>
-
-    <section class="panel" aria-labelledby="legacy-h">
-      <h2 id="legacy-h">Dữ liệu ATLAS cũ trên máy này</h2>
-      <div id="legacy-body"><p class="muted">Đang đọc…</p></div>
-    </section>
-
-    <section class="panel" aria-labelledby="preview-h">
-      <h2 id="preview-h">Thử chuyển sang 7 học viện (không lưu)</h2>
-      <div id="preview-body"><p class="muted">Đang tính…</p></div>
-    </section>
-
-    <section class="panel" aria-labelledby="academy-h">
-      <h2 id="academy-h">7 học viện và chuẩn đầu ra</h2>
-      <div id="academy-body"><p class="muted">Đang tải…</p></div>
-    </section>
-
-    <section class="panel" aria-labelledby="feature-h">
-      <h2 id="feature-h">Trạng thái tính năng</h2>
-      <div id="feature-body"><p class="muted">Đang tải…</p></div>
-    </section>
-
-    <noscript><p class="note warn">Trang này cần bật JavaScript.</p></noscript>
-  </main>
-
-  <footer id="foot"></footer>
-</div>
+<!-- ===================== CẤU HÌNH CÔNG KHAI (không chứa khoá bí mật) ===================== -->
+<script id="atlas-config">
+/* Điền để bật đăng nhập/đồng bộ và AI Mentor. Khoá anon/publishable của Supabase là khoá công khai (bảng đã bật RLS).
+   Không bao giờ điền khoá service_role hay khoá Claude ở đây. Để trống = chỉ lưu trên máy này. */
+var ATLAS_CONFIG = {
+  supabaseUrl: '',
+  supabaseAnonKey: '',
+  mentorFunction: 'mentor'
+};
+</script>
 
 <!-- ===================== NỘI DUNG: khung 7 học viện (sửa nội dung ở đây, không sửa trong code) ===================== -->
 <script id="atlas-content" type="application/json">
@@ -502,7 +801,7 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     {"id": "legacy-backup", "name": "Tải file sao lưu dữ liệu cũ", "status": "live", "phase": 1},
     {"id": "academy-map", "name": "Khung 7 học viện và chuẩn đầu ra", "status": "live", "phase": 1},
     {"id": "migration", "name": "Chuyển dữ liệu cũ sang ATLAS mới", "status": "preview", "phase": 3},
-    {"id": "brand", "name": "Logo, icon 7 học viện, design system", "status": "planned", "phase": 2},
+    {"id": "brand", "name": "Logo, icon 7 học viện, design system", "status": "live", "phase": 2},
     {"id": "dashboard", "name": "Trang tổng quan và Continue Learning", "status": "planned", "phase": 3},
     {"id": "academy-pages", "name": "Trang học viện và lộ trình theo cấp", "status": "planned", "phase": 3},
     {"id": "lesson-reader", "name": "Trình đọc bài học", "status": "planned", "phase": 3},
@@ -789,16 +1088,29 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     };
   };
 
-  /* ---------- dữ liệu ATLAS mới ---------- */
+  /* ---------- dữ liệu ATLAS mới (atlas-academy-state v1) ---------- */
+  ATLAS.THEMES = ['auto', 'light', 'dark'];
+  ATLAS.EXPERIENCE = ['none', 'some', 'solid'];
+  ATLAS.EVIDENCE_KINDS = ['recall', 'explain', 'apply', 'build'];
+  ATLAS.GRADERS = ['auto', 'self', 'ai'];
+  ATLAS.CARD_SOURCES = ['lesson', 'mistake', 'note', 'manual'];
+  ATLAS.MISTAKE_CAUSES = ['concept', 'term', 'calc', 'reading', 'prereq', 'other'];
+  ATLAS.NOTE_KINDS = ['note', 'concept', 'formula', 'diagram', 'source'];
+  ATLAS.PROJECT_STATUS = ['active', 'paused', 'done'];
+  ATLAS.ATTEMPT_CONTEXTS = ['lesson', 'review', 'retest', 'assessment'];
+  ATLAS.LEGACY_PROJECT_STAGES = ['Quan sát', 'Kiểm chứng', 'Thử nghiệm', 'Có khách hàng', 'Đánh giá mở rộng'];
+
   ATLAS.emptyState = function (nowMs) {
     var now = ATLAS.vnIso(nowMs);
     return {
       schema: ATLAS.STATE_SCHEMA,
       version: ATLAS.STATE_VERSION,
-      meta: { createdAt: now, updatedAt: now, migratedFrom: null },
-      profile: { name: '', minutesPerDay: 15, goal: '' },
+      meta: { createdAt: now, updatedAt: now, migratedFrom: null, onboardedAt: null },
+      profile: { name: '', minutesPerDay: 30, goal: '', priorities: [], experience: {} },
       plan: { focusAcademy: null, legacyFocus: null, outcome: '', reviewDate: '', evidence: {} },
-      learning: { completions: [], reviews: [], attempts: [], entryAssessment: null },
+      settings: { theme: 'auto', textSize: 'normal', reduceMotion: false },
+      learning: { completions: [], reviews: [], attempts: [], entryAssessment: null, reads: {}, answers: {}, cards: [], mistakes: [], evidence: [] },
+      daily: {},
       evidence: { commitments: [] },
       projects: [],
       vault: { notes: [] },
@@ -807,6 +1119,20 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
       unsorted: []
     };
   };
+
+  function pick(list, x, dflt) { return inList(list, x) ? x : dflt; }
+  function strList(x, max) {
+    var out = [], seen = {}, i, v, src = arr(x);
+    for (i = 0; i < src.length; i++) {
+      v = src[i];
+      if (typeof v !== 'string' || !v || hasOwn.call(seen, v)) continue;
+      seen[v] = true; out.push(v);
+      if (max && out.length >= max) break;
+    }
+    return out;
+  }
+  function academyOrNull(x) { return inList(ATLAS.ACADEMY_IDS, x) ? x : null; }
+  function levelOrNull(x) { return inList(ATLAS.LEVEL_IDS, x) ? x : null; }
 
   function normItems(list, prefix, keepKind, problems, where) {
     var out = [], ids = {}, i, x, id;
@@ -823,28 +1149,82 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     }
     return out;
   }
+  function normAnswer(x) {
+    if (!isObj(x)) return null;
+    var rub = arr(x.rubric), r = [], i;
+    for (i = 0; i < rub.length && i < 20; i++) r.push(rub[i] === true);
+    return { text: str(x.text), rubric: r, at: validTime(x.at) };
+  }
+  function normProject(x, i, ids, problems) {
+    if (!isObj(x)) { problems.push('Dự án: bỏ mục ' + (i + 1) + ' không hợp lệ.'); return null; }
+    var id = str(x.id) || ('project-' + i);
+    if (hasOwn.call(ids, id)) { problems.push('Dự án: bỏ mục trùng id ' + id + '.'); return null; }
+    ids[id] = true;
+    var ms = [], cl = [], j, m;
+    for (j = 0; j < arr(x.milestones).length; j++) {
+      m = x.milestones[j];
+      if (!isObj(m) || !str(m.title)) continue;
+      ms.push({ id: str(m.id) || ('m' + j), title: m.title, done: m.done === true, doneAt: validTime(m.doneAt), note: str(m.note) });
+    }
+    for (j = 0; j < arr(x.checklist).length; j++) {
+      m = x.checklist[j];
+      if (!isObj(m) || !str(m.text)) continue;
+      cl.push({ id: str(m.id) || ('c' + j), text: m.text, done: m.done === true });
+    }
+    var sc = num(x.selfScore, null), academies = [], k, al = arr(x.academies);
+    for (k = 0; k < al.length; k++) { if (inList(ATLAS.ACADEMY_IDS, al[k]) && !inList(academies, al[k])) academies.push(al[k]); }
+    return {
+      id: id, title: str(x.title), academies: academies, template: str(x.template),
+      problem: str(x.problem), goal: str(x.goal), scope: str(x.scope), knowledge: str(x.knowledge),
+      milestones: ms, checklist: cl, deliverables: str(x.deliverables), nextStep: str(x.nextStep), reflection: str(x.reflection),
+      selfScore: (sc !== null && sc >= 1 && sc <= 5) ? Math.round(sc) : null,
+      status: pick(ATLAS.PROJECT_STATUS, x.status, 'active'),
+      createdAt: validTime(x.createdAt), updatedAt: validTime(x.updatedAt), source: str(x.source),
+      data: isObj(x.data) ? copy(x.data) : {}
+    };
+  }
+  function normNote(x, i, ids, problems) {
+    if (!isObj(x)) { problems.push('Ghi chép: bỏ mục ' + (i + 1) + ' không hợp lệ.'); return null; }
+    var id = str(x.id) || ('note-' + i);
+    if (hasOwn.call(ids, id)) { problems.push('Ghi chép: bỏ mục trùng id ' + id + '.'); return null; }
+    ids[id] = true;
+    return {
+      id: id, title: str(x.title), body: str(x.body), kind: pick(ATLAS.NOTE_KINDS, x.kind, 'note'),
+      academy: academyOrNull(x.academy), level: levelOrNull(x.level), tags: strList(x.tags, 20), links: strList(x.links, 50),
+      lessonId: str(x.lessonId) || null, reviewDate: DAY_RE.test(str(x.reviewDate)) ? x.reviewDate : '',
+      status: x.status === 'solid' ? 'solid' : 'draft',
+      createdAt: validTime(x.createdAt), updatedAt: validTime(x.updatedAt), source: str(x.source),
+      data: isObj(x.data) ? copy(x.data) : {}
+    };
+  }
 
   /* Chuẩn hoá dữ liệu mới: điền phần thiếu, bỏ mục hỏng (có ghi lại), chạy nhiều lần ra cùng kết quả. */
   ATLAS.normalizeState = function (raw, nowMs) {
-    var src = obj(raw), out = ATLAS.emptyState(nowMs), problems = [], i, x, seen;
+    var src = obj(raw), out = ATLAS.emptyState(nowMs), problems = [], i, x, seen, k, ks;
     var meta = obj(src.meta);
     out.meta.createdAt = validTime(meta.createdAt) || out.meta.createdAt;
     out.meta.updatedAt = validTime(meta.updatedAt) || out.meta.updatedAt;
     out.meta.migratedFrom = isObj(meta.migratedFrom) ? copy(meta.migratedFrom) : null;
+    out.meta.onboardedAt = validTime(meta.onboardedAt);
 
-    var p = obj(src.profile);
-    out.profile = { name: str(p.name), minutesPerDay: clampInt(num(p.minutesPerDay, 15), 5, 600), goal: str(p.goal) };
+    var p = obj(src.profile), exp = obj(p.experience), pri = strList(p.priorities, 3), pr2 = [];
+    for (i = 0; i < pri.length; i++) { if (inList(ATLAS.ACADEMY_IDS, pri[i])) pr2.push(pri[i]); }
+    out.profile = { name: str(p.name), minutesPerDay: clampInt(num(p.minutesPerDay, 30), 5, 600), goal: str(p.goal), priorities: pr2, experience: {} };
+    ks = keys(exp);
+    for (i = 0; i < ks.length; i++) { if (inList(ATLAS.ACADEMY_IDS, ks[i]) && inList(ATLAS.EXPERIENCE, exp[ks[i]])) out.profile.experience[ks[i]] = exp[ks[i]]; }
 
     var pl = obj(src.plan);
     out.plan = {
-      focusAcademy: inList(ATLAS.ACADEMY_IDS, pl.focusAcademy) ? pl.focusAcademy : null,
+      focusAcademy: academyOrNull(pl.focusAcademy),
       legacyFocus: typeof pl.legacyFocus === 'string' ? pl.legacyFocus : null,
       outcome: str(pl.outcome),
       reviewDate: DAY_RE.test(str(pl.reviewDate)) ? pl.reviewDate : '',
       evidence: isObj(pl.evidence) ? copy(pl.evidence) : {}
     };
+    var st = obj(src.settings);
+    out.settings = { theme: pick(ATLAS.THEMES, st.theme, 'auto'), textSize: st.textSize === 'large' ? 'large' : 'normal', reduceMotion: st.reduceMotion === true };
 
-    var L = obj(src.learning);
+    var L = obj(src.learning), nowIso = ATLAS.vnIso(nowMs);
     seen = {};
     var comps = arr(L.completions);
     for (i = 0; i < comps.length; i++) {
@@ -852,16 +1232,15 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
       if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một bài hoàn thành thiếu mã bài.'); continue; }
       if (hasOwn.call(seen, x.lessonId)) { problems.push('Bỏ bài hoàn thành trùng: ' + x.lessonId); continue; }
       seen[x.lessonId] = true;
-      var se = num(x.selfExplain, null);
+      var se = num(x.selfExplain, null), ver = num(x.version, null);
       out.learning.completions.push({
-        lessonId: x.lessonId,
-        completedAt: validTime(x.completedAt),
-        reflection: str(x.reflection),
-        selfExplain: (se !== null && se >= 1 && se <= 5) ? Math.round(se) : null
+        lessonId: x.lessonId, completedAt: validTime(x.completedAt), reflection: str(x.reflection),
+        selfExplain: (se !== null && se >= 1 && se <= 5) ? Math.round(se) : null,
+        version: ver !== null && ver >= 1 ? Math.round(ver) : null
       });
     }
     seen = {};
-    var revs = arr(L.reviews), nowIso = ATLAS.vnIso(nowMs);
+    var revs = arr(L.reviews);
     for (i = 0; i < revs.length; i++) {
       x = revs[i];
       if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một lịch ôn thiếu mã bài.'); continue; }
@@ -875,51 +1254,134 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     var atts = arr(L.attempts);
     for (i = 0; i < atts.length; i++) {
       x = atts[i];
-      if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một lượt ôn thiếu mã bài.'); continue; }
+      if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một lượt trả lời thiếu mã bài.'); continue; }
       var aid = str(x.id) || ('attempt-' + i);
-      if (hasOwn.call(seen, aid)) { problems.push('Bỏ lượt ôn trùng id ' + aid + '.'); continue; }
+      if (hasOwn.call(seen, aid)) { problems.push('Bỏ lượt trả lời trùng id ' + aid + '.'); continue; }
       seen[aid] = true;
       out.learning.attempts.push({
-        id: aid,
-        lessonId: x.lessonId,
+        id: aid, lessonId: x.lessonId, questionId: str(x.questionId) || null,
         answer: (typeof x.answer === 'number' || typeof x.answer === 'string') ? x.answer : null,
-        correct: x.correct === true,
-        practice: x.practice === true,
-        step: clampInt(x.step, 0, ATLAS.MAX_STEP),
-        at: validTime(x.at)
+        correct: x.correct === true, practice: x.practice === true,
+        step: clampInt(x.step, 0, ATLAS.MAX_STEP), at: validTime(x.at),
+        context: pick(ATLAS.ATTEMPT_CONTEXTS, x.context, 'review')
       });
     }
     var ea = L.entryAssessment;
-    out.learning.entryAssessment = isObj(ea) ? {
-      score: clampInt(ea.score, 0, 1000), total: clampInt(ea.total, 0, 1000),
-      completedAt: validTime(ea.completedAt), legacy: ea.legacy === true
-    } : null;
+    if (isObj(ea)) {
+      var res = obj(ea.results), sug = obj(ea.suggestions), rOut = {}, sOut = {};
+      ks = keys(res);
+      for (i = 0; i < ks.length; i++) {
+        if (inList(ATLAS.ACADEMY_IDS, ks[i]) && isObj(res[ks[i]])) rOut[ks[i]] = { correct: clampInt(res[ks[i]].correct, 0, 100), total: clampInt(res[ks[i]].total, 0, 100) };
+      }
+      ks = keys(sug);
+      for (i = 0; i < ks.length; i++) { if (inList(ATLAS.ACADEMY_IDS, ks[i]) && inList(ATLAS.LEVEL_IDS, sug[ks[i]])) sOut[ks[i]] = sug[ks[i]]; }
+      out.learning.entryAssessment = {
+        score: clampInt(ea.score, 0, 1000), total: clampInt(ea.total, 0, 1000),
+        completedAt: validTime(ea.completedAt), legacy: ea.legacy === true, results: rOut, suggestions: sOut
+      };
+    }
+    var reads = obj(L.reads);
+    ks = keys(reads);
+    for (i = 0; i < ks.length; i++) {
+      x = reads[ks[i]];
+      if (!isObj(x) || !validTime(x.firstAt)) { problems.push('Bỏ lượt mở bài không hợp lệ: ' + ks[i]); continue; }
+      out.learning.reads[ks[i]] = { firstAt: x.firstAt, lastAt: validTime(x.lastAt) || x.firstAt, count: clampInt(x.count, 1, 100000) };
+    }
+    var answers = obj(L.answers);
+    ks = keys(answers);
+    for (i = 0; i < ks.length; i++) {
+      x = answers[ks[i]];
+      if (!isObj(x)) continue;
+      var pr = obj(x.practice), prOut = {}, pk = keys(pr);
+      for (k = 0; k < pk.length; k++) { if (pr[pk[k]] === true) prOut[pk[k]] = true; }
+      out.learning.answers[ks[i]] = { practice: prOut, explain: normAnswer(x.explain), apply: normAnswer(x.apply) };
+    }
+    seen = {};
+    var cards = arr(L.cards);
+    for (i = 0; i < cards.length; i++) {
+      x = cards[i];
+      if (!isObj(x) || !str(x.front)) { problems.push('Bỏ một thẻ ôn thiếu mặt trước.'); continue; }
+      var cid = str(x.id) || ('card-' + i);
+      if (hasOwn.call(seen, cid)) { problems.push('Bỏ thẻ ôn trùng id ' + cid + '.'); continue; }
+      seen[cid] = true;
+      var ease = num(x.ease, 2.5);
+      out.learning.cards.push({
+        id: cid, lessonId: str(x.lessonId) || null, front: x.front, back: str(x.back),
+        source: pick(ATLAS.CARD_SOURCES, x.source, 'manual'), due: validTime(x.due) || nowIso,
+        interval: Math.max(0, num(x.interval, 0)), ease: Math.min(3, Math.max(1.3, ease)),
+        reps: clampInt(x.reps, 0, 100000), lapses: clampInt(x.lapses, 0, 100000),
+        createdAt: validTime(x.createdAt), lastAt: validTime(x.lastAt)
+      });
+    }
+    seen = {};
+    var mis = arr(L.mistakes);
+    for (i = 0; i < mis.length; i++) {
+      x = mis[i];
+      if (!isObj(x) || !str(x.prompt)) { problems.push('Bỏ một lỗi sai thiếu câu hỏi.'); continue; }
+      var mid = str(x.id) || ('mistake-' + i);
+      if (hasOwn.call(seen, mid)) { problems.push('Bỏ lỗi sai trùng id ' + mid + '.'); continue; }
+      seen[mid] = true;
+      out.learning.mistakes.push({
+        id: mid, lessonId: str(x.lessonId) || null, questionId: str(x.questionId) || null,
+        prompt: x.prompt, given: str(x.given), correctText: str(x.correctText), explanation: str(x.explanation),
+        cause: pick(ATLAS.MISTAKE_CAUSES, x.cause, ''), note: str(x.note), fix: str(x.fix),
+        status: x.status === 'fixed' ? 'fixed' : 'open',
+        createdAt: validTime(x.createdAt), fixedAt: validTime(x.fixedAt), retestDue: validTime(x.retestDue)
+      });
+    }
+    seen = {};
+    var evs = arr(L.evidence);
+    for (i = 0; i < evs.length; i++) {
+      x = evs[i];
+      if (!isObj(x) || !inList(ATLAS.EVIDENCE_KINDS, x.kind) || !validTime(x.at)) { problems.push('Bỏ một bằng chứng năng lực không hợp lệ.'); continue; }
+      var eid = str(x.id) || ('ev-' + i);
+      if (hasOwn.call(seen, eid)) { problems.push('Bỏ bằng chứng trùng id ' + eid + '.'); continue; }
+      seen[eid] = true;
+      var score = num(x.score, 0);
+      out.learning.evidence.push({
+        id: eid, kind: x.kind, outcomeId: str(x.outcomeId) || null, lessonId: str(x.lessonId) || null,
+        academy: academyOrNull(x.academy), level: levelOrNull(x.level),
+        score: Math.max(0, Math.min(1, score)), grader: pick(ATLAS.GRADERS, x.grader, 'self'), at: x.at, ref: str(x.ref)
+      });
+    }
+
+    var daily = obj(src.daily);
+    ks = keys(daily).sort();
+    for (i = 0; i < ks.length; i++) {
+      x = daily[ks[i]];
+      if (!DAY_RE.test(ks[i]) || !isObj(x)) { problems.push('Bỏ nhiệm vụ ngày không hợp lệ: ' + ks[i]); continue; }
+      out.daily[ks[i]] = { lessonId: str(x.lessonId) || null, reflection: str(x.reflection), createdAt: validTime(x.createdAt) };
+    }
 
     seen = {};
     var cms = arr(obj(src.evidence).commitments);
     for (i = 0; i < cms.length; i++) {
       x = cms[i];
       if (!isObj(x)) { problems.push('Bỏ một dự đoán/phép thử không hợp lệ.'); continue; }
-      var cid = str(x.id) || ('commitment-' + i);
-      if (hasOwn.call(seen, cid)) { problems.push('Bỏ dự đoán/phép thử trùng id ' + cid + '.'); continue; }
-      seen[cid] = true;
+      var cmid = str(x.id) || ('commitment-' + i);
+      if (hasOwn.call(seen, cmid)) { problems.push('Bỏ dự đoán/phép thử trùng id ' + cmid + '.'); continue; }
+      seen[cmid] = true;
       out.evidence.commitments.push({
-        id: cid, kind: str(x.kind) || 'unknown',
+        id: cmid, kind: str(x.kind) || 'unknown',
         plan: isObj(x.plan) ? copy(x.plan) : {},
         resolution: isObj(x.resolution) ? copy(x.resolution) : null,
         createdAt: validTime(x.createdAt), resolvedAt: validTime(x.resolvedAt)
       });
     }
 
-    out.projects = normItems(src.projects, 'project-', false, problems, 'Dự án');
-    out.vault.notes = normItems(obj(src.vault).notes, 'note-', false, problems, 'Ghi chép');
+    seen = {};
+    var pj = arr(src.projects), pn;
+    for (i = 0; i < pj.length; i++) { pn = normProject(pj[i], i, seen, problems); if (pn) out.projects.push(pn); }
+    seen = {};
+    var nt = arr(obj(src.vault).notes), nn;
+    for (i = 0; i < nt.length; i++) { nn = normNote(nt[i], i, seen, problems); if (nn) out.vault.notes.push(nn); }
     out.finance.assets = normItems(obj(src.finance).assets, 'asset-', false, problems, 'Tài sản');
     out.finance.debts = normItems(obj(src.finance).debts, 'debt-', false, problems, 'Khoản nợ');
     out.unsorted = normItems(src.unsorted, 'item-', true, problems, 'Mục khác');
 
-    var j = obj(src.journal), days = keys(j).sort();
+    var jn = obj(src.journal), days = keys(jn).sort();
     for (i = 0; i < days.length; i++) {
-      x = j[days[i]];
+      x = jn[days[i]];
       if (!DAY_RE.test(days[i]) || !isObj(x)) { problems.push('Bỏ nhật ký ngày không hợp lệ: ' + days[i]); continue; }
       var u = num(x.understand, null);
       out.journal[days[i]] = {
@@ -931,6 +1393,14 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     }
     return { state: out, problems: problems };
   };
+
+  /* Ghép các trường của ghi chép cũ (Sổ tư duy) thành nội dung đọc được */
+  function legacyNoteBody(d) {
+    var parts = [], extra = [['evidence', 'Bằng chứng & lý do'], ['uncertainty', 'Điều chưa chắc'], ['outcome', 'Kết quả & bài học']], i;
+    if (str(d.body)) parts.push(d.body);
+    for (i = 0; i < extra.length; i++) { if (str(d[extra[i][0]])) parts.push(extra[i][1] + ': ' + d[extra[i][0]]); }
+    return parts.join('\n\n');
+  }
 
   /* ---------- chuyển dữ liệu cũ (v3) sang dữ liệu mới (v1): hàm thuần, không ghi gì ---------- */
   ATLAS.migrateLegacy = function (legacy, content, nowMs) {
@@ -946,7 +1416,7 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     }
 
     var p = obj(d.profile);
-    draft.profile = { name: str(p.name), minutesPerDay: num(p.minutes, 15), goal: str(p.goal) };
+    draft.profile = { name: str(p.name), minutesPerDay: num(p.minutes, 15), goal: str(p.goal), priorities: [], experience: {} };
 
     seen = {};
     var comps = arr(d.completions);
@@ -957,7 +1427,7 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
       if (!hasOwn.call(map, x.lesson_id)) report.unmappedLessons.push(x.lesson_id);
       draft.learning.completions.push({
         lessonId: x.lesson_id, completedAt: t(x.completed_at),
-        reflection: str(x.reflection), selfExplain: x.self_explain
+        reflection: str(x.reflection), selfExplain: x.self_explain, version: null
       });
     }
     seen = {};
@@ -973,16 +1443,16 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
       x = evs[i];
       if (!isObj(x) || !str(x.lesson_id)) { report.droppedItems++; continue; }
       draft.learning.attempts.push({
-        id: str(x.id) || ('legacy-attempt-' + i), lessonId: x.lesson_id, answer: x.answer,
+        id: str(x.id) || ('legacy-attempt-' + i), lessonId: x.lesson_id, questionId: null, answer: x.answer,
         correct: x.correct === 1 || x.correct === true,
         practice: x.practice === 1 || x.practice === true,
-        step: x.revision, at: t(x.reviewed_at)
+        step: x.revision, at: t(x.reviewed_at), context: 'review'
       });
     }
     if (isObj(d.entryAssessment)) {
       draft.learning.entryAssessment = {
         score: d.entryAssessment.score, total: d.entryAssessment.total,
-        completedAt: t(d.entryAssessment.completed_at), legacy: true
+        completedAt: t(d.entryAssessment.completed_at), legacy: true, results: {}, suggestions: {}
       };
     }
 
@@ -1000,12 +1470,29 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     for (i = 0; i < recs.length; i++) {
       x = recs[i];
       if (!isObj(x)) { report.droppedItems++; continue; }
-      var item = { id: str(x.id) || ('legacy-record-' + i), data: x.data, createdAt: t(x.created_at), source: 'legacy' };
-      if (x.kind === 'project') draft.projects.push(item);
-      else if (x.kind === 'note') draft.vault.notes.push(item);
-      else if (x.kind === 'asset') draft.finance.assets.push(item);
-      else if (x.kind === 'debt') draft.finance.debts.push(item);
-      else { item.kind = typeof x.kind === 'string' ? x.kind : 'unknown'; draft.unsorted.push(item); }
+      var rd = obj(x.data), rid = str(x.id) || ('legacy-record-' + i), created = t(x.created_at);
+      if (x.kind === 'project') {
+        var stage = clampInt(rd.stage, 0, 4), ms = [], s;
+        for (s = 0; s < ATLAS.LEGACY_PROJECT_STAGES.length; s++) ms.push({ id: 'legacy-stage-' + s, title: ATLAS.LEGACY_PROJECT_STAGES[s], done: s < stage, doneAt: null, note: '' });
+        draft.projects.push({
+          id: rid, title: str(rd.title) || 'Dự án từ ATLAS cũ', academies: ['business'], template: '',
+          problem: (str(rd.customer) ? 'Khách hàng: ' + rd.customer + '\n\n' : '') + str(rd.problem),
+          goal: str(rd.solution), scope: '', knowledge: '', milestones: ms, checklist: [],
+          deliverables: str(rd.evidence), nextStep: str(rd.nextStep), reflection: '', selfScore: null, status: 'active',
+          createdAt: created, updatedAt: created, source: 'legacy', data: rd
+        });
+      } else if (x.kind === 'note') {
+        draft.vault.notes.push({
+          id: rid, title: str(rd.title) || 'Ghi chép từ ATLAS cũ', body: legacyNoteBody(rd), kind: 'note',
+          academy: null, level: null, tags: ['atlas-cu'], links: [], lessonId: null, reviewDate: rd.reviewDate,
+          status: 'draft', createdAt: created, updatedAt: created, source: 'legacy', data: rd
+        });
+      } else {
+        var item = { id: rid, data: x.data, createdAt: created, source: 'legacy' };
+        if (x.kind === 'asset') draft.finance.assets.push(item);
+        else if (x.kind === 'debt') draft.finance.debts.push(item);
+        else { item.kind = typeof x.kind === 'string' ? x.kind : 'unknown'; draft.unsorted.push(item); }
+      }
     }
 
     var pl = obj(d.plan);
@@ -1014,6 +1501,7 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
       legacyFocus: typeof pl.focus === 'string' ? pl.focus : null,
       outcome: pl.outcome, reviewDate: pl.reviewDate, evidence: pl.evidence
     };
+    if (draft.plan.focusAcademy) draft.profile.priorities = [draft.plan.focusAcademy];
 
     var j = obj(d.journal), days = keys(j);
     for (i = 0; i < days.length; i++) {
@@ -1026,24 +1514,24 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     var upd = (legacy && typeof legacy.updatedAt === 'string') ? Date.parse(legacy.updatedAt) : NaN;
     var n = ATLAS.normalizeState(draft, nowMs);
     report.problems = n.problems;
-    var s = n.state;
-    s.meta.migratedFrom = {
+    var s2 = n.state;
+    s2.meta.migratedFrom = {
       key: ATLAS.KEYS.legacy,
       legacyVersion: ATLAS.LEGACY.version,
       legacyUpdatedAt: isFinite(upd) ? ATLAS.vnIso(upd) : null, /* updated_at của khoá cũ là giờ UTC thật */
       migratedAt: ATLAS.vnIso(nowMs),
       counts: {
-        completions: s.learning.completions.length, reviews: s.learning.reviews.length,
-        attempts: s.learning.attempts.length, commitments: s.evidence.commitments.length,
-        projects: s.projects.length, notes: s.vault.notes.length,
-        assets: s.finance.assets.length, debts: s.finance.debts.length,
-        unsorted: s.unsorted.length, journalDays: keys(s.journal).length,
-        entryAssessment: s.learning.entryAssessment ? 1 : 0
+        completions: s2.learning.completions.length, reviews: s2.learning.reviews.length,
+        attempts: s2.learning.attempts.length, commitments: s2.evidence.commitments.length,
+        projects: s2.projects.length, notes: s2.vault.notes.length,
+        assets: s2.finance.assets.length, debts: s2.finance.debts.length,
+        unsorted: s2.unsorted.length, journalDays: keys(s2.journal).length,
+        entryAssessment: s2.learning.entryAssessment ? 1 : 0
       },
       notMigrated: { language: summary.language, dailySession: summary.dailySession },
       report: report
     };
-    return s;
+    return s2;
   };
 
   /* Xem trước: chỉ đọc, không ghi bất cứ khoá nào */
@@ -1061,16 +1549,39 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
     return out;
   };
 
-  /* Ghi dữ liệu mới (dùng từ Phase 3). Chỉ ghi khoá mới, không đụng khoá cũ, không ghi đè nếu đã có. */
+  function wrap(state, nowMs) {
+    return JSON.stringify({ schema: ATLAS.STATE_SCHEMA, version: ATLAS.STATE_VERSION, savedAt: ATLAS.vnIso(nowMs), savedAtMs: nowMs, state: state });
+  }
+  /* Ghi dữ liệu mới lần đầu. Chỉ ghi khoá mới, không đụng khoá cũ, không ghi đè nếu đã có. */
   ATLAS.commitMigration = function (store, state, nowMs, opts) {
     if (!store.available) return { ok: false, error: 'Trình duyệt không cho lưu dữ liệu.' };
     if (store.get(ATLAS.KEYS.state) !== null && !(opts && opts.overwrite === true)) {
       return { ok: false, error: 'Máy này đã có dữ liệu ATLAS mới, không ghi đè.' };
     }
-    var wrapper = { schema: ATLAS.STATE_SCHEMA, version: ATLAS.STATE_VERSION, savedAt: ATLAS.vnIso(nowMs), state: state };
-    return store.set(ATLAS.KEYS.state, JSON.stringify(wrapper))
+    return store.set(ATLAS.KEYS.state, wrap(state, nowMs))
       ? { ok: true }
       : { ok: false, error: 'Không ghi được: bộ nhớ trình duyệt đầy hoặc đang ở chế độ riêng tư.' };
+  };
+  /* Lưu khi đang học: chỉ ghi khoá mới */
+  ATLAS.saveState = function (store, state, nowMs) {
+    if (!store.available) return { ok: false, error: 'Trình duyệt không cho lưu dữ liệu: tiến độ chỉ giữ tới khi đóng trang.' };
+    return store.set(ATLAS.KEYS.state, wrap(state, nowMs))
+      ? { ok: true }
+      : { ok: false, error: 'Không lưu được: bộ nhớ trình duyệt đầy hoặc đang ở chế độ riêng tư. Hãy tải file sao lưu trong Hồ sơ & dữ liệu.' };
+  };
+  /* Đọc dữ liệu mới. source: 'new' | 'none' | 'error' (khoá mới hỏng: không ghi đè, báo người dùng) */
+  ATLAS.loadState = function (store, nowMs) {
+    var raw = store.get(ATLAS.KEYS.state), parsed;
+    if (raw === null) return { source: 'none', state: null, problems: [] };
+    try { parsed = JSON.parse(raw); } catch (e) { return { source: 'error', state: null, problems: ['Dữ liệu ATLAS mới bị hỏng (không đọc được JSON).'], raw: raw }; }
+    if (!isObj(parsed) || parsed.schema !== ATLAS.STATE_SCHEMA || !isObj(parsed.state)) {
+      return { source: 'error', state: null, problems: ['Dữ liệu ATLAS mới không đúng định dạng.'], raw: raw };
+    }
+    if (typeof parsed.version === 'number' && parsed.version > ATLAS.STATE_VERSION) {
+      return { source: 'error', state: null, problems: ['Dữ liệu được lưu bởi phiên bản ATLAS mới hơn. Hãy tải lại trang.'], raw: raw };
+    }
+    var n = ATLAS.normalizeState(parsed.state, nowMs);
+    return { source: 'new', state: n.state, problems: n.problems, savedAt: validTime(parsed.savedAt) };
   };
 
   /* File sao lưu đúng định dạng ATLAS cũ (atlas-export v3): mở lại được bằng ATLAS cũ, Hồ sơ → Khôi phục */
@@ -1083,247 +1594,1018 @@ footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
   };
   ATLAS.legacyBackupName = function (nowMs) { return 'atlas-du-lieu-cu-' + ATLAS.vnDay(nowMs) + '.json'; };
 
-  ATLAS.completionsByAcademy = function (state, content) {
+  /* Sao lưu ATLAS mới */
+  ATLAS.EXPORT_FORMAT = 'atlas-academy-export';
+  ATLAS.exportJson = function (state, nowMs) {
+    return JSON.stringify({ format: ATLAS.EXPORT_FORMAT, version: ATLAS.STATE_VERSION, exportedAt: ATLAS.vnIso(nowMs), state: state }, null, 2);
+  };
+  ATLAS.exportName = function (nowMs) { return 'atlas-sao-luu-' + ATLAS.vnDay(nowMs) + '.json'; };
+  /* Đọc file sao lưu: nhận bản ATLAS mới hoặc bản ATLAS cũ (atlas-export v3, sẽ được chuyển đổi). Không ghi gì. */
+  ATLAS.readBackup = function (text, content, nowMs) {
+    var o;
+    try { o = JSON.parse(text); } catch (e) { return { ok: false, error: 'Tệp không phải JSON hợp lệ.' }; }
+    if (isObj(o) && o.format === ATLAS.EXPORT_FORMAT && isObj(o.state)) {
+      if (typeof o.version === 'number' && o.version > ATLAS.STATE_VERSION) return { ok: false, error: 'Tệp do phiên bản ATLAS mới hơn tạo ra.' };
+      var n = ATLAS.normalizeState(o.state, nowMs);
+      return { ok: true, kind: 'new', state: n.state, problems: n.problems, exportedAt: validTime(o.exportedAt) };
+    }
+    if (isObj(o) && o.format === ATLAS.LEGACY.format) {
+      if (typeof o.version !== 'number' || o.version > ATLAS.LEGACY.version) return { ok: false, error: 'Phiên bản tệp ATLAS cũ không hỗ trợ.' };
+      var data = {}, ks = keys(o), i;
+      for (i = 0; i < ks.length; i++) { if (ks[i] !== 'format' && ks[i] !== 'version' && ks[i] !== 'exported_at') data[ks[i]] = o[ks[i]]; }
+      return { ok: true, kind: 'legacy', state: ATLAS.migrateLegacy({ data: data, updatedAt: typeof o.exported_at === 'string' ? o.exported_at : null }, content, nowMs), problems: [] };
+    }
+    return { ok: false, error: 'Tệp này không phải bản sao lưu ATLAS.' };
+  };
+
+  ATLAS.completionsByAcademy = function (state, content, lessonAcademy) {
     var map = ATLAS.legacyMap(content), out = { unmapped: 0 }, i, c, ac;
     for (i = 0; i < ATLAS.ACADEMY_IDS.length; i++) out[ATLAS.ACADEMY_IDS[i]] = 0;
     c = arr(state && state.learning && state.learning.completions);
     for (i = 0; i < c.length; i++) {
-      ac = map[c[i].lessonId];
+      ac = (lessonAcademy && lessonAcademy[c[i].lessonId]) || map[c[i].lessonId];
       if (ac && hasOwn.call(out, ac)) out[ac]++; else out.unmapped++;
     }
     return out;
   };
+
+  /* tiện ích dùng chung cho các khối khác */
+  ATLAS.util = { isArr: isArr, isObj: isObj, arr: arr, obj: obj, str: str, num: num, clampInt: clampInt, copy: copy, keys: keys, inList: inList, pad: pad, DAY_RE: DAY_RE };
 })(typeof window !== 'undefined' ? window : this);
 </script>
 
-<!-- ===================== GIAO DIỆN trang kiểm tra Phase 1 (ES5, chỉ đọc) ===================== -->
-<script id="atlas-ui">
-(function () {
+<!-- ===================== GIAO DIỆN (ES5) ===================== -->
+<script id="atlas-ui-kit">
+/* atlas-ui-kit: dựng DOM, component dùng chung, khung app, router, lưu dữ liệu. ES5 thuần. */
+(function (root) {
   'use strict';
-  var doc = document, A = window.ATLAS, hasOwn = Object.prototype.hasOwnProperty;
-  var NOW = Date.now();
+  var A = root.ATLAS, doc = root.document, hasOwn = Object.prototype.hasOwnProperty;
+  var UI = root.UI = {};
+  var SVGNS = 'http://www.w3.org/2000/svg', XLINK = 'http://www.w3.org/1999/xlink';
 
-  function h(tag, attrs, kids) {
-    var el = doc.createElement(tag), k, i, c;
-    if (attrs) {
-      for (k in attrs) {
-        if (!hasOwn.call(attrs, k) || attrs[k] === null || attrs[k] === undefined) continue;
-        if (k === 'text') el.textContent = attrs[k];
-        else if (k === 'class') el.className = attrs[k];
-        else if (k.indexOf('on') === 0) el.addEventListener(k.slice(2), attrs[k]);
-        else el.setAttribute(k, attrs[k]);
-      }
+  function isArr(x) { return Array.isArray(x); }
+  function each(list, fn) { for (var i = 0; i < list.length; i++) fn(list[i], i); }
+
+  /* ================= DOM ================= */
+  function setAttrs(el, attrs, isSvg) {
+    var k, v, s;
+    if (!attrs) return;
+    for (k in attrs) {
+      if (!hasOwn.call(attrs, k)) continue;
+      v = attrs[k];
+      if (v === null || v === undefined || v === false) continue;
+      if (k === 'text') el.textContent = v;
+      else if (k === 'class') { if (isSvg) el.setAttribute('class', v); else el.className = v; }
+      else if (k === 'style' && typeof v === 'object') { for (s in v) { if (hasOwn.call(v, s)) { if (s.indexOf('--') === 0) el.style.setProperty(s, v[s]); else el.style[s] = v[s]; } } }
+      else if (k.slice(0, 2) === 'on' && typeof v === 'function') el.addEventListener(k.slice(2), v);
+      else if (k === 'value' && !isSvg) el.value = v;
+      else if (k === 'checked' && !isSvg) el.checked = !!v;
+      else if (v === true) el.setAttribute(k, '');
+      else el.setAttribute(k, String(v));
     }
-    if (kids) {
-      for (i = 0; i < kids.length; i++) {
-        c = kids[i];
-        if (c === null || c === undefined || c === false) continue;
-        el.appendChild(typeof c === 'string' ? doc.createTextNode(c) : c);
-      }
+  }
+  function append(el, kids) {
+    var i, c;
+    if (kids === null || kids === undefined || kids === false) return el;
+    if (!isArr(kids)) kids = [kids];
+    for (i = 0; i < kids.length; i++) {
+      c = kids[i];
+      if (c === null || c === undefined || c === false || c === '') continue;
+      if (isArr(c)) { append(el, c); continue; }
+      el.appendChild((typeof c === 'string' || typeof c === 'number') ? doc.createTextNode(String(c)) : c);
     }
     return el;
   }
-  function fill(id, nodes) {
-    var el = doc.getElementById(id), i;
-    if (!el) return;
-    while (el.firstChild) el.removeChild(el.firstChild);
-    for (i = 0; i < nodes.length; i++) { if (nodes[i]) el.appendChild(nodes[i]); }
+  function h(tag, attrs, kids) { var el = doc.createElement(tag); setAttrs(el, attrs, false); return append(el, kids); }
+  function svg(tag, attrs, kids) { var el = doc.createElementNS(SVGNS, tag); setAttrs(el, attrs, true); return append(el, kids); }
+  function use(id, attrs) {
+    var u = doc.createElementNS(SVGNS, 'use');
+    u.setAttributeNS(XLINK, 'xlink:href', '#' + id);
+    u.setAttribute('href', '#' + id);
+    setAttrs(u, attrs, true);
+    return u;
   }
-  function note(kind, text) { return h('p', { 'class': 'note ' + kind, text: text }); }
-  function kb(bytes) { return (Math.round(bytes / 102.4) / 10).toString().replace('.', ',') + ' KB'; }
-  function rows(list) {
-    var trs = [], i;
-    for (i = 0; i < list.length; i++) {
-      if (!list[i]) continue;
-      trs.push(h('tr', null, [h('th', { scope: 'row', text: list[i][0] }), h('td', { text: String(list[i][1]) })]));
+  function clear(el) { while (el && el.firstChild) el.removeChild(el.firstChild); return el; }
+  function replace(el, kids) { clear(el); return append(el, kids); }
+  UI.h = h; UI.svg = svg; UI.use = use; UI.clear = clear; UI.replace = replace; UI.append = append; UI.each = each;
+
+  function icon(id, opts) {
+    opts = opts || {};
+    var el = svg('svg', {
+      'class': 'ic' + (opts.cls ? ' ' + opts.cls : ''), viewBox: '0 0 24 24', focusable: 'false',
+      role: opts.label ? 'img' : null, 'aria-label': opts.label || null, 'aria-hidden': opts.label ? null : 'true'
+    });
+    el.appendChild(use(id.indexOf('-') === 1 ? id : 'u-' + id));
+    return el;
+  }
+  function academyIcon(academyId, opts) { return icon('i-' + academyId, opts); }
+  UI.icon = icon; UI.academyIcon = academyIcon;
+
+  /* Logo ngang: tỉ lệ biểu tượng/chữ cố định (56 : 26, cách 14) ở mọi màn hình */
+  UI.logo = function (opts) {
+    opts = opts || {};
+    var height = opts.height || 32, symbolOnly = !!opts.symbolOnly;
+    var vbW = symbolOnly ? 64 : 178, vbH = symbolOnly ? 64 : 56;
+    var s = svg('svg', { viewBox: '0 0 ' + vbW + ' ' + vbH, width: Math.round(height * vbW / vbH), height: height, role: 'img', 'aria-label': 'ATLAS', focusable: 'false', 'class': opts.cls || null, style: { color: 'var(--text)' } });
+    if (symbolOnly) { s.appendChild(use('b-symbol', { width: 64, height: 64 })); return s; }
+    s.appendChild(use('b-symbol', { width: 56, height: 56 }));
+    var wm = use('b-word', { x: 70, y: 15, width: 107.9, height: 26, 'class': 'wm' });
+    wm.setAttribute('fill', 'currentColor');
+    s.appendChild(wm);
+    return s;
+  };
+
+  /* ================= định dạng ================= */
+  UI.fmtInt = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
+  UI.kb = function (bytes) { return (Math.round(bytes / 102.4) / 10).toString().replace('.', ',') + ' KB'; };
+  UI.pct = function (x) { return Math.round(x * 100) + '%'; };
+  UI.plural = function (n, word) { return UI.fmtInt(n) + ' ' + word; };
+  var WD = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
+  UI.vnDateLong = function (ms) {
+    var d = new Date((typeof ms === 'number' ? ms : Date.now()) + 7 * 3600 * 1000);
+    return WD[d.getUTCDay()] + ', ' + d.getUTCDate() + '/' + (d.getUTCMonth() + 1) + '/' + d.getUTCFullYear();
+  };
+
+  /* ================= component ================= */
+  UI.btn = function (label, opts) {
+    opts = opts || {};
+    var cls = 'btn' + (opts.kind && opts.kind !== 'primary' ? ' ' + opts.kind : '') + (opts.size ? ' ' + opts.size : '') + (opts.block ? ' block' : '') + (opts.cls ? ' ' + opts.cls : '');
+    var kids = [opts.icon ? icon(opts.icon, { cls: 'sm' }) : null, label ? h('span', { text: label }) : null, opts.iconRight ? icon(opts.iconRight, { cls: 'sm' }) : null];
+    if (opts.href && !opts.disabled) return h('a', { 'class': cls, href: opts.href, 'aria-label': opts.ariaLabel || null, download: opts.download || null }, kids);
+    var b = h('button', {
+      'class': cls, type: opts.type || 'button', disabled: !!opts.disabled, 'aria-busy': opts.busy ? 'true' : null,
+      'aria-label': opts.ariaLabel || null, 'aria-pressed': opts.pressed === undefined ? null : String(!!opts.pressed), onclick: opts.onClick || null
+    }, kids);
+    return b;
+  };
+  UI.setBusy = function (btn, busy) { if (busy) { btn.setAttribute('aria-busy', 'true'); btn.disabled = true; } else { btn.removeAttribute('aria-busy'); btn.disabled = false; } };
+  UI.iconBtn = function (iconId, label, onClick, opts) {
+    opts = opts || {};
+    return h('button', { 'class': 'icon-btn' + (opts.cls ? ' ' + opts.cls : ''), type: 'button', 'aria-label': label, title: label, onclick: onClick,
+      'aria-pressed': opts.pressed === undefined ? null : String(!!opts.pressed), 'aria-expanded': opts.expanded === undefined ? null : String(!!opts.expanded) }, [icon(iconId)]);
+  };
+
+  var uid = 0;
+  UI.uid = function (p) { uid += 1; return (p || 'f') + uid; };
+  /* Ô nhập có nhãn, gợi ý, lỗi. opts: label, value, type, multiline, options [{value,label}], help, error, placeholder, onInput, onChange, rows, maxlength, disabled */
+  UI.field = function (opts) {
+    var id = opts.id || UI.uid('f'), helpId = id + '-h', errId = id + '-e', ctrl;
+    var common = { id: id, 'class': opts.multiline ? 'textarea' : (opts.options ? 'select' : 'input'), disabled: !!opts.disabled,
+      'aria-invalid': opts.error ? 'true' : null, 'aria-describedby': (opts.help ? helpId : '') + (opts.error ? ' ' + errId : '') || null,
+      placeholder: opts.placeholder || null, maxlength: opts.maxlength || null, required: !!opts.required, autocomplete: opts.autocomplete || null,
+      inputmode: opts.inputmode || null, name: opts.name || null };
+    if (opts.multiline) { common.rows = opts.rows || 5; ctrl = h('textarea', common); ctrl.value = opts.value || ''; }
+    else if (opts.options) {
+      ctrl = h('select', common, opts.options.map(function (o) { return h('option', { value: o.value, text: o.label }); }));
+      ctrl.value = opts.value === undefined ? '' : opts.value;
+    } else { common.type = opts.type || 'text'; ctrl = h('input', common); ctrl.value = opts.value === undefined ? '' : opts.value; }
+    if (opts.onInput) ctrl.addEventListener('input', function () { opts.onInput(ctrl.value, ctrl); });
+    if (opts.onChange) ctrl.addEventListener('change', function () { opts.onChange(ctrl.value, ctrl); });
+    var wrap = h('div', { 'class': 'field' }, [
+      h('label', { 'class': 'label', 'for': id, text: opts.label }),
+      ctrl,
+      opts.help ? h('span', { 'class': 'help', id: helpId, text: opts.help }) : null,
+      opts.error ? h('span', { 'class': 'err', id: errId, role: 'alert', text: opts.error }) : null
+    ]);
+    wrap.control = ctrl;
+    return wrap;
+  };
+  UI.check = function (label, checked, onChange, opts) {
+    opts = opts || {};
+    var input = h('input', { type: 'checkbox', checked: !!checked, disabled: !!opts.disabled });
+    input.addEventListener('change', function () { onChange(input.checked, input); });
+    return h('label', { 'class': 'check' }, [input, h('span', null, [label])]);
+  };
+  /* Nút chọn một trong nhiều (segmented) */
+  UI.seg = function (items, value, onChange, label) {
+    var wrap = h('div', { 'class': 'seg', role: 'group', 'aria-label': label || null });
+    each(items, function (it) {
+      wrap.appendChild(h('button', { type: 'button', 'aria-pressed': String(it.value === value), text: it.label, onclick: function () {
+        each(wrap.children, function (b) { b.setAttribute('aria-pressed', 'false'); });
+        this.setAttribute('aria-pressed', 'true');
+        onChange(it.value);
+      } }));
+    });
+    return wrap;
+  };
+  UI.card = function (kids, opts) { opts = opts || {}; return h(opts.tag || 'div', { 'class': 'card' + (opts.cls ? ' ' + opts.cls : ''), id: opts.id || null }, kids); };
+  UI.note = function (kind, kids) {
+    var ic = kind === 'warn' || kind === 'danger' ? 'alert' : (kind === 'ok' ? 'check' : 'info');
+    return h('div', { 'class': 'note ' + kind, role: kind === 'danger' ? 'alert' : null }, [icon(ic, { cls: 'sm' }), h('div', { 'class': 'grow' }, kids)]);
+  };
+  UI.badge = function (text, kind) { return h('span', { 'class': 'badge' + (kind ? ' ' + kind : ''), text: text }); };
+  UI.STATUS = { live: 'Hoạt động thật', preview: 'Xem thử, chưa lưu', planned: 'Chưa triển khai' };
+  UI.statusBadge = function (status) { return UI.badge(UI.STATUS[status] || status, status); };
+  UI.progress = function (value, max, label, opts) {
+    opts = opts || {};
+    var pct = max > 0 ? Math.max(0, Math.min(1, value / max)) : 0;
+    return h('div', { 'class': 'progress' + (opts.accent ? ' accent' : ''), role: 'progressbar', 'aria-label': label, 'aria-valuemin': '0', 'aria-valuemax': String(max), 'aria-valuenow': String(value) },
+      [h('span', { style: { width: (pct * 100).toFixed(1) + '%' } })]);
+  };
+  /* Thước năng lực 6 bậc: Tiếp xúc → Nhớ → Giải thích → Áp dụng → Tạo ra → Làm chủ */
+  UI.LEVELS6 = ['Tiếp xúc', 'Nhớ', 'Giải thích', 'Áp dụng', 'Tạo ra', 'Làm chủ'];
+  UI.meter = function (achieved, label) {
+    /* achieved: mảng 6 giá trị true/false */
+    var got = [], i, top = -1;
+    for (i = 0; i < 6; i++) { if (achieved[i]) { got.push(UI.LEVELS6[i]); top = i; } }
+    var m = h('div', { 'class': 'meter', role: 'img', 'aria-label': (label ? label + ': ' : '') + (got.length ? 'đạt ' + got.join(', ') : 'chưa có bằng chứng') });
+    for (i = 0; i < 6; i++) m.appendChild(h('i', { 'class': (achieved[i] ? 'on' : '') + (i === top && i === 5 ? ' top' : '') }));
+    return m;
+  };
+  UI.crumbs = function (items) {
+    var nav = h('nav', { 'class': 'crumbs', 'aria-label': 'Đường dẫn' });
+    each(items, function (it, i) {
+      if (i) nav.appendChild(h('span', { 'class': 'sep', 'aria-hidden': 'true', text: '›' }));
+      nav.appendChild(it.href ? h('a', { href: it.href, text: it.label }) : h('span', { 'aria-current': 'page', text: it.label }));
+    });
+    return nav;
+  };
+  UI.empty = function (title, text, action) {
+    return h('div', { 'class': 'empty' }, [h('h3', { text: title }), text ? h('p', { text: text }) : null, action || null]);
+  };
+  UI.errorBox = function (text, retry) {
+    return h('div', { 'class': 'error-box', role: 'alert' }, [h('p', { text: text }), retry ? UI.btn('Thử lại', { kind: 'secondary', onClick: retry }) : null]);
+  };
+  UI.skeleton = function (lines) {
+    var w = h('div', { 'class': 'stack', 'aria-hidden': 'true' }), i;
+    for (i = 0; i < (lines || 3); i++) w.appendChild(h('div', { 'class': 'skeleton', style: { width: (90 - i * 15) + '%' } }));
+    return w;
+  };
+  /* Gợi ý: bấm hoặc focus để mở, không cần di chuột (dùng tốt trên iPad) */
+  UI.tip = function (text, label) {
+    var bubbleId = UI.uid('tip');
+    var bubble = h('span', { 'class': 'tip-bubble', id: bubbleId, role: 'tooltip', hidden: true, text: text });
+    var btn = h('button', { 'class': 'icon-btn', type: 'button', 'aria-label': label || 'Giải thích', 'aria-describedby': bubbleId, 'aria-expanded': 'false' }, [icon('info', { cls: 'sm' })]);
+    function show(v) { bubble.hidden = !v; btn.setAttribute('aria-expanded', String(v)); }
+    btn.addEventListener('click', function () { show(bubble.hidden); });
+    btn.addEventListener('blur', function () { show(false); });
+    btn.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false); });
+    return h('span', { 'class': 'tip' }, [btn, bubble]);
+  };
+  /* Tab có điều hướng bằng phím mũi tên */
+  UI.tabs = function (items, selected, onSelect, label) {
+    var list = h('div', { 'class': 'tabs', role: 'tablist', 'aria-label': label || null });
+    each(items, function (it) {
+      var b = h('button', { 'class': 'tab', role: 'tab', id: 'tab-' + it.id, 'aria-selected': String(it.id === selected), tabindex: it.id === selected ? '0' : '-1', type: 'button',
+        'aria-controls': it.panel || null, text: it.label });
+      b.addEventListener('click', function () { select(it.id, true); });
+      list.appendChild(b);
+    });
+    function select(id, focus) {
+      each(list.children, function (b) {
+        var on = b.id === 'tab-' + id;
+        b.setAttribute('aria-selected', String(on)); b.setAttribute('tabindex', on ? '0' : '-1');
+        if (on && focus) b.focus();
+      });
+      onSelect(id);
     }
-    return h('table', { 'class': 'kv' }, [h('tbody', null, trs)]);
+    list.addEventListener('keydown', function (e) {
+      var tabs = list.children, cur = -1, i;
+      for (i = 0; i < tabs.length; i++) if (tabs[i] === doc.activeElement) cur = i;
+      if (cur < 0) return;
+      var next = e.key === 'ArrowRight' ? cur + 1 : e.key === 'ArrowLeft' ? cur - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+      if (next === null) return;
+      e.preventDefault();
+      next = (next + tabs.length) % tabs.length;
+      select(tabs[next].id.slice(4), true);
+    });
+    return list;
+  };
+
+  /* ---------- hộp thoại & ngăn kéo: giữ focus bên trong, Esc để đóng, trả focus về chỗ cũ ---------- */
+  var FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  function trap(container, e) {
+    if (e.key !== 'Tab') return;
+    var f = container.querySelectorAll(FOCUSABLE);
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
   }
+  function overlay(kind, title, body, actions, onClose) {
+    var prev = doc.activeElement, titleId = UI.uid('dlg');
+    var panel = h('div', { 'class': kind === 'drawer' ? 'drawer-panel' : 'dialog', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': titleId });
+    var scrim = h('div', { 'class': 'scrim' + (kind === 'drawer' ? ' drawer' : '') }, [panel]);
+    function close() {
+      if (!scrim.parentNode) return;
+      scrim.parentNode.removeChild(scrim);
+      doc.removeEventListener('keydown', onKey, true);
+      if (prev && prev.focus) { try { prev.focus(); } catch (e) { /* bỏ qua */ } }
+      if (onClose) onClose();
+    }
+    function onKey(e) { if (e.key === 'Escape') { e.preventDefault(); close(); } else trap(panel, e); }
+    append(panel, [
+      h('div', { 'class': 'dialog-head' }, [h('h2', { id: titleId, text: title }), UI.iconBtn('close', 'Đóng', close)]),
+      typeof body === 'function' ? body(close) : body,
+      actions && actions.length ? h('div', { 'class': 'dialog-actions' }, actions.map(function (a) {
+        return UI.btn(a.label, { kind: a.kind || 'secondary', onClick: function () { if (a.onClick) { if (a.onClick(close) !== false) close(); } else close(); } });
+      })) : null
+    ]);
+    scrim.addEventListener('click', function (e) { if (e.target === scrim) close(); });
+    doc.addEventListener('keydown', onKey, true);
+    doc.body.appendChild(scrim);
+    var f = panel.querySelectorAll(FOCUSABLE);
+    (f.length > 1 ? f[1] : f[0] || panel).focus();
+    return close;
+  }
+  UI.modal = function (title, body, actions, onClose) { return overlay('modal', title, body, actions, onClose); };
+  UI.drawer = function (title, body, onClose) { return overlay('drawer', title, body, null, onClose); };
+  UI.confirm = function (title, text, okLabel, onOk, danger) {
+    return UI.modal(title, h('p', { text: text }), [{ label: 'Huỷ' }, { label: okLabel, kind: danger ? 'danger' : 'primary', onClick: function () { onOk(); } }]);
+  };
+
+  /* ---------- thông báo ngắn (đọc được bằng trình đọc màn hình) ---------- */
+  UI.toast = function (msg, opts) {
+    opts = opts || {};
+    var region = doc.getElementById('toasts');
+    if (!region) return;
+    var t = h('div', { 'class': 'toast' }, [h('span', { 'class': 'grow', text: msg }),
+      opts.action ? h('button', { 'class': 'btn sm', type: 'button', text: opts.action.label, onclick: function () { opts.action.onClick(); remove(); } }) : null]);
+    function remove() { if (t.parentNode) t.parentNode.removeChild(t); }
+    region.appendChild(t);
+    setTimeout(remove, opts.ms || 3600);
+  };
+
+  /* ================= lưu dữ liệu ================= */
+  var saveTimer = null;
+  UI.state = null;           /* dữ liệu học (atlas-academy-state) */
+  UI.store = null;           /* bộ nhớ trình duyệt (chỉ get/set) */
+  UI.onSaved = null;
+  UI.save = function (immediate) {
+    if (!UI.state || !UI.store) return;
+    if (saveTimer) clearTimeout(saveTimer);
+    function run() {
+      saveTimer = null;
+      var r = A.saveState(UI.store, UI.state, Date.now());
+      if (!r.ok) UI.toast(r.error, { ms: 6000 });
+      else if (UI.onSaved) UI.onSaved();
+    }
+    if (immediate) run(); else saveTimer = setTimeout(run, 250);
+  };
+  UI.mutate = function (fn, opts) {
+    fn(UI.state);
+    UI.state.meta.updatedAt = A.vnIso(Date.now());
+    UI.save(opts && opts.immediate);
+    if (opts && opts.refresh) UI.refresh();
+    UI.updateBadges();
+  };
+  root.addEventListener('pagehide', function () { if (saveTimer) UI.save(true); });
+  doc.addEventListener('visibilitychange', function () { if (doc.visibilityState === 'hidden' && saveTimer) UI.save(true); });
+
+  /* Giao diện: sáng / tối / theo máy, cỡ chữ, giảm chuyển động */
+  UI.applyPrefs = function () {
+    var s = UI.state && UI.state.settings ? UI.state.settings : {}, de = doc.documentElement;
+    if (s.theme === 'light' || s.theme === 'dark') de.setAttribute('data-theme', s.theme); else de.removeAttribute('data-theme');
+    if (s.textSize === 'large') de.setAttribute('data-text', 'large'); else de.removeAttribute('data-text');
+    if (s.reduceMotion) de.setAttribute('data-motion', 'reduce'); else de.removeAttribute('data-motion');
+  };
+
+  /* ================= khung app ================= */
+  UI.NAV = [
+    { id: 'home', href: '#/', label: 'Tổng quan', icon: 'home' },
+    { id: 'academies', href: '#/academies', label: 'Học viện', icon: 'grid' },
+    { id: 'review', href: '#/review', label: 'Ôn tập & Sổ lỗi', short: 'Ôn tập', icon: 'review', badge: 'due' },
+    { id: 'projects', href: '#/projects', label: 'Project Lab', icon: 'flask' },
+    { id: 'vault', href: '#/vault', label: 'Knowledge Vault', icon: 'vault' },
+    { id: 'mentor', href: '#/mentor', label: 'AI Mentor', short: 'Mentor', icon: 'mentor' },
+    { sep: true },
+    { id: 'progress', href: '#/progress', label: 'Tiến độ', icon: 'chart' },
+    { id: 'settings', href: '#/settings', label: 'Hồ sơ & dữ liệu', icon: 'sliders' }
+  ];
+  UI.TABBAR = ['home', 'academies', 'review', 'mentor'];
+  UI.badgeCount = function () { return 0; };   /* trang Ôn tập gắn hàm đếm thật */
+
+  function navLink(it, compact) {
+    var a = h('a', { href: it.href, 'data-nav': it.id }, [icon(it.icon), h('span', { 'class': 'label', text: compact && it.short ? it.short : it.label })]);
+    if (it.badge) a.appendChild(h('span', { 'class': 'count', 'data-count': it.badge, hidden: true }));
+    return a;
+  }
+  UI.mountShell = function () {
+    var app = doc.getElementById('app');
+    var collapsed = false;
+    try { collapsed = root.localStorage.getItem('atlas_academy_ui_sidebar') === 'collapsed'; } catch (e) { collapsed = false; }
+    var nav = h('nav', { 'class': 'nav', 'aria-label': 'Điều hướng chính' });
+    each(UI.NAV, function (it) { nav.appendChild(it.sep ? h('div', { 'class': 'nav-sep', role: 'separator' }) : navLink(it, false)); });
+    var collapseBtn = UI.iconBtn('sidebar', 'Thu gọn thanh bên', function () {
+      collapsed = !collapsed;
+      shell.className = 'shell' + (collapsed ? ' collapsed' : '');
+      collapseBtn.setAttribute('aria-pressed', String(collapsed));
+      try { root.localStorage.setItem('atlas_academy_ui_sidebar', collapsed ? 'collapsed' : 'open'); } catch (e) { /* bỏ qua */ }
+    }, { pressed: collapsed });
+    var sidebar = h('aside', { 'class': 'sidebar', 'aria-label': 'Thanh bên' }, [
+      h('a', { 'class': 'logo', href: '#/', 'aria-label': 'ATLAS, về Tổng quan' }, [UI.logo({ height: 34, cls: 'full' }), UI.logo({ height: 34, symbolOnly: true, cls: 'sym' })]),
+      nav,
+      h('div', { 'class': 'sidebar-foot' }, [h('div', { 'class': 'row' }, [collapseBtn, h('span', { 'class': 'label caption', id: 'sync-chip' })])])
+    ]);
+    var tabbar = h('nav', { 'class': 'tabbar', 'aria-label': 'Điều hướng nhanh' });
+    each(UI.TABBAR, function (id) {
+      var it = null;
+      each(UI.NAV, function (n) { if (n.id === id) it = n; });
+      var a = h('a', { href: it.href, 'data-nav': it.id }, [icon(it.icon), h('span', { text: it.short || it.label })]);
+      if (it.badge) a.appendChild(h('span', { 'class': 'dot', 'data-count': it.badge, hidden: true }));
+      tabbar.appendChild(a);
+    });
+    tabbar.appendChild(h('button', { type: 'button', 'aria-label': 'Thêm mục', onclick: openMore }, [icon('more'), h('span', { text: 'Thêm' })]));
+    var topbar = h('header', { 'class': 'topbar' }, [
+      UI.iconBtn('menu', 'Mở danh mục', openMore),
+      h('a', { 'class': 'logo', href: '#/', 'aria-label': 'ATLAS, về Tổng quan' }, [UI.logo({ height: 28 })]),
+      h('span', { 'class': 'grow' }),
+      h('span', { 'class': 'caption', id: 'sync-chip-top' })
+    ]);
+    var main = h('main', { 'class': 'content', id: 'main', tabindex: '-1' });
+    var shell = h('div', { 'class': 'shell' + (collapsed ? ' collapsed' : '') }, [sidebar, h('div', { 'class': 'main' }, [topbar, main])]);
+    clear(app);
+    append(app, [h('a', { 'class': 'skip', href: '#main', onclick: function (e) { e.preventDefault(); main.focus(); } , text: 'Bỏ qua, tới nội dung chính' }), shell, tabbar,
+      h('div', { 'class': 'toasts', id: 'toasts', role: 'status', 'aria-live': 'polite' })]);
+    UI.main = main;
+  };
+  function openMore() {
+    var list = h('nav', { 'class': 'nav', 'aria-label': 'Tất cả mục' });
+    var close;
+    each(UI.NAV, function (it) {
+      if (it.sep) { list.appendChild(h('div', { 'class': 'nav-sep', role: 'separator' })); return; }
+      var a = navLink(it, false);
+      a.addEventListener('click', function () { if (close) close(); });
+      list.appendChild(a);
+    });
+    close = UI.drawer('Danh mục', h('div', { 'class': 'stack' }, [list, h('a', { 'class': 'link-btn', href: '#/design', text: 'Bộ nhận diện & design system' })]));
+    UI.markNav(list);
+  }
+  UI.markNav = function (scope) {
+    var cur = UI.current ? UI.current.nav : '';
+    each((scope || doc).querySelectorAll('[data-nav]'), function (a) {
+      if (a.getAttribute('data-nav') === cur) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+  };
+  UI.updateBadges = function () {
+    var n = UI.badgeCount();
+    each(doc.querySelectorAll('[data-count="due"]'), function (el) { el.textContent = n > 99 ? '99+' : String(n); el.hidden = !n; });
+  };
+  UI.setSync = function (text) {
+    each([doc.getElementById('sync-chip'), doc.getElementById('sync-chip-top')], function (el) { if (el) el.textContent = text; });
+  };
+
+  /* ================= router (địa chỉ #/...) ================= */
+  var ROUTES = [];
+  UI.route = function (pattern, render, opts) { ROUTES.push({ parts: pattern ? pattern.split('/') : [], render: render, opts: opts || {} }); };
+  UI.guard = null;   /* hàm(path) → địa chỉ chuyển hướng hoặc null */
+  UI.current = null;
+  function parse() {
+    var raw = (root.location.hash || '').replace(/^#\/?/, ''), q = {}, qi = raw.indexOf('?');
+    if (qi !== -1) {
+      each(raw.slice(qi + 1).split('&'), function (kv) { var p = kv.split('='); if (p[0]) q[decodeURIComponent(p[0])] = decodeURIComponent(p[1] || ''); });
+      raw = raw.slice(0, qi);
+    }
+    var parts = raw.split('/').filter(function (x) { return x !== ''; });
+    return { path: parts.join('/'), parts: parts, query: q };
+  }
+  function find(parts) {
+    var i, j, r, params;
+    for (i = 0; i < ROUTES.length; i++) {
+      r = ROUTES[i];
+      if (r.parts.length !== parts.length) continue;
+      params = {};
+      for (j = 0; j < parts.length; j++) {
+        if (r.parts[j].charAt(0) === ':') params[r.parts[j].slice(1)] = decodeURIComponent(parts[j]);
+        else if (r.parts[j] !== parts[j]) break;
+      }
+      if (j === parts.length) return { route: r, params: params };
+    }
+    return null;
+  }
+  UI.go = function (path) { var target = '#/' + path; if (root.location.hash === target) UI.render(); else root.location.hash = target; };
+  UI.render = function (keepScroll) {
+    var loc = parse();
+    if (UI.guard) {
+      var redirect = UI.guard(loc.path);
+      if (redirect !== null && redirect !== undefined && redirect !== loc.path) { root.location.replace('#/' + redirect); return; }
+    }
+    var found = find(loc.parts) || find(['__404']);
+    var y = root.pageYOffset;
+    var sameRoute = UI.current && UI.current.path === loc.path;
+    UI.current = { path: loc.path, params: found ? found.params : {}, query: loc.query, nav: found ? found.route.opts.nav || '' : '' };
+    var page;
+    try { page = found.route.render(UI.current.params, loc.query); }
+    catch (err) {
+      page = h('div', null, [h('h1', { 'class': 'page-title', tabindex: '-1', text: 'Có lỗi khi mở trang' }),
+        UI.errorBox('Trang này gặp lỗi: ' + (err && err.message ? err.message : err) + '. Dữ liệu của bạn không bị ảnh hưởng.', function () { UI.render(); })]);
+      if (root.console) root.console.error(err);
+    }
+    UI.main.className = 'content' + (found && found.route.opts.narrow ? ' narrow' : '');
+    replace(UI.main, page);
+    doc.title = (found && found.route.opts.title ? (typeof found.route.opts.title === 'function' ? found.route.opts.title(UI.current.params) : found.route.opts.title) + ' · ' : '') + 'ATLAS';
+    UI.markNav();
+    UI.updateBadges();
+    if (keepScroll || sameRoute) root.scrollTo(0, y);
+    else {
+      root.scrollTo(0, 0);
+      var t = UI.main.querySelector('.page-title');
+      if (t && UI.booted) { if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1'); t.focus(); }
+    }
+    if (loc.query.at) { var target = doc.getElementById(loc.query.at); if (target) target.scrollIntoView(); }
+  };
+  UI.refresh = function () { UI.render(true); };
+  root.addEventListener('hashchange', function () { UI.render(); });
+
+  UI.pageHead = function (title, opts) {
+    opts = opts || {};
+    return h('div', { 'class': 'page-head' }, [
+      h('div', { 'class': 'grow' }, [opts.eyebrow ? h('p', { 'class': 'eyebrow', text: opts.eyebrow }) : null, h('h1', { 'class': 'page-title', tabindex: '-1', text: title }),
+        opts.lead ? h('p', { 'class': 'muted', style: { margin: '8px 0 0', maxWidth: '68ch' }, text: opts.lead }) : null]),
+      opts.actions ? h('div', { 'class': 'row' }, opts.actions) : null
+    ]);
+  };
+  UI.section = function (title, kids, opts) {
+    opts = opts || {};
+    var id = opts.id || UI.uid('sec');
+    return h('section', { 'class': 'section', 'aria-labelledby': id + '-h', id: id }, [
+      h('div', { 'class': 'section-head' }, [h('h2', { id: id + '-h', text: title }), opts.action || null]),
+      kids
+    ]);
+  };
+})(window);
+
+</script>
+<script id="atlas-ui-illo">
+/* atlas-ui-illo: minh hoạ SVG vẽ từ dữ liệu (không dùng ảnh stock). ES5. */
+(function (root) {
+  'use strict';
+  var UI = root.UI, A = root.ATLAS, svg = UI.svg, use = UI.use;
+  var I = UI.illo = {};
+
+  function shortName(a) { return a.vi.replace(/^Học viện\s+/, ''); }
+  I.shortName = shortName;
+
+  /* Bản đồ tri thức: la bàn ở giữa, 7 học viện quanh một vòng, nối với nhau */
+  I.hero = function (content, opts) {
+    opts = opts || {};
+    var W = 520, H = 380, cx = 260, cy = 186, rx = 196, ry = 140, acs = content.academies, n = acs.length, i;
+    var s = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, 'class': 'illo', role: 'img', 'aria-label': 'Bản đồ 7 học viện của ATLAS quanh một la bàn' });
+    var pts = [];
+    for (i = 0; i < n; i++) {
+      var ang = -Math.PI / 2 + i * 2 * Math.PI / n;
+      pts.push([cx + rx * Math.cos(ang), cy + ry * Math.sin(ang)]);
+    }
+    s.appendChild(svg('ellipse', { cx: cx, cy: cy, rx: rx, ry: ry, 'class': 'ln', 'stroke-dasharray': '3 6' }));
+    for (i = 0; i < n; i++) s.appendChild(svg('line', { x1: cx, y1: cy, x2: pts[i][0], y2: pts[i][1], 'class': 'ln', 'stroke-opacity': '.6' }));
+    for (i = 0; i < n; i++) {
+      var on = opts.active ? opts.active.indexOf(acs[i].id) !== -1 : false;
+      var g = svg('g', { transform: 'translate(' + pts[i][0].toFixed(1) + ' ' + pts[i][1].toFixed(1) + ')' });
+      g.appendChild(svg('circle', { r: 28, 'class': 'node' + (on ? ' on' : '') }));
+      var ic = svg('svg', { x: -12, y: -12, width: 24, height: 24, viewBox: '0 0 24 24', 'class': 'ic' });
+      ic.appendChild(use('i-' + acs[i].id));
+      g.appendChild(ic);
+      var label = svg('text', { y: 44, 'text-anchor': 'middle', 'class': 't' });
+      label.textContent = shortName(acs[i]);
+      g.appendChild(label);
+      s.appendChild(g);
+    }
+    s.appendChild(svg('circle', { cx: cx, cy: cy, r: 50, 'class': 'soft' }));
+    s.appendChild(use('b-symbol', { x: cx - 40, y: cy - 40, width: 80, height: 80 }));
+    return s;
+  };
+
+  /* Lộ trình 5 cấp (HTML để chữ luôn đọc được trên mọi cỡ màn hình): done = số cấp đã xong, current = cấp đang học */
+  I.path = function (levels, done, current) {
+    var h = UI.h, ol = h('ol', { 'class': 'lpath', 'aria-label': 'Lộ trình ' + levels.length + ' cấp' }), i, wrapper = h('div', { 'class': 'lpath-wrap' }, [ol]);
+    for (i = 0; i < levels.length; i++) {
+      var isDone = i < done, isCur = i === current;
+      ol.appendChild(h('li', { 'class': isDone ? 'done' : (isCur ? 'cur' : ''), 'aria-current': isCur ? 'step' : null }, [
+        h('span', { 'class': 'dot', 'aria-hidden': 'true' }, [isDone ? UI.icon('check', { cls: 'sm' }) : h('b', { text: String(i + 1) })]),
+        h('span', null, [h('span', { 'class': 'lv', text: levels[i].vi }), h('br'), h('span', { 'class': 'en', text: levels[i].name + (isDone ? ' · xong' : (isCur ? ' · đang học' : '')) })])
+      ]));
+    }
+    return wrapper;
+  };
+
+  /* Vòng năng lực: 6 vòng đồng tâm, mỗi vòng dài theo tỉ lệ (0..1) */
+  I.rings = function (values, label) {
+    var S = 200, c = 100, s = svg('svg', { viewBox: '0 0 ' + S + ' ' + S, 'class': 'illo', role: 'img', 'aria-label': label || 'Vòng năng lực' }), i;
+    for (i = 0; i < 6; i++) {
+      var r = 92 - i * 14, circ = 2 * Math.PI * r, v = Math.max(0, Math.min(1, values[i] || 0));
+      s.appendChild(svg('circle', { cx: c, cy: c, r: r, fill: 'none', stroke: 'var(--sunk)', 'stroke-width': 9 }));
+      if (v > 0) {
+        s.appendChild(svg('circle', { cx: c, cy: c, r: r, fill: 'none', stroke: i === 5 ? 'var(--accent)' : 'var(--text)', 'stroke-opacity': i === 5 ? 1 : (0.35 + i * 0.12),
+          'stroke-width': 9, 'stroke-linecap': 'round', 'stroke-dasharray': (circ * v).toFixed(1) + ' ' + circ.toFixed(1), transform: 'rotate(-90 ' + c + ' ' + c + ')' }));
+      }
+    }
+    return s;
+  };
+
+  /* Quy trình Project Lab */
+  I.flow = function (steps) {
+    var h = UI.h, wrap = h('div', { 'class': 'flow', role: 'list', 'aria-label': 'Quy trình dự án' }), i;
+    for (i = 0; i < steps.length; i++) {
+      wrap.appendChild(h('span', { 'class': 'step' + (i === steps.length - 1 ? ' last' : ''), role: 'listitem', text: (i + 1) + '. ' + steps[i] }));
+      if (i < steps.length - 1) wrap.appendChild(h('span', { 'class': 'arr', 'aria-hidden': 'true' }, [UI.icon('arrow-right', { cls: 'sm' })]));
+    }
+    return wrap;
+  };
+
+  /* AI Mentor: bong bóng hội thoại có la bàn nhỏ bên trong */
+  I.mentor = function () {
+    var s = svg('svg', { viewBox: '0 0 200 150', 'class': 'illo', role: 'img', 'aria-label': 'AI Mentor: hỏi đáp theo ngữ cảnh bài học' });
+    s.appendChild(svg('path', { d: 'M24 20h120a16 16 0 0 1 16 16v54a16 16 0 0 1-16 16H82l-30 24v-24H24A16 16 0 0 1 8 90V36a16 16 0 0 1 16-16z', 'class': 'node', 'stroke-width': 2 }));
+    s.appendChild(use('b-symbol', { x: 28, y: 33, width: 58, height: 58 }));
+    s.appendChild(svg('rect', { x: 96, y: 46, width: 46, height: 8, rx: 4, 'class': 'soft' }));
+    s.appendChild(svg('rect', { x: 96, y: 62, width: 34, height: 8, rx: 4, 'class': 'soft' }));
+    s.appendChild(svg('path', { d: 'M150 104h26a14 14 0 0 1 14 14v6a14 14 0 0 1-14 14h-26', 'class': 'node', 'stroke-width': 2 }));
+    var dots = [158, 168, 178], i;
+    for (i = 0; i < 3; i++) s.appendChild(svg('circle', { cx: dots[i], cy: 121, r: 3, 'class': i === 2 ? 'acc' : 'ink' }));
+    return s;
+  };
+
+  /* Bản đồ nhánh của một học viện: học viện ở giữa, các nhánh quanh nó; nhánh có bài sẽ đậm */
+  I.branchMap = function (academy, activeIds) {
+    var br = academy.branches, n = br.length, W = 640, H = 420, cx = W / 2, cy = H / 2, i;
+    var s = svg('svg', { viewBox: '0 0 ' + W + ' ' + H, 'class': 'illo', role: 'img', 'aria-label': 'Bản đồ ' + n + ' nhánh học của ' + academy.vi });
+    var pts = [];
+    for (i = 0; i < n; i++) { var a = -Math.PI / 2 + i * 2 * Math.PI / n; pts.push([cx + 236 * Math.cos(a), cy + 160 * Math.sin(a)]); }
+    for (i = 0; i < n; i++) s.appendChild(svg('line', { x1: cx, y1: cy, x2: pts[i][0], y2: pts[i][1], 'class': 'ln' }));
+    for (i = 0; i < n; i++) {
+      var on = activeIds && activeIds.indexOf(br[i].id) !== -1;
+      s.appendChild(svg('circle', { cx: pts[i][0], cy: pts[i][1], r: on ? 9 : 7, 'class': 'node' + (on ? ' on' : '') }));
+      var words = br[i].title.split(/[:,(]/)[0].split(' '), line1 = '', line2 = '', k;
+      for (k = 0; k < words.length; k++) { if ((line1 + ' ' + words[k]).length <= 22 && !line2) line1 = (line1 ? line1 + ' ' : '') + words[k]; else line2 = (line2 ? line2 + ' ' : '') + words[k]; }
+      if (line2.length > 22) line2 = line2.slice(0, 21) + '…';
+      var anchor = pts[i][0] < cx - 20 ? 'end' : (pts[i][0] > cx + 20 ? 'start' : 'middle');
+      var dx = anchor === 'end' ? -14 : (anchor === 'start' ? 14 : 0), dy = anchor === 'middle' ? (pts[i][1] < cy ? -18 : 24) : 4;
+      var t = svg('text', { x: pts[i][0] + dx, y: pts[i][1] + dy, 'text-anchor': anchor, 'class': on ? 't' : 't2' });
+      t.textContent = line1; s.appendChild(t);
+      if (line2) { var t2 = svg('text', { x: pts[i][0] + dx, y: pts[i][1] + dy + 14, 'text-anchor': anchor, 'class': on ? 't' : 't2' }); t2.textContent = line2; s.appendChild(t2); }
+    }
+    s.appendChild(svg('circle', { cx: cx, cy: cy, r: 40, 'class': 'node on' }));
+    var ic = svg('svg', { x: cx - 18, y: cy - 18, width: 36, height: 36, viewBox: '0 0 24 24', 'class': 'ic' });
+    ic.appendChild(use('i-' + academy.id));
+    s.appendChild(ic);
+    return s;
+  };
+})(window);
+
+</script>
+<script id="atlas-ui-design">
+/* atlas-ui-design: trang Bộ nhận diện & design system (#/design) và trang Dữ liệu ATLAS cũ (#/settings/legacy). ES5. */
+(function (root) {
+  'use strict';
+  var UI = root.UI, A = root.ATLAS, h = UI.h, svg = UI.svg, use = UI.use, icon = UI.icon, each = UI.each, doc = root.document;
+
+  /* ---------- tương phản màu (WCAG) tính từ giá trị thật của token ---------- */
+  function parseColor(c) {
+    var m = /rgba?\(([^)]+)\)/.exec(c);
+    if (!m) return null;
+    var p = m[1].split(',');
+    return [parseFloat(p[0]), parseFloat(p[1]), parseFloat(p[2])];
+  }
+  function lum(rgb) {
+    var a = rgb.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+  }
+  function ratio(c1, c2) { var l1 = lum(c1), l2 = lum(c2); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); }
+  function hex(rgb) { return '#' + rgb.map(function (v) { var s = Math.round(v).toString(16); return s.length < 2 ? '0' + s : s; }).join('').toUpperCase(); }
+  function resolve(varName, prop) {
+    var probe = h('span', { style: { position: 'absolute', visibility: 'hidden' } });
+    probe.style[prop || 'color'] = 'var(' + varName + ')';
+    doc.body.appendChild(probe);
+    var v = root.getComputedStyle(probe)[prop || 'color'];
+    doc.body.removeChild(probe);
+    return parseColor(v);
+  }
+
+  function block(title, kids, lead) { return UI.section(title, [lead ? h('p', { 'class': 'muted', text: lead }) : null, kids]); }
+  function labeled(el, label) { return h('div', null, [el, h('div', { 'class': 'state-label', text: label })]); }
+  function sample(text) { return UI.badge(text || 'Mẫu minh hoạ', 'planned'); }
+
+  function brandDark(kids) { return h('div', { 'class': 'card', style: { background: '#171B2E', borderColor: '#171B2E', color: '#F7F7F2', '--brand-dark': '#F7F7F2', '--brand-light': '#8A90A2', '--brand-ring': '#F7F7F2', '--brand-ring-op': '.45', '--text': '#F7F7F2' } }, kids); }
+  function setVars(el, vars) { for (var k in vars) { if (Object.prototype.hasOwnProperty.call(vars, k)) el.style.setProperty(k, vars[k]); } return el; }
+
+  function pageDesign() {
+    var content = UI.content;
+    var root2 = h('div', null, [UI.pageHead('Bộ nhận diện & design system', {
+      eyebrow: 'Phase 2 · bản xem trước',
+      lead: 'Logo, icon 7 học viện, màu, chữ và các thành phần giao diện dùng chung của ATLAS. Anh duyệt trang này trước khi thay giao diện cũ.',
+      actions: [UI.statusBadge('preview')]
+    })]);
+
+    /* Logo */
+    var light = h('div', { 'class': 'card stack-lg' }, [
+      UI.logo({ height: 64 }),
+      h('div', { 'class': 'row', style: { alignItems: 'flex-end', gap: '24px' } }, [UI.logo({ height: 36 }), UI.logo({ symbolOnly: true, height: 64 }), UI.logo({ symbolOnly: true, height: 32 }), UI.logo({ symbolOnly: true, height: 24 }), UI.logo({ symbolOnly: true, height: 16 })])
+    ]);
+    var darkCard = setVars(brandDark([h('div', { 'class': 'stack-lg' }, [UI.logo({ height: 64 }), h('div', { 'class': 'row', style: { alignItems: 'flex-end', gap: '24px' } }, [UI.logo({ height: 36 }), UI.logo({ symbolOnly: true, height: 32 })])])]), {});
+    var appIcon = svg('svg', { viewBox: '0 0 64 64', width: 96, height: 96, role: 'img', 'aria-label': 'Icon app ATLAS' });
+    appIcon.appendChild(svg('rect', { width: 64, height: 64, rx: 14, fill: '#171B2E' }));
+    var g = svg('g', { transform: 'translate(9 9) scale(0.71875)' });
+    g.appendChild(use('b-symbol', { width: 64, height: 64 }));
+    appIcon.appendChild(g);
+    setVars(appIcon, { '--brand-dark': '#F7F7F2', '--brand-light': '#8A90A2', '--brand-ring': '#F7F7F2', '--brand-ring-op': '.45' });
+    var mono = h('span', { style: { color: 'var(--text)', '--brand-dark': 'currentColor', '--brand-light': 'currentColor', '--brand-north': 'currentColor', '--brand-ring': 'currentColor', '--brand-node': 'currentColor', '--brand-node-stroke': 'transparent' } }, [UI.logo({ height: 40 })]);
+    setVars(mono, { '--brand-dark': 'currentColor', '--brand-light': 'currentColor', '--brand-north': 'currentColor', '--brand-ring': 'currentColor', '--brand-node': 'currentColor', '--brand-node-stroke': 'transparent' });
+    var files = ['atlas-logo-horizontal.svg', 'atlas-logo-horizontal-dark.svg', 'atlas-logo-mono.svg', 'atlas-symbol.svg', 'atlas-app-icon.svg', 'icon-512.png'];
+    root2.appendChild(block('Logo', [
+      h('div', { 'class': 'grid two' }, [light, darkCard]),
+      h('div', { 'class': 'grid two', style: { marginTop: '16px' } }, [
+        UI.card([h('div', { 'class': 'row', style: { gap: '28px' } }, [labeled(appIcon, 'Icon app'), labeled(mono, 'Đơn sắc')])]),
+        UI.card([h('h3', { text: 'Ý nghĩa và quy tắc' }), h('ul', { 'class': 'bullets small' }, [
+          h('li', { text: 'La bàn 4 cánh: định hướng. Vòng tròn: thế giới tri thức (atlas). Chấm lime: điểm đích. Nửa cánh bắc màu lime: hướng đi đang chọn.' }),
+          h('li', { text: 'Tỉ lệ biểu tượng và chữ cố định (56 : 26). Không kéo giãn, không xoay, không đổi màu ngoài các phiên bản ở đây.' }),
+          h('li', { text: 'Khoảng trống quanh logo ít nhất bằng chiều cao chữ A. Logo ngang rộng tối thiểu 96 px; biểu tượng tối thiểu 16 px.' }),
+          h('li', { text: 'Chữ ATLAS vẽ bằng hình học riêng, không phụ thuộc font.' })
+        ]), h('p', { 'class': 'small', style: { marginTop: '12px' } }, ['Tệp SVG/PNG: ', files.map(function (f, i) { return [i ? ' · ' : '', h('a', { href: 'brand/' + f, download: f, text: f })]; })])])
+      ])
+    ], 'Biểu tượng la bàn và chữ ATLAS vẽ mới hoàn toàn, xuất SVG sạch (không nhúng ảnh).'));
+
+    /* Icon */
+    var iconGrid = h('div', { 'class': 'grid three' });
+    each(content.academies, function (a) {
+      iconGrid.appendChild(UI.card([
+        h('div', { 'class': 'row', style: { gap: '20px', alignItems: 'flex-end' } }, [icon('i-' + a.id), icon('i-' + a.id, { cls: 'lg' }), icon('i-' + a.id, { cls: 'xl' }), icon('i-' + a.id, { cls: 'lg mono' })]),
+        h('p', { 'class': 'small', style: { margin: '12px 0 0', fontWeight: '650' }, text: a.no + '. ' + a.vi }),
+        h('p', { 'class': 'caption', style: { margin: 0 }, text: '24 · 32 · 64 px · bản đơn sắc' })
+      ], { cls: 'tight' }));
+    });
+    var uiIcons = h('div', { 'class': 'row', style: { gap: '14px' } });
+    each(['home', 'grid', 'review', 'flask', 'vault', 'mentor', 'chart', 'sliders', 'search', 'plus', 'check', 'info', 'alert', 'download', 'upload', 'cloud', 'book', 'clock', 'target', 'edit', 'trash', 'link', 'note', 'graph', 'eye', 'flag', 'calendar', 'lock', 'user', 'sun', 'moon'], function (id) {
+      uiIcons.appendChild(icon(id, { label: id }));
+    });
+    root2.appendChild(block('Icon 7 học viện', [iconGrid, h('h3', { style: { marginTop: '24px' }, text: 'Icon giao diện (cùng lưới 24, nét 1,8)' }), uiIcons],
+      'Cùng lưới 24 px, cùng độ dày nét, đầu nét tròn. Phần nhấn dùng màu lime; bản đơn sắc dùng một màu.'));
+
+    /* Màu */
+    var tokens = [['--bg', 'Nền'], ['--surface', 'Bề mặt'], ['--sunk', 'Nền chìm'], ['--text', 'Chữ chính'], ['--text-2', 'Chữ phụ'], ['--border-strong', 'Viền đậm'],
+      ['--accent', 'Lime nhấn'], ['--accent-soft', 'Lime nhạt'], ['--accent-text', 'Chữ nhấn'], ['--danger', 'Lỗi'], ['--warn', 'Cảnh báo'], ['--primary', 'Nút chính']];
+    var sw = h('div', { 'class': 'spec' });
+    var bgc = resolve('--bg'), surf = resolve('--surface');
+    each(tokens, function (t) {
+      var c = resolve(t[0]);
+      var r1 = c ? ratio(c, bgc) : 0, r2 = c ? ratio(c, surf) : 0;
+      var isText = t[0] === '--text' || t[0] === '--text-2' || t[0] === '--accent-text' || t[0] === '--danger' || t[0] === '--warn';
+      sw.appendChild(h('div', { 'class': 'swatch' }, [h('div', { 'class': 'chip', style: { background: 'var(' + t[0] + ')' } }),
+        h('div', { 'class': 'meta' }, [h('b', { text: t[1] }), h('div', { 'class': 'num', text: t[0] + ' · ' + (c ? hex(c) : '?') }),
+          isText ? h('div', { 'class': 'num', text: 'Trên nền: ' + r1.toFixed(1) + ':1 ' + (Math.min(r1, r2) >= 4.5 ? '✓ AA' : '✗ dưới AA') }) : h('div', { 'class': 'caption', text: 'Màu nền / trang trí' })])]));
+    });
+    root2.appendChild(block('Màu', [sw, UI.note('info', ['Tỉ lệ tương phản tính trực tiếp từ màu đang hiển thị (đổi giao diện sáng/tối trong Hồ sơ để xem bộ còn lại). Màu xám ',
+      h('code', { text: '#747B8C' }), ' trong brief chỉ đạt 3,9:1 trên nền ngà nên chỉ dùng cho viền và hình trang trí; chữ phụ dùng ', h('code', { text: '#5F6676' }), '.'])],
+      'Một bộ màu duy nhất, lưu thành biến CSS. 7 học viện không có 7 màu riêng: phân biệt bằng icon và tên.'));
+
+    /* Chữ */
+    var type = h('div', { 'class': 'card stack' }, [
+      h('div', { style: { fontSize: 'var(--fs-display)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-.02em' }, text: 'Học để hiểu, làm để chứng minh' }),
+      h('h1', { text: 'Tiêu đề trang · 34 px' }), h('h2', { text: 'Tiêu đề mục · 22 px' }), h('h3', { text: 'Tiêu đề nhỏ · 18 px' }),
+      h('p', { 'class': 'reading', style: { margin: 0 }, text: 'Đoạn đọc bài học · 18 px, giãn dòng 1,7. Tiếng Việt hiển thị đủ dấu: ắ ằ ẳ ẵ ặ ấ ầ ẩ ẫ ậ ế ề ể ễ ệ ố ồ ổ ỗ ộ ớ ờ ở ỡ ợ ứ ừ ử ữ ự.' }),
+      h('p', { style: { margin: 0 }, text: 'Chữ thường · 17 px · đậm vừa 650 cho nút và nhãn.' }),
+      h('p', { 'class': 'caption', style: { margin: 0 }, text: 'Chú thích · 13 px · dùng cho ngày giờ, nguồn, siêu dữ liệu.' })
+    ]);
+    root2.appendChild(block('Chữ', [type], 'Font hệ thống (SF Pro trên iPad/iPhone), 3 độ đậm: 400, 650, 800. Cột đọc bài tối đa khoảng 72 ký tự.'));
+
+    /* Khoảng cách, bo góc, bóng */
+    var spaces = h('div', { 'class': 'row', style: { alignItems: 'flex-end' } });
+    each([4, 8, 12, 16, 24, 32, 40, 56], function (n) { spaces.appendChild(labeled(h('div', { style: { width: n + 'px', height: n + 'px', background: 'var(--accent)', borderRadius: '3px' } }), n + '')); });
+    var radii = h('div', { 'class': 'row' });
+    each([['10', 'Ô nhập, nút'], ['14', 'Thẻ'], ['20', 'Khối lớn'], ['999', 'Viên thuốc']], function (r) {
+      radii.appendChild(labeled(h('div', { style: { width: '72px', height: '48px', border: '1px solid var(--border-strong)', background: 'var(--surface)', borderRadius: r[0] + 'px' } }), r[0] + ' px · ' + r[1]));
+    });
+    root2.appendChild(block('Khoảng cách, bo góc, bóng', [h('div', { 'class': 'grid two' }, [UI.card([h('h3', { text: 'Thang khoảng cách (px)' }), spaces]), UI.card([h('h3', { text: 'Bo góc' }), radii])]),
+      h('div', { 'class': 'grid two', style: { marginTop: '16px' } }, [h('div', { 'class': 'card' }, [h('b', { text: 'Bóng 1' }), h('p', { 'class': 'caption', text: 'Viền mảnh, gần như phẳng' })]), h('div', { 'class': 'card raised' }, [h('b', { text: 'Bóng 2' }), h('p', { 'class': 'caption', text: 'Thẻ nổi, hộp thoại' })])])]));
+
+    /* Nút với đủ trạng thái */
+    function btnRow(kind) {
+      var r = h('div', { 'class': 'demo-row' });
+      r.appendChild(labeled(UI.btn('Mặc định', { kind: kind }), 'mặc định'));
+      r.appendChild(labeled(UI.btn('Di chuột', { kind: kind, cls: 'force-hover' }), 'di chuột'));
+      r.appendChild(labeled(UI.btn('Đang chọn', { kind: kind, cls: 'force-focus' }), 'focus bàn phím'));
+      r.appendChild(labeled(UI.btn('Đang nhấn', { kind: kind, cls: 'force-active' }), 'đang nhấn'));
+      r.appendChild(labeled(UI.btn('Tắt', { kind: kind, disabled: true }), 'không bấm được'));
+      r.appendChild(labeled(UI.btn('Đang tải', { kind: kind, busy: true }), 'đang tải'));
+      return r;
+    }
+    var busyBtn = UI.btn('Bấm để thử trạng thái tải', { kind: 'secondary', icon: 'review', onClick: function () { UI.setBusy(busyBtn, true); setTimeout(function () { UI.setBusy(busyBtn, false); UI.toast('Xong. Đây là thông báo ngắn, trình đọc màn hình sẽ đọc to.'); }, 1200); } });
+    root2.appendChild(block('Nút', [UI.card(h('div', { 'class': 'stack-lg' }, [btnRow('primary'), btnRow('secondary'), btnRow('ghost'), btnRow('accent'), btnRow('danger'),
+      h('div', { 'class': 'demo-row' }, [UI.btn('Nút lớn', { size: 'lg', icon: 'play' }), UI.btn('Nút nhỏ', { size: 'sm', kind: 'secondary' }), busyBtn,
+        UI.iconBtn('search', 'Tìm kiếm', function () {}), UI.iconBtn('moon', 'Giao diện tối', function () {}, { pressed: true })])]))], 'Vùng chạm tối thiểu 44 px. Không chức năng nào cần di chuột mới dùng được.'));
+
+    /* Ô nhập */
+    root2.appendChild(block('Ô nhập', [h('div', { 'class': 'grid two' }, [
+      UI.card(h('div', { 'class': 'stack' }, [
+        UI.field({ label: 'Tên gọi', value: 'Han', help: 'Tên hiển thị trong lời chào.' }),
+        UI.field({ label: 'Email', value: 'khong-hop-le', error: 'Email chưa đúng định dạng.' }),
+        UI.field({ label: 'Ô đã khoá', value: 'Không sửa được', disabled: true })
+      ])),
+      UI.card(h('div', { 'class': 'stack' }, [
+        UI.field({ label: 'Giải thích bằng lời của bạn', multiline: true, rows: 3, placeholder: 'Viết 3–5 câu…' }),
+        UI.field({ label: 'Thời gian mỗi ngày', options: [{ value: '15', label: '15 phút' }, { value: '30', label: '30 phút' }, { value: '60', label: '60 phút' }], value: '30' }),
+        UI.check('Đánh dấu đã hiểu phần này', true, function () {}),
+        UI.seg([{ value: 'auto', label: 'Theo máy' }, { value: 'light', label: 'Sáng' }, { value: 'dark', label: 'Tối' }], 'auto', function () {}, 'Giao diện')
+      ]))
+    ])], 'Nhãn luôn hiện, có gợi ý và lỗi nói rõ cách sửa. Cỡ chữ ô nhập ≥ 16 px để Safari iPad không tự phóng to.'));
+
+    /* Thẻ, khung, thông báo */
+    root2.appendChild(block('Thẻ, khung, thông báo', [h('div', { 'class': 'grid two' }, [
+      h('div', { 'class': 'stack' }, [UI.card([h('h3', { text: 'Thẻ' }), h('p', { 'class': 'muted', text: 'Nền trắng, viền mảnh, bo 14 px.' })]),
+        h('div', { 'class': 'panel' }, [h('b', { text: 'Khung phụ' }), h('p', { 'class': 'caption', style: { margin: 0 }, text: 'Dùng cho nội dung kèm theo trong thẻ.' })])]),
+      h('div', { 'class': 'stack' }, [UI.note('info', 'Thông tin: giải thích thêm, không khẩn.'), UI.note('ok', 'Thành công: đã lưu tiến độ.'),
+        UI.note('warn', 'Cảnh báo: dữ liệu chỉ nằm trên máy này.'), UI.note('danger', 'Lỗi: không ghi được, hãy tải file sao lưu.')])
+    ])]));
+
+    /* Tab, hộp thoại, ngăn kéo, gợi ý, đường dẫn */
+    var tabPanel = h('div', { 'class': 'panel', id: 'demo-tabpanel', role: 'tabpanel', style: { marginTop: '12px' }, text: 'Nội dung tab: Bài học.' });
+    var tabs = UI.tabs([{ id: 'd1', label: 'Bài học', panel: 'demo-tabpanel' }, { id: 'd2', label: 'Ôn tập', panel: 'demo-tabpanel' }, { id: 'd3', label: 'Thuật ngữ', panel: 'demo-tabpanel' }], 'd1',
+      function (id) { tabPanel.textContent = 'Nội dung tab: ' + ({ d1: 'Bài học', d2: 'Ôn tập', d3: 'Thuật ngữ' })[id] + '.'; }, 'Tab mẫu');
+    root2.appendChild(block('Tab, hộp thoại, ngăn kéo, gợi ý, đường dẫn', [UI.card(h('div', { 'class': 'stack-lg' }, [
+      h('div', null, [tabs, tabPanel, h('p', { 'class': 'caption', text: 'Dùng phím mũi tên trái/phải để chuyển tab.' })]),
+      h('div', { 'class': 'demo-row' }, [
+        UI.btn('Mở hộp thoại', { kind: 'secondary', onClick: function () { UI.modal('Hộp thoại mẫu', h('p', { text: 'Esc hoặc nút × để đóng. Focus được giữ bên trong hộp thoại.' }), [{ label: 'Huỷ' }, { label: 'Đồng ý', kind: 'primary' }]); } }),
+        UI.btn('Mở ngăn kéo', { kind: 'secondary', onClick: function () { UI.drawer('Ngăn kéo mẫu', h('p', { text: 'Dùng cho mục lục bài học trên iPad và danh mục trên điện thoại.' })); } }),
+        UI.btn('Hiện thông báo', { kind: 'secondary', onClick: function () { UI.toast('Đã lưu ghi chú.', { action: { label: 'Hoàn tác', onClick: function () { UI.toast('Đã hoàn tác.'); } } }); } }),
+        h('span', { 'class': 'row' }, ['Gợi ý', UI.tip('Gợi ý mở bằng chạm hoặc phím Tab, không cần di chuột.', 'Xem gợi ý')])
+      ]),
+      UI.crumbs([{ label: 'Học viện', href: '#/academies' }, { label: 'Tài chính', href: '#/design' }, { label: 'Lãi kép' }])
+    ]))]));
+
+    /* Tiến độ & năng lực */
+    root2.appendChild(block('Tiến độ, năng lực, huy hiệu', [h('div', { 'class': 'grid two' }, [
+      UI.card(h('div', { 'class': 'stack' }, [h('div', { 'class': 'row between' }, [h('b', { text: 'Thanh tiến độ' }), sample()]), UI.progress(3, 8, 'Mẫu: 3 trên 8 bài'), UI.progress(6, 8, 'Mẫu: 6 trên 8', { accent: true }),
+        h('b', { text: 'Thước năng lực 6 bậc' }), UI.meter([true, true, true, false, false, false], 'Mẫu'), UI.meter([true, true, true, true, true, true], 'Mẫu'),
+        h('div', { 'class': 'meter-legend' }, UI.LEVELS6.map(function (l, i) { return h('span', { text: (i + 1) + '. ' + l }); }))])),
+      UI.card(h('div', { 'class': 'stack' }, [h('b', { text: 'Huy hiệu trạng thái' }), h('div', { 'class': 'row' }, [UI.statusBadge('live'), UI.statusBadge('preview'), UI.statusBadge('planned')]),
+        h('div', { 'class': 'row' }, [UI.badge('Đến hạn ôn', 'warn'), UI.badge('Đã sửa', 'ok'), UI.badge('Chưa sửa', 'danger'), UI.badge('Nền tảng')]),
+        h('div', { style: { maxWidth: '220px' } }, [I.rings([1, .8, .55, .35, .15, .05], 'Vòng năng lực mẫu')]), sample('Số liệu mẫu, không phải của bạn')]))
+    ])], 'Năng lực chỉ sáng lên khi có bằng chứng: câu trả lời, bài giải thích, bài áp dụng, sản phẩm. Mở bài không được tính.'));
+
+    /* Thành phần học tập */
+    var firstAcademy = content.academies[0];
+    var quizState = { picked: null };
+    var quizBox = h('div');
+    function drawQuiz() {
+      var opts = ['Máy chủ tự đoán ý người dùng', 'Trình duyệt gửi yêu cầu, máy chủ trả về dữ liệu', 'Dữ liệu luôn nằm sẵn trong trình duyệt'];
+      UI.replace(quizBox, [h('p', { 'class': 'quiz-q', text: 'Khi mở một trang web, điều gì xảy ra trước tiên?' }),
+        opts.map(function (o, i) {
+          var cls = 'opt' + (quizState.picked === null ? '' : (i === 1 ? ' right' : (i === quizState.picked ? ' wrong' : '')));
+          return h('button', { 'class': cls, type: 'button', disabled: quizState.picked !== null, onclick: function () { quizState.picked = i; drawQuiz(); } }, [h('span', { 'class': 'key', text: 'ABC'.charAt(i) }), h('span', { text: o })]);
+        }),
+        quizState.picked !== null ? h('div', { 'class': 'feedback' }, [UI.note(quizState.picked === 1 ? 'ok' : 'warn', quizState.picked === 1 ? 'Đúng. Trình duyệt gửi yêu cầu HTTP, máy chủ xử lý và trả về.' : 'Chưa đúng. Câu sai sẽ vào Sổ lỗi để luyện lại.'),
+          UI.btn('Làm lại', { kind: 'ghost', size: 'sm', onClick: function () { quizState.picked = null; drawQuiz(); } })]) : null]);
+    }
+    drawQuiz();
+    root2.appendChild(block('Thành phần học tập', [h('div', { 'class': 'grid two' }, [
+      UI.card([h('div', { 'class': 'row between' }, [h('p', { 'class': 'eyebrow', style: { margin: 0 }, text: 'Khối bài học' }), sample()]),
+        h('div', { 'class': 'lblock', style: { marginTop: '12px' } }, [h('p', { 'class': 'eyebrow' }, [h('span', { 'class': 'n', text: '4' }), 'Giải thích từ trực giác đến bản chất']),
+          h('div', { 'class': 'reading' }, [h('p', { text: 'Mỗi bài đi từ một hình ảnh quen thuộc, rồi mới tới định nghĩa chính xác và giới hạn của nó.' })])])]),
+      UI.card([h('div', { 'class': 'row between' }, [h('p', { 'class': 'eyebrow', style: { margin: 0 }, text: 'Khối câu hỏi' }), sample()]), quizBox]),
+      UI.card([h('p', { 'class': 'eyebrow', text: 'Trích nguồn' }), sourceCite({ title: 'Principles of Economics 3e', org: 'OpenStax, Rice University', url: 'https://openstax.org/details/books/principles-economics-3e', accessed: '2026-11-25', type: 'secondary' })]),
+      UI.card([h('div', { 'class': 'row between' }, [h('p', { 'class': 'eyebrow', style: { margin: 0 }, text: 'Thẻ dự án' }), sample()]),
+        h('h3', { style: { marginTop: '10px' }, text: 'Thiết kế hệ thống điện mặt trời' }), h('div', { 'class': 'row', style: { gap: '6px' } }, ['science', 'future-tech', 'finance'].map(function (id) { return icon('i-' + id, { cls: 'sm' }); })),
+        h('p', { 'class': 'caption', text: '2/5 mốc · cập nhật hôm nay' }), UI.progress(2, 5, 'Mẫu: 2 trên 5 mốc')]),
+      UI.card([h('div', { 'class': 'row between' }, [h('p', { 'class': 'eyebrow', style: { margin: 0 }, text: 'Nút tri thức' }), sample()]),
+        h('div', { 'class': 'row', style: { marginTop: '10px' } }, [h('span', { 'class': 'icon-tile' }, [icon('note')]), h('div', { 'class': 'grow' }, [h('b', { text: 'Chi phí cơ hội' }), h('div', { 'class': 'caption', text: 'Khái niệm · Tư duy phản biện · 3 liên kết' })])])]),
+      UI.card([h('p', { 'class': 'eyebrow', text: 'Cánh cửa học viện' }), h('div', { style: { maxWidth: '200px' } }, [door(firstAcademy, null)])])
+    ])]));
+
+    /* Trạng thái tải, trống, lỗi */
+    root2.appendChild(block('Đang tải, trống, lỗi', [h('div', { 'class': 'grid three' }, [
+      UI.card([h('b', { text: 'Đang tải' }), h('div', { style: { marginTop: '12px' } }, [UI.skeleton(4)])]),
+      UI.empty('Chưa có dự án', 'Bắt đầu từ một vấn đề bạn muốn giải quyết.', UI.btn('Tạo dự án', { icon: 'plus' })),
+      UI.errorBox('Không tải được dữ liệu đồng bộ. Tiến độ trên máy vẫn an toàn.', function () { UI.toast('Đây là nút thử lại mẫu.'); })
+    ])]));
+
+    /* Minh hoạ */
+    root2.appendChild(block('Minh hoạ', [h('div', { 'class': 'grid two' }, [
+      UI.card([h('b', { text: 'Bản đồ tri thức' }), I.hero(content)]),
+      UI.card([h('b', { text: 'AI Mentor' }), h('div', { style: { maxWidth: '260px', margin: '0 auto' } }, [I.mentor()])]),
+      UI.card([h('b', { text: 'Project Lab' }), I.flow(['Vấn đề', 'Mục tiêu', 'Mốc', 'Sản phẩm', 'Đánh giá'])]),
+      UI.card([h('b', { text: 'Bản đồ nhánh học' }), I.branchMap(content.academies[2], ['fin-personal', 'fin-time-value'])])
+    ]), UI.card([h('div', { 'class': 'row between' }, [h('b', { text: 'Lộ trình 5 cấp' }), sample()]), h('div', { style: { marginTop: '16px' } }, [I.path(content.levels, 1, 1)])], { cls: 'section' })],
+      'Vẽ từ dữ liệu thật của app (SVG và HTML); số liệu mẫu đều có nhãn "Mẫu".'));
+    return root2;
+  }
+  var I = UI.illo;
+
+  function sourceCite(s) {
+    var kinds = { primary: 'Nguồn sơ cấp', secondary: 'Nguồn thứ cấp', opinion: 'Ý kiến', hypothesis: 'Giả thuyết' };
+    return h('div', { 'class': 'cite' }, [UI.badge(kinds[s.type] || 'Nguồn', 'ok'),
+      h('div', { 'class': 'grow' }, [s.url ? h('a', { href: s.url, target: '_blank', rel: 'noopener noreferrer', text: s.title }) : h('b', { text: s.title }),
+        h('div', { 'class': 'caption', text: [s.org, s.published ? 'xuất bản ' + s.published : '', 'truy cập ' + A.dayLabel(s.accessed)].filter(function (x) { return x; }).join(' · ') }),
+        s.note ? h('div', { 'class': 'caption', text: s.note }) : null])]);
+  }
+  UI.sourceCite = sourceCite;
+
+  /* Cánh cửa học viện (dùng ở Tổng quan và trang Học viện) */
+  function door(a, info) {
+    info = info || {};
+    return h('a', { 'class': 'door', href: '#/academy/' + a.id, 'aria-label': a.vi + (info.label ? ', ' + info.label : '') }, [
+      h('span', { 'class': 'no', 'aria-hidden': 'true', text: String(a.no) }),
+      h('span', { 'class': 'icon-tile' }, [icon('i-' + a.id, { cls: 'lg' })]),
+      h('span', { 'class': 'name', text: UI.illo.shortName(a) }),
+      h('span', { 'class': 'sub', text: info.sub || a.name }),
+      h('span', { 'class': 'foot' }, [info.meter || null, info.progress || null])
+    ]);
+  }
+  UI.door = door;
+
+  /* ---------- Dữ liệu ATLAS cũ: kiểm tra chỉ đọc + tải sao lưu (từ Phase 1) ---------- */
   function download(name, text, type) {
     var blob = new Blob([text], { type: type || 'application/json;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = h('a', { href: url, download: name });
-    doc.body.appendChild(a);
-    a.click();
-    doc.body.removeChild(a);
+    doc.body.appendChild(a); a.click(); doc.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
   }
-
-  var content = null, problems = [];
-  try { content = A.readContent(doc); problems = A.checkContent(content); }
-  catch (e) { problems = ['Không đọc được khối nội dung: ' + e.message]; }
-
-  var backend = null;
-  try { backend = window.localStorage; backend.getItem(A.KEYS.legacy); } catch (e) { backend = null; }
-  var store = A.storage(backend);
-  var plan = content ? A.planMigration(store, content, NOW) : null;
-
-  function academyName(id) {
-    var a = content ? A.academy(content, id) : null;
-    return a ? a.vi : id;
+  UI.download = download;
+  function rows(list) {
+    var trs = [];
+    each(list, function (r) { if (r) trs.push(h('tr', null, [h('th', { scope: 'row', text: r[0] }), h('td', { text: String(r[1]) })])); });
+    return h('table', { 'class': 'kv' }, [h('tbody', null, trs)]);
   }
-
-  function renderLegacy() {
-    var nodes = [note('ok', 'Trang này chỉ đọc: không ghi, không xoá dữ liệu nào trên máy.')];
-    if (!store.available) {
-      nodes.push(note('warn', 'Trình duyệt đang chặn bộ nhớ (có thể đang ở chế độ duyệt riêng tư), nên không đọc được dữ liệu cũ.'));
-      return fill('legacy-body', nodes);
-    }
-    var L = plan ? plan.legacy : A.readLegacy(store);
+  UI.kvTable = rows;
+  UI.legacyPanel = function () {
+    var store = UI.store, nodes = [UI.note('ok', 'Phần này chỉ đọc dữ liệu ATLAS cũ: không ghi, không xoá gì.')];
+    if (!store.available) { nodes.push(UI.note('warn', 'Trình duyệt đang chặn bộ nhớ (có thể đang ở chế độ duyệt riêng tư), nên không đọc được dữ liệu cũ.')); return h('div', { 'class': 'stack' }, nodes); }
+    var plan = A.planMigration(store, UI.content, Date.now()), L = plan.legacy;
     if (!L.present) {
       nodes.push(h('p', { text: 'Máy này chưa có dữ liệu ATLAS cũ.' }));
-      nodes.push(h('p', { 'class': 'muted', text: 'Muốn kiểm tra dữ liệu thật, mở trang này trên chiếc máy đã dùng ATLAS cũ, cùng địa chỉ fpltraining.github.io.' }));
+      nodes.push(h('p', { 'class': 'muted', text: 'Dữ liệu cũ nằm trong trình duyệt của chiếc máy đã dùng ATLAS cũ, cùng địa chỉ fpltraining.github.io.' }));
     } else if (L.error) {
-      nodes.push(note('warn', L.error));
-      nodes.push(h('button', { 'class': 'btn', type: 'button', text: 'Tải bản gốc (dạng thô)', onclick: function () {
-        download('atlas-du-lieu-cu-tho-' + A.vnDay(Date.now()) + '.txt', L.raw, 'text/plain;charset=utf-8');
-      } }));
+      nodes.push(UI.note('warn', L.error));
+      nodes.push(UI.btn('Tải bản gốc (dạng thô)', { kind: 'secondary', icon: 'download', onClick: function () { download('atlas-du-lieu-cu-tho-' + A.vnDay(Date.now()) + '.txt', L.raw, 'text/plain;charset=utf-8'); } }));
     } else {
-      var s = plan.summary;
-      nodes.push(rows([
-        ['Bài đã hoàn thành', s.completions],
-        ['Bài có lịch ôn', s.reviews],
-        ['Lượt ôn đã ghi', s.attempts],
-        ['Dự đoán và phép thử', s.commitments],
-        ['Dự án', s.projects],
-        ['Ghi chép (Sổ tư duy)', s.notes],
-        ['Tài sản / khoản nợ', s.assets + ' / ' + s.debts],
-        s.otherRecords ? ['Mục khác', s.otherRecords] : null,
-        ['Ngày có nhật ký học', s.journalDays],
-        ['Đánh giá đầu vào', s.entryAssessment ? 'Đã làm' : 'Chưa làm'],
-        ['Lần lưu cuối', L.updatedAt ? A.vnLabel(L.updatedAt) + ' (giờ VN)' : 'Không rõ'],
-        ['Dung lượng', kb(L.bytes)]
-      ]));
-      var g = s.language;
-      nodes.push(h('h3', { text: 'Phần ngoại ngữ: không chuyển sang ATLAS mới' }));
-      nodes.push(h('p', { 'class': 'muted small', text: 'Thẻ từ ' + g.wordCards + ' · thẻ câu ' + g.sentCards + ' · từ tự thêm ' + g.customWords +
+      var s = plan.summary, g = s.language;
+      nodes.push(rows([['Bài đã hoàn thành', s.completions], ['Bài có lịch ôn', s.reviews], ['Lượt ôn đã ghi', s.attempts], ['Dự đoán và phép thử', s.commitments],
+        ['Dự án', s.projects], ['Ghi chép (Sổ tư duy)', s.notes], ['Tài sản / khoản nợ', s.assets + ' / ' + s.debts], s.otherRecords ? ['Mục khác', s.otherRecords] : null,
+        ['Ngày có nhật ký học', s.journalDays], ['Đánh giá đầu vào', s.entryAssessment ? 'Đã làm' : 'Chưa làm'],
+        ['Lần lưu cuối', L.updatedAt ? A.vnLabel(L.updatedAt) + ' (giờ VN)' : 'Không rõ'], ['Dung lượng', UI.kb(L.bytes)]]));
+      nodes.push(h('p', { 'class': 'muted small', text: 'Phần ngoại ngữ không chuyển sang ATLAS mới: thẻ từ ' + g.wordCards + ' · thẻ câu ' + g.sentCards + ' · từ tự thêm ' + g.customWords +
         ' · trang viết tay ' + g.notebooks + ' · lượt luyện viết ' + g.writingEvents + '. Phần này vẫn nguyên trong ATLAS cũ và trong file sao lưu.' }));
-      nodes.push(h('button', { 'class': 'btn', type: 'button', text: 'Tải file sao lưu dữ liệu cũ', onclick: function () {
-        var t = Date.now();
-        download(A.legacyBackupName(t), A.legacyBackupJson(L, t));
-      } }));
-      nodes.push(h('p', { 'class': 'muted small', text: 'Khôi phục được bằng ATLAS cũ: Hồ sơ → Khôi phục từ tệp sao lưu.' }));
+      nodes.push(UI.btn('Tải file sao lưu dữ liệu cũ', { icon: 'download', onClick: function () { var t = Date.now(); download(A.legacyBackupName(t), A.legacyBackupJson(L, t)); } }));
+      nodes.push(h('p', { 'class': 'caption', text: 'Khôi phục được bằng ATLAS cũ: Hồ sơ → Khôi phục từ tệp sao lưu.' }));
     }
-    if (plan && plan.newStatePresent) nodes.push(note('warn', 'Máy này đã có dữ liệu ATLAS mới (khoá ' + A.KEYS.state + '). Trang này không động vào.'));
     var u = store.usage();
-    nodes.push(h('p', { 'class': 'muted small', text: 'Bộ nhớ trình duyệt dùng chung cho mọi app trên fpltraining.github.io: khoảng ' + kb(u.bytes) + ' (' + u.keys + ' khoá).' }));
-    fill('legacy-body', nodes);
+    nodes.push(h('p', { 'class': 'caption', text: 'Bộ nhớ trình duyệt dùng chung cho mọi app trên fpltraining.github.io: khoảng ' + UI.kb(u.bytes) + ' (' + u.keys + ' khoá).' }));
+    return h('div', { 'class': 'stack' }, nodes);
+  };
+  function pageLegacy() {
+    return h('div', null, [UI.crumbs([{ label: 'Hồ sơ & dữ liệu', href: '#/settings' }, { label: 'Dữ liệu ATLAS cũ' }]),
+      UI.pageHead('Dữ liệu ATLAS cũ', { lead: 'Kiểm tra dữ liệu của bản ATLAS trước (8 lĩnh vực) trên máy này và tải file sao lưu.' }),
+      UI.card(UI.legacyPanel())]);
   }
 
-  function renderPreview() {
-    if (!plan || !plan.state) {
-      return fill('preview-body', [h('p', { 'class': 'muted', text: 'Chưa có dữ liệu cũ đọc được để thử chuyển.' })]);
-    }
-    var st = plan.state, mf = st.meta.migratedFrom, by = A.completionsByAcademy(st, content), list = [], i, id;
-    for (i = 0; i < A.ACADEMY_IDS.length; i++) {
-      id = A.ACADEMY_IDS[i];
-      list.push([(i + 1) + '. ' + academyName(id), by[id] + ' bài']);
-    }
-    var nodes = [h('p', { text: 'Bài cũ đã hoàn thành, xếp theo học viện mới:' }), rows(list)];
-    if (mf.report.unmappedLessons.length) {
-      nodes.push(note('warn', 'Bài không còn trong danh mục (vẫn giữ trong dữ liệu): ' + mf.report.unmappedLessons.join(', ') + '.'));
-    }
-    if (st.plan.legacyFocus) {
-      nodes.push(h('p', { text: 'Hướng học đã chọn trong bản cũ: ' + st.plan.legacyFocus + ' → ' + (st.plan.focusAcademy ? academyName(st.plan.focusAcademy) : 'chưa gắn học viện') + '.' }));
-    }
-    nodes.push(h('ul', { 'class': 'plain' }, [
-      h('li', { text: 'Giờ trong dữ liệu cũ được ghi lại kèm múi giờ +07:00 (giờ Việt Nam), đúng thời điểm, không lệch 7 tiếng.' }),
-      h('li', { text: 'Dự án → Project Lab · Sổ tư duy → Knowledge Vault · Tài sản ròng → công cụ của Học viện Tài chính.' }),
-      h('li', { text: 'Không chuyển: phần ngoại ngữ và danh sách việc "Hôm nay" của bản cũ (bản mới tự tạo nhiệm vụ mỗi ngày).' }),
-      h('li', { text: 'Chưa lưu gì. Việc chuyển thật làm ở Phase 3, có hỏi anh trước.' })
-    ]));
-    if (mf.report.badTimes) nodes.push(note('warn', mf.report.badTimes + ' mốc giờ trong dữ liệu cũ không đọc được, sẽ để trống.'));
-    if (mf.report.droppedItems || mf.report.problems.length) {
-      nodes.push(note('warn', 'Có ' + (mf.report.droppedItems + mf.report.problems.length) + ' mục hỏng không chuyển được (bản gốc vẫn giữ nguyên).'));
-    }
-    fill('preview-body', nodes);
+  UI.route('design', pageDesign, { title: 'Bộ nhận diện', nav: '' });
+  UI.route('settings/legacy', pageLegacy, { title: 'Dữ liệu ATLAS cũ', nav: 'settings', narrow: true });
+})(window);
+
+</script>
+<script id="atlas-ui-interim">
+/* Trang chủ tạm của Phase 2 (Phase 3 thay bằng Tổng quan thật). ES5. */
+(function (root) {
+  'use strict';
+  var UI = root.UI, h = UI.h;
+  UI.route('', function () {
+    var c = UI.content;
+    return h('div', null, [
+      UI.pageHead('ATLAS đang được xây', { eyebrow: 'Bản đang xây · Phase 2', lead: 'Giao diện học tập sẽ có ở Phase 3. Trong lúc chờ, anh xem bộ nhận diện và kiểm tra dữ liệu ATLAS cũ.' }),
+      h('div', { 'class': 'hero' }, [h('div', { 'class': 'stack' }, [h('h2', { text: 'Đại học cá nhân với 7 học viện' }),
+        h('p', { 'class': 'muted', text: 'Learn → Recall → Explain → Apply → Build → Reflect → Master.' }),
+        h('div', { 'class': 'row' }, [UI.btn('Xem bộ nhận diện', { href: '#/design', icon: 'spark' }), UI.btn('Dữ liệu ATLAS cũ', { href: '#/settings/legacy', kind: 'secondary', icon: 'download' })])]),
+        UI.illo.hero(c)]),
+      UI.section('Trạng thái tính năng', UI.card(h('table', { 'class': 'kv' }, [h('tbody', null, c.features.map(function (f) {
+        return h('tr', null, [h('th', { scope: 'row', text: f.name + ' · Phase ' + f.phase }), h('td', null, [UI.statusBadge(f.status)])]);
+      }))])))
+    ]);
+  }, { title: 'Đang xây', nav: 'home' });
+})(window);
+
+</script>
+<script id="atlas-ui-boot">
+/* atlas-ui-boot: khởi động app. ES5. */
+(function (root) {
+  'use strict';
+  var UI = root.UI, A = root.ATLAS, h = UI.h, doc = root.document;
+
+  function fatal(msg) {
+    var app = doc.getElementById('app');
+    UI.replace(app, h('div', { 'class': 'content narrow' }, [h('h1', { text: 'ATLAS chưa mở được' }), UI.errorBox(msg + ' Dữ liệu học trên máy không bị ảnh hưởng.')]));
   }
 
-  function evidenceLabel(id) {
-    var c = content ? content.competencies : [], i;
-    for (i = 0; i < c.length; i++) { if (c[i].id === id) return c[i].vi; }
-    return id;
-  }
+  try {
+    UI.content = A.readContent(doc);
+    UI.contentProblems = A.checkContent(UI.content);
+  } catch (e) { fatal('Không đọc được khối nội dung: ' + e.message + '.'); return; }
 
-  function renderAcademies() {
-    var nodes = [];
-    if (problems.length) {
-      nodes.push(note('warn', 'Khung nội dung có lỗi:'));
-      var li = [], i;
-      for (i = 0; i < problems.length; i++) li.push(h('li', { text: problems[i] }));
-      nodes.push(h('ul', { 'class': 'plain' }, li));
-    } else {
-      nodes.push(note('ok', 'Khung nội dung hợp lệ: đúng 7 học viện, đủ 5 cấp, không có nội dung học ngoại ngữ.'));
-    }
-    if (!content) return fill('academy-body', nodes);
-    var legacyByAcademy = {}, ll = content.legacyLessons, a, k, j;
-    for (j = 0; j < ll.length; j++) {
-      if (!legacyByAcademy[ll[j].academy]) legacyByAcademy[ll[j].academy] = [];
-      legacyByAcademy[ll[j].academy].push(ll[j].title);
-    }
-    for (k = 0; k < content.academies.length; k++) {
-      a = content.academies[k];
-      var nOut = 0, body = [h('p', { text: a.goal })], L, lv, outs, items;
-      if (a.notice) body.push(note('ok', a.notice));
-      var br = [];
-      for (j = 0; j < a.branches.length; j++) br.push(h('li', { text: a.branches[j].title }));
-      body.push(h('h3', { text: 'Nhánh học' }), h('ul', { 'class': 'plain' }, br));
-      body.push(h('h3', { text: 'Chuẩn đầu ra theo cấp' }));
-      for (L = 0; L < content.levels.length; L++) {
-        lv = content.levels[L];
-        outs = a.levels[lv.id] || [];
-        items = [];
-        for (j = 0; j < outs.length; j++) {
-          nOut++;
-          items.push(h('li', null, [outs[j].text, h('span', { 'class': 'ev', text: evidenceLabel(outs[j].evidence) })]));
-        }
-        body.push(h('h4', { 'class': 'level', text: lv.vi + ' · ' + lv.name }), h('ul', { 'class': 'plain' }, items));
-      }
-      var pj = [];
-      for (j = 0; j < a.projects.length; j++) pj.push(h('li', { text: a.projects[j] }));
-      body.push(h('h3', { text: 'Dự án gợi ý' }), h('ul', { 'class': 'plain' }, pj));
-      if (legacyByAcademy[a.id]) {
-        var lt = [];
-        for (j = 0; j < legacyByAcademy[a.id].length; j++) lt.push(h('li', { text: legacyByAcademy[a.id][j] }));
-        body.push(h('h3', { text: 'Bài từ ATLAS cũ chuyển vào đây' }), h('ul', { 'class': 'plain' }, lt));
-      }
-      nodes.push(h('details', { 'class': 'academy' }, [
-        h('summary', null, [
-          h('span', { 'class': 'no', 'aria-hidden': 'true', text: String(a.no) }),
-          h('span', { 'class': 'sum-title' }, [h('b', { text: a.vi }), h('small', { text: a.name + ' · ' + a.branches.length + ' nhánh · ' + nOut + ' chuẩn đầu ra' })])
-        ]),
-        h('div', { 'class': 'acad-body' }, body)
-      ]));
-    }
-    fill('academy-body', nodes);
-  }
+  var backend = null;
+  try { backend = root.localStorage; backend.getItem(A.KEYS.state); } catch (e) { backend = null; }
+  UI.store = A.storage(backend);
+  UI.loadInfo = A.loadState(UI.store, Date.now());
+  if (UI.loadInfo.source === 'new') UI.state = UI.loadInfo.state;
+  UI.applyPrefs();
+  UI.mountShell();
 
-  function renderFeatures() {
-    if (!content) return fill('feature-body', []);
-    var trs = [], i, f, label;
-    for (i = 0; i < content.features.length; i++) {
-      f = content.features[i];
-      label = f.status === 'live' ? 'Hoạt động thật' : (f.status === 'preview' ? 'Xem thử, chưa lưu' : 'Chưa triển khai');
-      trs.push(h('tr', null, [
-        h('td', null, [f.name, h('div', { 'class': 'muted small', text: 'Phase ' + f.phase })]),
-        h('td', { 'class': 'st' }, [h('span', { 'class': 'pill ' + f.status, text: label })])
-      ]));
-    }
-    fill('feature-body', [h('table', { 'class': 'feat' }, [h('tbody', null, trs)]),
-      h('p', { 'class': 'muted small', text: 'Trong lúc nâng cấp, ATLAS cũ vẫn chạy bình thường ở trang chính.' })]);
-  }
+  UI.route('__404', function () {
+    return h('div', null, [UI.pageHead('Không tìm thấy trang', { lead: 'Địa chỉ này không có trong ATLAS.' }), UI.btn('Về Tổng quan', { href: '#/', icon: 'home' })]);
+  }, { title: 'Không tìm thấy' });
 
-  function renderFooter() {
-    fill('foot', [h('p', { text: 'ATLAS core ' + A.CORE_VERSION + ' · nội dung v' + (content ? content.version + ' (' + A.dayLabel(content.updated) + ')' : '?') +
-      ' · giờ Việt Nam (UTC+7) · mở lúc ' + A.vnLabel(A.vnIso(NOW)) })]);
-  }
+  if (UI.onBoot) UI.onBoot();
+  UI.render();
+  UI.booted = true;
+})(window);
 
-  renderLegacy();
-  renderPreview();
-  renderAcademies();
-  renderFeatures();
-  renderFooter();
-})();
 </script>
 </body>
 </html>

@@ -13,17 +13,21 @@ export function readBlocks(file = 'next.html') {
     if (!m) throw new Error(`Không thấy khối #${id} trong ${file}`);
     return m[1];
   };
-  return { html, content: get('atlas-content'), core: get('atlas-core'), ui: get('atlas-ui') };
+  const ui = [...html.matchAll(/<script\b[^>]*\bid="(atlas-ui[^"]*)"[^>]*>([\s\S]*?)<\/script>/g)].map((m) => ({ id: m[1], code: m[2] }));
+  const opt = (id) => { try { return get(id); } catch { return ''; } };
+  return { html, content: get('atlas-content'), lessons: opt('atlas-lessons'), core: get('atlas-core'), engine: opt('atlas-engine'), ui };
 }
 
 export function loadCore(file = 'next.html') {
   const blocks = readBlocks(file);
-  const doc = { getElementById: (id) => (id === 'atlas-content' ? { textContent: blocks.content } : null) };
+  const doc = { getElementById: (id) => (id === 'atlas-content' ? { textContent: blocks.content } : id === 'atlas-lessons' && blocks.lessons ? { textContent: blocks.lessons } : null) };
   const ctx = vm.createContext({ document: doc });
   ctx.window = ctx;
   vm.runInContext(blocks.core, ctx, { filename: `${file}#atlas-core` });
+  if (blocks.engine) vm.runInContext(blocks.engine, ctx, { filename: `${file}#atlas-engine` });
   const A = ctx.ATLAS;
-  return { A, content: A.readContent(doc), blocks };
+  const lessons = blocks.lessons ? JSON.parse(blocks.lessons) : null;
+  return { A, content: A.readContent(doc), lessons, blocks };
 }
 
 /* Kết quả tạo trong vm có prototype riêng: đổi về object thường trước khi so sánh */

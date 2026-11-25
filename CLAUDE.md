@@ -15,7 +15,7 @@ Repo này **không liên quan** tới `ATLAS-Hoc` (ConnectLife, app học ngoạ
 
 - Một file HTML, **ES5 thuần** (không arrow function, let/const, template literal, optional chaining), chạy được trên Safari iOS cũ.
 - Bản mới đang xây ở `next.html`. `index.html` là ATLAS cũ đang chạy; chỉ thay ở Phase 3 (bản cũ chuyển thành `legacy.html`).
-- `next.html` có 3 khối: `atlas-content` (JSON nội dung, sửa nội dung ở đây), `atlas-core` (logic thuần, không DOM, có test), `atlas-ui` (giao diện).
+- `next.html` gồm các khối: `atlas-config` (cấu hình công khai), `atlas-content` (JSON nội dung, sửa nội dung ở đây), `atlas-core` (logic thuần, không DOM, có test), `atlas-ui-kit` (component, khung app, router), `atlas-ui-illo` (minh hoạ), `atlas-ui-*` (các trang), `atlas-ui-boot` (khởi động). Sprite logo/icon nằm giữa `BRAND-SPRITE-BEGIN/END`, do `tools/build-brand.mjs` sinh ra.
 - Lưu dữ liệu: Supabase. Host: GitHub Pages (giữ nguyên, không chuyển nền tảng).
 - Giờ luôn là giờ Việt Nam: lưu chuỗi ISO có `+07:00` (`ATLAS.vnIso`).
 - Chi tiết: `docs/PRODUCT_MAP.md`, `docs/ARCHITECTURE.md`, `docs/MIGRATION.md`.
@@ -52,5 +52,6 @@ GitHub Actions chạy y hệt mỗi lần đẩy code. Soát bằng trình duy�
 
 - Phase 0, audit: xong 25/11/2026.
 - Phase 1, bản đồ sản phẩm và kiến trúc: xong. `next.html` là trang kiểm tra chỉ đọc (dữ liệu cũ, thử chuyển, khung 7 học viện, trạng thái tính năng); lõi chuyển dữ liệu có test; SQL Supabase viết sẵn, chưa chạy.
-- Phase 2, tiếp theo: logo SVG, 7 icon học viện, design system. Cho anh Han duyệt bản xem trước rồi mới thay tài sản thương hiệu.
+- Phase 2, bộ nhận diện và design system: xong, chờ anh Han duyệt (`next.html#/design`, `docs/DESIGN_SYSTEM.md`). Hình học logo/icon chỉ sửa trong `tools/build-brand.mjs`.
+- Phase 3, tiếp theo: tổng quan, 7 trang học viện, lộ trình, trình đọc bài, Daily Mission, chuyển dữ liệu thật (có hỏi trước).
 - Sau mỗi phase báo: đã kiểm tra gì, tệp nào đổi, tính năng nào chạy thật, test nào đã chạy và kết quả, việc còn lại. Còn lỗi nghiêm trọng thì không sang phase sau.

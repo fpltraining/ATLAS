@@ -114,7 +114,7 @@ test('lịch ôn và lượt ôn giữ đủ, bậc ôn bị kẹp trong 0..6', 
   assert.equal(s.learning.reviews.find((r) => r.lessonId === 'business-1').step, 6);
   assert.equal(s.learning.reviews.find((r) => r.lessonId === 'money-1').due, '2026-09-09T20:15:00.000+07:00');
   assert.deepEqual(s.learning.attempts.map((a) => [a.id, a.correct, a.practice]), [['ev-3', true, false], ['ev-2', false, false], ['ev-1', false, true]]);
-  assert.deepEqual(s.learning.entryAssessment, { score: 4, total: 6, completedAt: '2026-08-31T19:00:00.000+07:00', legacy: true });
+  assert.deepEqual(s.learning.entryAssessment, { score: 4, total: 6, completedAt: '2026-08-31T19:00:00.000+07:00', legacy: true, results: {}, suggestions: {} });
 });
 
 test('dự án, ghi chép, tài sản, nợ, dự đoán vào đúng chỗ mới; mục lạ không bị bỏ', () => {
@@ -146,7 +146,7 @@ test('hướng học cũ gắn sang học viện, nhật ký giữ nguyên, ngà
 
 test('phần ngoại ngữ và "Hôm nay" cũ không chuyển sang dữ liệu mới, nhưng có ghi số lượng', () => {
   const s = migrated();
-  assert.deepEqual(Object.keys(s).sort(), ['evidence', 'finance', 'journal', 'learning', 'meta', 'plan', 'profile', 'projects', 'schema', 'unsorted', 'vault', 'version']);
+  assert.deepEqual(Object.keys(s).sort(), ['daily', 'evidence', 'finance', 'journal', 'learning', 'meta', 'plan', 'profile', 'projects', 'schema', 'settings', 'unsorted', 'vault', 'version']);
   const body = JSON.stringify({ ...s, meta: null });
   for (const k of ['wordCards', 'sentCards', 'customWords', 'notebooks', 'writingEvents', 'vocabDaily', 'vocabSettings', 'dailySession', 'strokes']) {
     assert.equal(body.includes(k), false, k);
@@ -232,13 +232,124 @@ test('file sao lưu đúng định dạng ATLAS cũ, giữ đủ mọi phần (k
   assert.equal(A.legacyBackupName(NOW), 'atlas-du-lieu-cu-2026-11-25.json');
 });
 
-/* ---------- trang Phase 1 chỉ đọc ---------- */
+/* ---------- giao diện: không xoá gì, chỉ ghi khoá của ATLAS mới ---------- */
 
-test('trang kiểm tra Phase 1 không gọi hàm ghi hay xoá', () => {
+test('giao diện không xoá khoá nào; mọi lần ghi trực tiếp đều dùng tiền tố atlas_academy_', () => {
   const { ui, core } = readBlocks();
-  for (const bad of ['commitMigration', '.set(', 'setItem', 'removeItem', '.clear(']) {
-    assert.equal(ui.includes(bad), false, `atlas-ui có ${bad}`);
+  assert.ok(ui.length >= 3, 'thiếu các khối giao diện');
+  for (const b of ui) {
+    for (const bad of ['removeItem', '.clear(', 'indexedDB.deleteDatabase', 'caches.delete']) assert.equal(b.code.includes(bad), false, `${b.id} có ${bad}`);
+    for (const m of b.code.matchAll(/setItem\(\s*'([^']+)'/g)) assert.match(m[1], /^atlas_academy_/, `${b.id} ghi khoá ${m[1]}`);
+    assert.equal(/localStorage\.setItem\(\s*[^'\s]/.test(b.code), false, `${b.id} ghi khoá không rõ tên`);
   }
   assert.equal(core.includes('removeItem'), false);
   assert.equal(core.includes('.clear('), false);
+});
+
+test('phần kiểm tra dữ liệu cũ chỉ đọc (không gọi hàm ghi)', () => {
+  const { ui } = readBlocks();
+  const design = ui.find((b) => b.id === 'atlas-ui-design').code;
+  const start = design.indexOf('UI.legacyPanel = function');
+  const end = design.indexOf('function pageLegacy');
+  const panel = design.slice(start, end);
+  assert.ok(start > 0 && end > start);
+  for (const bad of ['commitMigration', 'saveState', 'UI.save', 'UI.mutate', '.set(', 'setItem']) assert.equal(panel.includes(bad), false, `legacyPanel có ${bad}`);
+});
+
+/* ---------- lưu, đọc, sao lưu dữ liệu mới ---------- */
+
+test('saveState chỉ ghi khoá mới; loadState đọc lại đúng', () => {
+  const raw = legacyStore();
+  const legacyBefore = raw.data.get(LEGACY_KEY);
+  const store = A.storage(raw);
+  const state = A.emptyState(NOW);
+  state.profile.name = 'An';
+  assert.equal(A.saveState(store, state, NOW).ok, true);
+  assert.deepEqual(writes(raw), [['set', NEW_KEY]]);
+  assert.equal(raw.data.get(LEGACY_KEY), legacyBefore);
+  const back = A.loadState(store, NOW);
+  assert.equal(back.source, 'new');
+  assert.equal(back.state.profile.name, 'An');
+  assert.equal(back.savedAt, '2026-11-25T10:00:00.000+07:00');
+});
+
+test('loadState: chưa có, hỏng, hay của phiên bản mới hơn đều báo rõ, không văng', () => {
+  assert.equal(A.loadState(A.storage(fakeStorage()), NOW).source, 'none');
+  assert.equal(A.loadState(A.storage(fakeStorage({ [NEW_KEY]: '{hỏng' })), NOW).source, 'error');
+  assert.equal(A.loadState(A.storage(fakeStorage({ [NEW_KEY]: '{"schema":"khac"}' })), NOW).source, 'error');
+  const newer = JSON.stringify({ schema: 'atlas-academy-state', version: 99, state: {} });
+  const r = A.loadState(A.storage(fakeStorage({ [NEW_KEY]: newer })), NOW);
+  assert.equal(r.source, 'error');
+  assert.match(r.problems[0], /mới hơn/);
+});
+
+test('sao lưu mới: xuất rồi đọc lại ra cùng dữ liệu; nhận cả file sao lưu ATLAS cũ', () => {
+  const s = migrated();
+  const text = A.exportJson(s, NOW);
+  const back = A.readBackup(text, content, NOW);
+  assert.equal(back.ok, true);
+  assert.equal(back.kind, 'new');
+  assert.deepEqual(plain(back.state), s);
+  const legacy = A.readLegacy(A.storage(legacyStore()));
+  const old = A.readBackup(A.legacyBackupJson(legacy, NOW), content, NOW);
+  assert.equal(old.ok, true);
+  assert.equal(old.kind, 'legacy');
+  assert.equal(old.state.learning.completions.length, 6);
+  assert.equal(A.readBackup('{"format":"khac"}', content, NOW).ok, false);
+  assert.equal(A.readBackup('không phải json', content, NOW).ok, false);
+});
+
+test('chuẩn hoá các phần mới: cài đặt, ưu tiên, thẻ ôn, sổ lỗi, bằng chứng, dự án, ghi chép', () => {
+  const r = A.normalizeState({
+    settings: { theme: 'tím', textSize: 'large', reduceMotion: 'có' },
+    profile: { priorities: ['finance', 'english', 'finance', 'science', 'leadership', 'business'], experience: { finance: 'some', science: 'chuyên gia', english: 'solid' } },
+    learning: {
+      cards: [{ id: 'c1', front: 'Lãi kép là gì?', ease: 9, interval: -3 }, { id: 'c1', front: 'trùng' }, { back: 'không có mặt trước' }],
+      mistakes: [{ id: 'm1', prompt: 'Câu hỏi', cause: 'đoán bừa', status: 'fixed' }],
+      evidence: [{ id: 'e1', kind: 'explain', score: 3, at: '2026-11-25T10:00:00.000+07:00', grader: 'ai', academy: 'finance' }, { id: 'e2', kind: 'xem-video', at: '2026-11-25T10:00:00.000+07:00' }],
+      reads: { 'money-1': { firstAt: '2026-11-25T09:00:00.000+07:00', count: 0 }, hong: { count: 3 } },
+      answers: { 'money-1': { practice: { p1: true, p2: 'có' }, explain: { text: 'Giải thích', rubric: [true, 'x', false] } } }
+    },
+    projects: [{ id: 'p1', title: 'Cửa hàng', academies: ['business', 'english'], selfScore: 9, status: 'xong', milestones: [{ title: 'Mốc 1', done: true }, { done: true }] }],
+    vault: { notes: [{ id: 'n1', title: 'Chi phí cơ hội', kind: 'concept', academy: 'critical-thinking', level: 'foundation', tags: ['a', 'a', 'b'] }, { id: 'n2', kind: 'lạ' }] },
+    daily: { '2026-11-25': { lessonId: 'money-1' }, 'ngày-sai': {} }
+  }, NOW);
+  const s = plain(r.state);
+  assert.deepEqual(s.settings, { theme: 'auto', textSize: 'large', reduceMotion: false });
+  assert.deepEqual(s.profile.priorities, ['finance', 'science']);
+  assert.deepEqual(s.profile.experience, { finance: 'some' });
+  assert.equal(s.learning.cards.length, 1);
+  assert.equal(s.learning.cards[0].ease, 3);
+  assert.equal(s.learning.cards[0].interval, 0);
+  assert.equal(s.learning.cards[0].due, '2026-11-25T10:00:00.000+07:00');
+  assert.equal(s.learning.mistakes[0].cause, '');
+  assert.equal(s.learning.mistakes[0].status, 'fixed');
+  assert.deepEqual(s.learning.evidence.map((e) => [e.id, e.score, e.grader]), [['e1', 1, 'ai']]);
+  assert.deepEqual(Object.keys(s.learning.reads), ['money-1']);
+  assert.equal(s.learning.reads['money-1'].count, 1);
+  assert.deepEqual(s.learning.answers['money-1'].practice, { p1: true });
+  assert.deepEqual(s.learning.answers['money-1'].explain.rubric, [true, false, false]);
+  assert.deepEqual(s.projects[0].academies, ['business']);
+  assert.equal(s.projects[0].selfScore, null);
+  assert.equal(s.projects[0].status, 'active');
+  assert.equal(s.projects[0].milestones.length, 1);
+  assert.deepEqual(s.vault.notes.map((n) => [n.id, n.kind, n.tags.join(',')]), [['n1', 'concept', 'a,b'], ['n2', 'note', '']]);
+  assert.deepEqual(Object.keys(s.daily), ['2026-11-25']);
+  const again = A.normalizeState(s, NOW);
+  assert.deepEqual(plain(again.state), s);
+  assert.deepEqual(plain(again.problems), []);
+});
+
+test('dự án và ghi chép cũ được chuyển thành dạng mới, giữ nguyên dữ liệu gốc', () => {
+  const s = migrated();
+  const p = s.projects[0];
+  assert.equal(p.title, 'Bán đồ ăn sáng');
+  assert.match(p.problem, /Người đi làm không kịp ăn sáng/);
+  assert.deepEqual(p.milestones.map((m) => [m.title, m.done]), [['Quan sát', false], ['Kiểm chứng', false], ['Thử nghiệm', false], ['Có khách hàng', false], ['Đánh giá mở rộng', false]]);
+  assert.equal(p.data.stage, 'Quan sát');
+  const n = s.vault.notes[0];
+  assert.equal(n.title, 'Chi phí cơ hội');
+  assert.equal(n.body, 'Chọn A là bỏ B.');
+  assert.deepEqual(n.tags, ['atlas-cu']);
+  assert.deepEqual(s.profile.priorities, ['ai-engineering']);
 });
