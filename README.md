@@ -1,5 +1,11 @@
 # ATLAS
 
+> **Đang nâng cấp (từ 25/11/2026).** ATLAS chuyển thành đại học cá nhân với đúng 7 học viện: AI & Engineering, Business, Finance, Science, Future Technology, Leadership, Critical Thinking. Phần học ngoại ngữ bị bỏ.
+> Bản đang chạy vẫn là `index.html` (mô tả bên dưới). `next.html` là trang kiểm tra của Phase 1: chỉ đọc dữ liệu cũ trên máy, thử chuyển sang 7 học viện, cho tải file sao lưu.
+> Tài liệu: [bản đồ sản phẩm](docs/PRODUCT_MAP.md) · [kiến trúc](docs/ARCHITECTURE.md) · [chuyển dữ liệu](docs/MIGRATION.md).
+
+## Bản đang chạy
+
 Không gian học tập cá nhân chạy trong trình duyệt, tối ưu cho iPad và Apple Pencil.
 
 - **Hôm nay:** 4 bước mỗi ngày: ôn bài, học từ vựng & viết tay, đọc 1 bài mới, ghi nhật ký.

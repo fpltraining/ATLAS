@@ -1,0 +1,52 @@
+{
+  "data": {
+    "profile": {"name": "Học viên", "minutes": 30, "goal": "Hiểu thế giới, xây năng lực tạo giá trị và phát triển tài sản."},
+    "completions": [
+      {"lesson_id": "money-1", "reflection": "Giá trị đến trước doanh thu.", "completed_at": "2026-09-01T20:15:00.000Z", "self_explain": 4},
+      {"lesson_id": "thinking-1", "reflection": "", "completed_at": "2026-09-02T21:00:00.000Z", "self_explain": null},
+      {"lesson_id": "business-1", "reflection": "Bắt đầu từ vấn đề thật.", "completed_at": "2026-09-03T06:30:00.000Z", "self_explain": 5},
+      {"lesson_id": "technology-2", "reflection": "", "completed_at": "2026-09-04T22:45:00.000Z", "self_explain": 3},
+      {"lesson_id": "case-amazon", "reflection": "Tập trung vào khách hàng.", "completed_at": "2026-09-05T23:59:00.000Z", "self_explain": null},
+      {"lesson_id": "old-removed-1", "reflection": "Bài đã bị bỏ khỏi app.", "completed_at": "2026-08-20T10:00:00.000Z", "self_explain": 2}
+    ],
+    "reviews": [
+      {"lesson_id": "money-1", "due": "2026-09-09T20:15:00.000Z", "revision": 2},
+      {"lesson_id": "thinking-1", "due": "2026-09-03T21:00:00.000Z", "revision": 0},
+      {"lesson_id": "business-1", "due": "2026-09-04T06:30:00.000Z", "revision": 9},
+      {"lesson_id": "technology-2", "due": "2026-09-05T22:45:00.000Z", "revision": 1},
+      {"lesson_id": "case-amazon", "due": "2026-09-06T23:59:00.000Z", "revision": 0}
+    ],
+    "reviewEvents": [
+      {"id": "ev-3", "lesson_id": "money-1", "revision": 1, "answer": 1, "correct": 1, "reviewed_at": "2026-09-05T20:20:00.000Z", "practice": 0},
+      {"id": "ev-2", "lesson_id": "money-1", "revision": 0, "answer": 2, "correct": 0, "reviewed_at": "2026-09-02T20:20:00.000Z", "practice": 0},
+      {"id": "ev-1", "lesson_id": "thinking-1", "revision": 0, "answer": 0, "correct": 0, "reviewed_at": "2026-09-03T21:05:00.000Z", "practice": 1}
+    ],
+    "records": [
+      {"id": "rec-project", "kind": "project", "data": {"title": "Bán đồ ăn sáng", "stage": "Quan sát", "problem": "Người đi làm không kịp ăn sáng"}, "created_at": "2026-09-06T08:00:00.000Z"},
+      {"id": "rec-note", "kind": "note", "data": {"title": "Chi phí cơ hội", "body": "Chọn A là bỏ B."}, "created_at": "2026-09-06T09:00:00.000Z"},
+      {"id": "rec-asset", "kind": "asset", "data": {"name": "Tiền gửi", "amount": 50000000}, "created_at": "2026-09-07T10:00:00.000Z"},
+      {"id": "rec-debt", "kind": "debt", "data": {"name": "Thẻ tín dụng", "amount": 3000000}, "created_at": "2026-09-07T10:05:00.000Z"},
+      {"id": "rec-odd", "kind": "mystery", "data": {"x": 1}, "created_at": "not-a-date"}
+    ],
+    "commitments": [
+      {"id": "cm-1", "kind": "forecast", "plan": {"question": "Tuần này bán được 20 phần?", "probability": 60, "sourceLessonId": "business-1"}, "resolution": {"outcome": "yes"}, "created_at": "2026-09-06T08:30:00.000Z", "resolved_at": "2026-09-13T08:30:00.000Z"},
+      {"id": "cm-2", "kind": "experiment", "plan": {"metric": "Số khách quay lại", "comparator": "at-least", "threshold": 5}, "resolution": null, "created_at": "2026-09-08T09:00:00.000Z", "resolved_at": null}
+    ],
+    "plan": {"focus": "technology", "outcome": "Làm công cụ đặt món", "reviewDate": "2026-12-01", "evidence": {"m1": "Đã phỏng vấn 3 người"}},
+    "notebooks": {"page-1": {"strokes": [[1, 2, 3]], "rows": 4, "note": "", "typed": "hello", "updated_at": "2026-09-01T10:00:00.000Z"}},
+    "writingEvents": [{"at": "2026-09-01T10:00:00.000Z", "ok": 1}, {"at": "2026-09-01T10:01:00.000Z", "ok": 0}],
+    "dailySession": {"date": "2026-09-08", "items": [{"type": "write", "id": "money-1", "label": "Luyện viết câu", "minutes": 5, "done": false}]},
+    "entryAssessment": {"score": 4, "total": 6, "completed_at": "2026-08-31T19:00:00.000Z"},
+    "wordCards": {"w1": {"due": "2026-09-02T00:00:00.000Z", "box": 1}, "w2": {"due": "2026-09-03T00:00:00.000Z", "box": 2}},
+    "sentCards": {"s1": {"due": "2026-09-02T00:00:00.000Z"}},
+    "vocabSettings": {"perDay": 10},
+    "vocabDaily": {"date": "2026-09-08", "ids": ["w1"]},
+    "customWords": [{"en": "margin", "vi": "biên lợi nhuận"}],
+    "journal": {
+      "2026-09-01": {"minutes": 25, "understand": 70, "note": "Ngày đầu.", "first_open": "2026-09-01T20:01:00.000Z"},
+      "2026-09-02": {"minutes": 12, "understand": null, "note": "", "first_open": "2026-09-02T23:30:00.000Z"},
+      "bad-day": {"minutes": 5}
+    }
+  },
+  "updated_at": "2026-09-08T14:00:00.000Z"
+}

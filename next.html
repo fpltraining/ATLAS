@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#171B2E">
+<title>ATLAS · Kiểm tra nâng cấp</title>
+<style>
+/* Phase 1: trang kiểm tra kỹ thuật. Bộ màu tạm theo brief; Phase 2 sẽ chuẩn hoá design system. */
+:root{
+  --bg:#F7F7F2; --card:#FFFFFF; --text:#171B2E; --muted:#5F6676; --line:#E4E7EA;
+  --lime:#C7E85B; --lime-soft:#EEF6D6; --warn:#8A3317; --warn-bg:#FBEDE7;
+  --btn-bg:#171B2E; --btn-text:#F7F7F2; --focus:#171B2E;
+  --radius:14px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#11141F; --card:#1A1E2E; --text:#ECEDE6; --muted:#A9AFBE; --line:#2C3247;
+    --lime-soft:#2A331A; --warn:#F2A68C; --warn-bg:#3A231B;
+    --btn-bg:#C7E85B; --btn-text:#171B2E; --focus:#C7E85B;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.55;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--card);padding:10px 14px;border-radius:10px}
+.skip:focus{left:16px}
+.wrap{max-width:920px;margin:0 auto;padding:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 4px;flex-wrap:wrap}
+.word{font-weight:800;letter-spacing:.18em;font-size:20px}
+.tag{font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:4px 12px}
+h1{font-size:28px;line-height:1.2;margin:18px 0 8px;letter-spacing:-.01em}
+h2{font-size:21px;line-height:1.3;margin:0 0 10px}
+h3{font-size:17px;margin:18px 0 6px}
+h4{font-size:15px;margin:14px 0 4px}
+p{margin:0 0 10px}
+.lead{color:var(--muted);max-width:68ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:16px 0}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.note{border-radius:10px;padding:12px 14px;margin:10px 0;font-size:15px}
+.note.ok{background:var(--lime-soft)}
+.note.warn{background:var(--warn-bg);color:var(--warn)}
+table.kv{width:100%;border-collapse:collapse;font-size:15px}
+table.kv th,table.kv td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
+table.kv th{text-align:left;font-weight:500;color:var(--muted);padding-right:12px}
+table.kv td{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%}
+table.kv tr:first-child th,table.kv tr:first-child td{border-top:0}
+ul.plain{margin:6px 0 10px;padding-left:20px}
+ul.plain li{margin:4px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;border:0;
+  background:var(--btn-bg);color:var(--btn-text);font:inherit;font-weight:600;cursor:pointer;margin:6px 0}
+.btn:active{transform:translateY(1px)}
+details.academy{border-top:1px solid var(--line)}
+details.academy:first-of-type{border-top:0}
+details.academy summary{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 0;cursor:pointer;list-style:none}
+details.academy summary::-webkit-details-marker{display:none}
+details.academy summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--muted);padding-left:8px}
+details.academy[open] summary::after{content:"\2212"}
+.no{flex:0 0 34px;height:34px;border-radius:10px;background:var(--lime);color:#171B2E;display:flex;align-items:center;justify-content:center;font-weight:800}
+.sum-title{display:flex;flex-direction:column}
+.sum-title b{font-size:17px}
+.sum-title small{color:var(--muted);font-size:13px}
+.acad-body{padding:0 0 16px 46px}
+.level{margin:8px 0 0}
+.ev{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:0 8px;margin-left:6px;color:var(--muted);white-space:nowrap}
+.pill{display:inline-block;font-size:13px;border-radius:999px;padding:2px 10px;white-space:nowrap;font-weight:600}
+.pill.live{background:var(--lime);color:#171B2E}
+.pill.preview{border:1px solid var(--text)}
+.pill.planned{border:1px dashed var(--muted);color:var(--muted);font-weight:500}
+table.feat{width:100%;border-collapse:collapse;font-size:15px}
+table.feat td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
+table.feat td.st{text-align:right;padding-left:10px}
+footer{color:var(--muted);font-size:13px;padding:8px 0 28px}
+@media (min-width:768px){ .wrap{padding:24px 28px} h1{font-size:34px} .panel{padding:24px 26px} }
+@media (max-width:520px){ .acad-body{padding-left:0} }
+@media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua, tới nội dung chính</a>
+<div class="wrap">
+  <header class="top">
+    <span class="word" aria-label="ATLAS">ATLAS</span>
+    <span class="tag">Bản đang xây · Phase 1</span>
+  </header>
+
+  <main id="main">
+    <h1>Kiểm tra trước khi nâng cấp</h1>
+    <p class="lead">Trang kỹ thuật của Phase 1, chưa phải giao diện ATLAS mới. Trang chỉ <b>đọc</b> dữ liệu ATLAS cũ trên máy này để thử chuyển sang cấu trúc 7 học viện. Không ghi, không xoá gì.</p>
+
+    <section class="panel" aria-labelledby="legacy-h">
+      <h2 id="legacy-h">Dữ liệu ATLAS cũ trên máy này</h2>
+      <div id="legacy-body"><p class="muted">Đang đọc…</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="preview-h">
+      <h2 id="preview-h">Thử chuyển sang 7 học viện (không lưu)</h2>
+      <div id="preview-body"><p class="muted">Đang tính…</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="academy-h">
+      <h2 id="academy-h">7 học viện và chuẩn đầu ra</h2>
+      <div id="academy-body"><p class="muted">Đang tải…</p></div>
+    </section>
+
+    <section class="panel" aria-labelledby="feature-h">
+      <h2 id="feature-h">Trạng thái tính năng</h2>
+      <div id="feature-body"><p class="muted">Đang tải…</p></div>
+    </section>
+
+    <noscript><p class="note warn">Trang này cần bật JavaScript.</p></noscript>
+  </main>
+
+  <footer id="foot"></footer>
+</div>
+
+<!-- ===================== NỘI DUNG: khung 7 học viện (sửa nội dung ở đây, không sửa trong code) ===================== -->
+<script id="atlas-content" type="application/json">
+{
+  "schema": "atlas-content",
+  "version": 1,
+  "updated": "2026-11-25",
+  "levels": [
+    {"id": "foundation", "name": "Foundation", "vi": "Nền tảng", "desc": "Hiểu khái niệm cốt lõi và giải thích được bằng lời của mình."},
+    {"id": "beginner", "name": "Beginner", "vi": "Cơ bản", "desc": "Làm được bài tập có hướng dẫn, áp dụng vào tình huống đơn giản."},
+    {"id": "intermediate", "name": "Intermediate", "vi": "Trung cấp", "desc": "Tự áp dụng và tạo được sản phẩm nhỏ hoàn chỉnh."},
+    {"id": "advanced", "name": "Advanced", "vi": "Nâng cao", "desc": "Giải quyết vấn đề phức tạp, đánh giá và cải tiến có số đo."},
+    {"id": "mastery", "name": "Mastery", "vi": "Làm chủ", "desc": "Làm ổn định qua nhiều tình huống thật và dạy lại được người khác."}
+  ],
+  "competencies": [
+    {"id": "exposure", "vi": "Đã tiếp xúc", "evidence": false, "desc": "Đã mở hoặc đọc nội dung. Không tính vào điểm năng lực."},
+    {"id": "recall", "vi": "Nhớ", "evidence": true, "desc": "Tự nhớ lại được khi ôn, đo bằng câu hỏi."},
+    {"id": "explain", "vi": "Giải thích", "evidence": true, "desc": "Giải thích được bằng lời của mình, chấm theo tiêu chí."},
+    {"id": "apply", "vi": "Áp dụng", "evidence": true, "desc": "Làm đúng bài tập hoặc xử lý được tình huống mới."},
+    {"id": "build", "vi": "Tạo ra", "evidence": true, "desc": "Tạo được sản phẩm hoặc kết quả có thể kiểm tra."},
+    {"id": "mastery", "vi": "Làm chủ", "evidence": true, "desc": "Thể hiện ổn định qua nhiều tình huống và nhiều thời điểm."}
+  ],
+  "academies": [
+    {
+      "id": "ai-engineering", "no": 1, "code": "aie",
+      "name": "AI & Engineering Academy", "vi": "Học viện AI & Kỹ thuật",
+      "goal": "Hiểu và làm chủ AI, AI Agents, phần mềm và kỹ thuật xây dựng sản phẩm.",
+      "branches": [
+        {"id": "aie-computing", "title": "Nền tảng máy tính, internet, dữ liệu và tư duy lập trình"},
+        {"id": "aie-ai-basics", "title": "AI căn bản: machine learning, deep learning, LLM, embeddings, token, context window"},
+        {"id": "aie-prompting", "title": "Prompt engineering và cách đánh giá đầu ra AI"},
+        {"id": "aie-agents", "title": "AI Agents: tool calling, workflow, memory, planning, orchestration, guardrails"},
+        {"id": "aie-dev-tools", "title": "Claude Code, Codex, Cursor và các môi trường phát triển có AI"},
+        {"id": "aie-web-apps", "title": "Xây dựng website, web app, app dùng tốt trên điện thoại và SaaS"},
+        {"id": "aie-fullstack", "title": "Frontend, backend, API, database, authentication"},
+        {"id": "aie-git-quality", "title": "Git, GitHub, testing, debugging, deployment"},
+        {"id": "aie-data", "title": "Supabase/PostgreSQL và quản lý dữ liệu"},
+        {"id": "aie-rag-eval", "title": "RAG, vector search, evaluation, observability và bảo mật AI"},
+        {"id": "aie-automation", "title": "Tự động hoá quy trình công việc"},
+        {"id": "aie-ai-products", "title": "Thiết kế, triển khai và vận hành sản phẩm AI thực tế"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "aie.f1", "evidence": "explain", "text": "Giải thích được bằng lời của mình trình duyệt, máy chủ, API và cơ sở dữ liệu phối hợp thế nào khi mở một trang web."},
+          {"id": "aie.f2", "evidence": "explain", "text": "Giải thích được token, context window và vì sao một LLM có thể trả lời sai mà vẫn rất tự tin."},
+          {"id": "aie.f3", "evidence": "apply", "text": "Viết được chương trình nhỏ dùng biến, điều kiện, vòng lặp và hàm, chạy đúng với ít nhất 3 trường hợp thử."}
+        ],
+        "beginner": [
+          {"id": "aie.b1", "evidence": "build", "text": "Xây được trang web có form, lưu dữ liệu trên máy và dùng tốt trên iPad lẫn điện thoại."},
+          {"id": "aie.b2", "evidence": "apply", "text": "Viết được prompt có vai trò, ngữ cảnh, ràng buộc, định dạng đầu ra; so sánh hai phiên bản prompt bằng tiêu chí đặt trước."},
+          {"id": "aie.b3", "evidence": "apply", "text": "Dùng được Git để tạo nhánh, commit, đẩy lên GitHub và quay lại một phiên bản cũ khi cần."}
+        ],
+        "intermediate": [
+          {"id": "aie.i1", "evidence": "build", "text": "Xây được web app có đăng nhập, cơ sở dữ liệu Supabase và Row Level Security: người này không đọc được dữ liệu của người kia."},
+          {"id": "aie.i2", "evidence": "build", "text": "Gọi được API của mô hình AI từ phía máy chủ, khoá API không bao giờ lộ ra trình duyệt."},
+          {"id": "aie.i3", "evidence": "apply", "text": "Tìm và sửa được lỗi bằng cách đọc log, tái hiện lỗi và viết test chặn lỗi quay lại."}
+        ],
+        "advanced": [
+          {"id": "aie.a1", "evidence": "build", "text": "Xây được AI Agent dùng công cụ có giới hạn quyền, hỏi xác nhận trước thao tác rủi ro và ghi log đầy đủ."},
+          {"id": "aie.a2", "evidence": "build", "text": "Xây được hệ thống RAG có bộ câu hỏi đánh giá, đo được tỉ lệ trả lời đúng trước và sau mỗi lần cải tiến."},
+          {"id": "aie.a3", "evidence": "apply", "text": "Thiết kế được quy trình triển khai có kiểm thử tự động, theo dõi lỗi và kế hoạch quay lại bản cũ."}
+        ],
+        "mastery": [
+          {"id": "aie.m1", "evidence": "build", "text": "Đưa được một sản phẩm AI vào dùng thật, đo chi phí, độ trễ, chất lượng và sự cố trong ít nhất 4 tuần."},
+          {"id": "aie.m2", "evidence": "apply", "text": "Đánh giá được rủi ro bảo mật của hệ thống AI (prompt injection, rò rỉ dữ liệu, lạm quyền) và có biện pháp giảm thiểu đã kiểm chứng."},
+          {"id": "aie.m3", "evidence": "explain", "text": "Hướng dẫn được người khác xây một tính năng AI từ ý tưởng đến khi triển khai."}
+        ]
+      },
+      "projects": ["Một AI assistant cá nhân", "Website bán hàng", "Hệ thống quản lý cửa hàng", "Quy trình tự động hoá công việc", "AI Agent có kiểm soát quyền truy cập"]
+    },
+    {
+      "id": "business", "no": 2, "code": "biz",
+      "name": "Business Academy", "vi": "Học viện Kinh doanh",
+      "goal": "Hiểu cách doanh nghiệp tạo giá trị, tìm khách hàng, bán hàng, vận hành và phát triển bền vững.",
+      "branches": [
+        {"id": "biz-models", "title": "Tư duy kinh doanh và mô hình kinh doanh"},
+        {"id": "biz-market", "title": "Nghiên cứu thị trường, khách hàng và đối thủ"},
+        {"id": "biz-positioning", "title": "Customer discovery, định vị và lợi thế cạnh tranh"},
+        {"id": "biz-product-brand", "title": "Sản phẩm, thương hiệu và trải nghiệm khách hàng"},
+        {"id": "biz-marketing", "title": "Marketing, nội dung, quảng cáo và tăng trưởng"},
+        {"id": "biz-sales", "title": "Sales, đàm phán và chăm sóc khách hàng"},
+        {"id": "biz-economics", "title": "Pricing, unit economics, doanh thu, chi phí và lợi nhuận"},
+        {"id": "biz-operations", "title": "Vận hành, quy trình, nhân sự và quản trị chất lượng"},
+        {"id": "biz-ecommerce", "title": "Thương mại điện tử và bán hàng đa kênh"},
+        {"id": "biz-cases", "title": "Case study doanh nghiệp thành công và thất bại"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "biz.f1", "evidence": "explain", "text": "Giải thích được một doanh nghiệp tạo giá trị, thu tiền và giữ lại lợi nhuận thế nào qua một mô hình kinh doanh cụ thể."},
+          {"id": "biz.f2", "evidence": "recall", "text": "Phân biệt được doanh thu, chi phí, lợi nhuận gộp và lợi nhuận ròng trong một ví dụ có số liệu."},
+          {"id": "biz.f3", "evidence": "apply", "text": "Mô tả được khách hàng mục tiêu, vấn đề của họ và cách họ đang tự giải quyết, dựa trên quan sát thật."}
+        ],
+        "beginner": [
+          {"id": "biz.b1", "evidence": "apply", "text": "Phỏng vấn được ít nhất 5 khách hàng tiềm năng bằng câu hỏi không dẫn dắt và tổng hợp được điều họ thật sự cần."},
+          {"id": "biz.b2", "evidence": "apply", "text": "Tính được unit economics cho một sản phẩm: giá bán, chi phí biến đổi, biên đóng góp và điểm hoà vốn."},
+          {"id": "biz.b3", "evidence": "explain", "text": "Viết được tuyên bố định vị có so sánh rõ với hai đối thủ trực tiếp."}
+        ],
+        "intermediate": [
+          {"id": "biz.i1", "evidence": "build", "text": "Lập được kế hoạch ra mắt sản phẩm có mục tiêu đo được, kênh, ngân sách và mốc đánh giá."},
+          {"id": "biz.i2", "evidence": "build", "text": "Dựng được phễu bán hàng và hệ thống CRM đơn giản, theo dõi được tỉ lệ chuyển đổi từng bước."},
+          {"id": "biz.i3", "evidence": "explain", "text": "Phân tích được một case study: chỉ ra quyết định then chốt, bằng chứng và điều có thể làm khác."}
+        ],
+        "advanced": [
+          {"id": "biz.a1", "evidence": "apply", "text": "Thiết kế được chiến lược giá và một phép thử giá có tiêu chí thành công đặt trước."},
+          {"id": "biz.a2", "evidence": "build", "text": "Chuẩn hoá được một quy trình vận hành có chỉ số chất lượng và người chịu trách nhiệm rõ ràng."},
+          {"id": "biz.a3", "evidence": "build", "text": "Xây được mô hình tài chính 12 tháng với ba kịch bản: tốt, cơ sở và xấu."}
+        ],
+        "mastery": [
+          {"id": "biz.m1", "evidence": "build", "text": "Vận hành hoặc tăng trưởng được một hoạt động kinh doanh có khách hàng trả tiền thật, ghi chép kết quả ít nhất 3 tháng."},
+          {"id": "biz.m2", "evidence": "apply", "text": "Quyết định mở rộng, giữ nguyên hay dừng dựa trên số liệu, viết lại lý do để đối chiếu về sau."},
+          {"id": "biz.m3", "evidence": "explain", "text": "Hướng dẫn được người khác phân tích một mô hình kinh doanh mới."}
+        ]
+      },
+      "projects": ["Kế hoạch ra mắt sản phẩm", "Website bán hàng", "Hệ thống CRM đơn giản", "Kế hoạch marketing", "Bảng tính hiệu quả kinh doanh"]
+    },
+    {
+      "id": "finance", "no": 3, "code": "fin",
+      "name": "Finance Academy", "vi": "Học viện Tài chính",
+      "goal": "Hiểu tiền, quản lý tài sản, đầu tư dài hạn và đánh giá rủi ro.",
+      "notice": "Nội dung mang tính giáo dục: không đưa lời khuyên mua/bán cá nhân hoá, không cam kết lợi nhuận. Số liệu tài chính luôn ghi nguồn, ngày và cảnh báo khi đã cũ.",
+      "branches": [
+        {"id": "fin-personal", "title": "Tài chính cá nhân, ngân sách, tiết kiệm và quỹ dự phòng"},
+        {"id": "fin-time-value", "title": "Lãi kép, giá trị thời gian của tiền, lạm phát"},
+        {"id": "fin-statements", "title": "Báo cáo tài chính: cân đối kế toán, kết quả kinh doanh, lưu chuyển tiền tệ"},
+        {"id": "fin-assets", "title": "Cổ phiếu, trái phiếu, ETF, quỹ và các loại tài sản"},
+        {"id": "fin-valuation", "title": "Định giá doanh nghiệp: DCF, P/E, P/B, ROE, ROIC, biên lợi nhuận"},
+        {"id": "fin-moat", "title": "Lợi thế cạnh tranh và chất lượng ban lãnh đạo"},
+        {"id": "fin-value-risk", "title": "Đầu tư giá trị, biên an toàn và quản trị rủi ro"},
+        {"id": "fin-allocation", "title": "Phân bổ tài sản, đa dạng hoá và hành vi nhà đầu tư"},
+        {"id": "fin-macro", "title": "Thuế, lãi suất, chu kỳ kinh tế và các yếu tố vĩ mô cơ bản"},
+        {"id": "fin-history", "title": "Tình huống đầu tư trong lịch sử"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "fin.f1", "evidence": "apply", "text": "Lập được ngân sách tháng, tách chi phí thiết yếu và không thiết yếu, xác định được quỹ dự phòng cần có."},
+          {"id": "fin.f2", "evidence": "explain", "text": "Giải thích được lãi kép, lạm phát và giá trị thời gian của tiền bằng ví dụ tự tính."},
+          {"id": "fin.f3", "evidence": "apply", "text": "Phân biệt được tài sản, nợ và tài sản ròng; tính được tài sản ròng của chính mình."}
+        ],
+        "beginner": [
+          {"id": "fin.b1", "evidence": "apply", "text": "Đọc được ba báo cáo tài chính của một doanh nghiệp niêm yết và chỉ ra 5 con số quan trọng nhất."},
+          {"id": "fin.b2", "evidence": "explain", "text": "Giải thích được khác biệt về rủi ro và lợi nhuận kỳ vọng giữa tiền gửi, trái phiếu, cổ phiếu, ETF và quỹ."},
+          {"id": "fin.b3", "evidence": "apply", "text": "Tính được P/E, P/B, ROE và biên lợi nhuận từ số liệu gốc, ghi rõ nguồn và ngày của số liệu."}
+        ],
+        "intermediate": [
+          {"id": "fin.i1", "evidence": "build", "text": "Viết được bản phân tích một doanh nghiệp: mô hình kinh doanh, lợi thế cạnh tranh, ban lãnh đạo, rủi ro, có nguồn."},
+          {"id": "fin.i2", "evidence": "build", "text": "Dựng được mô hình DCF đơn giản và kiểm tra độ nhạy theo tốc độ tăng trưởng và lãi suất chiết khấu."},
+          {"id": "fin.i3", "evidence": "explain", "text": "Giải thích được lãi suất và chu kỳ kinh tế tác động thế nào đến định giá tài sản."}
+        ],
+        "advanced": [
+          {"id": "fin.a1", "evidence": "apply", "text": "So sánh được ba doanh nghiệp cùng ngành bằng ROIC, dòng tiền và chất lượng lợi nhuận, kết luận có lập luận."},
+          {"id": "fin.a2", "evidence": "build", "text": "Viết được chính sách phân bổ tài sản cá nhân có quy tắc tái cân bằng và giới hạn rủi ro định sẵn."},
+          {"id": "fin.a3", "evidence": "apply", "text": "Nhận diện được thiên lệch hành vi của chính mình qua nhật ký quyết định đầu tư."}
+        ],
+        "mastery": [
+          {"id": "fin.m1", "evidence": "build", "text": "Duy trì được nhật ký phân tích và quyết định ít nhất 12 tháng, đối chiếu dự đoán với kết quả thật."},
+          {"id": "fin.m2", "evidence": "explain", "text": "Phân tích được một tình huống đầu tư lịch sử: điều có thể biết trước và điều chỉ thấy khi nhìn lại."},
+          {"id": "fin.m3", "evidence": "explain", "text": "Giải thích được cho người mới cách đánh giá rủi ro trước lợi nhuận, không hứa hẹn kết quả."}
+        ]
+      },
+      "projects": ["Ngân sách tháng và quỹ dự phòng", "Phân tích một doanh nghiệp niêm yết", "Mô hình định giá DCF", "Chính sách phân bổ tài sản cá nhân", "Nhật ký quyết định đầu tư"]
+    },
+    {
+      "id": "science", "no": 4, "code": "sci",
+      "name": "Science Academy", "vi": "Học viện Khoa học",
+      "goal": "Xây nền tảng khoa học để hiểu thế giới, suy luận chính xác và không bị đánh lừa bởi thông tin sai.",
+      "branches": [
+        {"id": "sci-math", "title": "Toán học nền tảng và tư duy định lượng"},
+        {"id": "sci-algebra-stats", "title": "Đại số, hàm số, xác suất và thống kê"},
+        {"id": "sci-method", "title": "Logic, phương pháp khoa học và thiết kế thí nghiệm"},
+        {"id": "sci-physics", "title": "Vật lý: cơ học, điện, năng lượng, nhiệt và sóng"},
+        {"id": "sci-chemistry", "title": "Hoá học nền tảng và vật liệu"},
+        {"id": "sci-biology", "title": "Sinh học, hệ sinh thái và cơ thể sống ở mức phổ thông"},
+        {"id": "sci-data", "title": "Khoa học dữ liệu và cách đọc biểu đồ"},
+        {"id": "sci-causality", "title": "Tương quan và quan hệ nhân quả"},
+        {"id": "sci-uncertainty", "title": "Sai lệch nhận thức, ngụy biện và độ bất định"},
+        {"id": "sci-research", "title": "Đọc, kiểm tra và đối chiếu nghiên cứu khoa học"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "sci.f1", "evidence": "apply", "text": "Giải được bài toán tỉ lệ, phần trăm, đổi đơn vị và ước lượng nhanh trong tình huống đời thường."},
+          {"id": "sci.f2", "evidence": "explain", "text": "Giải thích được các bước của phương pháp khoa học và vì sao một giả thuyết phải có cách bác bỏ."},
+          {"id": "sci.f3", "evidence": "recall", "text": "Đọc đúng được biểu đồ cột, đường, phân tán: trục, đơn vị và điều biểu đồ không nói ra."}
+        ],
+        "beginner": [
+          {"id": "sci.b1", "evidence": "apply", "text": "Tính và diễn giải được trung bình, trung vị, độ lệch chuẩn và xác suất cơ bản."},
+          {"id": "sci.b2", "evidence": "explain", "text": "Giải thích được năng lượng, công suất, điện áp và dòng điện bằng ví dụ trong nhà."},
+          {"id": "sci.b3", "evidence": "apply", "text": "Phân biệt được tương quan với quan hệ nhân quả trong 5 bản tin thật."}
+        ],
+        "intermediate": [
+          {"id": "sci.i1", "evidence": "build", "text": "Thiết kế được một thí nghiệm nhỏ có nhóm đối chứng, biến được kiểm soát và tiêu chí đo đặt trước."},
+          {"id": "sci.i2", "evidence": "apply", "text": "Đọc tóm tắt một nghiên cứu và chỉ ra cỡ mẫu, phương pháp, giới hạn và xung đột lợi ích."},
+          {"id": "sci.i3", "evidence": "explain", "text": "Giải thích được nguyên lý hoá học hoặc sinh học nền tảng đứng sau một hiện tượng đời sống."}
+        ],
+        "advanced": [
+          {"id": "sci.a1", "evidence": "build", "text": "Phân tích được một bộ dữ liệu thật: làm sạch, mô tả, trực quan hoá và nêu kết luận kèm mức độ chắc chắn."},
+          {"id": "sci.a2", "evidence": "apply", "text": "Đánh giá được bằng chứng từ nhiều nghiên cứu mâu thuẫn nhau và đưa ra kết luận thận trọng."},
+          {"id": "sci.a3", "evidence": "apply", "text": "Dùng được mô hình vật lý đơn giản để ước lượng một bài toán kỹ thuật về năng lượng, lực hoặc nhiệt."}
+        ],
+        "mastery": [
+          {"id": "sci.m1", "evidence": "build", "text": "Thực hiện được một dự án điều tra có giả thuyết, dữ liệu, phân tích và báo cáo người khác kiểm tra lại được."},
+          {"id": "sci.m2", "evidence": "explain", "text": "Phát hiện được lỗi suy luận thống kê trong một báo cáo và giải thích cách sửa."},
+          {"id": "sci.m3", "evidence": "explain", "text": "Dạy lại được một khái niệm khoa học khó cho người mới bằng thí nghiệm hoặc mô phỏng tự làm."}
+        ]
+      },
+      "projects": ["Thí nghiệm nhỏ có nhóm đối chứng", "Phân tích một bộ dữ liệu thật", "Kiểm chứng một tin khoa học trên báo"]
+    },
+    {
+      "id": "future-tech", "no": 5, "code": "ft",
+      "name": "Future Technology Academy", "vi": "Học viện Công nghệ Tương lai",
+      "goal": "Hiểu các công nghệ có thể định hình tương lai và biết cách đánh giá cơ hội ứng dụng.",
+      "branches": [
+        {"id": "ft-robotics", "title": "Robotics và robot công nghiệp, dịch vụ"},
+        {"id": "ft-automation", "title": "Tự động hoá và hệ thống điều khiển"},
+        {"id": "ft-electronics", "title": "Điện, điện tử và cảm biến"},
+        {"id": "ft-solar-storage", "title": "Năng lượng mặt trời, lưu trữ điện và pin"},
+        {"id": "ft-grid", "title": "Lưới điện, hiệu suất năng lượng và hạ tầng"},
+        {"id": "ft-iot-edge", "title": "IoT, edge computing và hệ thống thông minh"},
+        {"id": "ft-semis", "title": "Công nghệ bán dẫn và phần cứng máy tính"},
+        {"id": "ft-biotech-materials", "title": "Công nghệ sinh học và vật liệu mới ở mức tổng quan"},
+        {"id": "ft-space-mobility", "title": "Công nghệ không gian và giao thông tương lai"},
+        {"id": "ft-assessment", "title": "Đánh giá tính khả thi, chi phí, tác động và rủi ro công nghệ"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "ft.f1", "evidence": "explain", "text": "Giải thích được một robot cảm nhận, quyết định và hành động thế nào: cảm biến, bộ điều khiển, cơ cấu chấp hành."},
+          {"id": "ft.f2", "evidence": "explain", "text": "Giải thích được pin mặt trời, pin lưu trữ và lưới điện phối hợp ra sao trong một ngôi nhà."},
+          {"id": "ft.f3", "evidence": "recall", "text": "Nêu được các tiêu chí cơ bản để đánh giá một công nghệ mới: lợi ích, chi phí, độ chín và rủi ro."}
+        ],
+        "beginner": [
+          {"id": "ft.b1", "evidence": "apply", "text": "Ước tính được sản lượng điện mặt trời của một mái nhà từ công suất, số giờ nắng và hiệu suất, ghi rõ giả định."},
+          {"id": "ft.b2", "evidence": "explain", "text": "Mô tả được một vòng điều khiển phản hồi (như máy điều hoà) gồm đầu vào, đầu ra và sai số."},
+          {"id": "ft.b3", "evidence": "recall", "text": "Phân loại được chip xử lý, bộ nhớ, cảm biến và vai trò của chúng trong một thiết bị thông minh."}
+        ],
+        "intermediate": [
+          {"id": "ft.i1", "evidence": "build", "text": "Lập được bảng so sánh chi phí vòng đời (đầu tư, vận hành, thời gian hoàn vốn) cho hai phương án năng lượng."},
+          {"id": "ft.i2", "evidence": "build", "text": "Thiết kế được sơ đồ một hệ thống IoT: cảm biến, truyền dữ liệu, xử lý tại biên và cảnh báo."},
+          {"id": "ft.i3", "evidence": "explain", "text": "Phân tích được chuỗi cung ứng bán dẫn và các điểm nghẽn chính của nó."}
+        ],
+        "advanced": [
+          {"id": "ft.a1", "evidence": "build", "text": "Viết được báo cáo khả thi cho một ứng dụng công nghệ (robot, tự động hoá, năng lượng) có số liệu, nguồn và rủi ro."},
+          {"id": "ft.a2", "evidence": "apply", "text": "Đánh giá được tuyên bố của một startup công nghệ: phần đã chứng minh và phần vẫn là giả thuyết."},
+          {"id": "ft.a3", "evidence": "apply", "text": "Ước lượng được tác động khi mở rộng quy mô: chi phí theo sản lượng, giới hạn vật lý và hạ tầng cần có."}
+        ],
+        "mastery": [
+          {"id": "ft.m1", "evidence": "build", "text": "Thiết kế và trình bày được đề xuất triển khai một hệ thống công nghệ thật, có phương án thử nghiệm nhỏ trước."},
+          {"id": "ft.m2", "evidence": "apply", "text": "Theo dõi một lĩnh vực công nghệ ít nhất 6 tháng, cập nhật nhận định khi có bằng chứng mới, có ghi ngày."},
+          {"id": "ft.m3", "evidence": "explain", "text": "Giải thích được giới hạn và rủi ro của một công nghệ cho người ra quyết định không chuyên."}
+        ]
+      },
+      "projects": ["Thiết kế hệ thống điện mặt trời cho một ngôi nhà", "Sơ đồ IoT cho một cửa hàng", "Báo cáo khả thi một ứng dụng tự động hoá"]
+    },
+    {
+      "id": "leadership", "no": 6, "code": "lead",
+      "name": "Leadership Academy", "vi": "Học viện Lãnh đạo",
+      "goal": "Phát triển khả năng tự quản trị, dẫn dắt con người, tổ chức công việc và ra quyết định có trách nhiệm.",
+      "branches": [
+        {"id": "lead-self", "title": "Tự lãnh đạo, kỷ luật và quản lý năng lượng cá nhân"},
+        {"id": "lead-goals", "title": "Đặt mục tiêu, ưu tiên và thực thi"},
+        {"id": "lead-communication", "title": "Giao tiếp rõ ràng và lắng nghe"},
+        {"id": "lead-negotiation", "title": "Đàm phán và xử lý xung đột"},
+        {"id": "lead-teams", "title": "Xây dựng đội nhóm và văn hoá làm việc"},
+        {"id": "lead-coaching", "title": "Giao việc, phản hồi, huấn luyện và phát triển nhân sự"},
+        {"id": "lead-projects-change", "title": "Quản trị dự án và quản trị thay đổi"},
+        {"id": "lead-decisions", "title": "Ra quyết định trong điều kiện thiếu thông tin"},
+        {"id": "lead-ethics-systems", "title": "Đạo đức, trách nhiệm và tư duy hệ thống"},
+        {"id": "lead-vision", "title": "Tầm nhìn và chiến lược dài hạn"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "lead.f1", "evidence": "apply", "text": "Theo dõi được thời gian và năng lượng của bản thân trong 7 ngày, chỉ ra 2 thay đổi cụ thể và thực hiện chúng."},
+          {"id": "lead.f2", "evidence": "apply", "text": "Viết được mục tiêu đo được, có hạn và tiêu chí hoàn thành; chia được thành việc cần làm trong tuần này."},
+          {"id": "lead.f3", "evidence": "apply", "text": "Tóm tắt lại đúng ý người khác trước khi phản hồi trong một cuộc trò chuyện thật."}
+        ],
+        "beginner": [
+          {"id": "lead.b1", "evidence": "apply", "text": "Giao được một việc có kết quả mong đợi, hạn, nguồn lực và mức quyền quyết định rõ ràng."},
+          {"id": "lead.b2", "evidence": "apply", "text": "Đưa được phản hồi theo cấu trúc tình huống, hành vi, tác động và ghi lại phản ứng của người nhận."},
+          {"id": "lead.b3", "evidence": "explain", "text": "Giải thích được các kiểu xung đột thường gặp và cách tiếp cận phù hợp với từng kiểu."}
+        ],
+        "intermediate": [
+          {"id": "lead.i1", "evidence": "build", "text": "Lập và điều phối được kế hoạch dự án nhóm có mốc, rủi ro và người chịu trách nhiệm cho từng việc."},
+          {"id": "lead.i2", "evidence": "apply", "text": "Chuẩn bị và thực hiện được một cuộc đàm phán: mục tiêu, phương án thay thế tốt nhất, nhượng bộ có kế hoạch."},
+          {"id": "lead.i3", "evidence": "apply", "text": "Ra quyết định khi thiếu thông tin bằng nhiều kịch bản và nhật ký quyết định, rồi đối chiếu lại về sau."}
+        ],
+        "advanced": [
+          {"id": "lead.a1", "evidence": "build", "text": "Huấn luyện được một người qua nhiều buổi, có mục tiêu phát triển và bằng chứng tiến bộ."},
+          {"id": "lead.a2", "evidence": "build", "text": "Dẫn dắt được một thay đổi trong nhóm: lý do, kế hoạch truyền thông, xử lý phản kháng và đo kết quả."},
+          {"id": "lead.a3", "evidence": "explain", "text": "Phân tích được một vấn đề tổ chức bằng tư duy hệ thống: vòng phản hồi, động cơ và hệ quả ngoài ý muốn."}
+        ],
+        "mastery": [
+          {"id": "lead.m1", "evidence": "build", "text": "Xây được cách làm việc và văn hoá của một đội, đo bằng kết quả của đội và mức gắn bó qua ít nhất 3 tháng."},
+          {"id": "lead.m2", "evidence": "build", "text": "Viết được tầm nhìn và chiến lược dài hạn có lựa chọn đánh đổi rõ ràng, được cả đội hiểu và làm theo."},
+          {"id": "lead.m3", "evidence": "explain", "text": "Xử lý được một tình huống đạo đức khó, giải thích được lý do và trách nhiệm với từng bên liên quan."}
+        ]
+      },
+      "projects": ["Kế hoạch vận hành một đội", "Chương trình huấn luyện một người", "Dẫn dắt một thay đổi trong nhóm"]
+    },
+    {
+      "id": "critical-thinking", "no": 7, "code": "ct",
+      "name": "Critical Thinking Academy", "vi": "Học viện Tư duy Phản biện",
+      "goal": "Hình thành khả năng suy nghĩ độc lập, phân tích sâu, nhận diện sai lầm và giải quyết vấn đề.",
+      "branches": [
+        {"id": "ct-logic", "title": "Logic hình thức và lập luận"},
+        {"id": "ct-assumptions", "title": "Tư duy phản biện và kiểm tra giả định"},
+        {"id": "ct-root-cause", "title": "Phân tích nguyên nhân gốc rễ"},
+        {"id": "ct-first-principles", "title": "Tư duy từ nguyên lý gốc (first principles)"},
+        {"id": "ct-systems", "title": "Systems thinking và vòng phản hồi"},
+        {"id": "ct-bayes", "title": "Xác suất, tư duy Bayes và ra quyết định"},
+        {"id": "ct-fallacies", "title": "Nhận diện ngụy biện, thao túng và thông tin sai lệch"},
+        {"id": "ct-reading", "title": "Đọc hiểu tài liệu phức tạp"},
+        {"id": "ct-questions", "title": "Đặt câu hỏi tốt và xây dựng giả thuyết"},
+        {"id": "ct-argument", "title": "Viết lập luận có bằng chứng"},
+        {"id": "ct-problem-solving", "title": "Phân tích tình huống và giải quyết vấn đề thực tế"}
+      ],
+      "levels": {
+        "foundation": [
+          {"id": "ct.f1", "evidence": "apply", "text": "Tách được một lập luận thành tiền đề và kết luận, chỉ ra được giả định ngầm."},
+          {"id": "ct.f2", "evidence": "recall", "text": "Nhận diện được 10 ngụy biện phổ biến trong các ví dụ lấy từ đời thật."},
+          {"id": "ct.f3", "evidence": "apply", "text": "Phân biệt được dữ kiện, suy luận và ý kiến trong một bài báo."}
+        ],
+        "beginner": [
+          {"id": "ct.b1", "evidence": "apply", "text": "Dùng được 5 Whys hoặc sơ đồ xương cá để tìm nguyên nhân gốc của một vấn đề thật."},
+          {"id": "ct.b2", "evidence": "apply", "text": "Cập nhật được mức tin của mình theo bằng chứng mới bằng lập luận xác suất đơn giản theo kiểu Bayes."},
+          {"id": "ct.b3", "evidence": "apply", "text": "Đặt được câu hỏi kiểm chứng cho một tuyên bố: nguồn nào, đo thế nào, điều gì sẽ bác bỏ nó."}
+        ],
+        "intermediate": [
+          {"id": "ct.i1", "evidence": "build", "text": "Viết được bài lập luận 600 đến 800 chữ có luận điểm, bằng chứng, phản biện và trả lời phản biện."},
+          {"id": "ct.i2", "evidence": "build", "text": "Vẽ được sơ đồ vòng phản hồi cho một vấn đề và chỉ ra điểm can thiệp hiệu quả nhất."},
+          {"id": "ct.i3", "evidence": "apply", "text": "Phân rã được một vấn đề về nguyên lý gốc và đề xuất ít nhất hai cách giải khác lối mòn."}
+        ],
+        "advanced": [
+          {"id": "ct.a1", "evidence": "apply", "text": "Đánh giá được chất lượng bằng chứng của một tài liệu phức tạp (báo cáo, nghiên cứu, hợp đồng) và tóm tắt trung thực."},
+          {"id": "ct.a2", "evidence": "apply", "text": "Ra quyết định kèm dự đoán xác suất, ghi lại và chấm điểm độ chính xác dự đoán theo thời gian."},
+          {"id": "ct.a3", "evidence": "explain", "text": "Phát hiện được thao túng thông tin trong một chiến dịch truyền thông và giải thích cơ chế của nó."}
+        ],
+        "mastery": [
+          {"id": "ct.m1", "evidence": "build", "text": "Giải quyết được một vấn đề thực tế phức tạp từ đầu đến cuối, kèm báo cáo người khác kiểm tra lại được."},
+          {"id": "ct.m2", "evidence": "build", "text": "Duy trì được nhật ký dự đoán ít nhất 6 tháng với điểm Brier ổn định hoặc cải thiện."},
+          {"id": "ct.m3", "evidence": "explain", "text": "Hướng dẫn được người khác phản biện một lập luận mà không công kích cá nhân."}
+        ]
+      },
+      "projects": ["Bài lập luận có bằng chứng và phản biện", "Nhật ký dự đoán có chấm điểm", "Phân tích nguyên nhân gốc một vấn đề thật"]
+    }
+  ],
+  "crossProjects": [
+    {"id": "xp-ai-product", "title": "Xây dựng một sản phẩm AI", "academies": ["ai-engineering", "business", "leadership"]},
+    {"id": "xp-company-analysis", "title": "Phân tích một doanh nghiệp", "academies": ["business", "finance", "critical-thinking"]},
+    {"id": "xp-solar", "title": "Thiết kế hệ thống điện mặt trời", "academies": ["science", "future-tech", "finance"]},
+    {"id": "xp-store-ops", "title": "Kế hoạch vận hành cửa hàng", "academies": ["business", "finance", "ai-engineering", "leadership"]}
+  ],
+  "legacyLessons": [
+    {"id": "money-1", "title": "Tiền đến từ đâu?", "academy": "business"},
+    {"id": "money-2", "title": "Doanh thu chưa phải lợi nhuận", "academy": "business"},
+    {"id": "money-3", "title": "Tài sản ròng là gì?", "academy": "finance"},
+    {"id": "thinking-1", "title": "Biết mình chưa biết gì", "academy": "critical-thinking"},
+    {"id": "thinking-2", "title": "Học để có thể giải thích", "academy": "critical-thinking"},
+    {"id": "thinking-3", "title": "Tìm bằng chứng trái chiều", "academy": "critical-thinking"},
+    {"id": "world-1", "title": "Cung, cầu và giá cả", "academy": "finance"},
+    {"id": "world-2", "title": "Lạm phát và sức mua", "academy": "finance"},
+    {"id": "world-3", "title": "Nhìn một chuỗi giá trị", "academy": "business"},
+    {"id": "technology-1", "title": "Công nghệ tạo giá trị thế nào?", "academy": "future-tech"},
+    {"id": "technology-2", "title": "AI có thể sai ở đâu?", "academy": "ai-engineering"},
+    {"id": "technology-3", "title": "Thử nghiệm một giả thuyết", "academy": "science"},
+    {"id": "business-1", "title": "Bắt đầu từ một vấn đề", "academy": "business"},
+    {"id": "business-2", "title": "Giải pháp nhỏ nhất để thử", "academy": "business"},
+    {"id": "business-3", "title": "Khi nào nên mở rộng?", "academy": "business"},
+    {"id": "leadership-1", "title": "Lắng nghe để hiểu", "academy": "leadership"},
+    {"id": "leadership-2", "title": "Giao việc rõ ràng", "academy": "leadership"},
+    {"id": "leadership-3", "title": "Cơ chế khuyến khích", "academy": "leadership"},
+    {"id": "decisions-1", "title": "Chi phí cơ hội", "academy": "critical-thinking"},
+    {"id": "decisions-2", "title": "Nghĩ bằng nhiều kịch bản", "academy": "leadership"},
+    {"id": "decisions-3", "title": "Nhật ký quyết định", "academy": "leadership"},
+    {"id": "life-1", "title": "Thành công có ý nghĩa gì?", "academy": "leadership"},
+    {"id": "life-2", "title": "Thiết kế một nhịp sống bền", "academy": "leadership"},
+    {"id": "life-3", "title": "Tài sản và trách nhiệm", "academy": "leadership"},
+    {"id": "case-amazon", "title": "Nghiên cứu tình huống: Amazon", "academy": "business"},
+    {"id": "case-berkshire", "title": "Nghiên cứu tình huống: Berkshire Hathaway", "academy": "finance"}
+  ],
+  "legacyFocusMap": {"business": "business", "technology": "ai-engineering", "decisions": "critical-thinking"},
+  "features": [
+    {"id": "legacy-check", "name": "Kiểm tra dữ liệu ATLAS cũ (chỉ đọc)", "status": "live", "phase": 1},
+    {"id": "legacy-backup", "name": "Tải file sao lưu dữ liệu cũ", "status": "live", "phase": 1},
+    {"id": "academy-map", "name": "Khung 7 học viện và chuẩn đầu ra", "status": "live", "phase": 1},
+    {"id": "migration", "name": "Chuyển dữ liệu cũ sang ATLAS mới", "status": "preview", "phase": 3},
+    {"id": "brand", "name": "Logo, icon 7 học viện, design system", "status": "planned", "phase": 2},
+    {"id": "dashboard", "name": "Trang tổng quan và Continue Learning", "status": "planned", "phase": 3},
+    {"id": "academy-pages", "name": "Trang học viện và lộ trình theo cấp", "status": "planned", "phase": 3},
+    {"id": "lesson-reader", "name": "Trình đọc bài học", "status": "planned", "phase": 3},
+    {"id": "daily-mission", "name": "Daily Mission", "status": "planned", "phase": 3},
+    {"id": "cloud-sync", "name": "Đăng nhập và đồng bộ Supabase", "status": "planned", "phase": 3},
+    {"id": "assessment", "name": "Đánh giá đầu vào", "status": "planned", "phase": 4},
+    {"id": "quiz", "name": "Quiz và bài tập", "status": "planned", "phase": 4},
+    {"id": "spaced-repetition", "name": "Ôn tập ngắt quãng", "status": "planned", "phase": 4},
+    {"id": "error-notebook", "name": "Sổ lỗi sai", "status": "planned", "phase": 4},
+    {"id": "mastery", "name": "Đo năng lực theo bằng chứng", "status": "planned", "phase": 4},
+    {"id": "ai-mentor", "name": "AI Mentor", "status": "planned", "phase": 5},
+    {"id": "project-lab", "name": "Project Lab", "status": "planned", "phase": 6},
+    {"id": "knowledge-vault", "name": "Knowledge Vault", "status": "planned", "phase": 6}
+  ]
+}
+</script>
+
+<!-- ===================== LÕI: logic thuần ES5, không đụng DOM (kiểm thử bằng tools/test) ===================== -->
+<script id="atlas-core">
+(function (root) {
+  'use strict';
+  var ATLAS = root.ATLAS || (root.ATLAS = {});
+  var hasOwn = Object.prototype.hasOwnProperty;
+
+  ATLAS.CORE_VERSION = '0.1.0';
+  /* Khoá lưu trên trình duyệt. Mọi app trên fpltraining.github.io dùng chung bộ nhớ,
+     nên ATLAS chỉ đọc/ghi đúng các khoá của mình và không bao giờ xoá khoá nào. */
+  ATLAS.KEYS = { state: 'atlas_academy_state_v1', legacy: 'atlas_local_state_v1' };
+  ATLAS.STATE_SCHEMA = 'atlas-academy-state';
+  ATLAS.STATE_VERSION = 1;
+  ATLAS.LEGACY = { format: 'atlas-export', version: 3 };
+  ATLAS.ACADEMY_IDS = ['ai-engineering', 'business', 'finance', 'science', 'future-tech', 'leadership', 'critical-thinking'];
+  ATLAS.LEVEL_IDS = ['foundation', 'beginner', 'intermediate', 'advanced', 'mastery'];
+  ATLAS.EVIDENCE_IDS = ['recall', 'explain', 'apply', 'build'];
+  ATLAS.FEATURE_STATUS = ['live', 'preview', 'planned'];
+  ATLAS.MAX_STEP = 6; /* lịch ôn cũ: 1, 3, 7, 14, 30, 60, 120 ngày */
+  ATLAS.BANNED_TOPICS = ['english', 'tiếng anh', 'tiếng trung', 'tiếng hàn', 'tiếng nhật', 'ngoại ngữ',
+    'language academy', 'chinese', 'korean', 'japanese', 'ielts', 'toeic', 'hsk'];
+
+  /* ---------- tiện ích ---------- */
+  function isArr(x) { return Array.isArray(x); }
+  function isObj(x) { return !!x && typeof x === 'object' && !isArr(x); }
+  function arr(x) { return isArr(x) ? x : []; }
+  function obj(x) { return isObj(x) ? x : {}; }
+  function str(x) { return typeof x === 'string' ? x : ''; }
+  function num(x, dflt) {
+    if (typeof x !== 'number' && typeof x !== 'string') return dflt;
+    if (x === '') return dflt;
+    var n = Number(x);
+    return isFinite(n) ? n : dflt;
+  }
+  function clampInt(x, lo, hi) {
+    var n = Math.round(num(x, lo));
+    return n < lo ? lo : (n > hi ? hi : n);
+  }
+  function copy(x) { return x === undefined ? undefined : JSON.parse(JSON.stringify(x)); }
+  function keys(o) {
+    var out = [], k;
+    for (k in o) { if (hasOwn.call(o, k)) out.push(k); }
+    return out;
+  }
+  function pad(n, w) {
+    var s = String(n);
+    while (s.length < (w || 2)) { s = '0' + s; }
+    return s;
+  }
+  function inList(list, x) { return list.indexOf(x) !== -1; }
+  var DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+  /* ---------- giờ Việt Nam (UTC+7) ---------- */
+  var VN_OFFSET_MS = 7 * 60 * 60 * 1000;
+  /* Chuỗi ISO có múi giờ +07:00, ví dụ 2026-11-25T14:03:00.000+07:00 */
+  ATLAS.vnIso = function (ms) {
+    var t = (typeof ms === 'number' && isFinite(ms)) ? ms : Date.now();
+    var d = new Date(t + VN_OFFSET_MS);
+    return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate()) + 'T' +
+      pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds()) + '.' +
+      pad(d.getUTCMilliseconds(), 3) + '+07:00';
+  };
+  ATLAS.vnDay = function (ms) { return ATLAS.vnIso(ms).slice(0, 10); };
+  /* Nhãn dd/mm/yyyy hh:mm theo giờ VN, cho chuỗi giờ có múi giờ rõ ràng */
+  ATLAS.vnLabel = function (iso) {
+    var t = typeof iso === 'string' ? Date.parse(iso) : NaN;
+    if (!isFinite(t)) return '';
+    var s = ATLAS.vnIso(t);
+    return s.slice(8, 10) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4) + ' ' + s.slice(11, 16);
+  };
+  ATLAS.dayLabel = function (day) {
+    return DAY_RE.test(str(day)) ? day.slice(8, 10) + '/' + day.slice(5, 7) + '/' + day.slice(0, 4) : '';
+  };
+  /* ATLAS cũ ghi giờ Việt Nam nhưng gắn chữ Z (vnNow().toISOString()).
+     Đổi Z thành +07:00: giữ nguyên giờ trên đồng hồ, ra đúng thời điểm thật. */
+  var LEGACY_FAKE_Z = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?)Z$/;
+  var WITH_ZONE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?(?:Z|[+\-]\d{2}:\d{2})$/;
+  ATLAS.fromLegacyTime = function (s) {
+    if (typeof s !== 'string') return null;
+    var m = LEGACY_FAKE_Z.exec(s);
+    var out = m ? m[1] + '+07:00' : (WITH_ZONE.test(s) ? s : null);
+    return (out !== null && isFinite(Date.parse(out))) ? out : null;
+  };
+  /* Giờ trong dữ liệu mới: phải có múi giờ rõ ràng và đọc được */
+  function validTime(s) {
+    return (typeof s === 'string' && WITH_ZONE.test(s) && isFinite(Date.parse(s))) ? s : null;
+  }
+  ATLAS.validTime = validTime;
+
+  /* ---------- nội dung ---------- */
+  ATLAS.readContent = function (doc) {
+    var el = (doc && doc.getElementById) ? doc.getElementById('atlas-content') : null;
+    if (!el) throw new Error('Thiếu khối nội dung atlas-content.');
+    return JSON.parse(el.textContent);
+  };
+  ATLAS.legacyMap = function (content) {
+    var map = {}, list = arr(content && content.legacyLessons), i;
+    for (i = 0; i < list.length; i++) {
+      if (isObj(list[i]) && typeof list[i].id === 'string') map[list[i].id] = list[i].academy;
+    }
+    return map;
+  };
+  ATLAS.academy = function (content, id) {
+    var list = arr(content && content.academies), i;
+    for (i = 0; i < list.length; i++) { if (isObj(list[i]) && list[i].id === id) return list[i]; }
+    return null;
+  };
+  /* Luật sản phẩm: đúng 7 học viện, đủ 5 cấp, không có nội dung học ngoại ngữ. Trả về danh sách lỗi. */
+  ATLAS.checkContent = function (content) {
+    var problems = [], i, j, k;
+    function bad(msg) { problems.push(msg); }
+    if (!isObj(content)) { bad('Nội dung không phải object.'); return problems; }
+    if (content.schema !== 'atlas-content') bad('Sai schema nội dung.');
+    if (typeof content.version !== 'number') bad('Thiếu số phiên bản nội dung.');
+    if (!DAY_RE.test(str(content.updated))) bad('Thiếu ngày cập nhật nội dung.');
+
+    var lv = arr(content.levels);
+    if (lv.length !== 5) bad('Phải có đúng 5 cấp độ.');
+    for (i = 0; i < lv.length; i++) {
+      if (!isObj(lv[i]) || lv[i].id !== ATLAS.LEVEL_IDS[i]) bad('Cấp độ thứ ' + (i + 1) + ' phải là ' + ATLAS.LEVEL_IDS[i] + '.');
+    }
+
+    var acs = arr(content.academies), seen = {};
+    if (acs.length !== 7) bad('Phải có đúng 7 học viện, đang có ' + acs.length + '.');
+    for (i = 0; i < acs.length; i++) {
+      var a = acs[i];
+      if (!isObj(a)) { bad('Học viện thứ ' + (i + 1) + ' không hợp lệ.'); continue; }
+      var label = str(a.id) || ('#' + (i + 1));
+      if (a.id !== ATLAS.ACADEMY_IDS[i]) bad('Học viện thứ ' + (i + 1) + ' phải là ' + ATLAS.ACADEMY_IDS[i] + ', đang là ' + label + '.');
+      if (a.no !== i + 1) bad(label + ': số thứ tự phải là ' + (i + 1) + '.');
+      if (!str(a.name) || !str(a.vi) || !str(a.goal)) bad(label + ': thiếu tên hoặc mục tiêu.');
+      var br = arr(a.branches);
+      if (br.length < 8) bad(label + ': cần ít nhất 8 nhánh học.');
+      for (j = 0; j < br.length; j++) {
+        var b = br[j];
+        if (!isObj(b) || !str(b.id) || !str(b.title)) { bad(label + ': nhánh thứ ' + (j + 1) + ' thiếu id hoặc tên.'); continue; }
+        if (hasOwn.call(seen, b.id)) bad('Trùng id: ' + b.id);
+        seen[b.id] = true;
+      }
+      var levels = obj(a.levels), lkeys = keys(levels);
+      for (k = 0; k < lkeys.length; k++) {
+        if (!inList(ATLAS.LEVEL_IDS, lkeys[k])) bad(label + ': cấp lạ "' + lkeys[k] + '".');
+      }
+      for (k = 0; k < ATLAS.LEVEL_IDS.length; k++) {
+        var outs = arr(levels[ATLAS.LEVEL_IDS[k]]);
+        if (outs.length < 3) bad(label + ' / ' + ATLAS.LEVEL_IDS[k] + ': cần ít nhất 3 chuẩn đầu ra.');
+        for (j = 0; j < outs.length; j++) {
+          var o = outs[j];
+          if (!isObj(o) || !str(o.id) || str(o.text).length < 25) { bad(label + ' / ' + ATLAS.LEVEL_IDS[k] + ': chuẩn đầu ra thứ ' + (j + 1) + ' thiếu id hoặc quá ngắn.'); continue; }
+          if (!inList(ATLAS.EVIDENCE_IDS, o.evidence)) bad(o.id + ': loại bằng chứng không hợp lệ.');
+          if (hasOwn.call(seen, o.id)) bad('Trùng id: ' + o.id);
+          seen[o.id] = true;
+        }
+      }
+      if (arr(a.projects).length < 1) bad(label + ': cần ít nhất 1 dự án gợi ý.');
+    }
+
+    var xp = arr(content.crossProjects);
+    for (i = 0; i < xp.length; i++) {
+      var p = obj(xp[i]), pa = arr(p.academies);
+      if (!str(p.id) || !str(p.title) || pa.length < 2) bad('Dự án liên học viện thứ ' + (i + 1) + ' chưa hợp lệ.');
+      for (j = 0; j < pa.length; j++) { if (!inList(ATLAS.ACADEMY_IDS, pa[j])) bad(str(p.id) + ': học viện lạ "' + pa[j] + '".'); }
+    }
+
+    var legacy = arr(content.legacyLessons), lseen = {};
+    for (i = 0; i < legacy.length; i++) {
+      var l = obj(legacy[i]);
+      if (!str(l.id) || !str(l.title)) { bad('Bài cũ thứ ' + (i + 1) + ' thiếu id hoặc tên.'); continue; }
+      if (hasOwn.call(lseen, l.id)) bad('Trùng bài cũ: ' + l.id);
+      lseen[l.id] = true;
+      if (!inList(ATLAS.ACADEMY_IDS, l.academy)) bad('Bài cũ ' + l.id + ' gắn vào học viện lạ.');
+    }
+    var fm = obj(content.legacyFocusMap), fk = keys(fm);
+    for (i = 0; i < fk.length; i++) { if (!inList(ATLAS.ACADEMY_IDS, fm[fk[i]])) bad('legacyFocusMap: học viện lạ cho ' + fk[i] + '.'); }
+
+    var feats = arr(content.features), fseen = {};
+    for (i = 0; i < feats.length; i++) {
+      var f = obj(feats[i]);
+      if (!str(f.id) || !str(f.name) || !inList(ATLAS.FEATURE_STATUS, f.status) || typeof f.phase !== 'number') { bad('Tính năng thứ ' + (i + 1) + ' chưa hợp lệ.'); continue; }
+      if (hasOwn.call(fseen, f.id)) bad('Trùng tính năng: ' + f.id);
+      fseen[f.id] = true;
+    }
+
+    var text = JSON.stringify(content).toLowerCase();
+    for (i = 0; i < ATLAS.BANNED_TOPICS.length; i++) {
+      if (text.indexOf(ATLAS.BANNED_TOPICS[i]) !== -1) bad('Có nội dung học ngoại ngữ: "' + ATLAS.BANNED_TOPICS[i] + '".');
+    }
+    return problems;
+  };
+
+  /* ---------- bộ nhớ trình duyệt: chỉ có đọc và ghi, cố ý không có xoá ---------- */
+  ATLAS.storage = function (backend) {
+    var b = backend || null;
+    return {
+      available: !!b,
+      get: function (key) {
+        if (!b) return null;
+        try { var v = b.getItem(key); return (v === undefined) ? null : v; } catch (e) { return null; }
+      },
+      set: function (key, value) {
+        if (!b) return false;
+        try { b.setItem(key, value); return true; } catch (e) { return false; }
+      },
+      usage: function () {
+        var out = { keys: 0, bytes: 0 }, i, n, k, v;
+        if (!b) return out;
+        try {
+          n = b.length;
+          for (i = 0; i < n; i++) {
+            k = b.key(i);
+            if (k === null || k === undefined) continue;
+            v = b.getItem(k) || '';
+            out.keys++;
+            out.bytes += (k.length + v.length) * 2;
+          }
+        } catch (e) { /* bỏ qua */ }
+        return out;
+      }
+    };
+  };
+
+  /* ---------- dữ liệu ATLAS cũ (khoá atlas_local_state_v1 = {data, updated_at}) ---------- */
+  ATLAS.readLegacy = function (store) {
+    var raw = store.get(ATLAS.KEYS.legacy);
+    if (raw === null) return { present: false };
+    var res = { present: true, raw: raw, bytes: raw.length * 2, data: null, updatedAt: null, error: null }, parsed;
+    try { parsed = JSON.parse(raw); } catch (e) {
+      res.error = 'Dữ liệu ATLAS cũ bị hỏng, không đọc được. Bản gốc vẫn giữ nguyên.';
+      return res;
+    }
+    if (isObj(parsed) && isObj(parsed.data)) {
+      res.data = parsed.data;
+      res.updatedAt = typeof parsed.updated_at === 'string' ? parsed.updated_at : null;
+    } else if (isObj(parsed) && (isArr(parsed.completions) || isArr(parsed.records))) {
+      res.data = parsed;
+    } else {
+      res.error = 'Không tìm thấy dữ liệu học trong khoá cũ. Bản gốc vẫn giữ nguyên.';
+    }
+    return res;
+  };
+
+  ATLAS.legacySummary = function (d) {
+    d = obj(d);
+    var recs = arr(d.records), kinds = { project: 0, note: 0, asset: 0, debt: 0 }, other = 0, i, k;
+    for (i = 0; i < recs.length; i++) {
+      k = isObj(recs[i]) ? recs[i].kind : null;
+      if (typeof k === 'string' && hasOwn.call(kinds, k)) kinds[k]++; else other++;
+    }
+    return {
+      completions: arr(d.completions).length,
+      reviews: arr(d.reviews).length,
+      attempts: arr(d.reviewEvents).length,
+      commitments: arr(d.commitments).length,
+      projects: kinds.project, notes: kinds.note, assets: kinds.asset, debts: kinds.debt, otherRecords: other,
+      journalDays: keys(obj(d.journal)).length,
+      entryAssessment: isObj(d.entryAssessment),
+      dailySession: isObj(d.dailySession) ? 1 : 0,
+      language: {
+        wordCards: keys(obj(d.wordCards)).length,
+        sentCards: keys(obj(d.sentCards)).length,
+        customWords: arr(d.customWords).length,
+        notebooks: keys(obj(d.notebooks)).length,
+        writingEvents: arr(d.writingEvents).length,
+        vocabDaily: isObj(d.vocabDaily) ? 1 : 0,
+        vocabSettings: isObj(d.vocabSettings) ? 1 : 0
+      }
+    };
+  };
+
+  /* ---------- dữ liệu ATLAS mới ---------- */
+  ATLAS.emptyState = function (nowMs) {
+    var now = ATLAS.vnIso(nowMs);
+    return {
+      schema: ATLAS.STATE_SCHEMA,
+      version: ATLAS.STATE_VERSION,
+      meta: { createdAt: now, updatedAt: now, migratedFrom: null },
+      profile: { name: '', minutesPerDay: 15, goal: '' },
+      plan: { focusAcademy: null, legacyFocus: null, outcome: '', reviewDate: '', evidence: {} },
+      learning: { completions: [], reviews: [], attempts: [], entryAssessment: null },
+      evidence: { commitments: [] },
+      projects: [],
+      vault: { notes: [] },
+      finance: { assets: [], debts: [] },
+      journal: {},
+      unsorted: []
+    };
+  };
+
+  function normItems(list, prefix, keepKind, problems, where) {
+    var out = [], ids = {}, i, x, id;
+    list = arr(list);
+    for (i = 0; i < list.length; i++) {
+      x = list[i];
+      if (!isObj(x)) { problems.push(where + ': bỏ mục ' + (i + 1) + ' không hợp lệ.'); continue; }
+      id = str(x.id) || (prefix + i);
+      if (hasOwn.call(ids, id)) { problems.push(where + ': bỏ mục trùng id ' + id + '.'); continue; }
+      ids[id] = true;
+      var item = { id: id, data: isObj(x.data) ? copy(x.data) : {}, createdAt: validTime(x.createdAt), source: str(x.source) };
+      if (keepKind) item.kind = str(x.kind) || 'unknown';
+      out.push(item);
+    }
+    return out;
+  }
+
+  /* Chuẩn hoá dữ liệu mới: điền phần thiếu, bỏ mục hỏng (có ghi lại), chạy nhiều lần ra cùng kết quả. */
+  ATLAS.normalizeState = function (raw, nowMs) {
+    var src = obj(raw), out = ATLAS.emptyState(nowMs), problems = [], i, x, seen;
+    var meta = obj(src.meta);
+    out.meta.createdAt = validTime(meta.createdAt) || out.meta.createdAt;
+    out.meta.updatedAt = validTime(meta.updatedAt) || out.meta.updatedAt;
+    out.meta.migratedFrom = isObj(meta.migratedFrom) ? copy(meta.migratedFrom) : null;
+
+    var p = obj(src.profile);
+    out.profile = { name: str(p.name), minutesPerDay: clampInt(num(p.minutesPerDay, 15), 5, 600), goal: str(p.goal) };
+
+    var pl = obj(src.plan);
+    out.plan = {
+      focusAcademy: inList(ATLAS.ACADEMY_IDS, pl.focusAcademy) ? pl.focusAcademy : null,
+      legacyFocus: typeof pl.legacyFocus === 'string' ? pl.legacyFocus : null,
+      outcome: str(pl.outcome),
+      reviewDate: DAY_RE.test(str(pl.reviewDate)) ? pl.reviewDate : '',
+      evidence: isObj(pl.evidence) ? copy(pl.evidence) : {}
+    };
+
+    var L = obj(src.learning);
+    seen = {};
+    var comps = arr(L.completions);
+    for (i = 0; i < comps.length; i++) {
+      x = comps[i];
+      if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một bài hoàn thành thiếu mã bài.'); continue; }
+      if (hasOwn.call(seen, x.lessonId)) { problems.push('Bỏ bài hoàn thành trùng: ' + x.lessonId); continue; }
+      seen[x.lessonId] = true;
+      var se = num(x.selfExplain, null);
+      out.learning.completions.push({
+        lessonId: x.lessonId,
+        completedAt: validTime(x.completedAt),
+        reflection: str(x.reflection),
+        selfExplain: (se !== null && se >= 1 && se <= 5) ? Math.round(se) : null
+      });
+    }
+    seen = {};
+    var revs = arr(L.reviews), nowIso = ATLAS.vnIso(nowMs);
+    for (i = 0; i < revs.length; i++) {
+      x = revs[i];
+      if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một lịch ôn thiếu mã bài.'); continue; }
+      if (hasOwn.call(seen, x.lessonId)) { problems.push('Bỏ lịch ôn trùng: ' + x.lessonId); continue; }
+      seen[x.lessonId] = true;
+      var due = validTime(x.due);
+      if (!due) problems.push('Lịch ôn ' + x.lessonId + ' thiếu ngày, đặt là đến hạn ngay.');
+      out.learning.reviews.push({ lessonId: x.lessonId, due: due || nowIso, step: clampInt(x.step, 0, ATLAS.MAX_STEP) });
+    }
+    seen = {};
+    var atts = arr(L.attempts);
+    for (i = 0; i < atts.length; i++) {
+      x = atts[i];
+      if (!isObj(x) || !str(x.lessonId)) { problems.push('Bỏ một lượt ôn thiếu mã bài.'); continue; }
+      var aid = str(x.id) || ('attempt-' + i);
+      if (hasOwn.call(seen, aid)) { problems.push('Bỏ lượt ôn trùng id ' + aid + '.'); continue; }
+      seen[aid] = true;
+      out.learning.attempts.push({
+        id: aid,
+        lessonId: x.lessonId,
+        answer: (typeof x.answer === 'number' || typeof x.answer === 'string') ? x.answer : null,
+        correct: x.correct === true,
+        practice: x.practice === true,
+        step: clampInt(x.step, 0, ATLAS.MAX_STEP),
+        at: validTime(x.at)
+      });
+    }
+    var ea = L.entryAssessment;
+    out.learning.entryAssessment = isObj(ea) ? {
+      score: clampInt(ea.score, 0, 1000), total: clampInt(ea.total, 0, 1000),
+      completedAt: validTime(ea.completedAt), legacy: ea.legacy === true
+    } : null;
+
+    seen = {};
+    var cms = arr(obj(src.evidence).commitments);
+    for (i = 0; i < cms.length; i++) {
+      x = cms[i];
+      if (!isObj(x)) { problems.push('Bỏ một dự đoán/phép thử không hợp lệ.'); continue; }
+      var cid = str(x.id) || ('commitment-' + i);
+      if (hasOwn.call(seen, cid)) { problems.push('Bỏ dự đoán/phép thử trùng id ' + cid + '.'); continue; }
+      seen[cid] = true;
+      out.evidence.commitments.push({
+        id: cid, kind: str(x.kind) || 'unknown',
+        plan: isObj(x.plan) ? copy(x.plan) : {},
+        resolution: isObj(x.resolution) ? copy(x.resolution) : null,
+        createdAt: validTime(x.createdAt), resolvedAt: validTime(x.resolvedAt)
+      });
+    }
+
+    out.projects = normItems(src.projects, 'project-', false, problems, 'Dự án');
+    out.vault.notes = normItems(obj(src.vault).notes, 'note-', false, problems, 'Ghi chép');
+    out.finance.assets = normItems(obj(src.finance).assets, 'asset-', false, problems, 'Tài sản');
+    out.finance.debts = normItems(obj(src.finance).debts, 'debt-', false, problems, 'Khoản nợ');
+    out.unsorted = normItems(src.unsorted, 'item-', true, problems, 'Mục khác');
+
+    var j = obj(src.journal), days = keys(j).sort();
+    for (i = 0; i < days.length; i++) {
+      x = j[days[i]];
+      if (!DAY_RE.test(days[i]) || !isObj(x)) { problems.push('Bỏ nhật ký ngày không hợp lệ: ' + days[i]); continue; }
+      var u = num(x.understand, null);
+      out.journal[days[i]] = {
+        minutes: Math.max(0, Math.round(num(x.minutes, 0))),
+        understand: u === null ? null : clampInt(u, 0, 100),
+        note: str(x.note),
+        firstOpen: validTime(x.firstOpen)
+      };
+    }
+    return { state: out, problems: problems };
+  };
+
+  /* ---------- chuyển dữ liệu cũ (v3) sang dữ liệu mới (v1): hàm thuần, không ghi gì ---------- */
+  ATLAS.migrateLegacy = function (legacy, content, nowMs) {
+    var d = obj(legacy && legacy.data);
+    var map = ATLAS.legacyMap(content), focusMap = obj(content && content.legacyFocusMap);
+    var report = { unmappedLessons: [], badTimes: 0, droppedItems: 0, problems: [] };
+    var draft = ATLAS.emptyState(nowMs), i, x, seen;
+    function t(s) {
+      if (s === null || s === undefined || s === '') return null;
+      var v = ATLAS.fromLegacyTime(s);
+      if (v === null) report.badTimes++;
+      return v;
+    }
+
+    var p = obj(d.profile);
+    draft.profile = { name: str(p.name), minutesPerDay: num(p.minutes, 15), goal: str(p.goal) };
+
+    seen = {};
+    var comps = arr(d.completions);
+    for (i = 0; i < comps.length; i++) {
+      x = comps[i];
+      if (!isObj(x) || !str(x.lesson_id) || hasOwn.call(seen, x.lesson_id)) { report.droppedItems++; continue; }
+      seen[x.lesson_id] = true;
+      if (!hasOwn.call(map, x.lesson_id)) report.unmappedLessons.push(x.lesson_id);
+      draft.learning.completions.push({
+        lessonId: x.lesson_id, completedAt: t(x.completed_at),
+        reflection: str(x.reflection), selfExplain: x.self_explain
+      });
+    }
+    seen = {};
+    var revs = arr(d.reviews);
+    for (i = 0; i < revs.length; i++) {
+      x = revs[i];
+      if (!isObj(x) || !str(x.lesson_id) || hasOwn.call(seen, x.lesson_id)) { report.droppedItems++; continue; }
+      seen[x.lesson_id] = true;
+      draft.learning.reviews.push({ lessonId: x.lesson_id, due: t(x.due), step: x.revision });
+    }
+    var evs = arr(d.reviewEvents);
+    for (i = 0; i < evs.length; i++) {
+      x = evs[i];
+      if (!isObj(x) || !str(x.lesson_id)) { report.droppedItems++; continue; }
+      draft.learning.attempts.push({
+        id: str(x.id) || ('legacy-attempt-' + i), lessonId: x.lesson_id, answer: x.answer,
+        correct: x.correct === 1 || x.correct === true,
+        practice: x.practice === 1 || x.practice === true,
+        step: x.revision, at: t(x.reviewed_at)
+      });
+    }
+    if (isObj(d.entryAssessment)) {
+      draft.learning.entryAssessment = {
+        score: d.entryAssessment.score, total: d.entryAssessment.total,
+        completedAt: t(d.entryAssessment.completed_at), legacy: true
+      };
+    }
+
+    var cms = arr(d.commitments);
+    for (i = 0; i < cms.length; i++) {
+      x = cms[i];
+      if (!isObj(x)) { report.droppedItems++; continue; }
+      draft.evidence.commitments.push({
+        id: str(x.id) || ('legacy-commitment-' + i), kind: x.kind, plan: x.plan, resolution: x.resolution,
+        createdAt: t(x.created_at), resolvedAt: t(x.resolved_at)
+      });
+    }
+
+    var recs = arr(d.records);
+    for (i = 0; i < recs.length; i++) {
+      x = recs[i];
+      if (!isObj(x)) { report.droppedItems++; continue; }
+      var item = { id: str(x.id) || ('legacy-record-' + i), data: x.data, createdAt: t(x.created_at), source: 'legacy' };
+      if (x.kind === 'project') draft.projects.push(item);
+      else if (x.kind === 'note') draft.vault.notes.push(item);
+      else if (x.kind === 'asset') draft.finance.assets.push(item);
+      else if (x.kind === 'debt') draft.finance.debts.push(item);
+      else { item.kind = typeof x.kind === 'string' ? x.kind : 'unknown'; draft.unsorted.push(item); }
+    }
+
+    var pl = obj(d.plan);
+    draft.plan = {
+      focusAcademy: (typeof pl.focus === 'string' && hasOwn.call(focusMap, pl.focus)) ? focusMap[pl.focus] : null,
+      legacyFocus: typeof pl.focus === 'string' ? pl.focus : null,
+      outcome: pl.outcome, reviewDate: pl.reviewDate, evidence: pl.evidence
+    };
+
+    var j = obj(d.journal), days = keys(j);
+    for (i = 0; i < days.length; i++) {
+      x = j[days[i]];
+      if (!isObj(x)) { report.droppedItems++; continue; }
+      draft.journal[days[i]] = { minutes: x.minutes, understand: x.understand, note: x.note, firstOpen: t(x.first_open) };
+    }
+
+    var summary = ATLAS.legacySummary(d);
+    var upd = (legacy && typeof legacy.updatedAt === 'string') ? Date.parse(legacy.updatedAt) : NaN;
+    var n = ATLAS.normalizeState(draft, nowMs);
+    report.problems = n.problems;
+    var s = n.state;
+    s.meta.migratedFrom = {
+      key: ATLAS.KEYS.legacy,
+      legacyVersion: ATLAS.LEGACY.version,
+      legacyUpdatedAt: isFinite(upd) ? ATLAS.vnIso(upd) : null, /* updated_at của khoá cũ là giờ UTC thật */
+      migratedAt: ATLAS.vnIso(nowMs),
+      counts: {
+        completions: s.learning.completions.length, reviews: s.learning.reviews.length,
+        attempts: s.learning.attempts.length, commitments: s.evidence.commitments.length,
+        projects: s.projects.length, notes: s.vault.notes.length,
+        assets: s.finance.assets.length, debts: s.finance.debts.length,
+        unsorted: s.unsorted.length, journalDays: keys(s.journal).length,
+        entryAssessment: s.learning.entryAssessment ? 1 : 0
+      },
+      notMigrated: { language: summary.language, dailySession: summary.dailySession },
+      report: report
+    };
+    return s;
+  };
+
+  /* Xem trước: chỉ đọc, không ghi bất cứ khoá nào */
+  ATLAS.planMigration = function (store, content, nowMs) {
+    var legacy = ATLAS.readLegacy(store);
+    var out = {
+      storageAvailable: store.available,
+      newStatePresent: store.get(ATLAS.KEYS.state) !== null,
+      legacy: legacy, summary: null, state: null
+    };
+    if (legacy.present && !legacy.error) {
+      out.summary = ATLAS.legacySummary(legacy.data);
+      out.state = ATLAS.migrateLegacy(legacy, content, nowMs);
+    }
+    return out;
+  };
+
+  /* Ghi dữ liệu mới (dùng từ Phase 3). Chỉ ghi khoá mới, không đụng khoá cũ, không ghi đè nếu đã có. */
+  ATLAS.commitMigration = function (store, state, nowMs, opts) {
+    if (!store.available) return { ok: false, error: 'Trình duyệt không cho lưu dữ liệu.' };
+    if (store.get(ATLAS.KEYS.state) !== null && !(opts && opts.overwrite === true)) {
+      return { ok: false, error: 'Máy này đã có dữ liệu ATLAS mới, không ghi đè.' };
+    }
+    var wrapper = { schema: ATLAS.STATE_SCHEMA, version: ATLAS.STATE_VERSION, savedAt: ATLAS.vnIso(nowMs), state: state };
+    return store.set(ATLAS.KEYS.state, JSON.stringify(wrapper))
+      ? { ok: true }
+      : { ok: false, error: 'Không ghi được: bộ nhớ trình duyệt đầy hoặc đang ở chế độ riêng tư.' };
+  };
+
+  /* File sao lưu đúng định dạng ATLAS cũ (atlas-export v3): mở lại được bằng ATLAS cũ, Hồ sơ → Khôi phục */
+  ATLAS.legacyBackupJson = function (legacy, nowMs) {
+    var t = (typeof nowMs === 'number' && isFinite(nowMs)) ? nowMs : Date.now();
+    var out = { format: ATLAS.LEGACY.format, version: ATLAS.LEGACY.version, exported_at: new Date(t).toISOString() };
+    var d = obj(legacy && legacy.data), ks = keys(d), i;
+    for (i = 0; i < ks.length; i++) { if (!hasOwn.call(out, ks[i])) out[ks[i]] = d[ks[i]]; }
+    return JSON.stringify(out, null, 2);
+  };
+  ATLAS.legacyBackupName = function (nowMs) { return 'atlas-du-lieu-cu-' + ATLAS.vnDay(nowMs) + '.json'; };
+
+  ATLAS.completionsByAcademy = function (state, content) {
+    var map = ATLAS.legacyMap(content), out = { unmapped: 0 }, i, c, ac;
+    for (i = 0; i < ATLAS.ACADEMY_IDS.length; i++) out[ATLAS.ACADEMY_IDS[i]] = 0;
+    c = arr(state && state.learning && state.learning.completions);
+    for (i = 0; i < c.length; i++) {
+      ac = map[c[i].lessonId];
+      if (ac && hasOwn.call(out, ac)) out[ac]++; else out.unmapped++;
+    }
+    return out;
+  };
+})(typeof window !== 'undefined' ? window : this);
+</script>
+
+<!-- ===================== GIAO DIỆN trang kiểm tra Phase 1 (ES5, chỉ đọc) ===================== -->
+<script id="atlas-ui">
+(function () {
+  'use strict';
+  var doc = document, A = window.ATLAS, hasOwn = Object.prototype.hasOwnProperty;
+  var NOW = Date.now();
+
+  function h(tag, attrs, kids) {
+    var el = doc.createElement(tag), k, i, c;
+    if (attrs) {
+      for (k in attrs) {
+        if (!hasOwn.call(attrs, k) || attrs[k] === null || attrs[k] === undefined) continue;
+        if (k === 'text') el.textContent = attrs[k];
+        else if (k === 'class') el.className = attrs[k];
+        else if (k.indexOf('on') === 0) el.addEventListener(k.slice(2), attrs[k]);
+        else el.setAttribute(k, attrs[k]);
+      }
+    }
+    if (kids) {
+      for (i = 0; i < kids.length; i++) {
+        c = kids[i];
+        if (c === null || c === undefined || c === false) continue;
+        el.appendChild(typeof c === 'string' ? doc.createTextNode(c) : c);
+      }
+    }
+    return el;
+  }
+  function fill(id, nodes) {
+    var el = doc.getElementById(id), i;
+    if (!el) return;
+    while (el.firstChild) el.removeChild(el.firstChild);
+    for (i = 0; i < nodes.length; i++) { if (nodes[i]) el.appendChild(nodes[i]); }
+  }
+  function note(kind, text) { return h('p', { 'class': 'note ' + kind, text: text }); }
+  function kb(bytes) { return (Math.round(bytes / 102.4) / 10).toString().replace('.', ',') + ' KB'; }
+  function rows(list) {
+    var trs = [], i;
+    for (i = 0; i < list.length; i++) {
+      if (!list[i]) continue;
+      trs.push(h('tr', null, [h('th', { scope: 'row', text: list[i][0] }), h('td', { text: String(list[i][1]) })]));
+    }
+    return h('table', { 'class': 'kv' }, [h('tbody', null, trs)]);
+  }
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || 'application/json;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = h('a', { href: url, download: name });
+    doc.body.appendChild(a);
+    a.click();
+    doc.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+  }
+
+  var content = null, problems = [];
+  try { content = A.readContent(doc); problems = A.checkContent(content); }
+  catch (e) { problems = ['Không đọc được khối nội dung: ' + e.message]; }
+
+  var backend = null;
+  try { backend = window.localStorage; backend.getItem(A.KEYS.legacy); } catch (e) { backend = null; }
+  var store = A.storage(backend);
+  var plan = content ? A.planMigration(store, content, NOW) : null;
+
+  function academyName(id) {
+    var a = content ? A.academy(content, id) : null;
+    return a ? a.vi : id;
+  }
+
+  function renderLegacy() {
+    var nodes = [note('ok', 'Trang này chỉ đọc: không ghi, không xoá dữ liệu nào trên máy.')];
+    if (!store.available) {
+      nodes.push(note('warn', 'Trình duyệt đang chặn bộ nhớ (có thể đang ở chế độ duyệt riêng tư), nên không đọc được dữ liệu cũ.'));
+      return fill('legacy-body', nodes);
+    }
+    var L = plan ? plan.legacy : A.readLegacy(store);
+    if (!L.present) {
+      nodes.push(h('p', { text: 'Máy này chưa có dữ liệu ATLAS cũ.' }));
+      nodes.push(h('p', { 'class': 'muted', text: 'Muốn kiểm tra dữ liệu thật, mở trang này trên chiếc máy đã dùng ATLAS cũ, cùng địa chỉ fpltraining.github.io.' }));
+    } else if (L.error) {
+      nodes.push(note('warn', L.error));
+      nodes.push(h('button', { 'class': 'btn', type: 'button', text: 'Tải bản gốc (dạng thô)', onclick: function () {
+        download('atlas-du-lieu-cu-tho-' + A.vnDay(Date.now()) + '.txt', L.raw, 'text/plain;charset=utf-8');
+      } }));
+    } else {
+      var s = plan.summary;
+      nodes.push(rows([
+        ['Bài đã hoàn thành', s.completions],
+        ['Bài có lịch ôn', s.reviews],
+        ['Lượt ôn đã ghi', s.attempts],
+        ['Dự đoán và phép thử', s.commitments],
+        ['Dự án', s.projects],
+        ['Ghi chép (Sổ tư duy)', s.notes],
+        ['Tài sản / khoản nợ', s.assets + ' / ' + s.debts],
+        s.otherRecords ? ['Mục khác', s.otherRecords] : null,
+        ['Ngày có nhật ký học', s.journalDays],
+        ['Đánh giá đầu vào', s.entryAssessment ? 'Đã làm' : 'Chưa làm'],
+        ['Lần lưu cuối', L.updatedAt ? A.vnLabel(L.updatedAt) + ' (giờ VN)' : 'Không rõ'],
+        ['Dung lượng', kb(L.bytes)]
+      ]));
+      var g = s.language;
+      nodes.push(h('h3', { text: 'Phần ngoại ngữ: không chuyển sang ATLAS mới' }));
+      nodes.push(h('p', { 'class': 'muted small', text: 'Thẻ từ ' + g.wordCards + ' · thẻ câu ' + g.sentCards + ' · từ tự thêm ' + g.customWords +
+        ' · trang viết tay ' + g.notebooks + ' · lượt luyện viết ' + g.writingEvents + '. Phần này vẫn nguyên trong ATLAS cũ và trong file sao lưu.' }));
+      nodes.push(h('button', { 'class': 'btn', type: 'button', text: 'Tải file sao lưu dữ liệu cũ', onclick: function () {
+        var t = Date.now();
+        download(A.legacyBackupName(t), A.legacyBackupJson(L, t));
+      } }));
+      nodes.push(h('p', { 'class': 'muted small', text: 'Khôi phục được bằng ATLAS cũ: Hồ sơ → Khôi phục từ tệp sao lưu.' }));
+    }
+    if (plan && plan.newStatePresent) nodes.push(note('warn', 'Máy này đã có dữ liệu ATLAS mới (khoá ' + A.KEYS.state + '). Trang này không động vào.'));
+    var u = store.usage();
+    nodes.push(h('p', { 'class': 'muted small', text: 'Bộ nhớ trình duyệt dùng chung cho mọi app trên fpltraining.github.io: khoảng ' + kb(u.bytes) + ' (' + u.keys + ' khoá).' }));
+    fill('legacy-body', nodes);
+  }
+
+  function renderPreview() {
+    if (!plan || !plan.state) {
+      return fill('preview-body', [h('p', { 'class': 'muted', text: 'Chưa có dữ liệu cũ đọc được để thử chuyển.' })]);
+    }
+    var st = plan.state, mf = st.meta.migratedFrom, by = A.completionsByAcademy(st, content), list = [], i, id;
+    for (i = 0; i < A.ACADEMY_IDS.length; i++) {
+      id = A.ACADEMY_IDS[i];
+      list.push([(i + 1) + '. ' + academyName(id), by[id] + ' bài']);
+    }
+    var nodes = [h('p', { text: 'Bài cũ đã hoàn thành, xếp theo học viện mới:' }), rows(list)];
+    if (mf.report.unmappedLessons.length) {
+      nodes.push(note('warn', 'Bài không còn trong danh mục (vẫn giữ trong dữ liệu): ' + mf.report.unmappedLessons.join(', ') + '.'));
+    }
+    if (st.plan.legacyFocus) {
+      nodes.push(h('p', { text: 'Hướng học đã chọn trong bản cũ: ' + st.plan.legacyFocus + ' → ' + (st.plan.focusAcademy ? academyName(st.plan.focusAcademy) : 'chưa gắn học viện') + '.' }));
+    }
+    nodes.push(h('ul', { 'class': 'plain' }, [
+      h('li', { text: 'Giờ trong dữ liệu cũ được ghi lại kèm múi giờ +07:00 (giờ Việt Nam), đúng thời điểm, không lệch 7 tiếng.' }),
+      h('li', { text: 'Dự án → Project Lab · Sổ tư duy → Knowledge Vault · Tài sản ròng → công cụ của Học viện Tài chính.' }),
+      h('li', { text: 'Không chuyển: phần ngoại ngữ và danh sách việc "Hôm nay" của bản cũ (bản mới tự tạo nhiệm vụ mỗi ngày).' }),
+      h('li', { text: 'Chưa lưu gì. Việc chuyển thật làm ở Phase 3, có hỏi anh trước.' })
+    ]));
+    if (mf.report.badTimes) nodes.push(note('warn', mf.report.badTimes + ' mốc giờ trong dữ liệu cũ không đọc được, sẽ để trống.'));
+    if (mf.report.droppedItems || mf.report.problems.length) {
+      nodes.push(note('warn', 'Có ' + (mf.report.droppedItems + mf.report.problems.length) + ' mục hỏng không chuyển được (bản gốc vẫn giữ nguyên).'));
+    }
+    fill('preview-body', nodes);
+  }
+
+  function evidenceLabel(id) {
+    var c = content ? content.competencies : [], i;
+    for (i = 0; i < c.length; i++) { if (c[i].id === id) return c[i].vi; }
+    return id;
+  }
+
+  function renderAcademies() {
+    var nodes = [];
+    if (problems.length) {
+      nodes.push(note('warn', 'Khung nội dung có lỗi:'));
+      var li = [], i;
+      for (i = 0; i < problems.length; i++) li.push(h('li', { text: problems[i] }));
+      nodes.push(h('ul', { 'class': 'plain' }, li));
+    } else {
+      nodes.push(note('ok', 'Khung nội dung hợp lệ: đúng 7 học viện, đủ 5 cấp, không có nội dung học ngoại ngữ.'));
+    }
+    if (!content) return fill('academy-body', nodes);
+    var legacyByAcademy = {}, ll = content.legacyLessons, a, k, j;
+    for (j = 0; j < ll.length; j++) {
+      if (!legacyByAcademy[ll[j].academy]) legacyByAcademy[ll[j].academy] = [];
+      legacyByAcademy[ll[j].academy].push(ll[j].title);
+    }
+    for (k = 0; k < content.academies.length; k++) {
+      a = content.academies[k];
+      var nOut = 0, body = [h('p', { text: a.goal })], L, lv, outs, items;
+      if (a.notice) body.push(note('ok', a.notice));
+      var br = [];
+      for (j = 0; j < a.branches.length; j++) br.push(h('li', { text: a.branches[j].title }));
+      body.push(h('h3', { text: 'Nhánh học' }), h('ul', { 'class': 'plain' }, br));
+      body.push(h('h3', { text: 'Chuẩn đầu ra theo cấp' }));
+      for (L = 0; L < content.levels.length; L++) {
+        lv = content.levels[L];
+        outs = a.levels[lv.id] || [];
+        items = [];
+        for (j = 0; j < outs.length; j++) {
+          nOut++;
+          items.push(h('li', null, [outs[j].text, h('span', { 'class': 'ev', text: evidenceLabel(outs[j].evidence) })]));
+        }
+        body.push(h('h4', { 'class': 'level', text: lv.vi + ' · ' + lv.name }), h('ul', { 'class': 'plain' }, items));
+      }
+      var pj = [];
+      for (j = 0; j < a.projects.length; j++) pj.push(h('li', { text: a.projects[j] }));
+      body.push(h('h3', { text: 'Dự án gợi ý' }), h('ul', { 'class': 'plain' }, pj));
+      if (legacyByAcademy[a.id]) {
+        var lt = [];
+        for (j = 0; j < legacyByAcademy[a.id].length; j++) lt.push(h('li', { text: legacyByAcademy[a.id][j] }));
+        body.push(h('h3', { text: 'Bài từ ATLAS cũ chuyển vào đây' }), h('ul', { 'class': 'plain' }, lt));
+      }
+      nodes.push(h('details', { 'class': 'academy' }, [
+        h('summary', null, [
+          h('span', { 'class': 'no', 'aria-hidden': 'true', text: String(a.no) }),
+          h('span', { 'class': 'sum-title' }, [h('b', { text: a.vi }), h('small', { text: a.name + ' · ' + a.branches.length + ' nhánh · ' + nOut + ' chuẩn đầu ra' })])
+        ]),
+        h('div', { 'class': 'acad-body' }, body)
+      ]));
+    }
+    fill('academy-body', nodes);
+  }
+
+  function renderFeatures() {
+    if (!content) return fill('feature-body', []);
+    var trs = [], i, f, label;
+    for (i = 0; i < content.features.length; i++) {
+      f = content.features[i];
+      label = f.status === 'live' ? 'Hoạt động thật' : (f.status === 'preview' ? 'Xem thử, chưa lưu' : 'Chưa triển khai');
+      trs.push(h('tr', null, [
+        h('td', null, [f.name, h('div', { 'class': 'muted small', text: 'Phase ' + f.phase })]),
+        h('td', { 'class': 'st' }, [h('span', { 'class': 'pill ' + f.status, text: label })])
+      ]));
+    }
+    fill('feature-body', [h('table', { 'class': 'feat' }, [h('tbody', null, trs)]),
+      h('p', { 'class': 'muted small', text: 'Trong lúc nâng cấp, ATLAS cũ vẫn chạy bình thường ở trang chính.' })]);
+  }
+
+  function renderFooter() {
+    fill('foot', [h('p', { text: 'ATLAS core ' + A.CORE_VERSION + ' · nội dung v' + (content ? content.version + ' (' + A.dayLabel(content.updated) + ')' : '?') +
+      ' · giờ Việt Nam (UTC+7) · mở lúc ' + A.vnLabel(A.vnIso(NOW)) })]);
+  }
+
+  renderLegacy();
+  renderPreview();
+  renderAcademies();
+  renderFeatures();
+  renderFooter();
+})();
+</script>
+</body>
+</html>

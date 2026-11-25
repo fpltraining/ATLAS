@@ -1,0 +1,20 @@
+# Soát tự động mỗi lần đẩy code hoặc mở PR: cú pháp ES5 (Safari iOS) và kiểm thử lõi ATLAS.
+name: Soát ATLAS
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Cài công cụ soát (acorn, PGlite = Postgres chạy trong Node)
+        run: npm i --no-save --no-audit --no-fund acorn@8 @electric-sql/pglite@0.2.17
+      - name: Cú pháp ES5 (next.html)
+        run: node tools/es5-check.mjs
+      - name: Kiểm thử (nội dung 7 học viện, chuyển dữ liệu, giờ VN, chỉ đọc, SQL Supabase)
+        run: node --test tools/test/*.test.mjs
